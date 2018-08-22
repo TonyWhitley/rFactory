@@ -1,5 +1,12 @@
 # Much hacking about to understand how tkinter can provide the GUI that's needed.
-
+try:
+    import tkinter as tk
+    from tkinter import ttk
+    import tkMessageBox as messagebox
+except ImportError:
+    import tkinter as tk
+    from tkinter import ttk
+    from tkinter import messagebox
 
 from MC_table import Multicolumn_Listbox
 
@@ -25,6 +32,7 @@ class CarData:
   def fetchData(self):
     """ Fetch the raw data from wherever """
     self.data = self.dummyData.copy() # dummy data for now
+    print('DEBUG')
     for row in self.dummyData:
       print(len(row), row)
     return self.data
@@ -38,10 +46,12 @@ class CarData:
 
 class Filter:
   """ Filter combobox in frame """
-  def __init__(self, mainWindow, columns, colWidths):
+  def __init__(self, mainWindow, columns, colWidths, o_carData, mc):
     self.columns = columns
     self.colWidths = colWidths
     self.mainWindow = mainWindow
+    self.o_carData = o_carData
+    self.mc = mc
     self.filters = []
   def makeFilter(self, name, carData, col):
     _column = self.columns.index(name)
@@ -66,61 +76,59 @@ class Filter:
     
   def filterUpdate(self, event):
     """ Callback function when combobox changes """
-    carData = o_carData.filterData(self.filters)
-    mc.table_data = carData
+    carData = self.o_carData.filterData(self.filters)
+    self.mc.table_data = carData
+
+def tab(parentFrame):
+  """ Put this into the parent frame """
+  carColumns = ['Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
+  o_carData = CarData()
+  carData = o_carData.fetchData()
+
+
+  mc = Multicolumn_Listbox(parentFrame, carColumns, stripped_rows = ("white","#f2f2f2"), command=on_select, adjust_heading_to_content=False, cell_anchor="center")
+
+  # calculate the column widths to fit the headings and the data
+  colWidths = []
+  for col in carColumns:
+    colWidths.append(len(col))
+  for row in carData:
+    for col, column in enumerate(row):
+      if len(column) > colWidths[col]:
+        colWidths[col] = len(column)
+  for col, column in enumerate(row):
+      mc.configure_column(col, width=colWidths[col]*7+6)
+  # Justify the data in the first three columns
+  mc.configure_column(0, anchor='e')
+  mc.configure_column(1, anchor='w')
+  mc.configure_column(2, anchor='w')
+  mc.interior.grid(column=0, row=1, pady=2, columnspan=len(carColumns))
+
+  filters = ['Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
+  o_filter = Filter(parentFrame, carColumns, colWidths, o_carData, mc)
+  col = 0
+  for filter in filters:
+    o_filter.makeFilter(filter, carData, col)
+    col += 1
+   
+  o_filter.filterUpdate(None) # Initial dummy filter to load data into table
+
+  mc.select_row(0)
+
+def on_select(data):
+    print('DEBUG')
+    print("called command when row is selected")
+    print(data)
+    print("\n")
+        
+
 
 if __name__ == '__main__':
-    try:
-        import tkinter as tk
-        from tkinter import ttk
-        import tkMessageBox as messagebox
-    except ImportError:
-        import tkinter as tk
-        from tkinter import ttk
-        from tkinter import messagebox
 
     root = tk.Tk()
     carSelect = ttk.Frame(root, width=1200, height = 1200, relief='sunken', borderwidth=5)
     carSelect.grid()
     
-    def on_select(data):
-        print("called command when row is selected")
-        print(data)
-        print("\n")
-        
-    carColumns = ['Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
-    o_carData = CarData()
-    carData = o_carData.fetchData()
-
-
-    mc = Multicolumn_Listbox(carSelect, carColumns, stripped_rows = ("white","#f2f2f2"), command=on_select, adjust_heading_to_content=False, cell_anchor="center")
-
-    # calculate the column widths to fit the headings and the data
-    colWidths = []
-    for col in carColumns:
-      colWidths.append(len(col))
-    for row in carData:
-      for col, column in enumerate(row):
-        if len(column) > colWidths[col]:
-          colWidths[col] = len(column)
-    for col, column in enumerate(row):
-        mc.configure_column(col, width=colWidths[col]*7+6)
-    # Justify the data in the first three columns
-    mc.configure_column(0, anchor='e')
-    mc.configure_column(1, anchor='w')
-    mc.configure_column(2, anchor='w')
-    mc.interior.grid(column=0, row=1, pady=2, columnspan=len(carColumns))
-
-    filters = ['Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
-    o_filter = Filter(carSelect, carColumns, colWidths)
-    col = 0
-    for filter in filters:
-      o_filter.makeFilter(filter, carData, col)
-      col += 1
-   
-    o_filter.filterUpdate(None) # Initial dummy filter to load data into table
-
-    mc.select_row(0)
-
+    tab(carSelect)
     root.mainloop()
 

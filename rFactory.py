@@ -1,11 +1,12 @@
 # Much hacking about to understand how tkinter can provide the GUI that's needed.
 # Added a bit of class. Geddit?
+# First tab - Cars - incorporated.
 
 import tkinter as tk
 from tkinter import ttk
  
-import platform
-
+# Tabs
+import carSelection
 
 class MainWindow:
   handle = None
@@ -154,14 +155,13 @@ def goButtons(goFrame):
 
 if __name__ == "__main__":
   mainWindow = MainWindow()
-  mainWindow.setSize(width=800, height=600)
+  mainWindow.setSize(width=1000, height=400)
   mainWindow.centreWindow()
  
   #tkLabelTop = tk.Label(mainWindow.handle, text=" Here we are ")
   #tkLabelTop.grid()
 
   tabs = Tabs(mainWindow.handle)
-  tabs.selectTab('Options')
 
   goFrame = ttk.Frame(mainWindow.handle)
   goButtons(goFrame)
@@ -171,8 +171,9 @@ if __name__ == "__main__":
   tkLabelScenarios = tk.Label(tabs.tabs['Scenarios'], text='Here a list of scenario files plus "Save as..."')
   tkLabelScenarios.grid(column=4, row=3)
 
-  tkLabelCars = tk.Label(tabs.tabs['Car'], text='Here a table of cars that can be filtered and sorted by type/year/decade/modder/star rating')
-  tkLabelCars.grid(column=4, row=3)
+  tkTabFrameCars = ttk.Frame(tabs.tabs['Car'])
+  carSelection.tab(tkTabFrameCars)
+  tkTabFrameCars.grid(column=4, row=3)
 
   tkLabelTracks = tk.Label(tabs.tabs['Track'], text='Here a table of tracks that can be filtered and sorted by type/country/continent/year/decade/modder/star rating')
   tkLabelTracks.grid(column=4, row=3)
@@ -180,32 +181,8 @@ if __name__ == "__main__":
   tkLabelServer = tk.Label(tabs.tabs['Server'], text='Here a list of servers plus "Add server" ')
   tkLabelServer.grid(column=4, row=3)
 
-  # 101 stuff
-
-  if 0:
-  
-    tkDummyButton = tk.Button(
-        tabs.tabs['Car'],
-        text="Dummy Button")
-    tkDummyButton.grid(column=4, row=3)
-   
-    #tkLabel = tk.Label(tabs.tabs['Car'], text=" Hello Python!")
-    #tkLabel.grid(column=4, row=3)
- 
-    strVersion = "running Python version " + platform.python_version()
-    #tkLabelVersion = tk.Label(tabs.tabs['Track'], text=strVersion)
-    #tkLabelVersion.grid()
-    strPlatform = "Platform: " + platform.platform()
-    #tkLabelPlatform = tk.Label(tabs.tabs['Track'], text=strPlatform)
-    #tkLabelPlatform.grid(column=2, row=3)
- 
-    tkLabel5 = tk.Label(tabs.tabs['Options'], text=" Hello World!")
-    tkLabel5.grid(column=4, row=3)
-    tkLabel5.columnconfigure(0, weight=1)
-    tkLabel5.columnconfigure(1, weight=1)
-    tkLabel5.columnconfigure(2, weight=1)
-
-    button = tk.Button(tabs.tabs['Options'], text='Ooh! It\'s a button!')
-    button.grid(column=5, row=2, sticky='e')
+  # Set initial tab state
+  tabs.selectTab('Cars')
+  offline()
 
   tk.mainloop()
