@@ -16,18 +16,18 @@ class CarData:
   """ Fetch and filter the car data """
   def __init__(self):
     self.dummyData = [
-        ['Ferrari',  '458', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****'],
-        ['Corvette', 'C7', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****'],
-        ['Bentley',  'Continental', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****'],
-        ['Eve',      'F1', 'F1', 'S397', 'Open-wheel', 'RWD', '1967', '1960-', '*****'],
-        ['Spark',    'F1', 'F1', 'S397', 'Open-wheel', 'RWD', '1967', '1960-', '*****'],
-        ['Porsche',  '917K', 'Gp.C', 'Apex', 'GT', 'RWD', '1967', '1960-', '*****'],
-        ['Lola',     'T70', 'Gp.C', 'Crossply', 'GT', 'RWD', '1974', '1970-', '***'],
-        ['Sauber',   'C11', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****'],
-        ['Porsche',  '962C', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****'],
-        ['Mazda',    '787B', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****'],
-        ['Ferrari',  '312', 'F1', 'Chief Wiggum/Postipate', 'Open-wheel', 'RWD', '1967', '1960-', '*****'],
-        ['Caterham', '7', 'C7', 'MikeeCZ', 'Sports', 'RWD', '2016', '2010-', '****']
+        ['Ferrari',  '458', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****', 'car DB file'],
+        ['Corvette', 'C7', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****', 'car DB file'],
+        ['Bentley',  'Continental', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****', 'car DB file'],
+        ['Eve',      'F1', 'F1', 'ISI', 'Open-wheel', 'RWD', '1967', '1960-', '*****', 'Historic Challenge_EVE_1968'],
+        ['Spark',    'F1', 'F1', 'ISI', 'Open-wheel', 'RWD', '1967', '1960-', '*****', 'Historic Challenge_spark_1968'],
+        ['Porsche',  '917K', 'Gp.C', 'Apex', 'GT', 'RWD', '1967', '1960-', '*****', 'FLAT12_917k_1971'],
+        ['Lola',     'T70', 'Gp.C', 'Crossply', 'GT', 'RWD', '1974', '1970-', '***', 'car DB file'],
+        ['Sauber',   'C11', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****', 'MAK_Sauber_C11'],
+        ['Porsche',  '962C', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****', 'MAK_Porsche_062C'],
+        ['Mazda',    '787B', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****', 'MAK_Mazda_787B'],
+        ['Ferrari',  '312', 'F1', 'Chief Wiggum/Postipate', 'Open-wheel', 'RWD', '1967', '1960-', '*****', 'car DB file'],
+        ['Caterham', '7', 'C7', 'MikeeCZ', 'Sports', 'RWD', '2016', '2010-', '****', 'car DB file']
       ]
     self.data = None  # Pylint
     self.filteredData = None
@@ -83,7 +83,7 @@ class Filter:
 
 def tab(parentFrame):
   """ Put this into the parent frame """
-  carColumns = ['Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
+  carColumns = ['Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file (hidden)']
   o_carData = CarData()
   carData = o_carData.fetchData()
 
@@ -105,6 +105,7 @@ def tab(parentFrame):
         colWidths[col] = len(column)
     for col, column in enumerate(row):
       mc.configure_column(col, width=colWidths[col]*7+6)
+  mc.configure_column(9, width=0, minwidth=0)
   # Justify the data in the first three columns
   mc.configure_column(0, anchor='e')
   mc.configure_column(1, anchor='w')
