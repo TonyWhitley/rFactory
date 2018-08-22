@@ -9,6 +9,7 @@ from tkinter import ttk
 import carSelection
 
 class MainWindow:
+  """ The main app window innit """
   handle = None
   def __init__(self):
     self.handle = tk.Tk()
@@ -26,23 +27,34 @@ class MainWindow:
     #self.handle.rowconfigure(4, weight=1)
     self.handle.grid()
   def setSize(self, width, height):
-    self.width_of_window = width # The width of a GUI window. You can change this value to suit your preference
+    """ Set the size of the window """
+    self.width_of_window = width # The width of a GUI window. 
+                                 # You can change this value to suit your preference
 
-    self.height_of_window = height # The height of a GUI window. You can change this value to suit your preference
+    self.height_of_window = height # The height of a GUI window. 
+                                   # You can change this value to suit your preference
 
   def centreWindow(self):
-    # Fetch the monitor size and create the x & y coordinate 
-    screen_width = self.handle.winfo_screenwidth() # this is fetching the mointor maximum width (typical mointors are 1920x1080)
-    screen_height = self.handle.winfo_screenheight() # this is fetching the mointor maxium height
-    x_coordinate = (screen_width/2) - (self.width_of_window/2) # This is getting the correct x coordinate position for the GUI
-    y_coordinate = (screen_height/2) - (self.height_of_window/2)# This is getting the correct y coordinate position for the GUI
+    """ Fetch the monitor size and create the x & y coordinate """
+    screen_width = self.handle.winfo_screenwidth() # this is fetching the monitor 
+                                                   # maximum width (typical monitors are 1920x1080)
+    screen_height = self.handle.winfo_screenheight() # this is fetching the monitor maxium height
+    x_coordinate = (screen_width/2) - (self.width_of_window/2) # This is getting the correct 
+                                                               # x coordinate position for the GUI
+    y_coordinate = (screen_height/2) - (self.height_of_window/2)# This is getting the correct y 
+                                                                # coordinate position for the GUI
 
     # Initialise the GUI's position 
-    self.handle.geometry("%dx%d+%d+%d" % (self.width_of_window, self.height_of_window, x_coordinate, y_coordinate)) # setting the position of the main window 
+    self.handle.geometry("%dx%d+%d+%d" % 
+                         (self.width_of_window, 
+                          self.height_of_window, 
+                          x_coordinate, 
+                          y_coordinate)) # setting the position of the main window 
  
 # The tabs
 
 class Tabs:
+  """ The tabs in the main window """
   tabs = {}
   def __init__(self, parentFrame):
     self.tabNames = [ \
@@ -54,7 +66,7 @@ class Tabs:
       'Options',
       'Server',
       'Scenarios'
-    ]
+      ]
     self.notebook = ttk.Notebook(parentFrame)
 
     """
@@ -117,13 +129,14 @@ def offline():
 def run():
   pass
 
-def quit():
-    #global mainWindow
-    mainWindow.handle.destroy()
+def _quit():
+  #global mainWindow
+  mainWindow.handle.destroy()
 
-def goButtons(goFrame):
+def goButtons(_goFrame):
+  """ Draw the buttons that select On/Off line and run rFactor """
   tkButtonOnline = tk.Button(
-      goFrame,
+      _goFrame,
       text="Online",
       width=20,
       height=2,
@@ -131,7 +144,7 @@ def goButtons(goFrame):
   tkButtonOnline.grid(column=2, row=0, pady=5)
 
   tkButtonOffline = tk.Button(
-      goFrame,
+      _goFrame,
       text="Offline",
       width=20,
       height=2,
@@ -139,7 +152,7 @@ def goButtons(goFrame):
   tkButtonOffline.grid(column=2, row=1, pady=5)
 
   tkButtonRun = tk.Button(
-      goFrame,
+      _goFrame,
       text="Run rFactor 2",
       width=20,
       height=2,
@@ -147,10 +160,10 @@ def goButtons(goFrame):
   tkButtonRun.grid(column=2, row=2, pady=25)
 
   tkButtonQuit = tk.Button(
-      goFrame,
+      _goFrame,
       text="Quit",
       width=20,
-      command=quit)
+      command=_quit)
   tkButtonQuit.grid(column=2, row=3, pady=25)
 
 if __name__ == "__main__":
@@ -168,17 +181,21 @@ if __name__ == "__main__":
   goFrame.grid(column=1, row=0, sticky='w')
 
 
-  tkLabelScenarios = tk.Label(tabs.tabs['Scenarios'], text='Here a list of scenario files plus "Save as..."')
+  tkLabelScenarios = tk.Label(tabs.tabs['Scenarios'], 
+                              text='Here a list of scenario files plus "Save as..."')
   tkLabelScenarios.grid(column=4, row=3)
 
   tkTabFrameCars = ttk.Frame(tabs.tabs['Car'])
   carSelection.tab(tkTabFrameCars)
   tkTabFrameCars.grid(column=4, row=3)
 
-  tkLabelTracks = tk.Label(tabs.tabs['Track'], text='Here a table of tracks that can be filtered and sorted by type/country/continent/year/decade/modder/star rating')
+  tkLabelTracks = tk.Label(tabs.tabs['Track'], 
+                           text='Here a table of tracks that can be filtered and sorted by \
+type/country/continent/year/decade/modder/star rating')
   tkLabelTracks.grid(column=4, row=3)
 
-  tkLabelServer = tk.Label(tabs.tabs['Server'], text='Here a list of servers plus "Add server" ')
+  tkLabelServer = tk.Label(tabs.tabs['Server'], 
+                           text='Here a list of servers plus "Add server" ')
   tkLabelServer.grid(column=4, row=3)
 
   # Set initial tab state

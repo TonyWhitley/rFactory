@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>rFactory</Name>
     <RootNamespace>rFactory</RootNamespace>
-    <InterpreterId>MSBuild|wx|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|PyLint|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,16 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="101.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="module1.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="carSelection.py" />
+    <Compile Include="MC_table.py" />
     <Compile Include="rFactory.py" />
-    <Compile Include="wx101.py">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="PyLint\">
