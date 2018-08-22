@@ -1,5 +1,5 @@
 # Much hacking about to understand how tkinter can provide the GUI that's needed.
-# Combobox original code left in wrapped in """
+
 
 from MC_table import Multicolumn_Listbox
 
@@ -88,22 +88,6 @@ if __name__ == '__main__':
         print(data)
         print("\n")
         
-    def show_info(msg):
-        messagebox.showinfo("Table Data", msg)
-
-    """
-    def filterUpdate(event=None):
-      filters = [
-        [2, tkComboModder.get],
-        [3, tkComboType.get],
-        [4, tkComboDrive.get]
-        ]
-      carData = o_carData.filterData(filters)
-      mc.table_data = carData
-      #show_info("mc.table_data(carData)")
-    """
-
-
     carColumns = ['Manufacturer', 'Model', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
     o_carData = CarData()
     carData = o_carData.fetchData()
@@ -127,61 +111,6 @@ if __name__ == '__main__':
     mc.configure_column(2, anchor='w')
     mc.interior.grid(column=0, row=1, pady=2, columnspan=len(carColumns))
 
-    """
-    tkFilterText = tk.LabelFrame(carSelect, text="Modders")
-    tkFilterText.grid(column=0, row=0, pady=5)
-
-    s = {NOFILTER}
-    for item in carData:
-      s.add(item[2])
-    vals = sorted(list(s))
-    modderFilter = tk.StringVar()
-    tkComboModder = ttk.Combobox(
-      tkFilterText,
-      textvariable=modderFilter,
-      width=colWidths[2],
-      height=len(vals))
-    tkComboModder['values'] = vals
-    tkComboModder.grid(column=1, row=0, pady=5)
-    tkComboModder.current(0)
-    tkComboModder.bind("<<ComboboxSelected>>", filterUpdate)
-   
-    tkTypes = tk.LabelFrame(carSelect, text="Types")
-    tkTypes.grid(column=1, row=0, pady=5)
-
-    s = {NOFILTER}
-    for item in carData:
-      s.add(item[3])
-    vals = sorted(list(s))
-    typeFilter = tk.StringVar()
-    tkComboType = ttk.Combobox(
-      tkTypes,
-      textvariable=typeFilter,
-      width=colWidths[3],
-      height=len(vals))
-    tkComboType['values'] = vals
-    tkComboType.grid(column=0, row=0, pady=5)
-    tkComboType.current(0)
-    tkComboType.bind("<<ComboboxSelected>>", filterUpdate)
-   
-    tkDrive = tk.LabelFrame(carSelect, text="Drive")
-    tkDrive.grid(column=2, row=0, pady=5)
-
-    s = {NOFILTER}
-    for item in carData:
-      s.add(item[4])
-    vals = sorted(list(s))
-    driveFilter = tk.StringVar()
-    tkComboDrive = ttk.Combobox(
-      tkDrive,
-      textvariable=driveFilter,
-      width=colWidths[4],
-      height=len(vals))
-    tkComboDrive['values'] = vals
-    tkComboDrive.grid(column=0, row=0, pady=5)
-    tkComboDrive.current(0)
-    tkComboDrive.bind("<<ComboboxSelected>>", filterUpdate)
-    """
 
     o_filter = Filter(carSelect, carColumns, colWidths)
     o_filter.makeFilter('Manufacturer', carData, 0)
@@ -194,7 +123,6 @@ if __name__ == '__main__':
     o_filter.filterUpdate(None)
 
     mc.select_row(0)
-    #show_info("mc.select_row(0)")
 
     root.mainloop()
 
