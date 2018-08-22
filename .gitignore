@@ -328,3 +328,7 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/PyLint
+/Table_Scroll.py
+/Table_2.py
+/t2.py
