@@ -48,10 +48,10 @@ class Filter:
     tkFilterText = tk.LabelFrame(self.mainWindow, text=name)
     tkFilterText.grid(column=col, row=0, pady=0)
 
-    s = {NOFILTER}
+    s = set()
     for item in carData:
       s.add(item[_column])
-    vals = sorted(list(s))
+    vals = [NOFILTER] + sorted(list(s))
     #modderFilter = tk.StringVar()
     tkComboFilter = ttk.Combobox(
       tkFilterText,
@@ -111,24 +111,14 @@ if __name__ == '__main__':
     mc.configure_column(2, anchor='w')
     mc.interior.grid(column=0, row=1, pady=2, columnspan=len(carColumns))
 
-
+    filters = ['Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
     o_filter = Filter(carSelect, carColumns, colWidths)
     col = 0
-    o_filter.makeFilter('Manufacturer', carData, col)
-    col += 1
-    o_filter.makeFilter('Model', carData, col)
-    col += 1
-    o_filter.makeFilter('Class', carData, col)
-    col += 1
-    o_filter.makeFilter('Modder', carData, col)
-    col += 1
-    o_filter.makeFilter('Type', carData, col)
-    col += 1
-    o_filter.makeFilter('Year', carData, col)
-    col += 1
-    o_filter.makeFilter('Decade', carData, col)
+    for filter in filters:
+      o_filter.makeFilter(filter, carData, col)
+      col += 1
    
-    o_filter.filterUpdate(None)
+    o_filter.filterUpdate(None) # Initial dummy filter to load data into table
 
     mc.select_row(0)
 
