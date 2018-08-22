@@ -9,18 +9,18 @@ class CarData:
   """ Fetch and filter the car data """
   def __init__(self):
     self.dummyData = [
-      ['Ferrari', '458 GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****' ],
-      ['Corvette', 'C7 GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****' ],
-      ['Bentley', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****' ],
-      ['Eve', 'F1', 'S397', 'F1', 'RWD', '1967', '1960-', '*****' ],
-      ['Spark', 'F1', 'S397', 'F1', 'RWD', '1967', '1960-', '*****' ],
-      ['Porsche', '917K', 'Apex', 'GT', 'RWD', '1967', '1960-', '*****' ],
-      ['Lola', 'T70', 'Crossply', 'GT', 'RWD', '1974', '1970-', '***' ],
-      ['Sauber', 'C11', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****' ],
-      ['Porsche', '962C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****' ],
-      ['Mazda', '787B', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****' ],
-      ['Ferrari', '312', 'Chief Wiggum/Postipate', 'F1', 'RWD', '1967', '1960-', '*****' ],
-      ['Caterham', '7', 'MikeeCZ', 'Sports', 'RWD', '2016', '2010-', '****' ]
+      ['Ferrari',  '458', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****' ],
+      ['Corvette', 'C7', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****' ],
+      ['Bentley',  'Continental', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****' ],
+      ['Eve',      'F1', 'F1', 'S397', 'Open-wheel', 'RWD', '1967', '1960-', '*****' ],
+      ['Spark',    'F1', 'F1', 'S397', 'Open-wheel', 'RWD', '1967', '1960-', '*****' ],
+      ['Porsche',  '917K', 'Gp.C', 'Apex', 'GT', 'RWD', '1967', '1960-', '*****' ],
+      ['Lola',     'T70', 'Gp.C', 'Crossply', 'GT', 'RWD', '1974', '1970-', '***' ],
+      ['Sauber',   'C11', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****' ],
+      ['Porsche',  '962C', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****' ],
+      ['Mazda',    '787B', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****' ],
+      ['Ferrari',  '312', 'F1', 'Chief Wiggum/Postipate', 'Open-wheel', 'RWD', '1967', '1960-', '*****' ],
+      ['Caterham', '7', 'C7', 'MikeeCZ', 'Sports', 'RWD', '2016', '2010-', '****' ]
       ]
   def fetchData(self):
     """ Fetch the raw data from wherever """
@@ -88,7 +88,7 @@ if __name__ == '__main__':
         print(data)
         print("\n")
         
-    carColumns = ['Manufacturer', 'Model', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
+    carColumns = ['Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
     o_carData = CarData()
     carData = o_carData.fetchData()
 
@@ -105,7 +105,7 @@ if __name__ == '__main__':
           colWidths[col] = len(column)
     for col, column in enumerate(row):
         mc.configure_column(col, width=colWidths[col]*7+6)
-    # Left justify the data in the first three columns
+    # Justify the data in the first three columns
     mc.configure_column(0, anchor='e')
     mc.configure_column(1, anchor='w')
     mc.configure_column(2, anchor='w')
@@ -113,12 +113,20 @@ if __name__ == '__main__':
 
 
     o_filter = Filter(carSelect, carColumns, colWidths)
-    o_filter.makeFilter('Manufacturer', carData, 0)
-    o_filter.makeFilter('Model', carData, 1)
-    o_filter.makeFilter('Modder', carData, 2)
-    o_filter.makeFilter('Type', carData, 3)
-    o_filter.makeFilter('Year', carData, 4)
-    o_filter.makeFilter('Decade', carData, 6)
+    col = 0
+    o_filter.makeFilter('Manufacturer', carData, col)
+    col += 1
+    o_filter.makeFilter('Model', carData, col)
+    col += 1
+    o_filter.makeFilter('Class', carData, col)
+    col += 1
+    o_filter.makeFilter('Modder', carData, col)
+    col += 1
+    o_filter.makeFilter('Type', carData, col)
+    col += 1
+    o_filter.makeFilter('Year', carData, col)
+    col += 1
+    o_filter.makeFilter('Decade', carData, col)
    
     o_filter.filterUpdate(None)
 
