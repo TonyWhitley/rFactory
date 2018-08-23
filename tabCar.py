@@ -1,12 +1,8 @@
 # Much hacking about to understand how tkinter can provide the GUI that's needed.
-try:
-  import tkinter as tk
-  from tkinter import ttk
-  import tkMessageBox as messagebox
-except ImportError:
-  import tkinter as tk
-  from tkinter import ttk
-  from tkinter import messagebox
+# Python 3
+
+import tkinter as tk
+from tkinter import ttk
 
 from MC_table import Multicolumn_Listbox
 
@@ -134,8 +130,8 @@ def on_select(data):
 if __name__ == '__main__':
 
   root = tk.Tk()
-  carSelect = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
-  carSelect.grid()
+  tabCar = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
+  tabCar.grid()
     
-  tab(carSelect)
+  tab(tabCar)
   root.mainloop()

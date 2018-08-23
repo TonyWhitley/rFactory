@@ -22,24 +22,31 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="carSelection.py" />
+    <Compile Include="tabCar.py" />
     <Compile Include="MC_table.py" />
     <Compile Include="rFactory.py" />
+    <Compile Include="tabConditions.py" />
+    <Compile Include="tabOpponents.py" />
+    <Compile Include="tabOptions.py" />
+    <Compile Include="tabScenarios.py" />
+    <Compile Include="tabServer.py" />
+    <Compile Include="tabSessions.py" />
+    <Compile Include="tabTrack.py" />
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="PyLint\">
-      <Id>PyLint</Id>
+    <Interpreter Include="env\">
+      <Id>env</Id>
       <Version>3.6</Version>
-      <Description>PyLint (Python 3.6 (64-bit))</Description>
+      <Description>env (Python 3.6 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X64</Architecture>
     </Interpreter>
-    <Interpreter Include="wx\">
-      <Id>wx</Id>
+    <Interpreter Include="PyLint\">
+      <Id>PyLint</Id>
       <Version>3.6</Version>
-      <Description>wx (Python 3.6 (64-bit))</Description>
+      <Description>PyLint (Python 3.6 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
