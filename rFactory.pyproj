@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="carNtrackEditor.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tabCar.py" />
     <Compile Include="MC_table.py" />
     <Compile Include="rFactory.py" />
