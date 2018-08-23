@@ -5,6 +5,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from MC_table import Multicolumn_Listbox
+import carNtrackEditor
 
 NOFILTER = '---' # String for not filtering
 
@@ -14,6 +15,7 @@ NOFILTER = '---' # String for not filtering
 class Tab:
   def __init__(self, parentFrame):
     """ Put this into the parent frame """
+    self.parentFrame = parentFrame
     self.settings = None #PyLint
     carColumns = ['Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file (hidden)']
     o_carData = self.__CarData()
@@ -80,6 +82,25 @@ class Tab:
     print("called command when row is right clicked")
     print(data)
     print("\n")
+
+    top = tk.Toplevel(self.parentFrame)
+    top.title("Car editor")
+
+    fields = 'Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file'
+    o_tab = carNtrackEditor.Editor(top, fields, data, command=self.answer)
+    """
+    t = 'Editor data: '
+    for w in data:
+      t += ' ' + str(w)
+    msg = tk.Message(top, text=t, width=500)
+    msg.pack()
+
+    button = tk.Button(top, text="Dismiss", command=top.destroy)
+    button.pack()
+    """
+  def answer(self, data):
+    print('The response is')
+    print(data)
 
   class __CarData:
     """ Fetch and filter the car data """
