@@ -62,7 +62,8 @@ class MainWindow:
 
 class Tabs:
   """ The tabs in the main window """
-  tabs = {}
+  tabs = {}   # the tab Frames
+  o_tabs = {} # the Tab objects
   def __init__(self, parentFrame):
     self.tabNames = [ \
       ['Car', tabCar],
@@ -95,31 +96,42 @@ class Tabs:
       self.notebook.add(self.tabs[name], text=' %s ' % name)
 
       tkTabFrame= ttk.Frame(self.tabs[name])
-      tab.tab(tkTabFrame)
+      self.o_tabs[name] = tab.Tab(tkTabFrame)
       tkTabFrame.grid(column=4, row=3)
 
-    # Works notebook.add(....., text=' Conditions ', state='disabled')
-    # Doesn't notebook.tab(notebook.index(' Options '), state='disabled')
     self.notebook.grid()
 
   def disableTab(self, tabName):
     for tabId, name in enumerate(self.tabNames):
-      if name == tabName:
+      if name[0] == tabName:
         self.notebook.tab(tabId, state='disabled')
         return
     # error unknown tabName
   def enableTab(self, tabName):
     for tabId, name in enumerate(self.tabNames):
-      if name == tabName:
+      if name[0] == tabName:
         self.notebook.tab(tabId, state='normal')
         return
     # error unknown tabName
   def selectTab(self, tabName):
     for tabId, name in enumerate(self.tabNames):
-      if name == tabName:
+      if name[0] == tabName:
         self.notebook.select(tabId)
         return
     # error unknown tabName
+  def getSettings(self):
+    """ Get the settings from each tab """
+    settings = []
+    for name, tab in self.tabNames:
+      settings.append([name, self.o_tabs[name].getSettings()])
+    return settings
+
+  def _testSetSettings(self):
+    """ Set the settings from each tab """
+    settings = ['0','1','2','3','4','5','6','7','8','9']
+    for name, tab in self.tabNames:
+      self.o_tabs[name].setSettings(settings=settings)
+
 
 
 # The GO buttons
@@ -192,10 +204,19 @@ class GoButtons:
     self.tkButtonOffline.configure(relief=tk.SUNKEN) #, bg='green')
 
   def run(self):
-    pass
+    """ The Run rFactor 2 button has been pressed """
+    self.tkButtonRun.flash() # Flash it
+    __settings = tabs.getSettings()
+
+    print('\nDEBUG')
+    if self.tkButtonOnline['relief'] == tk.SUNKEN: # Online is pressed
+      print('Online')
+    else:
+      print('Offline')
+    for tab in __settings:
+      print(tab[0], tab[1])
 
   def _quit(self):
-    #global mainWindow
     mainWindow.handle.destroy()
 
 
@@ -208,6 +229,7 @@ if __name__ == "__main__":
   #tkLabelTop.grid()
 
   tabs = Tabs(mainWindow.handle)
+  tabs._testSetSettings()
 
   goButtons = GoButtons(mainWindow.handle)
 
