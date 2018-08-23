@@ -28,5 +28,5 @@ if __name__ == '__main__':
   tabOpponents = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   tabOpponents.grid()
     
-  tab(tabOpponents)
+  o_tab = Tab(tabOpponents)
   root.mainloop()

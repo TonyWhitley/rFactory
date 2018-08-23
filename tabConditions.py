@@ -27,5 +27,5 @@ if __name__ == '__main__':
   tabConditions = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   tabConditions.grid()
     
-  tab(tabConditions)
+  o_tab = Tab(tabConditions)
   root.mainloop()

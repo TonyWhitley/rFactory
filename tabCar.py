@@ -24,6 +24,7 @@ class Tab:
                              carColumns, 
                              stripped_rows=("white","#f2f2f2"), 
                              command=self.__on_select, 
+                             right_click_command=self.__on_right_click,
                              adjust_heading_to_content=False, 
                              cell_anchor="center")
 
@@ -70,6 +71,13 @@ class Tab:
     self.settings = data
     print('DEBUG')
     print("called command when row is selected")
+    print(data)
+    print("\n")
+
+  def __on_right_click(self, data):
+    # don't change data   self.settings = data
+    print('DEBUG')
+    print("called command when row is right clicked")
     print(data)
     print("\n")
 
