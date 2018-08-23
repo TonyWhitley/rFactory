@@ -27,5 +27,5 @@ if __name__ == '__main__':
   tabServer = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   tabServer.grid()
     
-  tab(tabServer)
+  o_tab = Tab(tabServer)
   root.mainloop()

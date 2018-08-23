@@ -95,7 +95,7 @@ class Tabs:
       self.tabs[name].config(relief='sunken', borderwidth=5)
       self.notebook.add(self.tabs[name], text=' %s ' % name)
 
-      tkTabFrame= ttk.Frame(self.tabs[name])
+      tkTabFrame = ttk.Frame(self.tabs[name])
       self.o_tabs[name] = tab.Tab(tkTabFrame)
       tkTabFrame.grid(column=4, row=3)
 
@@ -122,14 +122,14 @@ class Tabs:
   def getSettings(self):
     """ Get the settings from each tab """
     settings = []
-    for name, tab in self.tabNames:
+    for name, _ in self.tabNames:
       settings.append([name, self.o_tabs[name].getSettings()])
     return settings
 
   def _testSetSettings(self):
     """ Set the settings from each tab """
     settings = ['0','1','2','3','4','5','6','7','8','9']
-    for name, tab in self.tabNames:
+    for name, _ in self.tabNames:
       self.o_tabs[name].setSettings(settings=settings)
 
 
@@ -145,7 +145,7 @@ class GoButtons:
   def __init__(self, parentFrame):
     _goFrame = ttk.Frame(parentFrame)
     _goFrame.grid(column=1, row=0, sticky='w')
-    """ Draw the buttons """
+    # Draw the buttons
     buttonFont = font.Font(weight='bold', size=10)
 
     self.tkButtonOnline = tk.Button(
