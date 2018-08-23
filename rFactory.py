@@ -4,9 +4,16 @@
 
 import tkinter as tk
 from tkinter import ttk
- 
+import tkinter.font as font 
 # Tabs
-import carSelection
+import tabCar
+import tabTrack
+import tabOpponents
+import tabConditions
+import tabSessions
+import tabOptions
+import tabServer
+import tabScenarios
 
 class MainWindow:
   """ The main app window innit """
@@ -58,14 +65,14 @@ class Tabs:
   tabs = {}
   def __init__(self, parentFrame):
     self.tabNames = [ \
-      'Car',
-      'Track',
-      'Opponents',
-      'Conditions',
-      'Sessions',
-      'Options',
-      'Server',
-      'Scenarios'
+      ['Car', tabCar],
+      ['Track', tabTrack],
+      ['Opponents', tabOpponents],
+      ['Conditions', tabConditions],
+      ['Sessions', tabSessions],
+      ['Options', tabOptions],
+      ['Server', tabServer],
+      ['Scenarios', tabScenarios],
       ]
     self.notebook = ttk.Notebook(parentFrame)
 
@@ -82,10 +89,15 @@ class Tabs:
 
     tabHeight = 300
     tabWidth = 400
-    for name in self.tabNames:
+    for name, tab in self.tabNames:
       self.tabs[name] = ttk.Frame(self.notebook, height=tabHeight, width=tabWidth)
       self.tabs[name].config(relief='sunken', borderwidth=5)
       self.notebook.add(self.tabs[name], text=' %s ' % name)
+
+      tkTabFrame= ttk.Frame(self.tabs[name])
+      tab.tab(tkTabFrame)
+      tkTabFrame.grid(column=4, row=3)
+
     # Works notebook.add(....., text=' Conditions ', state='disabled')
     # Doesn't notebook.tab(notebook.index(' Options '), state='disabled')
     self.notebook.grid()
@@ -111,60 +123,81 @@ class Tabs:
 
 
 # The GO buttons
+class GoButtons:
+  """ 
+  The big buttons that 
+  * switch on/offline
+  * run rFactor 2
+  * quit 
+  """
+  def __init__(self, parentFrame):
+    _goFrame = ttk.Frame(parentFrame)
+    _goFrame.grid(column=1, row=0, sticky='w')
+    """ Draw the buttons """
+    buttonFont = font.Font(weight='bold', size=10)
 
-def online():
-  tabs.disableTab('Track')
-  tabs.disableTab('Opponents')
-  tabs.disableTab('Conditions')
-  tabs.disableTab('Sessions')
-  tabs.enableTab('Server')
+    self.tkButtonOnline = tk.Button(
+        _goFrame,
+        text="Online",
+        width=20,
+        height=2,
+        background='orange',
+        font=buttonFont,
+        command=self.online)
+    self.tkButtonOnline.grid(column=2, row=0, pady=5)
 
-def offline():
-  tabs.enableTab('Track')
-  tabs.enableTab('Opponents')
-  tabs.enableTab('Conditions')
-  tabs.enableTab('Sessions')
-  tabs.disableTab('Server')
+    self.tkButtonOffline = tk.Button(
+        _goFrame,
+        text="Offline",
+        width=20,
+        height=2,
+        background='orange',
+        font=buttonFont,
+        command=self.offline)
+    self.tkButtonOffline.grid(column=2, row=1, pady=5)
 
-def run():
-  pass
+    self.tkButtonRun = tk.Button(
+        _goFrame,
+        text="Run rFactor 2",
+        width=20,
+        height=2,
+        background='green',
+        font=buttonFont,
+        command=self.run)
+    self.tkButtonRun.grid(column=2, row=2, pady=25)
 
-def _quit():
-  #global mainWindow
-  mainWindow.handle.destroy()
+    self.tkButtonQuit = tk.Button(
+        _goFrame,
+        text="Quit",
+        width=20,
+        background='red',
+        command=self._quit)
+    self.tkButtonQuit.grid(column=2, row=3, pady=25)
+  def online(self):
+    tabs.disableTab('Track')
+    tabs.disableTab('Opponents')
+    tabs.disableTab('Conditions')
+    tabs.disableTab('Sessions')
+    tabs.enableTab('Server')
+    self.tkButtonOnline.configure(relief=tk.SUNKEN) #, bg='green')
+    self.tkButtonOffline.configure(relief=tk.RAISED) #, bg='red')
 
-def goButtons(_goFrame):
-  """ Draw the buttons that select On/Off line and run rFactor """
-  tkButtonOnline = tk.Button(
-      _goFrame,
-      text="Online",
-      width=20,
-      height=2,
-      command=online)
-  tkButtonOnline.grid(column=2, row=0, pady=5)
+  def offline(self):
+    tabs.enableTab('Track')
+    tabs.enableTab('Opponents')
+    tabs.enableTab('Conditions')
+    tabs.enableTab('Sessions')
+    tabs.disableTab('Server')
+    self.tkButtonOnline.configure(relief=tk.RAISED) #, bg='red')
+    self.tkButtonOffline.configure(relief=tk.SUNKEN) #, bg='green')
 
-  tkButtonOffline = tk.Button(
-      _goFrame,
-      text="Offline",
-      width=20,
-      height=2,
-      command=offline)
-  tkButtonOffline.grid(column=2, row=1, pady=5)
+  def run(self):
+    pass
 
-  tkButtonRun = tk.Button(
-      _goFrame,
-      text="Run rFactor 2",
-      width=20,
-      height=2,
-      command=run)
-  tkButtonRun.grid(column=2, row=2, pady=25)
+  def _quit(self):
+    #global mainWindow
+    mainWindow.handle.destroy()
 
-  tkButtonQuit = tk.Button(
-      _goFrame,
-      text="Quit",
-      width=20,
-      command=_quit)
-  tkButtonQuit.grid(column=2, row=3, pady=25)
 
 if __name__ == "__main__":
   mainWindow = MainWindow()
@@ -176,30 +209,10 @@ if __name__ == "__main__":
 
   tabs = Tabs(mainWindow.handle)
 
-  goFrame = ttk.Frame(mainWindow.handle)
-  goButtons(goFrame)
-  goFrame.grid(column=1, row=0, sticky='w')
-
-
-  tkLabelScenarios = tk.Label(tabs.tabs['Scenarios'], 
-                              text='Here a list of scenario files plus "Save as..."')
-  tkLabelScenarios.grid(column=4, row=3)
-
-  tkTabFrameCars = ttk.Frame(tabs.tabs['Car'])
-  carSelection.tab(tkTabFrameCars)
-  tkTabFrameCars.grid(column=4, row=3)
-
-  tkLabelTracks = tk.Label(tabs.tabs['Track'], 
-                           text='Here a table of tracks that can be filtered and sorted by \
-type/country/continent/year/decade/modder/star rating')
-  tkLabelTracks.grid(column=4, row=3)
-
-  tkLabelServer = tk.Label(tabs.tabs['Server'], 
-                           text='Here a list of servers plus "Add server" ')
-  tkLabelServer.grid(column=4, row=3)
+  goButtons = GoButtons(mainWindow.handle)
 
   # Set initial tab state
   tabs.selectTab('Cars')
-  offline()
+  goButtons.offline()
 
   tk.mainloop()
