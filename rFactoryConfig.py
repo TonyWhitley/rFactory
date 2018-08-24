@@ -10,7 +10,7 @@ Some can be edited to change how rFactory works, e.g. the car table columns.
 carTags = ['Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 
            'Year', 'Decade', 'Rating', 'DB file (hidden)', 'Gearshift', 'Aids',
            'Name','Version','Type','Origin','Category','ID','URL','Desc',
-           'Date','Flags','RefCount','MinVersion']
+           'Date','Flags','RefCount','MinVersion', 'originalFolder']
 trackTags = ['Track Name', 'Continent', 'Country', 'Author', 'Type',
              'Year', 'Decade', 'Rating', 'DB file (hidden)', 
              'Name','Version','Type','Origin','Category','ID','URL','Desc',
