@@ -25,6 +25,15 @@
     <Compile Include="carNtrackEditor.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="rFactoryConfig.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scenarioData.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tabCar.py" />
     <Compile Include="MC_table.py" />
     <Compile Include="rFactory.py" />
@@ -35,6 +44,9 @@
     <Compile Include="tabServer.py" />
     <Compile Include="tabSessions.py" />
     <Compile Include="tabTrack.py" />
+    <Compile Include="trawl_rF2_datafiles.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
