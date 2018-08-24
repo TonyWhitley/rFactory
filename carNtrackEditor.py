@@ -30,7 +30,6 @@ class Editor:
     okButton = tk.Button(self.tkEditor, text='OK', command=self.okPressed)
     cancelButton = tk.Button(self.tkEditor, text='Cancel', command=self.cancelPressed)
 
-    #'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file
     okButton.grid(column=0, row=self.numFields+1)
     cancelButton.grid(column=1, row=self.numFields+1)
     self.tkEditor.grid(ipadx=10, ipady=10)
@@ -58,7 +57,7 @@ if __name__ == '__main__':
   root.title('Editor')
   tabTrack.grid()
     
-  fields = 'Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file'
+  fields = 'Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file'
   sampleData = ['Porsche', '917K', 'Gp.C', 'Apex', 'GT', 'RWD', 1967, '1960-', '*****', 'FLAT12_917k_1971']
   o_tab = Editor(tabTrack, fields, sampleData, command=answer)
 

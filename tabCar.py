@@ -5,6 +5,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from MC_table import Multicolumn_Listbox
+from rFactoryConfig import config_tabCar
 import carNtrackEditor
 
 NOFILTER = '---' # String for not filtering
@@ -17,13 +18,13 @@ class Tab:
     """ Put this into the parent frame """
     self.parentFrame = parentFrame
     self.settings = None #PyLint
-    carColumns = ['Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file (hidden)']
+    #tabCar.carColumns = ['Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file (hidden)']
     o_carData = self.__CarData()
     carData = o_carData.fetchData()
 
 
     self.mc = Multicolumn_Listbox(parentFrame, 
-                             carColumns, 
+                             config_tabCar['carColumns'], 
                              stripped_rows=("white","#f2f2f2"), 
                              command=self.__on_select, 
                              right_click_command=self.__on_right_click,
@@ -32,7 +33,7 @@ class Tab:
 
     # calculate the column widths to fit the headings and the data
     colWidths = []
-    for col in carColumns:
+    for col in config_tabCar['carColumns']:
       colWidths.append(len(col))
     for row in carData:
       for col, column in enumerate(row):
@@ -45,12 +46,12 @@ class Tab:
     self.mc.configure_column(0, anchor='e')
     self.mc.configure_column(1, anchor='w')
     self.mc.configure_column(2, anchor='w')
-    self.mc.interior.grid(column=0, row=1, pady=2, columnspan=len(carColumns))
+    self.mc.interior.grid(column=0, row=1, pady=2, columnspan=len(config_tabCar['carColumns']))
 
-    filters = ['Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
-    o_filter = self.__Filter(parentFrame, carColumns, colWidths, o_carData, self.mc)
+    #tabCar.carFilters = ['Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
+    o_filter = self.__Filter(parentFrame, config_tabCar['carColumns'], colWidths, o_carData, self.mc)
     col = 0
-    for _filter in filters:
+    for _filter in config_tabCar['carFilters']:
       o_filter.makeFilter(_filter, carData, col)
       col += 1
    
@@ -86,7 +87,7 @@ class Tab:
     top = tk.Toplevel(self.parentFrame)
     top.title("Car editor")
 
-    fields = 'Manufacturer', 'Model', 'Class', 'Modder', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file'
+    fields = 'Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file'
     o_tab = carNtrackEditor.Editor(top, fields, data, command=self.answer)
     """
     t = 'Editor data: '

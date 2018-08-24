@@ -336,3 +336,5 @@ ASALocalRun/
 /build/rFactory
 /rFactory.exe
 /rFactory.spec
+/CarDatafiles
+/TrackDatafiles
