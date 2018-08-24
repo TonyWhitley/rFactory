@@ -6,6 +6,7 @@ from tkinter import ttk
 
 from MC_table import Multicolumn_Listbox
 from rFactoryConfig import config_tabCar
+from data import getCarData
 import carNtrackEditor
 
 NOFILTER = '---' # String for not filtering
@@ -124,7 +125,8 @@ class Tab:
       self.filteredData = None
     def fetchData(self):
       """ Fetch the raw data from wherever """
-      self.data = self.dummyData.copy() # dummy data for now
+      self.data = getCarData(tags=config_tabCar['carColumns'], maxWidth=20)
+      #self.dummyData.copy() # dummy data for now
       print('DEBUG')
       for row in self.dummyData:
         print(len(row), row)

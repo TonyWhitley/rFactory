@@ -77,8 +77,8 @@ def createDataFile(datafilesPath, filename, dict, tags):
           val = dict[tag]
         elif tag == 'DB file (hidden)':
           val = filename
-        elif tag == 'Track Name':
-          val = dict['Name'].replace('_', ' ')  # default
+        elif tag in ['Track Name', 'Manufacturer', 'Model']:
+          val = dict['strippedName'].replace('_', ' ')  # default
         elif tag == 'Rating':
           val = '***'
         else: # value not available
@@ -89,7 +89,8 @@ def createDataFile(datafilesPath, filename, dict, tags):
     quit()
 
 def extractYear(name):
-  # Cars and tracks often include the year, try to extract that
+  # Cars and tracks often include the year, try to extract that.
+  # Also return remainder of name when year removed.
   # skip first digit, may be 3PA....
   if name.startswith('3'):
     name = name[1:]
@@ -100,17 +101,17 @@ def extractYear(name):
       year = y
       decade = y[:3] + '0-'
       print(name, year)
-      return year, decade
+      return year, decade, name.replace(y,'')
   for y in re.findall(r'(\d+)', name):
     if len(y) == 2:
       if y[0] in '01':
-        y = '20' + y
+        year = '20' + y
       else:
-        y = '19' + y
-      year = y
+        year = '19' + y
       decade = y[:3] + '0-'
+      return year, decade, name.replace(y,'')
   print(name, year)
-  return year, decade
+  return year, decade, name
 
 if __name__ == '__main__':
   getAllTags = False
@@ -138,16 +139,19 @@ if __name__ == '__main__':
           URL=www.YourModSite.com
           Desc=Your new mod.
           """
-          if tags[tag] == 'Mod Team':
-            continue
-          if tags[tag] == 'www.YourModSite.com':
-            continue
-          if tags[tag] == 'Your new mod.':
-            continue
+          if tags[tag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
+            tags[tag] = ''
+          if tags[tag] in ['Slow Motion', 'Slow Motion Modding Group']: # make up your minds boys!
+            tags[tag] = 'Slow Motion Group'
           #print('%s=%s' % (tag, tags[tag]))
           if tag == 'Name':
-            tags['Year'], tags['Decade'] = extractYear(tags['Name'])
-          createDataFile(datafilesPath=CarDatafilesFolder, filename=tags['Name'], dict=tags, tags=carTags)
+            tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['Name'])
+            # extract class from name if it's there
+            for __class in ['F1', 'F3', 'GT3', 'GTE', 'BTCC', 'LMP1', 'LMP2', 'LMP3']: # 'F2' filters rF2...
+              if __class in tags['Name']:
+                tags['Class'] = __class
+                tags['strippedName'] = tags['strippedName'].replace(__class, '')
+      createDataFile(datafilesPath=CarDatafilesFolder, filename=tags['Name'], dict=tags, tags=carTags)
 
 
   print('\n\nTracks:')
@@ -171,13 +175,9 @@ if __name__ == '__main__':
           URL=www.YourModSite.com
           Desc=Your new mod.
           """
-          if tags[tag] == 'Mod Team':
-            continue
-          if tags[tag] == 'www.YourModSite.com':
-            continue
-          if tags[tag] == 'Your new mod.':
-            continue
+          if tags[tag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
+            tags[tag] = ''
           #print('%s=%s' % (tag, tags[tag]))
           if tag == 'Name':
-            tags['Year'], tags['Decade'] = extractYear(tags['Name'])
-          createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tags=trackTags)
+            tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['Name'])
+      createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tags=trackTags)
