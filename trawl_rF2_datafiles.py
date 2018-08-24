@@ -67,7 +67,7 @@ def getTags(text):
       #print(m.group(1), m.group(2))
   return tags
 
-def createDataFile(datafilesPath, filename, dict, tags):
+def createDataFile(datafilesPath, filename, dict, tags_selected):
   _filepath = os.path.join(datafilesPath, filename+dataFilesExtension)
   try:
     os.makedirs(datafilesPath, exist_ok=True)
@@ -76,7 +76,7 @@ def createDataFile(datafilesPath, filename, dict, tags):
         if tag in dict:
           val = dict[tag]
         elif tag == 'DB file (hidden)':
-          val = filename
+          val = filename # The unique identifier for the car/track. I think.
         elif tag in ['Track Name', 'Manufacturer', 'Model']:
           val = dict['strippedName'].replace('_', ' ')  # default
         elif tag == 'Rating':
@@ -131,27 +131,33 @@ if __name__ == '__main__':
       text = readFile(veh[0])
       tags = getTags(text)
       #print('\nData file: "%s.something"' % tags['Name'])
-      for tag in ['Name','Version','Type','Author','Origin','Category','ID','URL','Desc','Date','Flags','RefCount','#Signature','#MASFile','MinVersion','#BaseSignature']:
-        # MASFile, Signature and BaseSignature filtered out
-        if tag in tags:
+      for requiredTag in ['Name','Version','Type','Author','Origin','Category','ID','URL','Desc','Date','Flags','RefCount','#Signature','#MASFile','MinVersion','#BaseSignature']:
+        # MASFile, Signature and BaseSignature filtered out - NO THEY AREN'T, 
+        # tags[] still contains them.  tags_selected filters them out.
+        # Not sure what this for loop is, er, for.
+        if requiredTag in tags:
           """filter out boilerplate
           Author=Mod Team
           URL=www.YourModSite.com
           Desc=Your new mod.
           """
-          if tags[tag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
-            tags[tag] = ''
-          if tags[tag] in ['Slow Motion', 'Slow Motion Modding Group']: # make up your minds boys!
-            tags[tag] = 'Slow Motion Group'
-          #print('%s=%s' % (tag, tags[tag]))
-          if tag == 'Name':
+          if tags[requiredTag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
+            tags[requiredTag] = ''
+          if tags[requiredTag] in ['Slow Motion', 'Slow Motion Modding Group']: # make up your minds boys!
+            tags[requiredTag] = 'Slow Motion Group'
+          #print('%s=%s' % (requiredTag, tags[requiredTag]))
+          if requiredTag == 'Name':
             tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['Name'])
             # extract class from name if it's there
             for __class in ['F1', 'F3', 'GT3', 'GTE', 'BTCC', 'LMP1', 'LMP2', 'LMP3']: # 'F2' filters rF2...
               if __class in tags['Name']:
                 tags['Class'] = __class
                 tags['strippedName'] = tags['strippedName'].replace(__class, '')
-      createDataFile(datafilesPath=CarDatafilesFolder, filename=tags['Name'], dict=tags, tags=carTags)
+      # We need the original data folder to assemble the .veh file path to put in 
+      # "All Tracks & Cars.cch" to force rF2 to switch cars.  We also need the .veh 
+      # file names and that's a bit more difficult.
+      tags['originalFolder'], _ = os.path.split(veh[0])
+      createDataFile(datafilesPath=CarDatafilesFolder, filename=tags['Name'], dict=tags, tags_selected=carTags)
 
 
   print('\n\nTracks:')
@@ -167,17 +173,17 @@ if __name__ == '__main__':
       text = readFile(track[0])
       tags = getTags(text)
       #print('\nData file: "%s.something"' % tags['Name'])
-      for tag in ['Name','Version','Type','Author','Origin','Category','ID','URL','Desc','Date','Flags','RefCount','#Signature','#MASFile','MinVersion','#BaseSignature']:
+      for requiredTag in ['Name','Version','Type','Author','Origin','Category','ID','URL','Desc','Date','Flags','RefCount','#Signature','#MASFile','MinVersion','#BaseSignature']:
         # MASFile, Signature and BaseSignature filtered out
-        if tag in tags:
+        if requiredTag in tags:
           """filter out boilerplate
           Author=Mod Team
           URL=www.YourModSite.com
           Desc=Your new mod.
           """
-          if tags[tag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
-            tags[tag] = ''
-          #print('%s=%s' % (tag, tags[tag]))
-          if tag == 'Name':
+          if tags[requiredTag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
+            tags[requiredTag] = ''
+          #print('%s=%s' % (requiredTag, tags[requiredTag]))
+          if requiredTag == 'Name':
             tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['Name'])
-      createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tags=trackTags)
+      createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tags_selected=trackTags)

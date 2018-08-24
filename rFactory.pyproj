@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ec571240-c2a5-42c2-8112-a5036becb6f3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>rFactory.py</StartupFile>
+    <StartupFile>trawl_rF2_datafiles.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
