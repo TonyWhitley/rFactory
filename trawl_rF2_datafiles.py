@@ -11,7 +11,7 @@ import glob
 import os
 import re
 
-from rFactoryConfig import carTags,trackTags,CarDatafilesFolder, \
+from rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
 
 def getListOfFiles(path, pattern='*.c', recurse=False):
@@ -67,12 +67,12 @@ def getTags(text):
       #print(m.group(1), m.group(2))
   return tags
 
-def createDataFile(datafilesPath, filename, dict, tags_selected):
+def createDataFile(datafilesPath, filename, dict, tagsToBeWritten):
   _filepath = os.path.join(datafilesPath, filename+dataFilesExtension)
   try:
     os.makedirs(datafilesPath, exist_ok=True)
     with open(_filepath, "w") as f:
-      for tag in tags:
+      for tag in tagsToBeWritten:
         if tag in dict:
           val = dict[tag]
         elif tag == 'DB file (hidden)':
@@ -81,6 +81,10 @@ def createDataFile(datafilesPath, filename, dict, tags_selected):
           val = dict['strippedName'].replace('_', ' ')  # default
         elif tag == 'Rating':
           val = '***'
+        elif tag == 'F/R/4WD':
+          val = 'RWD' # Most cars are
+        elif tag == 'Gearshift':
+          val = 'Paddles' # a reasonable default
         else: # value not available
           val = ''
         f.write('%s=%s\n' % (tag, val))
@@ -96,28 +100,35 @@ def extractYear(name):
     name = name[1:]
   year = ''
   decade = ''
-  for y in re.findall(r'(\d+)', name):  # Look for 4 digit years first to avoid BT44
-    if len(y) == 4:
-      year = y
-      decade = y[:3] + '0-'
-      print(name, year)
-      return year, decade, name.replace(y,'')
-  for y in re.findall(r'(\d+)', name):
-    if len(y) == 2:
-      if y[0] in '01':
-        year = '20' + y
-      else:
-        year = '19' + y
-      decade = y[:3] + '0-'
-      return year, decade, name.replace(y,'')
-  print(name, year)
+  # Look for 4 digit years first to avoid BT44
+  # Reverse as the year tends to be at the end, e.g. USF2000_2016
+  _years = re.findall(r'(\d+)', name)
+  if _years:
+    _years.reverse()
+    for y in _years:
+      if len(y) == 4:
+        year = y
+        decade = y[:3] + '0-'
+        print(name, year)
+        return year, decade, name.replace(y,'')
+    for y in _years:
+      if len(y) == 2:
+        if y[0] in '01':
+          year = '20' + y
+        else:
+          year = '19' + y
+        decade = y[:3] + '0-'
+        return year, decade, name.replace(y,'')
+  #print(name, year)
   return year, decade, name
 
 if __name__ == '__main__':
   getAllTags = False
-  rF2_dir = r'c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed'
+  rF2_dir = os.path.join(rF2root, 'Installed')
   vehicleFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles'), pattern='*.mft', recurse=True)
   trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations'), pattern='*.mft', recurse=True)
+  F1_1988_trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations', 'F1_1988_Tracks'), pattern='*.mas', recurse=True)
+
 
   tags = {}
   if getAllTags:
@@ -133,7 +144,7 @@ if __name__ == '__main__':
       #print('\nData file: "%s.something"' % tags['Name'])
       for requiredTag in ['Name','Version','Type','Author','Origin','Category','ID','URL','Desc','Date','Flags','RefCount','#Signature','#MASFile','MinVersion','#BaseSignature']:
         # MASFile, Signature and BaseSignature filtered out - NO THEY AREN'T, 
-        # tags[] still contains them.  tags_selected filters them out.
+        # tags[] still contains them.  tagsToBeWritten filters them out.
         # Not sure what this for loop is, er, for.
         if requiredTag in tags:
           """filter out boilerplate
@@ -153,11 +164,11 @@ if __name__ == '__main__':
               if __class in tags['Name']:
                 tags['Class'] = __class
                 tags['strippedName'] = tags['strippedName'].replace(__class, '')
-      # We need the original data folder to assemble the .veh file path to put in 
-      # "All Tracks & Cars.cch" to force rF2 to switch cars.  We also need the .veh 
+      # We need the original data folder to assemble the .VEH file path to put in 
+      # "All Tracks & Cars.cch" to force rF2 to switch cars.  We also need the .VEH 
       # file names and that's a bit more difficult.
-      tags['originalFolder'], _ = os.path.split(veh[0])
-      createDataFile(datafilesPath=CarDatafilesFolder, filename=tags['Name'], dict=tags, tags_selected=carTags)
+      tags['originalFolder'], _ = os.path.split(veh[0][len(rF2root):]) # strip the root
+      createDataFile(datafilesPath=CarDatafilesFolder, filename=tags['Name'], dict=tags, tagsToBeWritten=carTags)
 
 
   print('\n\nTracks:')
@@ -186,4 +197,17 @@ if __name__ == '__main__':
           #print('%s=%s' % (requiredTag, tags[requiredTag]))
           if requiredTag == 'Name':
             tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['Name'])
-      createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tags_selected=trackTags)
+      # We need the original data folder to assemble the .SCN file path to put in 
+      # "Player.JSON" to force rF2 to switch tracks.  We also need the .SCN
+      # file names and that's a bit more difficult.
+      # To select the track we also need the "Scene Description"
+      tags['originalFolder'], _ = os.path.split(track[0][len(rF2root):]) # strip the root
+      tags['Scene Description'] = tags['Name']
+      if tags['Name'] != 'F1_1988_Tracks':
+        createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tagsToBeWritten=trackTags)
+      else: # it's a folder of several tracks
+        for f1988 in F1_1988_trackFiles:
+          tags['Name'] = f1988[1][:-4]
+          tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['Name'])
+          tags['Scene Description'] = tags['Name']
+          createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tagsToBeWritten=trackTags)

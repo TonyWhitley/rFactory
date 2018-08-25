@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ec571240-c2a5-42c2-8112-a5036becb6f3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>trawl_rF2_datafiles.py</StartupFile>
+    <StartupFile>executeRF2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -26,6 +26,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="editRF2files.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="executeRF2.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="rFactoryConfig.py">
