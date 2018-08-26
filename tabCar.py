@@ -42,7 +42,7 @@ class Tab:
           colWidths[col] = len(column)
       for col, column in enumerate(row):
         self.mc.configure_column(col, width=colWidths[col]*7+6)
-    self.mc.configure_column(len(config_tabCat['carColumns'])-1, width=0, minwidth=0)
+    self.mc.configure_column(len(config_tabCar['carColumns'])-1, width=0, minwidth=0)
     # Justify the data in the first three columns
     self.mc.configure_column(0, anchor='e')
     self.mc.configure_column(1, anchor='w')
