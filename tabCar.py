@@ -6,7 +6,7 @@ from tkinter import ttk
 
 from MC_table import Multicolumn_Listbox
 from rFactoryConfig import config_tabCar
-from data import getCarData
+from data import getAllCarData
 import carNtrackEditor
 
 NOFILTER = '---' # String for not filtering
@@ -42,7 +42,7 @@ class Tab:
           colWidths[col] = len(column)
       for col, column in enumerate(row):
         self.mc.configure_column(col, width=colWidths[col]*7+6)
-    self.mc.configure_column(9, width=0, minwidth=0)
+    self.mc.configure_column(len(config_tabCat['carColumns'])-1, width=0, minwidth=0)
     # Justify the data in the first three columns
     self.mc.configure_column(0, anchor='e')
     self.mc.configure_column(1, anchor='w')
@@ -66,7 +66,7 @@ class Tab:
 
   def setSettings(self, settings):
     """ Set the settings for this tab """
-    carID = settings[9]
+    carID = settings[-1]
     i = 2 # the row for carID 
     self.mc.deselect_all()  # clear what is selected.
     self.mc.select_row(i)
@@ -88,7 +88,7 @@ class Tab:
     top = tk.Toplevel(self.parentFrame)
     top.title("Car editor")
 
-    fields = 'Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file'
+    fields = config_tabCar['carColumns']
     o_tab = carNtrackEditor.Editor(top, fields, data, command=self.answer)
     """
     t = 'Editor data: '
@@ -125,7 +125,7 @@ class Tab:
       self.filteredData = None
     def fetchData(self):
       """ Fetch the raw data from wherever """
-      self.data = getCarData(tags=config_tabCar['carColumns'], maxWidth=20)
+      self.data = getAllCarData(tags=config_tabCar['carColumns'], maxWidth=20)
       #self.dummyData.copy() # dummy data for now
       print('DEBUG')
       for row in self.dummyData:

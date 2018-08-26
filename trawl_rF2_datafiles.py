@@ -14,6 +14,22 @@ import re
 from rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
 
+carCategories = {
+  '3' : 'GT',
+  '5' : 'Novel',
+  '6' : 'Open',
+  '7' : 'Prototype',
+  '9' : 'Street',
+  '10' : 'Touring'
+  }
+
+trackCategories = {
+  '53' : 'Novel',
+  '55' : 'Permanent',
+  '56' : 'Rally',
+  '57' : 'Temporary'
+  }
+
 def getListOfFiles(path, pattern='*.c', recurse=False):
     def getFiles(filepattern):
         filenames = []
@@ -37,9 +53,8 @@ def getListOfFiles(path, pattern='*.c', recurse=False):
     return files
 
 def readFile(filename):
-  f = open(filename)
-  originalText = f.readlines()
-  f.close()
+  with open(filename) as f:
+    originalText = f.readlines()
   return originalText
 
 def readTags(text):
@@ -75,7 +90,7 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten):
       for tag in tagsToBeWritten:
         if tag in dict:
           val = dict[tag]
-        elif tag == 'DB file (hidden)':
+        elif tag == 'DB file ID':
           val = filename # The unique identifier for the car/track. I think.
         elif tag in ['Track Name', 'Manufacturer', 'Model']:
           val = dict['strippedName'].replace('_', ' ')  # default
@@ -91,6 +106,11 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten):
   except:
     print('Failed to write %s' % _filepath)
     quit()
+
+def cleanTrackName(name):
+  """ Track names often include a version, strip that """
+  name = re.sub(r'v\d+\.\d*', '', name)
+  return name
 
 def extractYear(name):
   # Cars and tracks often include the year, try to extract that.
@@ -108,7 +128,7 @@ def extractYear(name):
     for y in _years:
       if len(y) == 4:
         year = y
-        decade = y[:3] + '0-'
+        decade = year[:3] + '0-'
         print(name, year)
         return year, decade, name.replace(y,'')
     for y in _years:
@@ -117,10 +137,26 @@ def extractYear(name):
           year = '20' + y
         else:
           year = '19' + y
-        decade = y[:3] + '0-'
+        decade = year[:3] + '0-'
         return year, decade, name.replace(y,'')
   #print(name, year)
   return year, decade, name
+
+def getVehScnNames(dataFilepath):
+  """ 
+  Read the data file containing Name xxxxx.veh pairs 
+  Also for xxxxx.scn pairs
+  """
+  _dict = {}
+  text = readFile(dataFilepath)
+  for line in text:
+    if line.startswith('#'):
+      continue # comment line
+    _split = line.split()
+    if len(_split) == 2:
+      name, vehScn = _split
+      _dict[name] = vehScn
+  return _dict
 
 if __name__ == '__main__':
   getAllTags = False
@@ -129,6 +165,8 @@ if __name__ == '__main__':
   trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations'), pattern='*.mft', recurse=True)
   F1_1988_trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations', 'F1_1988_Tracks'), pattern='*.mas', recurse=True)
 
+  vehNames = getVehScnNames('vehNames.txt')
+  scnNames = getVehScnNames('scnNames.txt')
 
   tags = {}
   if getAllTags:
@@ -156,6 +194,8 @@ if __name__ == '__main__':
             tags[requiredTag] = ''
           if tags[requiredTag] in ['Slow Motion', 'Slow Motion Modding Group']: # make up your minds boys!
             tags[requiredTag] = 'Slow Motion Group'
+          if tags[requiredTag] in ['Virtua_LM Modding Team']: # make up your minds boys!
+            tags[requiredTag] = 'Virtua_LM'
           #print('%s=%s' % (requiredTag, tags[requiredTag]))
           if requiredTag == 'Name':
             tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['Name'])
@@ -164,10 +204,15 @@ if __name__ == '__main__':
               if __class in tags['Name']:
                 tags['Class'] = __class
                 tags['strippedName'] = tags['strippedName'].replace(__class, '')
+      if tags['Category'] in carCategories:
+        tags['tType'] = carCategories[tags['Category']]
       # We need the original data folder to assemble the .VEH file path to put in 
       # "All Tracks & Cars.cch" to force rF2 to switch cars.  We also need the .VEH 
       # file names and that's a bit more difficult.
-      tags['originalFolder'], _ = os.path.split(veh[0][len(rF2root):]) # strip the root
+      tags['originalFolder'], _ = os.path.split(veh[0][len(rF2root)+1:]) # strip the root
+      # if veh file name is available in vehNames.txt use it
+      if tags['Name'] in vehNames:
+        tags['vehFile'] = vehNames[tags['Name']]
       createDataFile(datafilesPath=CarDatafilesFolder, filename=tags['Name'], dict=tags, tagsToBeWritten=carTags)
 
 
@@ -196,18 +241,30 @@ if __name__ == '__main__':
             tags[requiredTag] = ''
           #print('%s=%s' % (requiredTag, tags[requiredTag]))
           if requiredTag == 'Name':
-            tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['Name'])
+            tags['strippedName'] = cleanTrackName(tags['Name'])
+            tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['strippedName'])
       # We need the original data folder to assemble the .SCN file path to put in 
       # "Player.JSON" to force rF2 to switch tracks.  We also need the .SCN
       # file names and that's a bit more difficult.
       # To select the track we also need the "Scene Description"
-      tags['originalFolder'], _ = os.path.split(track[0][len(rF2root):]) # strip the root
-      tags['Scene Description'] = tags['Name']
+      tags['originalFolder'], _ = os.path.split(track[0][len(rF2root)+1:]) # strip the root
+      # if scn file name is available in scnNames.txt use it
+      if tags['Name'] in scnNames:
+        tags['Scene Description'] = scnNames[tags['Name']]
+
+      if tags['Category'] in trackCategories:
+        tags['tType'] = trackCategories[tags['Category']]
+
       if tags['Name'] != 'F1_1988_Tracks':
         createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tagsToBeWritten=trackTags)
       else: # it's a folder of several tracks
         for f1988 in F1_1988_trackFiles:
           tags['Name'] = f1988[1][:-4]
-          tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['Name'])
-          tags['Scene Description'] = tags['Name']
+          tags['strippedName'] = cleanTrackName(tags['Name'])
+          tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['strippedName'])
+          # if scn file name is available in scnNames.txt use it
+          if tags['Name'] in scnNames:
+            tags['Scene Description'] = scnNames[tags['Name']]
+          if tags['Category'] in trackCategories:
+            tags['tType'] = trackCategories[tags['Category']]
           createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tagsToBeWritten=trackTags)

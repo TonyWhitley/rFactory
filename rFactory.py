@@ -15,6 +15,8 @@ import tabOptions
 import tabServer
 import tabScenarios
 
+from executeRF2 import runRF2
+
 class MainWindow:
   """ The main app window innit """
   handle = None
@@ -211,8 +213,10 @@ class GoButtons:
     print('\nDEBUG')
     if self.tkButtonOnline['relief'] == tk.SUNKEN: # Online is pressed
       print('Online')
+      runRF2('Online', __settings)
     else:
       print('Offline')
+      runRF2('Offline', __settings)
     for tab in __settings:
       print(tab[0], tab[1])
 
@@ -222,7 +226,7 @@ class GoButtons:
 
 if __name__ == "__main__":
   mainWindow = MainWindow()
-  mainWindow.setSize(width=1000, height=400)
+  mainWindow.setSize(width=1200, height=400)
   mainWindow.centreWindow()
  
   #tkLabelTop = tk.Label(mainWindow.handle, text=" Here we are ")

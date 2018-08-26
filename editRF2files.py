@@ -7,20 +7,29 @@ import re
 
 from trawl_rF2_datafiles import getListOfFiles, readFile
 from rFactoryConfig import rF2root
+from data import getSingleCarData
 
-def changeCar(veh = r'Norma_M30-LMP3_2017\1.51\NORMAM30_08.VEH'):
+def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):
+  if vehName == '':
+    print('Scene Description not in track data file')
+    return
+  _vehFile = os.path.join(rF2root, vehPath, vehName+'.veh').replace('\\', '\\\\\\\\')
+
   allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
   _text3 = readFile(allTracks)
-  _edit3 = [r'( *SinglePlayerVehicle *=).*',   r'\1"' + 
-            os.path.join(rF2root, r'Installed\Vehicles', veh+'"').replace('\\', '\\\\')]
+  _edit3 = [r'( *SinglePlayerVehicle *=).*',   r'\1"' + _vehFile+'"']
   _edited = __edit(_text3, [_edit3], doubleSlash=False)
   writeFile(allTracks, _edited)
 
-def changeTrack(scn = r'F1_1988_Tracks\0.941\HOCKENHEIM_1988_C4.SCN', SceneDescription='HOCKENHEIM_1988_C4'):
+def changeTrack(scnPath = r'F1_1988_Tracks\0.941', scnName='HOCKENHEIM_1988_C4', SceneDescription='HOCKENHEIM_1988_C4'):
+  if scnName == '':
+    print('Scene Description not in track data file')
+    return
+  _scnFile = os.path.join(rF2root, scnPath, scnName+'.scn').replace('\\', '\\\\\\\\')
+
   PlayerJSON = os.path.join(rF2root, r'UserData\player\Player.JSON')
   _text4 = readFile(PlayerJSON)
-  _edit4 = [r'( *"Scene File" *:).*',   '\\1"' + 
-            os.path.join(rF2root, r'Installed\Locations', scn+'",').replace('\\', '\\\\\\\\')]
+  _edit4 = [r'( *"Scene File" *:).*',   '\\1"' + _scnFile+'",']
   _edit5 = [r'( *"AI Database File" *:).*',   r'\1"",']  #blank it
   _edit6 = [r'( *"Scene Description" *:).*',   r'\1"%s",' % SceneDescription]
   _edit7 = [r'( *"Scene Signature" *:).*',   r'\1""']  #blank it  NOTE NO COMMA
@@ -96,9 +105,10 @@ if __name__ == '__main__':
   _edited = __edit(_text4, [_edit4,_edit5,_edit6,_edit7], doubleSlash=True)
   writeFile(PlayerJSON, _edited)
 
-  changeCar(veh = r'Oreca_07_LMP2_2017\1.41\ORECA07PREE6ED8B36.VEH')
-  changeTrack(scn = r'OULTON_PARK_CIRCUIT_2015\1.25\OULTONPARK_INT.SCN', SceneDescription=r'OULTONPARK_INT')
+  changeCar(vehPath = r'Installed\Locations\Oreca_07_LMP2_2017\1.41', vehName='ORECA07PREE6ED8B36')
+  changeTrack(scnPath = r'Installed\Locations\OULTON_PARK_CIRCUIT_2015\1.25', scnName='OULTONPARK_INT', SceneDescription=r'OULTONPARK_INT')
 
-  changeCar(veh = r'Norma_M30-LMP3_2017\1.51\NORMAM30_08.VEH')
-  changeTrack(scn = r'F1_1988_Tracks\0.941\HOCKENHEIM_1988_C4.SCN', SceneDescription=r'HOCKENHEIM_1988_C4')
+  changeCar(vehPath = r'Installed\Locations\Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08')
+  changeTrack(scnPath = r'Installed\Locations\F1_1988_Tracks\0.941', scnName='HOCKENHEIM_1988_C4', SceneDescription=r'HOCKENHEIM_1988_C4')
   
+  vehBits = getSingleCarData(Oreca_07_LMP2_2017, ['originalFolder', 'vehFile', 'Name'])
