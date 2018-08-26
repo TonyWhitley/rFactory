@@ -1,0 +1,5 @@
+# Name xxxxx.scn pairs for each track file
+# Generated manually
+
+Oulton_Park_Circuit_2015    OULTONPARK_INT
+F1_1988_Hockenheim    HOCKENHEIM_1988_C4

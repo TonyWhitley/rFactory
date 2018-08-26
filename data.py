@@ -71,27 +71,36 @@ def __readDatafiles():
       __tracks['tags'].append(_entry)
   # else it's already loaded
 
-def getCarData(tags, maxWidth=30):
+def getAllCarData(tags, maxWidth=30):
   __readDatafiles()
   _result = []
   for _car in __cars['tags']:
     _row = []
     for tag in tags:
-      if tag == 'Manufacturer' and _car[tag] == '':
-        _row.append(_car['Name'][:maxWidth])
-      else:
-        _row.append(_car[tag][:maxWidth])
+      _row.append(_car[tag][:maxWidth])
     _result.append(_row)
   return _result
 
+def getSingleCarData(id='Howston_G4_1968', tags=['originalFolder', 'vehFile', 'Name']):
+  d = getAllCarData(['DB file ID']+tags, maxWidth=100)
+  for row in d:
+    if row[0] == id:
+      return row[1:]
 
-def getTrackData(tags, maxWidth=30):
+def getSingleTrackData(id='Brianza_1966', tags=['originalFolder', 'Scene Description', 'Name']):
+  d = getAllTrackData(['DB file ID']+tags, maxWidth=100)
+  for row in d:
+    if row[0] == id:
+      return row[1:]
+
+
+def getAllTrackData(tags, maxWidth=30):
   __readDatafiles()
   _result = []
-  for _car in __tracks['tags']:
+  for _track in __tracks['tags']:
     _row = []
     for tag in tags:
-      _row.append(_car[tag][maxWidth:])
+      _row.append(_track[tag][:maxWidth])
     _result.append(_row)
   return _result
 
@@ -99,4 +108,10 @@ def getTrackData(tags, maxWidth=30):
 if __name__ == '__main__':
   # To run this by itself for development
   __readDatafiles()
-  carData = getCarData(carTags)
+  carData = getAllCarData(carTags)
+
+  car = getSingleCarData(id='Howston_G4_1968', tags=['originalFolder', 'vehFile', 'Name'])
+  assert car == ['Installed\\vehicles\\Howston_G4_1968\\1.96', '', 'Howston_G4_1968']
+
+  track = getSingleTrackData(id='Brianza_1966', tags=['originalFolder', 'Scene Description', 'Name'])
+  assert track == ['Installed\\locations\\Brianza_1966\\2.04', '', 'Brianza_1966']
