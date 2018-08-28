@@ -5,7 +5,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from MC_table import Multicolumn_Listbox
-from rFactoryConfig import config_tabTrack
+from rFactoryConfig import config_tabTrack, TrackDatafilesFolder
 from data import getAllTrackData
 import carNtrackEditor
 
@@ -19,7 +19,6 @@ class Tab:
     """ Put this into the parent frame """
     self.parentFrame = parentFrame
     self.settings = None #PyLint
-    #tabTrack.trackColumns = ['Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Track DB file (hidden)']
     o_trackData = self.__TrackData()
     trackData = o_trackData.fetchData()
 
@@ -36,25 +35,23 @@ class Tab:
     colWidths = []
     for col in config_tabTrack['trackColumns']:
       colWidths.append(len(col))
-    for row in trackData:
+    for __, row in trackData.items():
       for col, column in enumerate(row):
-        if len(column) > colWidths[col]:
-          colWidths[col] = len(column)
+        if len(row[column]) > colWidths[col]:
+          colWidths[col] = len(row[column])
       for col, column in enumerate(row):
         self.mc.configure_column(col, width=colWidths[col]*7+6)
+    # Hide the final column (contains DB file ID):
     self.mc.configure_column(len(config_tabTrack['trackColumns'])-1, width=0, minwidth=0)
     # Justify the data in the first three columns
-    self.mc.configure_column(0, anchor='w')
+    self.mc.configure_column(0, anchor='e')
     self.mc.configure_column(1, anchor='w')
     self.mc.configure_column(2, anchor='w')
     self.mc.interior.grid(column=0, row=1, pady=2, columnspan=len(config_tabTrack['trackColumns']))
 
-    #tabTrack.trackFilters = ['Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating']
     o_filter = self.__Filter(parentFrame, config_tabTrack['trackColumns'], colWidths, o_trackData, self.mc)
-    col = 0
     for _filter in config_tabTrack['trackFilters']:
-      o_filter.makeFilter(_filter, trackData, col)
-      col += 1
+      o_filter.makeFilter(_filter, trackData)
    
     o_filter.filterUpdate(None) # Initial dummy filter to load data into table
 
@@ -89,7 +86,7 @@ class Tab:
     top.title("Track editor")
 
     fields = config_tabTrack['trackColumns']
-    o_tab = carNtrackEditor.Editor(top, fields, data, command=self.answer)
+    o_tab = carNtrackEditor.Editor(top, fields, data, DatafilesFolder=TrackDatafilesFolder, command=self.answer)
     """
     t = 'Editor data: '
     for w in data:
@@ -107,24 +104,33 @@ class Tab:
   class __TrackData:
     """ Fetch and filter the track data """
     def __init__(self):
-      self.dummyData = [
-        ]
       self.data = None  # Pylint
       self.filteredData = None
     def fetchData(self):
       """ Fetch the raw data from wherever """
-      self.data = getAllTrackData(tags=config_tabTrack['trackColumns'], maxWidth=27)
-      #self.dummyData.copy() # dummy data for now
-      print('DEBUG')
-      for row in self.dummyData:
-        print(len(row), row)
+      self.data = getAllTrackData(tags=config_tabTrack['trackColumns'], maxWidth=20)
       return self.data
     def filterData(self, filters):
-      """ filters is a list of column number,text pairs """
-      _data = self.data.copy()
-      for _filter in filters:
-        _data = [elem for elem in _data if elem[_filter[0]] == _filter[1]() or _filter[1]() == NOFILTER]
-      self.filteredData = _data
+      """ 
+      Filter items of the data dict that match all of the filter combobox selections.
+      filters is a list of column name, comboBox text() function pairs """
+      _data = []
+      for _item, _values in self.data.items():
+        _data.append(_values.items())
+
+      self.filteredData = []
+      for __, _row in self.data.items():
+        _match = True
+        for _filter in filters:
+          if _row[_filter[0]] != _filter[1]() and _filter[1]() != NOFILTER:
+            _match = False
+            continue
+        if _match:
+          _r = []
+          for colName in config_tabTrack['trackColumns']:
+            _r.append(_row[colName])
+          self.filteredData.append(_r)
+
       return self.filteredData
     def setSelection(self, settings):
       """ Match settings to self.data, set table selection to that row """
@@ -140,26 +146,27 @@ class Tab:
       self.o_trackData = o_trackData
       self.mc = mc
       self.filters = []
-    def makeFilter(self, name, trackData, col):
-      _column = self.columns.index(name)
-      tkFilterText = tk.LabelFrame(self.mainWindow, text=name)
-      tkFilterText.grid(column=col, row=0, pady=0)
+    def makeFilter(self, filterName, trackData):
+      tkFilterText = tk.LabelFrame(self.mainWindow, text=filterName)
+      _col = self.columns.index(filterName)
+      tkFilterText.grid(column=_col, row=0, pady=0)
 
       s = set()
-      for item in trackData:
-        s.add(item[_column])
+      for __, item in trackData.items():
+        s.add(item[filterName])
       vals = [NOFILTER] + sorted(list(s))
       #modderFilter = tk.StringVar()
       tkComboFilter = ttk.Combobox(
           tkFilterText,
           #textvariable=modderFilter,
-          width=self.colWidths[_column],
-          height=len(vals))
+          #height=len(vals),
+          height=10,
+          width=self.colWidths[_col])
       tkComboFilter['values'] = vals
       tkComboFilter.grid(column=1, row=0, pady=5)
       tkComboFilter.current(0)
       tkComboFilter.bind("<<ComboboxSelected>>", self.filterUpdate)
-      self.filters.append([_column, tkComboFilter.get])
+      self.filters.append([filterName, tkComboFilter.get])
     
     def filterUpdate(self, event):
       """ Callback function when combobox changes """

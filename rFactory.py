@@ -188,15 +188,19 @@ class GoButtons:
         command=self._quit)
     self.tkButtonQuit.grid(column=2, row=3, pady=25)
   def online(self):
-    tabs.disableTab('Track')
-    tabs.disableTab('Opponents')
-    tabs.disableTab('Conditions')
+    """ The Online button pressed """
+    # Server defines track etc. but if user enters it it can be used
+    # to adjust graphics details.
+    #tabs.disableTab('Track')
+    #tabs.disableTab('Opponents')
+    #tabs.disableTab('Conditions')
     tabs.disableTab('Sessions')
     tabs.enableTab('Server')
     self.tkButtonOnline.configure(relief=tk.SUNKEN) #, bg='green')
     self.tkButtonOffline.configure(relief=tk.RAISED) #, bg='red')
 
   def offline(self):
+    """ The Offline button pressed """
     tabs.enableTab('Track')
     tabs.enableTab('Opponents')
     tabs.enableTab('Conditions')

@@ -1,0 +1,127 @@
+http://forum.projectcarsgame.com/showthread.php?28869-TM-shifter-H-box-car-list
+250 superkart
+Alpine a450
+Ariel atom 300 supercharged......................... H
+Ariel atom 500 V8
+Ariel atom 3 Mugen......................................H
+Aston martin rapide S hydrogen hybrid.........H
+Aston martin v12 vantage gt3
+Aston martin v8 vantage gt4
+Audi r18 tdi
+Audi r8 lms ultra
+Audi r8 v10 plus
+Bac mono
+Bentley EXP Speed 8
+Bentley Continental GT GT3
+Bmw 1 series M coupe....................................H
+Bmw 320 turbo group 5...................................H
+BMW LMR V12
+BMW M1 Pro Car ........................................... H
+Bmw m3 e30 group a.......................................H
+Bmw m3 gt
+Bmw m3 gt4.....................................................H
+Bmw z4 gt3
+Caper monterey stock car.................................H
+Caterham sp300 r
+Caterham seven classic....................................H
+Caterham superlight r500
+Ford escort mk1 rs1600....................................H
+Ford focus rs......................................................H
+Ford mustang boss 302r1..................................H
+Ford mustang cobra transam.............................H
+Ford sierra rs500 group a...................................H
+Ford zakspeed capri group 5..............................H
+Formula a
+Formula b
+Formula c
+Formula gulf 1000
+Ford Mk IV ....................................................... H
+Formula rookie.....................................................H
+Gumpert apollo s
+Ginetta g40 junior
+Ginetta g55 gt3
+Ginetta g55 gt4
+Lotus 49 cosworth................................................H
+Lotus 72d cosworth..............................................H
+Lotus 78 cosworth................................................H
+Lotus 98t renault turbo..........................................H
+Marek rp 219d lmp2
+Marek rp 339h lmp1
+Mclaren 12c
+Mclaren 12c gt3
+Mclaren F1......................................................H
+Mclaren F1 GTR Longtail
+Mclaren p1
+Mercedes-AMG C-Class Coupe DTM
+Mercedes benz 190e 2.5-16 evolution 2 dtm........H
+Mercedes benz 300 sel 6.8 amg
+Mercedes benz a45 amg
+Mercedes-Benz CLK LM
+Mercedes benz sls amg
+Mercedes benz sla amg gt3
+Mitsubishi lancer evolution x fq400........................H
+Oreca 03 nissan
+Pagani huayra
+Pagani zonda r
+Palmer jaguar jp-lm
+Rwd p20 lmp2
+Rwd p30 lmp1
+Radical sr3-rs
+Radical sr8-rx
+Renault clio cup
+Renault megane rs265...........................................H
+Ruf ctr3
+Ruf CTR3 SMS-R
+Ruf rgt8...................................................................H
+Ruf rgt-8 gt3
+Sauber C9 ........................................................... H
+Smart 450 brabus
+W motors lykan hypersport
+Zonda Cinque Roadster
+
+**************Sequential Stick Cars********** (That I have found so far)
+125 shifter kart
+250 superkart
+
+Ginetta G40 Junior ............................. S (stick)
+
+Ginetta g55 gt3................................. S (stick)
+
+Ginetta g55 gt4.................................. S (stick)
+
+BMW - 2012 - 320 BTCC ............................... S - Stick (lever)
+
+1999 BMW LMR V12 ...................................S (stick)
+
+1997 Mclaren F1 GTR Longtail .....................S (stick)
+
+1998 Mercedes-Benz CLK LM ......................S (stick)
+
+Formula C ………........................................S (stick)
+
+Formula gulf 1000.......................................S (stick)
+
+Ruf CTR3 ..................................................S (stick)
+
+http://forum.projectcarsgame.com/showthread.php?28869-TM-shifter-H-box-car-list/page5
+
+To be precise there are differnent types of sequential and H gearboxes,
+1. No clutch needed, not even to start. (i.e. all double clutch cars, 
+   like Mercedes A-45, SLS, McLaren P1, 12C and Audi R8)
+2. Clutch needed to start the car rolling, once it rolls no clutch needed (Most or all GT3 cars)
+3. Clutch needed for downshifts for upshifts no clutch needed (McLaren F1 GTR, BMW M3 GT)
+4. Clutch needed for up and downshifts (Gumpert Apollo)
+5. H-shifter with autoblip (Porsche 991,Nissan 370Z, Corvette C7
+6. H-shifter conventional
+7. H-shifter where you have to double-clutch (many old (road) cars) 
+
+https://en.wikipedia.org/wiki/Dog-leg_gearbox
+Examples of cars that have used this pattern for performance reasons include
+the Alfa Romeo Alfa 6 (all models 1979/1987), BMW M535, Early 635CSi (non-US)
+and (non-US) M3 E30, BMW 2002 Tii and Turbo, Fiat Dino 2.4 (ZF Box),
+Mercedes-Benz 190E 2.3-16 and 2.5-16, Mercedes-Benz 300 CE-24, Mercedes-Benz
+CW311, Ferrari 308/328/348, Ferrari Testarossa, Porsche 914, early 911, 924
+Turbo (all featuring Getrag gearboxes), Cosworth Vega, Porsche 928, Talbot
+Sunbeam Lotus, Vauxhall Firenza HPF, Lancia Fulvia, Lancia Stratos,
+Lamborghini Countach, Maserati Biturbo, De Tomaso Pantera, and Aston Martin
+V12 Vantage
