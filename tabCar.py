@@ -6,7 +6,7 @@ from tkinter import ttk
 
 from MC_table import Multicolumn_Listbox
 from rFactoryConfig import config_tabCar, CarDatafilesFolder
-from data import getAllCarData
+from data import getAllCarData, getSingleCarData, getSingleTrackData
 import carNtrackEditor
 
 NOFILTER = '---' # String for not filtering
@@ -86,20 +86,10 @@ class Tab:
     top.title("Car editor")
 
     fields = config_tabCar['carColumns']
-    o_tab = carNtrackEditor.Editor(top, fields, data, DatafilesFolder=CarDatafilesFolder, command=self.answer)
-    """
-    t = 'Editor data: '
-    for w in data:
-      t += ' ' + str(w)
-    msg = tk.Message(top, text=t, width=500)
-    msg.pack()
+    data = getSingleCarData(id=data[-1], tags=fields)
+    o_tab = carNtrackEditor.Editor(top, fields, data, DatafilesFolder=CarDatafilesFolder)
+    # Need to init the Tab again to get fresh data.
 
-    button = tk.Button(top, text="Dismiss", command=top.destroy)
-    button.pack()
-    """
-  def answer(self, data):
-    print('The response is')
-    print(data)
 
   class __CarData:
     """ Fetch and filter the car data """
