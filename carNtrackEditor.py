@@ -16,26 +16,24 @@ from editRF2files import writeFile
 # The Editor's public class:
 ############################
 class Editor:
-  def __init__(self, parentFrame, fields, data, DatafilesFolder, command):
+  def __init__(self, parentFrame, fields, data, DatafilesFolder):
     """ Put this into the parent frame """
     self.tkEditor = tk.Message(parentFrame, aspect=500)
     self.parentFrame = parentFrame
-    self.data = dict(data)
     self.fields = list(fields)
     self.DatafilesFolder = DatafilesFolder
-    self.command = command
 
     self.tkEditor.columnconfigure(1, weight=1)
 
     self.numFields = len(fields)
-    label = [0] * self.numFields
+    self.label = [0] * self.numFields
     self.entry = [0] * self.numFields
     for i, field in enumerate(fields):
-      label[i] = tk.Label(self.tkEditor, text=field)
-      label[i].grid(column=0, row=i, sticky='e')
+      self.label[i] = tk.Label(self.tkEditor, text=field)
+      self.label[i].grid(column=0, row=i, sticky='e')
       self.entry[i] = tk.Entry(self.tkEditor)
       self.entry[i].grid(column=1, row=i, ipadx=80, pady=5, ipady=2)
-      self.entry[i].insert(0, data[i])
+      self.entry[i].insert(0, data[field])
 
     # Insert a blank line
     blank = tk.Label(self.tkEditor, text='')
@@ -51,20 +49,16 @@ class Editor:
     self.tkEditor.grid(ipadx=10, ipady=10)
 
   def savePressed(self):
-    self.data = {}
-    for i in range(self.numFields):
-      self.data.append(self.entry[i].get())
-    # Now what do we do with it?
     # Write the data to a file named by the unique ID field
     text=[]
     for i, tag in enumerate(self.fields):
-      if tag == 'DB file ID':
-        _filename = data[i]
-      text.append('%s=%s\n' % (tag, data[i]))
+      if self.label[i]['text'] == 'DB file ID':
+        _filename = self.entry[i].get()
+      text.append('%s=%s\n' % (self.label[i]['text'], self.entry[i].get()))
 
     _filepath = os.path.join(self.DatafilesFolder, _filename+dataFilesExtension)
+
     writeFile(_filepath, text)
-    self.command(self.data)
     self.parentFrame.destroy()
 
   def saveAsPressed(self):
@@ -72,13 +66,8 @@ class Editor:
     pass
 
   def cancelPressed(self):
-    self.command(self.data)
     self.parentFrame.destroy()
 
-def answer(data):
-  print('The response is')
-  print(data)
-  
 if __name__ == '__main__':
   # To run this tab by itself for development
   root = tk.Tk()
@@ -91,7 +80,7 @@ if __name__ == '__main__':
 #  o_tab = Editor(tabTrack, fields, sampleData, command=answer)
 
   data = getSingleCarData(sampleData[-1], carTags)
-  o_tab = Editor(tabTrack, carTags, data, CarDatafilesFolder, command=answer)
+  o_tab = Editor(tabTrack, carTags, data, CarDatafilesFolder)
 
   root.mainloop()
 
