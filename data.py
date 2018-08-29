@@ -92,7 +92,10 @@ def getSingleData(__carsTracks, id, tags):
   _carsTrack = id
   _row = {}
   for tag in tags:
-    _row[tag] = __carsTracks['tags'][_carsTrack][tag]
+    if tag in __carsTracks['tags'][_carsTrack]:
+      _row[tag] = __carsTracks['tags'][_carsTrack][tag]
+    else: # tag isn't present in data file.
+      _row[tag] = ''
   return _row
 
 def getAllCarData(tags, maxWidth=30):

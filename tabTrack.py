@@ -5,8 +5,8 @@ import tkinter as tk
 from tkinter import ttk
 
 from MC_table import Multicolumn_Listbox
-from rFactoryConfig import config_tabTrack, TrackDatafilesFolder
-from data import getAllTrackData
+from rFactoryConfig import config_tabTrack, TrackDatafilesFolder, trackTags
+from data import getAllTrackData, getSingleTrackData
 import carNtrackEditor
 
 NOFILTER = '---' # String for not filtering
@@ -85,21 +85,11 @@ class Tab:
     top = tk.Toplevel(self.parentFrame)
     top.title("Track editor")
 
-    fields = config_tabTrack['trackColumns']
-    o_tab = carNtrackEditor.Editor(top, fields, data, DatafilesFolder=TrackDatafilesFolder, command=self.answer)
-    """
-    t = 'Editor data: '
-    for w in data:
-      t += ' ' + str(w)
-    msg = tk.Message(top, text=t, width=500)
-    msg.pack()
+    fields = trackTags
+    data = getSingleTrackData(id=data[-1], tags=fields)
+    o_tab = carNtrackEditor.Editor(top, fields, data, DatafilesFolder=TrackDatafilesFolder)
+    # Need to init the Tab again to get fresh data.
 
-    button = tk.Button(top, text="Dismiss", command=top.destroy)
-    button.pack()
-    """
-  def answer(self, data):
-    print('The response is')
-    print(data)
 
   class __TrackData:
     """ Fetch and filter the track data """
