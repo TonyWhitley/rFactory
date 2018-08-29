@@ -5,8 +5,8 @@ import tkinter as tk
 from tkinter import ttk
 
 from MC_table import Multicolumn_Listbox
-from rFactoryConfig import config_tabCar, CarDatafilesFolder
-from data import getAllCarData, getSingleCarData, getSingleTrackData
+from rFactoryConfig import config_tabCar, CarDatafilesFolder, carTags
+from data import getAllCarData, getSingleCarData
 import carNtrackEditor
 
 NOFILTER = '---' # String for not filtering
@@ -85,7 +85,7 @@ class Tab:
     top = tk.Toplevel(self.parentFrame)
     top.title("Car editor")
 
-    fields = config_tabCar['carColumns']
+    fields = carTags
     data = getSingleCarData(id=data[-1], tags=fields)
     o_tab = carNtrackEditor.Editor(top, fields, data, DatafilesFolder=CarDatafilesFolder)
     # Need to init the Tab again to get fresh data.

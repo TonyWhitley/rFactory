@@ -230,11 +230,11 @@ class GoButtons:
 
 if __name__ == "__main__":
   mainWindow = MainWindow()
-  mainWindow.setSize(width=1200, height=400)
+  mainWindow.setSize(width=1200, height=600)
   mainWindow.centreWindow()
  
-  #tkLabelTop = tk.Label(mainWindow.handle, text=" Here we are ")
-  #tkLabelTop.grid()
+  #tkLabel_Top = tk.Label(mainWindow.handle, text=" Here we are ")
+  #tkLabel_Top.grid()
 
   tabs = Tabs(mainWindow.handle)
   tabs._testSetSettings()
