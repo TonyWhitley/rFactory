@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "rFactory", "rFactory.pyproj", "{EC571240-C2A5-42C2-8112-A5036BECB6F3}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ScriptedJsonEditor", "..\ScriptedJsonEditor\ScriptedJsonEditor\ScriptedJsonEditor.pyproj", "{8B6FEAA7-B8F5-4472-BCB3-4BDC7F5AB211}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{EC571240-C2A5-42C2-8112-A5036BECB6F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC571240-C2A5-42C2-8112-A5036BECB6F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B6FEAA7-B8F5-4472-BCB3-4BDC7F5AB211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B6FEAA7-B8F5-4472-BCB3-4BDC7F5AB211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
