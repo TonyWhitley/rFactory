@@ -8,7 +8,6 @@ from tkinter import ttk
 class Tab:
   def __init__(self, parentFrame):
     """ Put this into the parent frame """
-    pass
     tkLabelServer = tk.Label(parentFrame, 
                                 text='Here a list of servers plus "Add server"')
     tkLabelServer.grid(column=4, row=3)
