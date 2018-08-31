@@ -339,3 +339,6 @@ ASALocalRun/
 /CarDatafiles
 /TrackDatafiles
 /f.bat
+/build/rFactory_data
+/dist
+/rFactory_data.spec
