@@ -14,6 +14,7 @@ import tabSessions
 import tabOptions
 import tabServer
 import tabScenarios
+import tabJsonEditor
 
 from executeRF2 import runRF2
 
@@ -76,6 +77,7 @@ class Tabs:
       ['Options', tabOptions],
       ['Server', tabServer],
       ['Scenarios', tabScenarios],
+      ['JSON editor', tabJsonEditor]
       ]
     self.notebook = ttk.Notebook(parentFrame)
 
@@ -170,6 +172,16 @@ class GoButtons:
         command=self.offline)
     self.tkButtonOffline.grid(column=2, row=1, pady=5)
 
+    self.tkButtonReplay = tk.Button(
+        _goFrame,
+        text="Replay",
+        width=20,
+        height=2,
+        background='orange',
+        font=buttonFont,
+        command=self.replay)
+    self.tkButtonReplay.grid(column=2, row=2, pady=5)
+
     self.tkButtonRun = tk.Button(
         _goFrame,
         text="Run rFactor 2",
@@ -178,7 +190,7 @@ class GoButtons:
         background='green',
         font=buttonFont,
         command=self.run)
-    self.tkButtonRun.grid(column=2, row=2, pady=25)
+    self.tkButtonRun.grid(column=2, row=3, pady=25)
 
     self.tkButtonQuit = tk.Button(
         _goFrame,
@@ -186,7 +198,8 @@ class GoButtons:
         width=20,
         background='red',
         command=self._quit)
-    self.tkButtonQuit.grid(column=2, row=3, pady=25)
+    self.tkButtonQuit.grid(column=2, row=4, pady=25)
+
   def online(self):
     """ The Online button pressed """
     # Server defines track etc. but if user enters it it can be used
@@ -198,6 +211,7 @@ class GoButtons:
     tabs.enableTab('Server')
     self.tkButtonOnline.configure(relief=tk.SUNKEN) #, bg='green')
     self.tkButtonOffline.configure(relief=tk.RAISED) #, bg='red')
+    self.tkButtonReplay.configure(relief=tk.RAISED) #, bg='red')
 
   def offline(self):
     """ The Offline button pressed """
@@ -208,6 +222,18 @@ class GoButtons:
     tabs.disableTab('Server')
     self.tkButtonOnline.configure(relief=tk.RAISED) #, bg='red')
     self.tkButtonOffline.configure(relief=tk.SUNKEN) #, bg='green')
+    self.tkButtonReplay.configure(relief=tk.RAISED) #, bg='red')
+
+  def replay(self):
+    """ The Replay button pressed """
+    tabs.enableTab('Track')
+    tabs.enableTab('Opponents')
+    tabs.enableTab('Conditions')
+    tabs.enableTab('Sessions')
+    tabs.disableTab('Server')
+    self.tkButtonOnline.configure(relief=tk.RAISED) #, bg='red')
+    self.tkButtonOffline.configure(relief=tk.RAISED) #, bg='green')
+    self.tkButtonReplay.configure(relief=tk.SUNKEN) #, bg='red')
 
   def run(self):
     """ The Run rFactor 2 button has been pressed """
@@ -218,9 +244,12 @@ class GoButtons:
     if self.tkButtonOnline['relief'] == tk.SUNKEN: # Online is pressed
       print('Online')
       runRF2('Online', __settings)
-    else:
+    if self.tkButtonOffline['relief'] == tk.SUNKEN: # Offline is pressed
       print('Offline')
       runRF2('Offline', __settings)
+    else:
+      print('Replay')
+      runRF2('Replay', __settings)
     for tab in __settings:
       print(tab[0], tab[1])
 
@@ -230,7 +259,7 @@ class GoButtons:
 
 if __name__ == "__main__":
   mainWindow = MainWindow()
-  mainWindow.setSize(width=1200, height=600)
+  mainWindow.setSize(width=1200, height=800)
   mainWindow.centreWindow()
  
   #tkLabel_Top = tk.Label(mainWindow.handle, text=" Here we are ")

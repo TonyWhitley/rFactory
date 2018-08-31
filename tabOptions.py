@@ -1,6 +1,8 @@
 # Python 3
 import tkinter as tk
 from tkinter import ttk
+import idlelib
+
 
 #########################
 # The tab's public class:
@@ -34,6 +36,7 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
     tkRadiobutton_Monitor.grid(sticky='w')
     tkRadiobutton_VR.grid(sticky='w')
     monitor.set('Monitor')
+    tkRadiobutton_Monitor.update()
 
     tkFrame_AIstrength = tk.LabelFrame(parentFrame, text='AI', padx=xPadding)
     tkFrame_AIstrength.grid(column=1, row=4, sticky='ew')
@@ -76,6 +79,9 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
     tkCheckbutton_Timescale.grid(sticky='w')
     tkCheckbutton_FinishCriteria.grid(sticky='w')
     tkCheckbutton_Laps.grid(sticky='w')
+
+    b = tk.Button(parentFrame, text="Hello")
+    b.grid()
 
   def getSettings(self):
     """ Return the settings for this tab """
