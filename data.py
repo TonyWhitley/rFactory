@@ -28,27 +28,45 @@ from rFactoryConfig import carTags,trackTags,CarDatafilesFolder, \
 from trawl_rF2_datafiles import getListOfFiles, readFile, getTags
 
 __cars = {
-  'dummyData' : [ # needs translating to a dict
-          ['Ferrari',  '458', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****', 'car DB file'],
-          ['Corvette', 'C7', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****', 'car DB file'],
-          ['Bentley',  'Continental', 'GT3', 'S397', 'GT', 'RWD', '2016', '2010-', '*****', 'car DB file'],
-          ['Eve',      'F1', 'F1', 'ISI', 'Open-wheel', 'RWD', '1967', '1960-', '*****', 'Historic Challenge_EVE_1968'],
-          ['Spark',    'F1', 'F1', 'ISI', 'Open-wheel', 'RWD', '1967', '1960-', '*****', 'Historic Challenge_spark_1968'],
-          ['Porsche',  '917K', 'Gp.C', 'Apex', 'GT', 'RWD', '1967', '1960-', '*****', 'FLAT12_917k_1971'],
-          ['Lola',     'T70', 'Gp.C', 'Crossply', 'GT', 'RWD', '1974', '1970-', '***', 'car DB file'],
-          ['Sauber',   'C11', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****', 'MAK_Sauber_C11'],
-          ['Porsche',  '962C', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****', 'MAK_Porsche_062C'],
-          ['Mazda',    '787B', 'Gp.C', 'MAK-Corp', 'GT', 'RWD', '1978', '1970-', '*****', 'MAK_Mazda_787B'],
-          ['Ferrari',  '312', 'F1', 'Chief Wiggum/Postipate', 'Open-wheel', 'RWD', '1967', '1960-', '*****', 'car DB file'],
-          ['Caterham', '7', 'C7', 'MikeeCZ', 'Sports', 'RWD', '2016', '2010-', '****', 'car DB file']
-        ],
+  'dummyData' : {
+    '134_JUDD' :
+    {'Manufacturer': '134 JUDD', 'Model': '134 JUDD', 'Class': '', 'tType': 'Prototype', 
+     'F/R/4WD': 'RWD', 'Year': '', 'Decade': '', 'Rating': '***', 'DB file ID': '134_JUDD',
+     'Gearshift': 'Paddles', 'Aids': '', 'AIstrengthFactor': '', 'GraphicDetailsFactor': '',
+     'originalFolder': 'Installed\\vehicles\\134_JUDD\\0.7', 'vehFile': '134_JUDD', 
+     'Name': '134_JUDD', 'Version': '0.7', 'Type': '2', 'Author': 'PortoAlto and rstRmods',
+     'Origin': '2', 'Category': '7', 'ID': '', 'URL': '', 'Desc': '', 
+     'Date': '131465248676360000', 'Flags': '270536704', 'RefCount': '1', 'MinVersion': ''},
+    '1975BRABHAM':
+    {'Manufacturer': 'BRABHAM', 'Model': 'BRABHAM', 'Class': '', 'tType': '', 
+     'F/R/4WD': 'RWD', 'Year': '1975', 'Decade': '1970-', 'Rating': '***', 
+     'DB file ID': '1975BRABHAM', 'Gearshift': 'Paddles', 'Aids': '', 
+     'AIstrengthFactor': '', 'GraphicDetailsFactor': '', 
+     'originalFolder': 'Installed\\vehicles\\1975BRABHAM\\1.0', 'vehFile': 'Reutemann_07',
+     'Name': '1975BRABHAM', 'Version': '1.0', 'Type': '2', 'Author': '', 'Origin': '0', 
+     'Category': '0', 'ID': '', 'URL': '', 'Desc': '', 'Date': '1493632923', 
+     'Flags': '3149824', 'RefCount': '1', 'MinVersion': ''},
+     '1975BRM':
+    {'Manufacturer': 'BRM', 'Model': 'BRM', 'Class': '', 'tType': '', 'F/R/4WD': 'RWD', 
+     'Year': '1975', 'Decade': '1970-', 'Rating': '***', 'DB file ID': '1975BRM', 
+     'Gearshift': 'Paddles', 'Aids': '', 'AIstrengthFactor': '', 'GraphicDetailsFactor': '', 
+     'originalFolder': 'Installed\\vehicles\\1975BRM\\1.0', 'vehFile': 'Evans_14', 
+     'Name': '1975BRM', 'Version': '1.0', 'Type': '2', 'Author': '', 'Origin': '0',
+     'Category': '0', 'ID': '', 'URL': '', 'Desc': '', 'Date': '1493632924', 
+     'Flags': '3149824', 'RefCount': '1', 'MinVersion': ''},
+        },
   'tags' : {}
   }
 
 __tracks = {
-  'dummyData' : [
-          ['Spa',  'S397', 'Historic', '1966', '1960-', '*****', 'track DB file']
-        ],
+  'dummyData' : {
+    '3PA_Bathurst_2014':
+    {'Track Name': 'PA Bathurst ', 'Continent': '', 'Country': '', 'tType': 'Temporary', 'Year': '2014', 'Decade': '2010-', 'Rating': '***', 'DB file ID': '3PA_Bathurst_2014', 'AIstrengthFactor': '', 'GraphicDetailsFactor': '', 'originalFolder': 'Installed\\locations\\3PA_Bathurst_2014\\1.02', 'Scene Description': '', 'Name': '3PA_Bathurst_2014', 'Version': '1.02', 'Type': '1', 'Author': 'mianiak', 'Origin': '3', 'Category': '57', 'ID': '', 'URL': 'http://rfactor.net/downloads/getmod.php', 'Desc': '3PA_Bathurst_2014\x0f', 'Date': '130871461203380000', 'Flags': '270536704', 'RefCount': '1', 'MinVersion': ''},
+    '3PA_Matsusaka_2015':
+    {'Track Name': 'PA Matsusaka ', 'Continent': '', 'Country': '', 'tType': 'Permanent', 'Year': '2015', 'Decade': '2010-', 'Rating': '***', 'DB file ID': '3PA_Matsusaka_2015', 'AIstrengthFactor': '', 'GraphicDetailsFactor': '', 'originalFolder': 'Installed\\locations\\3PA_Matsusaka_2015\\1.00', 'Scene Description': '', 'Name': '3PA_Matsusaka_2015', 'Version': '1.00', 'Type': '1', 'Author': 'woochoo, & ISI', 'Origin': '3', 'Category': '55', 'ID': '', 'URL': 'http://rfactor.net/downloads/getmod.php', 'Desc': '', 'Date': '131103652938530000', 'Flags': '271593472', 'RefCount': '1', 'MinVersion': ''},
+    '60sHockenheim':
+    {'Track Name': 'sHockenheim', 'Continent': '', 'Country': '', 'tType': 'Permanent', 'Year': '1960', 'Decade': '1960-', 'Rating': '***', 'DB file ID': '60sHockenheim', 'AIstrengthFactor': '', 'GraphicDetailsFactor': '', 'originalFolder': 'Installed\\locations\\60sHockenheim\\0.85', 'Scene Description': '', 'Name': '60sHockenheim', 'Version': '0.85', 'Type': '1', 'Author': '', 'Origin': '3', 'Category': '55', 'ID': '', 'URL': '', 'Desc': 'an early hockenheim layout done for a bit of fun and a blast with the historics\x0f', 'Date': '1531869330', 'Flags': '3145728', 'RefCount': '1', 'MinVersion': ''}
+        },
   'tags' : {}
   }
 
@@ -58,17 +76,29 @@ def __readDatafiles():
     carFiles = getListOfFiles(path=CarDatafilesFolder, pattern='*'+dataFilesExtension)
     trackFiles = getListOfFiles(path=TrackDatafilesFolder, pattern='*'+dataFilesExtension)
 
-    for car in carFiles:
-      text = readFile(car[0])
-      tags = getTags(text)
-      __carID = tags['DB file ID']
-      __cars['tags'][__carID] = tags
+    if len(carFiles) > 0:
+      for car in carFiles:
+        text = readFile(car[0])
+        tags = getTags(text)
+        __carID = tags['DB file ID']
+        __cars['tags'][__carID] = tags
+        # to print dummy data print(tags)
+        # print()
+    else:
+      print('Using dummy data')
+      __cars['tags'] = __cars['dummyData']
 
-    for track in trackFiles:
-      text = readFile(track[0])
-      tags = getTags(text)
-      __trackID = tags['DB file ID']
-      __tracks['tags'][__trackID] = tags
+    if len(trackFiles) > 0:
+      for track in trackFiles:
+        text = readFile(track[0])
+        tags = getTags(text)
+        __trackID = tags['DB file ID']
+        __tracks['tags'][__trackID] = tags
+        # to print dummy data print(tags)
+        # print()
+    else:
+      print('Using dummy data')
+      __tracks['tags'] = __tracks['dummyData']
   # else it's already loaded
 
 def getAllData(__carsTracks, tags, maxWidth):

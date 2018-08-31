@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Gearboxes.txt" />
+    <Content Include="requirements.txt" />
     <Content Include="scnNames.txt" />
     <Content Include="vehNames.txt" />
   </ItemGroup>
