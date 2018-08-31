@@ -53,8 +53,11 @@ def getListOfFiles(path, pattern='*.c', recurse=False):
     return files
 
 def readFile(filename):
-  with open(filename) as f:
-    originalText = f.readlines()
+  try:
+    with open(filename) as f:
+      originalText = f.readlines()
+  except:
+    originalText = []
   return originalText
 
 def readTags(text):
@@ -158,7 +161,7 @@ def getVehScnNames(dataFilepath):
       _dict[name] = vehScn
   return _dict
 
-if __name__ == '__main__':
+def createDefaultDataFiles():
   getAllTags = False
   rF2_dir = os.path.join(rF2root, 'Installed')
   vehicleFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles'), pattern='*.mft', recurse=True)
@@ -268,3 +271,6 @@ if __name__ == '__main__':
           if tags['Category'] in trackCategories:
             tags['tType'] = trackCategories[tags['Category']]
           createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tagsToBeWritten=trackTags)
+
+if __name__ == '__main__':
+  createDefaultDataFiles()
