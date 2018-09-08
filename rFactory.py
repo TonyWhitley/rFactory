@@ -262,8 +262,10 @@ if __name__ == "__main__":
   mainWindow.setSize(width=1200, height=800)
   mainWindow.centreWindow()
  
-  #tkLabel_Top = tk.Label(mainWindow.handle, text=" Here we are ")
-  #tkLabel_Top.grid()
+  menubar = tk.Menu(mainWindow.handle)
+  # display the menu
+  mainWindow.handle.config(menu=menubar)
+  tabJsonEditor.setMenubar(menubar)
 
   tabs = Tabs(mainWindow.handle)
   tabs._testSetSettings()
