@@ -5,15 +5,27 @@ import sys
 import tkinter as tk
 from tkinter import ttk
 
-if os.path.exists('../ScriptedJsonEditor/ScriptedJsonEditor'):
-  sys.path.append('../ScriptedJsonEditor/ScriptedJsonEditor')
+SJE_path = r'..\ScriptedJsonEditor\ScriptedJsonEditor'
+if os.path.exists(SJE_path):
+  sys.path.append(SJE_path)
   from GUI import Tab as _Tab
+  from GUI import setMenu2tab
+  from GUImenu import Menu
+
+  menubar = None
+  menu2tab = None
+  def setMenubar(_menubar):
+    global menubar
+    global menu2tab
+    menubar = _menubar
+
+    menu2tab = setMenu2tab(SJE_path)
+    Menu(menubar=menubar, menu2tab=menu2tab)
 
   class Tab(_Tab):
     def __init__(self, parentFrame):
-      x = _Tab(parentFrame, 
-               jobDefinitionsFolder='../ScriptedJsonEditor/ScriptedJsonEditor/job_definitions',
-               jobsFolder='../ScriptedJsonEditor/ScriptedJsonEditor/Jobs')
+      global menu2tab
+      x = _Tab(parentFrame, menu2tab)
 
       """
       tkLabelframe_jobSettings = x.tkLabelframe_jobSettings
@@ -23,7 +35,11 @@ if os.path.exists('../ScriptedJsonEditor/ScriptedJsonEditor'):
       o_tab.set_checkbutton('G25_jobs', 'Monitor', 1)
       assert o_tab.get_checkbutton('G25_jobs', 'Monitor') == 1
       """
+
 else:
+  def setMenubar(_menubar):
+    pass
+
   class Tab:
     def __init__(self, parentFrame):
       """ Put this into the parent frame """
