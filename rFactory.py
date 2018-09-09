@@ -4,6 +4,7 @@
 
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 import tkinter.font as font 
 # Tabs
 import tabCar
@@ -17,6 +18,24 @@ import tabScenarios
 import tabJsonEditor
 
 from executeRF2 import runRF2
+
+BUILD_REVISION = 32 # The git commit count
+versionStr = 'rFactory V0.1.%d' % BUILD_REVISION
+versionDate = '2018-09-09'
+def about():
+  messagebox.showinfo(
+            'About rFactory',
+            '%s  %s\nby Tony Whitley' % (versionStr, versionDate)
+        )
+
+class Menu:
+  def __init__(self, 
+               menubar, 
+               menu2tab=None):
+
+    helpmenu = tk.Menu(menubar, tearoff=0)
+    helpmenu.add_command(label="About", command=about)
+    menubar.add_cascade(label="Help", menu=helpmenu)
 
 class MainWindow:
   """ The main app window innit """
@@ -136,7 +155,30 @@ class Tabs:
     for name, _ in self.tabNames:
       self.o_tabs[name].setSettings(settings=settings)
 
+class Menus:
+  """ The sub-menus for tabs in the main window """
+  menus = {}  # the Menu objects
+  def __init__(self, parentFrame):
+    self.menuNames = [ \
+      #['Car', tabCar],
+      #['Track', tabTrack],
+      #['Opponents', tabOpponents],
+      #['Conditions', tabConditions],
+      #['Sessions', tabSessions],
+      #['Options', tabOptions],
+      #['Server', tabServer],
+      #['Scenarios', tabScenarios],
+      ['JSON editor', tabJsonEditor]
+      ]
+    menubar = tk.Menu(parentFrame)
 
+    for menuLabel, o_menu in self.menuNames:
+      _menu = tk.Menu(menubar, tearoff=0)
+      menubar.add_cascade(label=menuLabel, menu=_menu)
+      o_menu.setMenubar(_menu)
+    Menu(menubar)
+    # display the menu
+    parentFrame.config(menu=menubar)
 
 # The GO buttons
 class GoButtons:
@@ -263,9 +305,8 @@ if __name__ == "__main__":
   mainWindow.centreWindow()
  
   menubar = tk.Menu(mainWindow.handle)
-  # display the menu
-  mainWindow.handle.config(menu=menubar)
-  tabJsonEditor.setMenubar(menubar)
+  # display the menus
+  Menus(mainWindow.handle)
 
   tabs = Tabs(mainWindow.handle)
   tabs._testSetSettings()
