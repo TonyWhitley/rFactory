@@ -52,9 +52,12 @@ def runOffline(settings):
   changeTrack(scnPath=_trackData['originalFolder'], scnName=_trackData['Scene Description'], SceneDescription=_trackData['Scene Description'])
 
   # Opponents
-  _opponentsID = settings[2][1][-1]
-  _opponentsData = getSingleCarData(_opponentsID, ['originalFolder', 'vehFile'])
-  changeOpponents(opponents=_opponentsID)
+  _opponentIDs = settings[2][1]
+  _opponents = []
+  for _opponent in _opponentIDs:
+    _opponents.append(_opponent[-1])
+  _opponentStr= '|' + '|'.join(_opponents)
+  changeOpponents(opponents=_opponentStr)
 
   cmd = SteamExe
   _cmd =  '"%s" -applaunch 365960 +singleplayer +path=".."' % (SteamExe)
