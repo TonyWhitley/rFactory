@@ -12,7 +12,7 @@ import os
 import re
 
 from rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
-  TrackDatafilesFolder,dataFilesExtension
+  TrackDatafilesFolder,dataFilesExtension, playerPath
 
 carCategories = {
   '3' : 'GT',
@@ -145,6 +145,32 @@ def extractYear(name):
   #print(name, year)
   return year, decade, name
 
+class vehFiles:
+  #[VEHICLE]
+  #ID=1
+  #File="C:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Vehicles\AC_427SC_1967\1.2\427SC_BLACK.VEH"
+  #...
+
+  vehDict = {}
+  def __init__(self):
+    self.all_vehicles_ini = os.path.join(playerPath, 'all_vehicles.ini')
+    all_vehicles_text = readFile(self.all_vehicles_ini)
+    for line in all_vehicles_text:
+      if line.startswith('File='):
+        _path, _veh = os.path.split(line[len('File="'):])
+        _path, _rev = os.path.split(_path)
+        _path, _car = os.path.split(_path)
+        if not _car in self.vehDict:
+          self.vehDict[_car] = _veh.strip()[:-1]  # lose the trailing "
+  #@property
+  def veh(self, carName) :
+    try:
+      return self.vehDict[carName]
+    except:
+      print('%s not in %s' % (carName, self.all_vehicles_ini))
+    return ''
+
+
 def getVehScnNames(dataFilepath):
   """ 
   Read the data file containing Name xxxxx.veh pairs 
@@ -168,8 +194,9 @@ def createDefaultDataFiles():
   trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations'), pattern='*.mft', recurse=True)
   F1_1988_trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations', 'F1_1988_Tracks'), pattern='*.mas', recurse=True)
 
-  vehNames = getVehScnNames('vehNames.txt')
+  #vehNames = getVehScnNames('vehNames.txt')
   scnNames = getVehScnNames('scnNames.txt')
+  vehNames = vehFiles()
 
   tags = {}
   if getAllTags:
@@ -212,10 +239,10 @@ def createDefaultDataFiles():
       # We need the original data folder to assemble the .VEH file path to put in 
       # "All Tracks & Cars.cch" to force rF2 to switch cars.  We also need the .VEH 
       # file names and that's a bit more difficult.
+      # Not difficult, they're in all_vehicles.ini
       tags['originalFolder'], _ = os.path.split(veh[0][len(rF2root)+1:]) # strip the root
       # if veh file name is available in vehNames.txt use it
-      if tags['Name'] in vehNames:
-        tags['vehFile'] = vehNames[tags['Name']]
+      tags['vehFile'] = vehNames.veh(tags['Name'])
       createDataFile(datafilesPath=CarDatafilesFolder, filename=tags['Name'], dict=tags, tagsToBeWritten=carTags)
 
 

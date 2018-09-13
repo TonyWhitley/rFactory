@@ -6,7 +6,7 @@ import os
 import subprocess
 
 from data import getAllCarData, getAllTrackData, getSingleCarData, getSingleTrackData
-from editRF2files import changeCar, changeTrack
+from editRF2files import changeCar, changeTrack, changeOpponents
 from rFactoryConfig import SteamExe, rF2root
 
 settingsExample = [
@@ -44,12 +44,17 @@ def runOffline(settings):
   # Car
   _carID = settings[0][1][-1]
   _carData = getSingleCarData(_carID, ['originalFolder', 'vehFile'])
-  changeCar(vehPath=_carData[0], vehName=_carData[1])
+  changeCar(vehPath=_carData['originalFolder'], vehName=_carData['vehFile'])
 
   # Track
   _trackID = settings[1][1][-1]
   _trackData = getSingleTrackData(_trackID, ['originalFolder', 'Scene Description', 'Scene Description'])
-  changeTrack(scnPath=_trackData[0], scnName=_trackData[1], SceneDescription=_trackData[1])
+  changeTrack(scnPath=_trackData['originalFolder'], scnName=_trackData['Scene Description'], SceneDescription=_trackData['Scene Description'])
+
+  # Opponents
+  _opponentsID = settings[2][1][-1]
+  _opponentsData = getSingleCarData(_opponentsID, ['originalFolder', 'vehFile'])
+  changeOpponents(opponents=_opponentsID)
 
   cmd = SteamExe
   _cmd =  '"%s" -applaunch 365960 +singleplayer +path=".."' % (SteamExe)

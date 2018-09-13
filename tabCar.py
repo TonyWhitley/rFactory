@@ -76,11 +76,18 @@ class Tab:
     print("\n")
 
   def __on_right_click(self, data):
+    """
+    On right-clicking car there are two options
+    1) Select the specific car
+    2) Edit the details
+    """
     # don't change data   self.settings = data
     print('DEBUG')
     print("called command when row is right clicked")
     print(data)
     print("\n")
+
+    #ttk.messagebox.askquestion('Car selected')
 
     top = tk.Toplevel(self.parentFrame)
     top.title("Car editor")

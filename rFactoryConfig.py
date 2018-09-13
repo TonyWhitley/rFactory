@@ -3,9 +3,13 @@ All the configuration items for rFactory.
 Some can be edited to change how rFactory works, e.g. the car table columns.
 
 """
+import os
+
 # rF2 items
 rF2root = r'C:\Program Files (x86)\Steam\steamapps\common\rFactor 2'
 SteamExe = "C:/Program Files (x86)/Steam/steam.exe"
+player = 'player'
+playerPath = os.path.join(rF2root, 'UserData', player)
 
 # General items
 
@@ -33,9 +37,9 @@ dataFilesExtension = '.rFactory.txt'
 # File-specific items
 config_tabCar = {
   'carColumns' : ['Manufacturer', 'Model', 'Class', 'Author', 'tType', 
-                  'F/R/4WD', 'Year', 'Decade', 'Rating', 'vehFile','DB file ID'],
+                  'F/R/4WD', 'Year', 'Decade', 'Rating', 'DB file ID'],
   'carFilters' : ['Manufacturer', 'Model', 'Class', 'Author', 'tType', 
-                  'F/R/4WD', 'Year', 'Decade', 'Rating', 'vehFile']
+                  'F/R/4WD', 'Year', 'Decade', 'Rating']
   }
 
 config_tabTrack = {
