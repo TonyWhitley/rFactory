@@ -11,7 +11,7 @@ from data import getSingleCarData
 
 def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):
   if vehName == '':
-    print('Scene Description not in track data file')
+    print('Veh name not in car data file')
     return
   _vehFile = os.path.join(rF2root, vehPath, vehName+'.veh').replace('\\', '\\\\\\\\')
 
@@ -35,6 +35,13 @@ def changeTrack(scnPath = r'F1_1988_Tracks\0.941', scnName='HOCKENHEIM_1988_C4',
   _edit7 = [r'( *"Scene Signature" *:).*',   r'\1""']  #blank it  NOTE NO COMMA
   _edited = __edit(_text4, [_edit4,_edit5,_edit6,_edit7], doubleSlash=True)  
   writeFile(PlayerJSON, _edited)
+
+def changeOpponents(opponents="|1971|AC_427_1954_Endurance|DPi"):
+  allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
+  _text3 = readFile(allTracks)
+  _edit3 = [r'( *SinglePlayerFilter *=).*',   r'\1"' + opponents+'"']
+  _edited = __edit(_text3, [_edit3], doubleSlash=False)
+  writeFile(allTracks, _edited)
 
 def writeFile(_filepath, text):
   with open(_filepath, "w") as f:
