@@ -67,10 +67,10 @@ class Tab:
     self.mc.select_row(i)
   
   def __on_select(self, data):
-    self.settings = data
+    self.settings = self.mc.selected_rows
     print('DEBUG')
     print("called command when row is selected")
-    print(data)
+    print(self.settings)
     print("\n")
 
   def __on_right_click(self, data):
