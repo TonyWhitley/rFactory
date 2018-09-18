@@ -36,14 +36,14 @@ dataFilesExtension = '.rFactory.txt'
 
 # File-specific items
 config_tabCar = {
-  'carColumns' : ['Manufacturer', 'Model', 'Class', 'Author', 'tType', 
+  'carColumns' : ['Manufacturer', 'Model', 'Class', 'Author', 'tType', 'Date',
                   'F/R/4WD', 'Year', 'Decade', 'Rating', 'DB file ID'],
-  'carFilters' : ['Manufacturer', 'Model', 'Class', 'Author', 'tType', 
+  'carFilters' : ['Manufacturer', 'Model', 'Class', 'Author', 'tType',  'Date',
                   'F/R/4WD', 'Year', 'Decade', 'Rating']
   }
 
 config_tabTrack = {
-  'trackColumns' : ['Track Name', 'Version', 'Continent', 'Country', 'Author', 'tType', 
+  'trackColumns' : ['Track Name', 'Version', 'Continent', 'Country', 'Author', 'tType',  'Date',
                   'Year', 'Decade', 'Rating', 'Scene Description','DB file ID'],
-  'trackFilters' : ['Author', 'Continent', 'Country', 'tType','Year', 'Decade', 'Rating','Scene Description']
+  'trackFilters' : ['Author', 'Continent', 'Country', 'tType','Year', 'Decade', 'Rating','Scene Description','Date']
   }

@@ -6,6 +6,7 @@ Trawl rF2 data files for raw data as a baseline for rFactory data files
 4) extract data into data file
 """
 
+import datetime
 import fnmatch
 import glob
 import os
@@ -93,6 +94,17 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten):
       for tag in tagsToBeWritten:
         if tag in dict:
           val = dict[tag]
+          if tag == 'Date':
+            if len(val) == 18: # Windows filetime.
+              # http://support.microsoft.com/kb/167296
+              # How To Convert a UNIX time_t to a Win32 FILETIME or SYSTEMTIME
+              EPOCH_AS_FILETIME = 116444736000000000  # January 1, 1970 as MS file time
+              HUNDREDS_OF_NANOSECONDS = 10000000
+              ts = datetime.datetime.fromtimestamp((int(val) - EPOCH_AS_FILETIME) //
+                                                  HUNDREDS_OF_NANOSECONDS)
+            else: # Unix
+              ts = datetime.datetime.fromtimestamp(int(val))
+            val = ts.strftime("%Y-%m-%d")
         elif tag == 'DB file ID':
           val = filename # The unique identifier for the car/track. I think.
         elif tag in ['Track Name', 'Manufacturer', 'Model']:

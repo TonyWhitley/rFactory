@@ -55,9 +55,9 @@ def runOffline(settings):
   _opponentIDs = settings[2][1]
   _opponents = []
   for _opponent in _opponentIDs:
-    _opponents.append(_opponent[-1])
+    _opponents.append(_opponent[-1])  # NO, it's not the DB file ID, see AllClasses.txt - another field we have to sort out
   _opponentStr= '|' + '|'.join(_opponents)
-  changeOpponents(opponents=_opponentStr)
+  #  Need to work out the field for this     changeOpponents(opponents=_opponentStr)
 
   cmd = SteamExe
   _cmd =  '"%s" -applaunch 365960 +singleplayer +path=".."' % (SteamExe)
