@@ -7,7 +7,8 @@ from tkinter import ttk
 
 SJE_path = r'..\ScriptedJsonEditor\ScriptedJsonEditor'
 if os.path.exists(SJE_path):
-  sys.path.append(SJE_path)
+  #sys.path.append(SJE_path)
+  os.chdir(SJE_path)
   from GUI import Tab as _Tab
   from GUI import setMenu2tab
   from GUImenu import Menu
@@ -53,3 +54,23 @@ else:
     def setSettings(self, settings):
       """ Set the settings for this tab """
       pass
+
+if __name__ == '__main__':
+  # To run this tab by itself for development
+  root = tk.Tk()
+  tabJson = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
+  tabJson.grid()
+    
+  menubar = tk.Menu(root)
+
+  menuLabel = 'JSON editor'
+  _menu = tk.Menu(menubar, tearoff=0)
+  menubar.add_cascade(label=menuLabel, menu=_menu)
+  setMenubar(_menu)
+  Menu(menubar)
+  # display the menu
+  root.config(menu=menubar)
+
+  o_tab = Tab(tabJson)
+
+  root.mainloop()

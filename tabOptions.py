@@ -20,8 +20,17 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
     tkFrame_Gearbox = tk.LabelFrame(parentFrame, text='Gearbox')
     tkFrame_Gearbox.grid(column=1, row=2, sticky='ew', padx=xPadding)
 
-    tkCheckbutton_RequireClutch = tk.Checkbutton(tkFrame_Gearbox, text='Require clutch (Grinding Tranny)')
-    tkCheckbutton_AutoClutch = tk.Checkbutton(tkFrame_Gearbox, text='Auto clutch (std. rF2)')
+    self.RequireClutch = tk.StringVar()
+    self.RequireClutch.set(False)
+    tkCheckbutton_RequireClutch = tk.Checkbutton(tkFrame_Gearbox, 
+                                                 text='Require clutch (Grinding Tranny)',
+                                                 variable=self.RequireClutch
+                                                 )
+    self.AutoClutch = tk.StringVar()
+    self.AutoClutch.set(True)
+    tkCheckbutton_AutoClutch = tk.Checkbutton(tkFrame_Gearbox, 
+                                              text='Auto clutch (std. rF2)',
+                                              variable=self.AutoClutch)
     #tkCheckbutton_GearDamage = tk.Checkbutton(tkFrame_Gearbox, text='Gearbox damage')
 
     tkCheckbutton_RequireClutch.grid(sticky='w')
@@ -30,12 +39,18 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
 
     tkFrame_Monitor = tk.LabelFrame(parentFrame, text='Monitor', padx=xPadding)
     tkFrame_Monitor.grid(column=1, row=3, sticky='ew')
-    monitor = tk.StringVar()
-    tkRadiobutton_Monitor = tk.Radiobutton(tkFrame_Monitor, text='Monitor', variable=monitor, value='Monitor')
-    tkRadiobutton_VR = tk.Radiobutton(tkFrame_Monitor, text='VR', variable=monitor, value='VR')
+    self.monitor = tk.StringVar()
+    tkRadiobutton_Monitor = tk.Radiobutton(tkFrame_Monitor, 
+                                           text='Monitor', 
+                                           variable=self.monitor, 
+                                           value='Monitor')
+    tkRadiobutton_VR = tk.Radiobutton(tkFrame_Monitor, 
+                                      text='VR', 
+                                      variable=self.monitor, 
+                                      value='VR')
     tkRadiobutton_Monitor.grid(sticky='w')
     tkRadiobutton_VR.grid(sticky='w')
-    monitor.set('Monitor')
+    self.monitor.set('Monitor')
     tkRadiobutton_Monitor.update()
 
     tkFrame_AIstrength = tk.LabelFrame(parentFrame, text='AI', padx=xPadding)
@@ -48,12 +63,12 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
 
     tkLabel_AIaggression = tk.Label(tkFrame_AIstrength, text='AI aggression (std. rF2)')
     tkLabel_AIaggression.grid(column=1, row=2, sticky='e')
-    tkScale_AIaggression = tk.Scale(tkFrame_AIstrength, from_=95, to=110, orient=tk.HORIZONTAL)
+    tkScale_AIaggression = tk.Scale(tkFrame_AIstrength, from_=0, to=100, orient=tk.HORIZONTAL)
     tkScale_AIaggression.grid(column=2, row=2, sticky='ewns')
 
     tkLabel_AIlimiter = tk.Label(tkFrame_AIstrength, text='AI limiter (std. rF2)')
     tkLabel_AIlimiter.grid(column=1, row=3, sticky='e')
-    tkScale_AIlimiter = tk.Scale(tkFrame_AIstrength, from_=95, to=110, orient=tk.HORIZONTAL)
+    tkScale_AIlimiter = tk.Scale(tkFrame_AIstrength, from_=0, to=100, orient=tk.HORIZONTAL)
     tkScale_AIlimiter.grid(column=2, row=3, sticky='ewns')
 
     tkFrame_Damage = tk.LabelFrame(parentFrame, text='Damage', padx=xPadding)
@@ -68,10 +83,10 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
     tkCheckbutton_Invulnerability.grid(sticky='w')
 
     tkFrame_RaceOptions = tk.LabelFrame(parentFrame, text='Race Options', padx=xPadding)
-    tkFrame_RaceOptions.grid(column=3, row=4, sticky='ew')
+    tkFrame_RaceOptions.grid(column=3, row=3, sticky='ew')
 
     tkCheckbutton_RaceTime = tk.Checkbutton(tkFrame_RaceOptions, text='Race time (complicated...)')
-    tkCheckbutton_Timescale = tk.Checkbutton(tkFrame_RaceOptions, text='Timescale (list of options')
+    tkCheckbutton_Timescale = tk.Checkbutton(tkFrame_RaceOptions, text='Timescale (list of options)')
     tkCheckbutton_FinishCriteria = tk.Checkbutton(tkFrame_RaceOptions, text='FinishCriteria - laps/time and...')
     tkCheckbutton_Laps = tk.Checkbutton(tkFrame_RaceOptions, text='slider?')
 
@@ -80,8 +95,16 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
     tkCheckbutton_FinishCriteria.grid(sticky='w')
     tkCheckbutton_Laps.grid(sticky='w')
 
-    b = tk.Button(parentFrame, text="Hello")
-    b.grid()
+    tkFrame_Co_programs = tk.LabelFrame(parentFrame, text='Other programs to run with rF2', padx=xPadding)
+    tkFrame_Co_programs.grid(column=3, row=4, sticky='ew')
+
+    tkCheckbutton_CrewChief = tk.Checkbutton(tkFrame_Co_programs, text='Crew Chief')
+    tkCheckbutton_TeamSpeak = tk.Checkbutton(tkFrame_Co_programs, text='TeamSpeak')
+    tkCheckbutton_Discord = tk.Checkbutton(tkFrame_Co_programs, text='Discord (voice)')
+
+    tkCheckbutton_CrewChief.grid(sticky='w')
+    tkCheckbutton_TeamSpeak.grid(sticky='w')
+    tkCheckbutton_Discord.grid(sticky='w')
 
   def getSettings(self):
     """ Return the settings for this tab """
