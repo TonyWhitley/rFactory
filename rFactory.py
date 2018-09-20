@@ -16,6 +16,7 @@ import tabOptions
 import tabServer
 import tabScenarios
 import tabJsonEditor
+import trawl_rF2_datafiles 
 
 from executeRF2 import runRF2
 
@@ -28,11 +29,12 @@ def about():
             '%s  %s\nby Tony Whitley' % (versionStr, versionDate)
         )
 
+
+
 class Menu:
   def __init__(self, 
                menubar, 
                menu2tab=None):
-
     helpmenu = tk.Menu(menubar, tearoff=0)
     helpmenu.add_command(label="About", command=about)
     menubar.add_cascade(label="Help", menu=helpmenu)
@@ -160,6 +162,7 @@ class Menus:
   menus = {}  # the Menu objects
   def __init__(self, parentFrame):
     self.menuNames = [ \
+      ['File', trawl_rF2_datafiles],
       #['Car', tabCar],
       #['Track', tabTrack],
       #['Opponents', tabOpponents],

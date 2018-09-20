@@ -9,7 +9,9 @@ class Tab:
   def __init__(self, parentFrame):
     """ Put this into the parent frame """
     tkLabelServer = tk.Label(parentFrame, 
-                                text='Here a list of servers plus "Add server"')
+                                text='Here a list of servers plus "Add server"\n\
+Could include "Servers with human drivers"\n\
+and alerts when specific servers have drivers')
     tkLabelServer.grid(column=4, row=3)
 
   def getSettings(self):

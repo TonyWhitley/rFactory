@@ -12,8 +12,26 @@ import glob
 import os
 import re
 
+import tkinter as tk
+from tkinter import ttk
+from tkinter import messagebox
+
 from rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension, playerPath
+
+def trawl_for_new_rF2_datafiles():
+  createDefaultDataFiles(overwrite=False)
+  messagebox.showinfo(
+            'Scanned rF2 data files',
+            'New rFactory data files created as needed'
+        )
+
+def setMenubar(menubar):
+  Filemenu = tk.Menu(menubar, tearoff=0)
+  Filemenu.add_command(label="Scan for new rF2 data files", command=trawl_for_new_rF2_datafiles)
+  menubar.add_cascade(label="File", menu=Filemenu)
+
+
 
 carCategories = {
   '3' : 'GT',
@@ -86,41 +104,43 @@ def getTags(text):
       #print(m.group(1), m.group(2))
   return tags
 
-def createDataFile(datafilesPath, filename, dict, tagsToBeWritten):
+def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=False):
   _filepath = os.path.join(datafilesPath, filename+dataFilesExtension)
-  try:
-    os.makedirs(datafilesPath, exist_ok=True)
-    with open(_filepath, "w") as f:
-      for tag in tagsToBeWritten:
-        if tag in dict:
-          val = dict[tag]
-          if tag == 'Date':
-            if len(val) == 18: # Windows filetime.
-              # http://support.microsoft.com/kb/167296
-              # How To Convert a UNIX time_t to a Win32 FILETIME or SYSTEMTIME
-              EPOCH_AS_FILETIME = 116444736000000000  # January 1, 1970 as MS file time
-              HUNDREDS_OF_NANOSECONDS = 10000000
-              ts = datetime.datetime.fromtimestamp((int(val) - EPOCH_AS_FILETIME) //
-                                                  HUNDREDS_OF_NANOSECONDS)
-            else: # Unix
-              ts = datetime.datetime.fromtimestamp(int(val))
-            val = ts.strftime("%Y-%m-%d")
-        elif tag == 'DB file ID':
-          val = filename # The unique identifier for the car/track. I think.
-        elif tag in ['Track Name', 'Manufacturer', 'Model']:
-          val = dict['strippedName'].replace('_', ' ')  # default
-        elif tag == 'Rating':
-          val = '***'
-        elif tag == 'F/R/4WD':
-          val = 'RWD' # Most cars are
-        elif tag == 'Gearshift':
-          val = 'Paddles' # a reasonable default
-        else: # value not available
-          val = ''
-        f.write('%s=%s\n' % (tag, val))
-  except:
-    print('Failed to write %s' % _filepath)
-    quit()
+  if overwrite or not os.path.exists(_filepath):
+    try:
+      os.makedirs(datafilesPath, exist_ok=True)
+      with open(_filepath, "w") as f:
+        for tag in tagsToBeWritten:
+          if tag in dict:
+            val = dict[tag]
+            if tag == 'Date':
+              if len(val) == 18: # Windows filetime.
+                # http://support.microsoft.com/kb/167296
+                # How To Convert a UNIX time_t to a Win32 FILETIME or SYSTEMTIME
+                EPOCH_AS_FILETIME = 116444736000000000  # January 1, 1970 as MS file time
+                HUNDREDS_OF_NANOSECONDS = 10000000
+                ts = datetime.datetime.fromtimestamp((int(val) - EPOCH_AS_FILETIME) //
+                                                    HUNDREDS_OF_NANOSECONDS)
+              else: # Unix
+                ts = datetime.datetime.fromtimestamp(int(val))
+              val = ts.strftime("%Y-%m-%d")
+          elif tag == 'DB file ID':
+            val = filename # The unique identifier for the car/track. I think.
+          elif tag in ['Track Name', 'Manufacturer', 'Model']:
+            val = dict['strippedName'].replace('_', ' ')  # default
+          elif tag == 'Rating':
+            val = '***'
+          elif tag == 'F/R/4WD':
+            val = 'RWD' # Most cars are
+          elif tag == 'Gearshift':
+            val = 'Paddles' # a reasonable default
+          else: # value not available
+            val = ''
+          f.write('%s=%s\n' % (tag, val))
+      print(filename)
+    except:
+      print('Failed to write %s' % _filepath)
+      quit()
 
 def cleanTrackName(name):
   """ Track names often include a version, strip that """
@@ -144,7 +164,7 @@ def extractYear(name):
       if len(y) == 4:
         year = y
         decade = year[:3] + '0-'
-        print(name, year)
+        #print(name, year)
         return year, decade, name.replace(y,'')
     for y in _years:
       if len(y) == 2:
@@ -199,7 +219,7 @@ def getVehScnNames(dataFilepath):
       _dict[name] = vehScn
   return _dict
 
-def createDefaultDataFiles():
+def createDefaultDataFiles(overwrite=False):
   getAllTags = False
   rF2_dir = os.path.join(rF2root, 'Installed')
   vehicleFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles'), pattern='*.mft', recurse=True)
@@ -216,7 +236,7 @@ def createDefaultDataFiles():
       text = readFile(veh[0])
       for tag in readTags(text):
         tags[tag] = 0
-    print(tags)
+    #print(tags)
   else: # create data file
     for veh in vehicleFiles:
       text = readFile(veh[0])
@@ -255,17 +275,21 @@ def createDefaultDataFiles():
       tags['originalFolder'], _ = os.path.split(veh[0][len(rF2root)+1:]) # strip the root
       # if veh file name is available in vehNames.txt use it
       tags['vehFile'] = vehNames.veh(tags['Name'])
-      createDataFile(datafilesPath=CarDatafilesFolder, filename=tags['Name'], dict=tags, tagsToBeWritten=carTags)
+      createDataFile(datafilesPath=CarDatafilesFolder, 
+                     filename=tags['Name'],
+                     dict=tags,
+                     tagsToBeWritten=carTags,
+                     overwrite=overwrite)
 
 
-  print('\n\nTracks:')
+  #print('\n\nTracks:')
   tags = {}
   if getAllTags:
     for track in trackFiles:
       text = readFile(track[0])
       for tag in readTags(text):
         tags[tag] = 0
-    print(tags)
+    #print(tags)
   else: # create data file
     for track in trackFiles:
       text = readFile(track[0])
@@ -298,7 +322,11 @@ def createDefaultDataFiles():
         tags['tType'] = trackCategories[tags['Category']]
 
       if tags['Name'] != 'F1_1988_Tracks':
-        createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tagsToBeWritten=trackTags)
+        createDataFile(datafilesPath=TrackDatafilesFolder,
+                       filename=tags['Name'], 
+                       dict=tags, 
+                       tagsToBeWritten=trackTags,
+                       overwrite=overwrite)
       else: # it's a folder of several tracks
         for f1988 in F1_1988_trackFiles:
           tags['Name'] = f1988[1][:-4]
@@ -309,7 +337,11 @@ def createDefaultDataFiles():
             tags['Scene Description'] = scnNames[tags['Name']]
           if tags['Category'] in trackCategories:
             tags['tType'] = trackCategories[tags['Category']]
-          createDataFile(datafilesPath=TrackDatafilesFolder, filename=tags['Name'], dict=tags, tagsToBeWritten=trackTags)
+          createDataFile(datafilesPath=TrackDatafilesFolder,
+                         filename=tags['Name'], 
+                         dict=tags, 
+                         tagsToBeWritten=trackTags,
+                         overwrite=overwrite)
 
 if __name__ == '__main__':
-  createDefaultDataFiles()
+  createDefaultDataFiles(overwrite=True)
