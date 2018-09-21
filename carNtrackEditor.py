@@ -9,7 +9,7 @@ from tkinter import ttk
 
 from rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
-from data import getSingleCarData, getSingleTrackData
+from data import getSingleCarData, getSingleTrackData, reloadAllData
 from editRF2files import writeFile
 
 ############################
@@ -59,14 +59,16 @@ class Editor:
     _filepath = os.path.join(self.DatafilesFolder, _filename+dataFilesExtension)
 
     writeFile(_filepath, text)
-    self.parentFrame.destroy()
+    reloadAllData()
+    #self.parentFrame.destroy()
 
   def saveAsPressed(self):
     # open dialog to name file
-    pass
+    reloadAllData()
 
   def cancelPressed(self):
-    self.parentFrame.destroy()
+    reloadAllData()
+    #self.parentFrame.destroy()
 
 if __name__ == '__main__':
   # To run this tab by itself for development

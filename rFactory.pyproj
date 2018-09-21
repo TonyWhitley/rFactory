@@ -62,6 +62,9 @@
     <Compile Include="trawl_rF2_datafiles.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="utils.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="_tkToolTip.py">
       <SubType>Code</SubType>
     </Compile>

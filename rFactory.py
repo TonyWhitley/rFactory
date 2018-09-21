@@ -16,9 +16,9 @@ import tabOptions
 import tabServer
 import tabScenarios
 import tabJsonEditor
-import trawl_rF2_datafiles 
 
 from executeRF2 import runRF2
+from trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 
 BUILD_REVISION = 32 # The git commit count
 versionStr = 'rFactory V0.1.%d' % BUILD_REVISION
@@ -162,7 +162,6 @@ class Menus:
   menus = {}  # the Menu objects
   def __init__(self, parentFrame):
     self.menuNames = [ \
-      ['File', trawl_rF2_datafiles],
       #['Car', tabCar],
       #['Track', tabTrack],
       #['Opponents', tabOpponents],
@@ -320,4 +319,7 @@ if __name__ == "__main__":
   tabs.selectTab('Cars')
   goButtons.offline()
 
-  tk.mainloop()
+  # Check if there are any new car/track files
+  trawl_for_new_rF2_datafiles(mainWindow)
+
+  mainWindow.handle.mainloop()

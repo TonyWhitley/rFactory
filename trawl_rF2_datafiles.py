@@ -7,8 +7,6 @@ Trawl rF2 data files for raw data as a baseline for rFactory data files
 """
 
 import datetime
-import fnmatch
-import glob
 import os
 import re
 
@@ -18,18 +16,32 @@ from tkinter import messagebox
 
 from rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension, playerPath
+from utils import getListOfFiles, readFile, getTags
 
-def trawl_for_new_rF2_datafiles():
-  createDefaultDataFiles(overwrite=False)
-  messagebox.showinfo(
-            'Scanned rF2 data files',
-            'New rFactory data files created as needed'
-        )
+from data import getSingleCarData, reloadAllData
 
-def setMenubar(menubar):
-  Filemenu = tk.Menu(menubar, tearoff=0)
-  Filemenu.add_command(label="Scan for new rF2 data files", command=trawl_for_new_rF2_datafiles)
-  menubar.add_cascade(label="File", menu=Filemenu)
+import carNtrackEditor
+
+def trawl_for_new_rF2_datafiles(parentFrame):
+  newFiles = createDefaultDataFiles(overwrite=False)
+  reloadAllData()
+  if newFiles != []:
+    edit = messagebox.askyesno(
+              'Scanned rF2 data files',
+              'New rFactory data files created:\n%s\nDo you want to edit them?' % '\n'.join(newFiles)
+          )
+    if edit:
+      for newFile in newFiles:
+        root = tk.Tk()
+        tabTrack = ttk.Frame(root, width=1200, height=600, relief='sunken', borderwidth=5)
+        root.title('Editor')
+        tabTrack.grid()
+
+        fields = carTags
+        data = getSingleCarData(id=newFile, tags=fields)
+        o_tab = carNtrackEditor.Editor(tabTrack, fields, data, DatafilesFolder=CarDatafilesFolder)
+        tk.mainloop()
+  return newFiles
 
 
 
@@ -49,63 +61,9 @@ trackCategories = {
   '57' : 'Temporary'
   }
 
-def getListOfFiles(path, pattern='*.c', recurse=False):
-    def getFiles(filepattern):
-        filenames = []
-        for filepath in glob.glob(filepattern):
-            filenames.append([filepath, os.path.basename(filepath)])
-        return filenames
-
-    def walk(startPath, filepattern):
-        filenames = []
-        for root, dirs, files in os.walk(startPath):
-            for file in files:
-                if fnmatch.fnmatch(file, filepattern):
-                    filenames.append([os.path.join(root, file), file])
-        return filenames
-
-    if recurse:
-        files = walk(path, pattern)
-    else:
-        files = getFiles(os.path.join(path, pattern))
-
-    return files
-
-def readFile(filename):
-  try:
-    with open(filename) as f:
-      originalText = f.readlines()
-  except:
-    originalText = []
-  return originalText
-
-def readTags(text):
-  """ Grep the tags in text and return them as a list """
-  # Name=134_JUDD
-  tags = []
-  for line in text:
-    m = re.match(r'(.*) *= *(.*)', line)
-    if m:
-      tags.append(m.group(1))
-      #print(m.group(1), m.group(2))
-  return tags
-
-def getTags(text):
-  """ Grep the tags in text and return them as a dict """
-  # 'Name' 'Version' 'Type' 'Author' 'Origin' 'Category' 'ID' 
-  # 'URL' 'Desc' 'Date' 'Flags' 'RefCount' 'Signature' 'MASFile'
-  # 'BaseSignature' 'MinVersion'
-  # Name=134_JUDD
-  tags = {}
-  for line in text:
-    m = re.match(r'(.*) *= *(.*)', line)
-    if m:
-      tags[m.group(1)] = m.group(2)
-      #print(m.group(1), m.group(2))
-  return tags
-
 def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=False):
   _filepath = os.path.join(datafilesPath, filename+dataFilesExtension)
+  _newFile = False
   if overwrite or not os.path.exists(_filepath):
     try:
       os.makedirs(datafilesPath, exist_ok=True)
@@ -137,10 +95,11 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
           else: # value not available
             val = ''
           f.write('%s=%s\n' % (tag, val))
-      print(filename)
+      _newFile = True
     except:
       print('Failed to write %s' % _filepath)
       quit()
+  return _newFile
 
 def cleanTrackName(name):
   """ Track names often include a version, strip that """
@@ -220,6 +179,7 @@ def getVehScnNames(dataFilepath):
   return _dict
 
 def createDefaultDataFiles(overwrite=False):
+  newFiles = []
   getAllTags = False
   rF2_dir = os.path.join(rF2root, 'Installed')
   vehicleFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles'), pattern='*.mft', recurse=True)
@@ -275,11 +235,13 @@ def createDefaultDataFiles(overwrite=False):
       tags['originalFolder'], _ = os.path.split(veh[0][len(rF2root)+1:]) # strip the root
       # if veh file name is available in vehNames.txt use it
       tags['vehFile'] = vehNames.veh(tags['Name'])
-      createDataFile(datafilesPath=CarDatafilesFolder, 
-                     filename=tags['Name'],
-                     dict=tags,
-                     tagsToBeWritten=carTags,
-                     overwrite=overwrite)
+      if createDataFile(datafilesPath=CarDatafilesFolder, 
+                        filename=tags['Name'],
+                        dict=tags,
+                        tagsToBeWritten=carTags,
+                        overwrite=overwrite):
+        # a new file was written
+        newFiles.append(tags['Name'])
 
 
   #print('\n\nTracks:')
@@ -322,11 +284,13 @@ def createDefaultDataFiles(overwrite=False):
         tags['tType'] = trackCategories[tags['Category']]
 
       if tags['Name'] != 'F1_1988_Tracks':
-        createDataFile(datafilesPath=TrackDatafilesFolder,
-                       filename=tags['Name'], 
-                       dict=tags, 
-                       tagsToBeWritten=trackTags,
-                       overwrite=overwrite)
+        if createDataFile(datafilesPath=TrackDatafilesFolder,
+                          filename=tags['Name'], 
+                          dict=tags, 
+                          tagsToBeWritten=trackTags,
+                          overwrite=overwrite):
+          # a new file was written
+          newFiles.append(tags['Name'])
       else: # it's a folder of several tracks
         for f1988 in F1_1988_trackFiles:
           tags['Name'] = f1988[1][:-4]
@@ -337,11 +301,21 @@ def createDefaultDataFiles(overwrite=False):
             tags['Scene Description'] = scnNames[tags['Name']]
           if tags['Category'] in trackCategories:
             tags['tType'] = trackCategories[tags['Category']]
-          createDataFile(datafilesPath=TrackDatafilesFolder,
-                         filename=tags['Name'], 
-                         dict=tags, 
-                         tagsToBeWritten=trackTags,
-                         overwrite=overwrite)
+          if createDataFile(datafilesPath=TrackDatafilesFolder,
+                            filename=tags['Name'], 
+                            dict=tags, 
+                            tagsToBeWritten=trackTags,
+                            overwrite=overwrite):
+            # a new file was written
+            newFiles.append(tags['Name'])
+  return newFiles
 
 if __name__ == '__main__':
-  createDefaultDataFiles(overwrite=True)
+  root = tk.Tk()
+  tabCar = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
+  tabCar.grid()
+    
+  #createDefaultDataFiles(overwrite=True)
+  newFiles = trawl_for_new_rF2_datafiles(root)
+  #if newFiles != []:
+  #  root.mainloop()

@@ -25,7 +25,7 @@ It also handles writing the files if they've been edited.
 
 from rFactoryConfig import carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
-from trawl_rF2_datafiles import getListOfFiles, readFile, getTags, createDefaultDataFiles
+from utils import getListOfFiles, readFile, getTags
 
 __cars = {
   'dummyData' : {
@@ -70,6 +70,11 @@ __tracks = {
   'tags' : {}
   }
 
+def reloadAllData():
+  __cars['tags'] = {}
+  __tracks['tags'] = {}
+  __readDatafiles()
+
 def __readDatafiles():
   # Run this once to get the data
   if len(__cars['tags']) == 0:
@@ -82,17 +87,8 @@ def __readDatafiles():
         tags = getTags(text)
         __carID = tags['DB file ID']
         __cars['tags'][__carID] = tags
-        # to print dummy data print(tags)
-        # print()
     else:
-      createDefaultDataFiles() 
-      __readDatafiles() # go round again
-      return
-      """
-      or...
-      print('Using dummy data')
-      __cars['tags'] = __cars['dummyData']
-      """
+      print('No car data files')
 
     if len(trackFiles) > 0:
       for track in trackFiles:
