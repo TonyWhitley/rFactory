@@ -63,6 +63,9 @@ def runOffline(settings):
   _cmd =  '"%s" -applaunch 365960 +singleplayer +path=".."' % (SteamExe)
   # Alternative looks to be
   # "C:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Bin64\rFactor2.exe"
+  os.chdir('c:/Program Files (x86)/Steam/steamapps/common/rFactor 2')
+  _cmd = '"C:/Program Files (x86)/Steam/steamapps/common/rFactor 2/Bin64/rFactor2.exe" +path="."'
+  # +profile="rFactory"
   subprocess.call(_cmd)
 
 def runOnline(settings):

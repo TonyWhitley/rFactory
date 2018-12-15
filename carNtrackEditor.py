@@ -10,7 +10,11 @@ from tkinter import ttk
 from rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
 from data import getSingleCarData, getSingleTrackData, reloadAllData
-from editRF2files import writeFile
+# "Cannot import" error??? from editRF2files import writeFile
+def writeFile(_filepath, text):
+  with open(_filepath, "w") as f:
+    f.writelines(text)
+
 
 ############################
 # The Editor's public class:
