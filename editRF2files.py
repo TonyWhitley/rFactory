@@ -5,7 +5,7 @@ and UserData\player\Player.JSON
 import os
 import re
 
-from trawl_rF2_datafiles import getListOfFiles, readFile
+from trawl_rF2_datafiles import readFile
 from rFactoryConfig import rF2root
 from data import getSingleCarData
 
@@ -118,4 +118,4 @@ if __name__ == '__main__':
   changeCar(vehPath = r'Installed\Locations\Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08')
   changeTrack(scnPath = r'Installed\Locations\F1_1988_Tracks\0.941', scnName='HOCKENHEIM_1988_C4', SceneDescription=r'HOCKENHEIM_1988_C4')
   
-  vehBits = getSingleCarData(Oreca_07_LMP2_2017, ['originalFolder', 'vehFile', 'Name'])
+  vehBits = getSingleCarData('Oreca_07_LMP2_2017', ['originalFolder', 'vehFile', 'Name'])
