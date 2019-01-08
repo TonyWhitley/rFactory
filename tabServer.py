@@ -1,5 +1,6 @@
 # Python 3
 
+import os
 import tkinter as tk
 from tkinter import ttk
 
@@ -8,13 +9,19 @@ from rFactoryConfig import config_tabServer, serverTags
 ##from data import getAllServerData, getSingleServerData
 ##import serverEditor
 
+rF2_serverNotify_path = r'..\rF2_serverNotify\steps'
+if os.path.exists(rF2_serverNotify_path):
+  #sys.path.append(rF2_serverNotify_path)
+  os.chdir(rF2_serverNotify_path)
+  import rF2_serverNotify
+
 NOFILTER = '---' # String for not filtering
 
 dummyData = {
   'server 1': {'Favourite': 'N', 'Server Name': 'server 1', 'Track Name': 'Track 1', 'Humans': '3', 'Maybe': '0', 'AI': '0', 'Max': '20', 'Password': 'Y', 'Version': '11112', 'blank':''},
   'server 2': {'Favourite': 'N', 'Server Name': 'server 2', 'Track Name': 'Track 2', 'Humans': '3', 'Maybe': '0', 'AI': '0', 'Max': '20', 'Password': '', 'Version': '11112', 'blank':''},
-  'server 3': {'Favourite': 'N', 'Server Name': 'server 3', 'Track Name': 'Track 3', 'Humans': '3', 'Maybe': '0', 'AI': '0', 'Max': '20', 'Password': 'N', 'Version': '11112', 'blank':''},
-  'server 4': {'Favourite': 'N', 'Server Name': 'server 4', 'Track Name': 'Track 4', 'Humans': '3', 'Maybe': '0', 'AI': '0', 'Max': '20', 'Password': 'Y', 'Version': '11112', 'blank':''}
+  'server 3': {'Favourite': 'N', 'Server Name': 'server 3', 'Track Name': 'Track 3', 'Humans': '0', 'Maybe': '0', 'AI': '5', 'Max': '20', 'Password': 'N', 'Version': '11112', 'blank':''},
+  'server 4': {'Favourite': 'N', 'Server Name': 'server 4', 'Track Name': 'Track 4', 'Humans': '0', 'Maybe': '5', 'AI': '0', 'Max': '20', 'Password': 'Y', 'Version': '11112', 'blank':''}
   }
 
 dummyFavourites = {
@@ -24,11 +31,28 @@ dummyFavourites = {
   }
 
 def getAllServerData(tags, maxWidth):
-  for k,v in dummyData.items():
-    if v['Server Name'] in dummyFavourites:
-      dummyData[k]['Favourite'] = 'Y'
-      # dummyData[k]['Password'] = dummyFavourites[v['Server Name']]
-  return dummyData
+  _serverData = {}
+  serverObj = rF2_serverNotify.readServersFile()
+  for server in serverObj.getServerNames():
+    status, humans, AI, probables, info = serverObj.getPlayerCounts(server) 
+    if status == 'OK':
+      _entry = {}
+      _entry['Favourite'] = 'N'
+      _entry['Server Name'] = server
+      _entry['Track Name'] = info['map']
+      _entry['Humans'] = str(humans)
+      _entry['Maybe'] = str(probables)
+      _entry['AI'] = str(AI)
+      _entry['Max'] = str(info['max_players'])
+      _entry['Password'] = str(info['password_protected'])
+      _entry['Version'] = info['version']
+      _entry['blank'] = ''
+      if _entry['Server Name'] in dummyFavourites:
+        _entry['_serverData'] = 'Y'
+        # _entry['Password'] = dummyFavourites[v['Server Name']]
+      _serverData[server] = _entry
+
+  return _serverData
 
 def getSingleServerData(id, tags):
   pass
