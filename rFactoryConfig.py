@@ -30,6 +30,8 @@ trackTags = ['Track Name', 'Continent', 'Country', 'tType',
              'Name','Version','Type','Author','Origin','Category',
              'ID','URL','Desc','Date','Flags','RefCount','MinVersion']
 
+serverTags = ['Server name', 'Track Name', 'Players', 'Password', 'Version']
+
 CarDatafilesFolder = 'CarDatafiles'
 TrackDatafilesFolder = 'TrackDatafiles'
 dataFilesExtension = '.rFactory.txt'
@@ -46,4 +48,9 @@ config_tabTrack = {
   'trackColumns' : ['Track Name', 'Version', 'Continent', 'Country', 'Author', 'tType',  'Date',
                   'Year', 'Decade', 'Rating', 'Scene Description','DB file ID'],
   'trackFilters' : ['Author', 'Continent', 'Country', 'tType','Year', 'Decade', 'Rating','Scene Description','Date']
+  }
+
+config_tabServer = {
+  'serverColumns' : ['Favourite', 'Server Name', 'Track Name', 'Humans', 'Maybe', 'AI', 'Max', 'Password', 'Version', 'blank'],
+  'serverFilters' : ['Favourite', 'Server Name', 'Track Name', 'Humans', 'Maybe', 'AI', 'Password', 'Version']
   }
