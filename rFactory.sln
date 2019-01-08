@@ -7,6 +7,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "rFactory", "rFactory.pyproj
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ScriptedJsonEditor", "..\ScriptedJsonEditor\ScriptedJsonEditor\ScriptedJsonEditor.pyproj", "{8B6FEAA7-B8F5-4472-BCB3-4BDC7F5AB211}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "rF2_serverNotify", "..\rF2_serverNotify\rF2_serverNotify.pyproj", "{AA4BE2FB-2AE3-4B2B-8677-0CBCB2F75BAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,8 @@ Global
 		{EC571240-C2A5-42C2-8112-A5036BECB6F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B6FEAA7-B8F5-4472-BCB3-4BDC7F5AB211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B6FEAA7-B8F5-4472-BCB3-4BDC7F5AB211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA4BE2FB-2AE3-4B2B-8677-0CBCB2F75BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA4BE2FB-2AE3-4B2B-8677-0CBCB2F75BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
