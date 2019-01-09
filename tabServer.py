@@ -1,6 +1,8 @@
 # Python 3
 
+from multiprocessing.dummy import Pool as ThreadPool 
 import os
+import sys
 import tkinter as tk
 from tkinter import ttk
 
@@ -11,8 +13,7 @@ from rFactoryConfig import config_tabServer, serverTags
 
 rF2_serverNotify_path = r'..\rF2_serverNotify\steps'
 if os.path.exists(rF2_serverNotify_path):
-  #sys.path.append(rF2_serverNotify_path)
-  os.chdir(rF2_serverNotify_path)
+  sys.path.append(rF2_serverNotify_path)
   import rF2_serverNotify
 
 NOFILTER = '---' # String for not filtering
@@ -30,29 +31,49 @@ dummyFavourites = {
   'server 4': 'XYZZY',
   }
 
-def getAllServerData(tags, maxWidth):
-  _serverData = {}
-  serverObj = rF2_serverNotify.readServersFile()
-  for server in serverObj.getServerNames():
-    status, humans, AI, probables, info = serverObj.getPlayerCounts(server) 
-    if status == 'OK':
-      _entry = {}
-      _entry['Favourite'] = 'N'
-      _entry['Server Name'] = server
-      _entry['Track Name'] = info['map']
-      _entry['Humans'] = str(humans)
-      _entry['Maybe'] = str(probables)
-      _entry['AI'] = str(AI)
-      _entry['Max'] = str(info['max_players'])
-      _entry['Password'] = str(info['password_protected'])
-      _entry['Version'] = info['version']
-      _entry['blank'] = ''
-      if _entry['Server Name'] in dummyFavourites:
-        _entry['_serverData'] = 'Y'
-        # _entry['Password'] = dummyFavourites[v['Server Name']]
-      _serverData[server] = _entry
+class ServerQuery:
+  def __init__(self):
+    self.serverObj = rF2_serverNotify.readServersFile()
+    self.newNames = []
+    self.serverData = {}
 
-  return _serverData
+    print('\nGetting server info...')
+
+    servers = self.serverObj.getServerNames()
+  
+    # Multi-thread querying all servers to speed things up
+    # make the Pool of workers
+    pool = ThreadPool(len(servers)//10) 
+
+    # read the servers in their own threads
+    # and return the results
+    results = pool.map(self.getServerData, servers)
+
+    # close the pool and wait for the work to finish 
+    pool.close() 
+    pool.join() 
+
+  def getServerData(self, server):
+      status, humans, AI, probables, info = self.serverObj.getPlayerCounts(server) 
+      if status == 'OK':
+        _entry = {}
+        _entry['Favourite'] = 'N'
+        _entry['Server Name'] = server
+        _entry['Track Name'] = info['map']
+        _entry['Humans'] = str(humans)
+        _entry['Maybe'] = str(probables)
+        _entry['AI'] = str(AI)
+        _entry['Max'] = str(info['max_players'])
+        _entry['Password'] = str(info['password_protected'])
+        _entry['Version'] = info['version']
+        _entry['blank'] = ''
+        if _entry['Server Name'] in dummyFavourites:
+          _entry['_serverData'] = 'Y'
+          # _entry['Password'] = dummyFavourites[v['Server Name']]
+        self.serverData[server] = _entry
+
+  def getData(self):
+    return self.serverData
 
 def getSingleServerData(id, tags):
   pass
@@ -143,7 +164,8 @@ class Tab:
       self.filteredData = None
     def fetchData(self):
       """ Fetch the raw data from wherever """
-      self.data = getAllServerData(tags=config_tabServer['serverColumns'], maxWidth=20)
+      self.data = ServerQuery().getData()
+      # getAllServerData(tags=config_tabServer['serverColumns'], maxWidth=20)
       return self.data
     def filterData(self, filters):
       """ 

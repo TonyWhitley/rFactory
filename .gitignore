@@ -342,3 +342,4 @@ ASALocalRun/
 /build/rFactory_data
 /dist
 /rFactory_data.spec
+/servers.file.json
