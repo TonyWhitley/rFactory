@@ -192,9 +192,10 @@ class GoButtons:
   """
   def __init__(self, parentFrame):
     _goFrame = ttk.Frame(parentFrame)
-    _goFrame.grid(column=1, row=0, sticky='w')
+    _goFrame.grid(column=13, row=0, sticky='w')
     # Draw the buttons
     buttonFont = font.Font(weight='bold', size=10)
+    __gbc = 2 # Go Buttons Column
 
     self.tkButtonOnline = tk.Button(
         _goFrame,
@@ -204,7 +205,7 @@ class GoButtons:
         background='orange',
         font=buttonFont,
         command=self.online)
-    self.tkButtonOnline.grid(column=2, row=0, pady=5)
+    self.tkButtonOnline.grid(column=__gbc, row=0, pady=5)
 
     self.tkButtonOffline = tk.Button(
         _goFrame,
@@ -214,7 +215,7 @@ class GoButtons:
         background='orange',
         font=buttonFont,
         command=self.offline)
-    self.tkButtonOffline.grid(column=2, row=1, pady=5)
+    self.tkButtonOffline.grid(column=__gbc, row=1, pady=5)
 
     self.tkButtonReplay = tk.Button(
         _goFrame,
@@ -224,7 +225,7 @@ class GoButtons:
         background='orange',
         font=buttonFont,
         command=self.replay)
-    self.tkButtonReplay.grid(column=2, row=2, pady=5)
+    self.tkButtonReplay.grid(column=__gbc, row=2, pady=5)
 
     self.tkButtonRun = tk.Button(
         _goFrame,
@@ -234,7 +235,7 @@ class GoButtons:
         background='green',
         font=buttonFont,
         command=self.run)
-    self.tkButtonRun.grid(column=2, row=3, pady=25)
+    self.tkButtonRun.grid(column=__gbc, row=3, pady=25)
 
     self.tkButtonQuit = tk.Button(
         _goFrame,
@@ -242,7 +243,7 @@ class GoButtons:
         width=20,
         background='red',
         command=self._quit)
-    self.tkButtonQuit.grid(column=2, row=4, pady=25)
+    self.tkButtonQuit.grid(column=__gbc, row=4, pady=25)
 
   def online(self):
     """ The Online button pressed """

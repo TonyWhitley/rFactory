@@ -86,9 +86,8 @@ class Tab:
     """ Put this into the parent frame """
     self.parentFrame = parentFrame
     self.settings = None #PyLint
-    o_serverData = self.__ServerData()
-    serverData = o_serverData.fetchData()
-
+    self.activated = False
+    parentFrame.bind("<Visibility>", self.activate) # callback when this tab is selected
 
     self.mc = Multicolumn_Listbox(parentFrame, 
                              config_tabServer['serverColumns'], 
@@ -98,6 +97,14 @@ class Tab:
                              adjust_heading_to_content=False, 
                              cell_anchor="center")
 
+  def activate(self, event):
+    """
+    Don't actually fetch the data from servers until this tab is selected.
+    """
+    if self.activated:
+      return # Already activated
+    o_serverData = self.__ServerData()
+    serverData = o_serverData.fetchData()
     # calculate the column widths to fit the headings and the data
     colWidths = []
     for col in config_tabServer['serverColumns']:
@@ -115,11 +122,13 @@ class Tab:
     self.mc.configure_column(2, anchor='w')
     self.mc.interior.grid(column=0, row=1, pady=2, columnspan=len(config_tabServer['serverColumns']))
 
-    o_filter = self.__Filter(parentFrame, config_tabServer['serverColumns'], colWidths, o_serverData, self.mc)
+    o_filter = self.__Filter(self.parentFrame, config_tabServer['serverColumns'], colWidths, o_serverData, self.mc)
     for _filter in config_tabServer['serverFilters']:
       o_filter.makeFilter(_filter, serverData)
    
     o_filter.filterUpdate(None) # Initial dummy filter to load data into table
+
+    self.activated = True
 
     self.mc.select_row(0)
 
@@ -129,10 +138,11 @@ class Tab:
 
   def setSettings(self, settings):
     """ Set the settings for this tab """
-    serverID = settings[-1]
-    i = 2 # the row for serverID 
-    self.mc.deselect_all()  # clear what is selected.
-    self.mc.select_row(i)
+    if self.activated:
+      serverID = settings[-1]
+      i = 2 # the row for serverID 
+      self.mc.deselect_all()  # clear what is selected.
+      self.mc.select_row(i)
   
   def __on_select(self, data):
     self.settings = data
@@ -249,5 +259,6 @@ if __name__ == '__main__':
   tabServer.grid()
     
   o_tab = Tab(tabServer)
+  o_tab.activate(None)
 
   root.mainloop()
