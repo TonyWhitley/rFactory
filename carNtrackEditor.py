@@ -81,12 +81,22 @@ if __name__ == '__main__':
   root.title('Editor')
   tabTrack.grid()
     
-  fields = 'Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'Car DB file'
-  sampleData = ['Porsche', '917K', 'Gp.C', 'Apex', 'GT', 'RWD', 1967, '1960-', '*****', 'FLAT12_917k_1971']
-#  o_tab = Editor(tabTrack, fields, sampleData, command=answer)
+  edit = 'carData'
 
-  data = getSingleCarData(sampleData[-1], carTags)
-  o_tab = Editor(tabTrack, carTags, data, CarDatafilesFolder)
+  if edit == 'sampleData':
+    fields = 'Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'DB file ID'
+    sampleData = ['Porsche', '917K', 'Gp.C', 'Apex', 'GT', 'RWD', 1967, '1960-', '*****', 'FLAT12_917k_1971']
+    o_tab = Editor(tabTrack, fields, sampleData, command=answer)
+
+  elif edit == 'carData':
+    sampleData = ['Porsche', '917K', 'Gp.C', 'Apex', 'GT', 'RWD', 1967, '1960-', '*****', 'FLAT12_917k_1971']
+    data = getSingleCarData(sampleData[-1], carTags)
+    o_tab = Editor(tabTrack, carTags, data, CarDatafilesFolder)
+
+  elif edit == 'serverData': # doesn't really work, need a separate editor for favourite server handling
+    fields = ['Favourite', 'Password', 'DB file ID']
+    sampleData = {'Favourite':'N', 'Password':'', 'Server':'My favourite server', 'DB file ID':'favourite servers'}
+    o_tab = Editor(tabTrack, fields, sampleData, 'favourites')
 
   root.mainloop()
 

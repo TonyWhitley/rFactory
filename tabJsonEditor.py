@@ -64,9 +64,10 @@ if __name__ == '__main__':
   menubar = tk.Menu(root)
 
   menuLabel = 'JSON editor'
-  _menu = tk.Menu(menubar, tearoff=0)
-  menubar.add_cascade(label=menuLabel, menu=_menu)
-  setMenubar(_menu)
+  # This makes a second copy of the menus
+  #_menu = tk.Menu(menubar, tearoff=0)
+  #menubar.add_cascade(label=menuLabel, menu=_menu)
+  #setMenubar(_menu)
   menu2tab = setMenu2tab(SJE_path)
   Menu(menubar=menubar, menu2tab=menu2tab)
   # display the menu
