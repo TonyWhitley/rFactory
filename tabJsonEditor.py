@@ -7,8 +7,8 @@ from tkinter import ttk
 
 SJE_path = r'..\ScriptedJsonEditor\ScriptedJsonEditor'
 if os.path.exists(SJE_path):
-  #sys.path.append(SJE_path)
-  os.chdir(SJE_path)
+  sys.path.append(SJE_path)
+  #os.chdir(SJE_path)
   from GUI import Tab as _Tab
   from GUI import setMenu2tab
   from GUImenu import Menu

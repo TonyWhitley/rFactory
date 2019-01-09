@@ -36,12 +36,12 @@ try:
     from Tkinter import Frame, Label
     from Tkconstants import *
     from tkFont import Font, nametofont
-    from ttk import Treeview, Style
+    from ttk import Treeview, Style, Scrollbar
 except ImportError:
     from tkinter import Frame, Label
     from tkinter.constants import *
     from tkinter.font import Font, nametofont
-    from tkinter.ttk import Treeview, Style
+    from tkinter.ttk import Treeview, Style, Scrollbar
 
 # Python 3 compatibility
 try:
@@ -261,6 +261,13 @@ class Multicolumn_Listbox(object):
             treeview_kwargs["selectmode"] = select_mode
 
         self.interior = Treeview(master, columns=columns, **treeview_kwargs)
+        #tjw Scrollbar add
+        self.scrollbar = Scrollbar(master, orient=VERTICAL, command=self.interior.yview)
+        self.interior.configure(yscrollcommand=self.scrollbar.set)
+        self.scrollbar.grid(row=1, column=len(columns), sticky='NSE')
+        self.interior.grid(row=1, column=0)
+        #master.grid_columnconfigure(0, weight=1)
+        #master.grid_columnconfigure(1, weight=1)
         
         if command is not None:
             self._command = command

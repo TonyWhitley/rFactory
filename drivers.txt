@@ -1,0 +1,1048 @@
+#AI players identified by scraping data files
+A J Foyt
+A. J. Foyt
+A.J. Foyt
+Aaron Lim
+Abdulaziz Al Faisal
+Abdulla Ebrahim Mattar
+Adam Cleverley
+Adam Lacko
+Ade Allen
+Ade Gorman
+Adrian Fernandez
+Adrian Sutil
+Adrien Herber
+Airon Smithe
+Al Broderick
+Al Herman
+Alain Prost
+Alain Tarquini
+Alan Jones
+Alan Van Der Merwe
+Alasdair McCaig
+Albin Warnelov #12
+Alessandro Balzan
+Alessandro Bandini
+Alessandro Nannini
+Alessio Romito
+Alex Berger
+Alex Brundle
+Alex Caffi
+Alex Fontana
+Alex J
+Alex Martin
+Alex McDowall
+Alex Muller
+Alex Navejar
+Alex Schmurtz
+Alexandre Imperatori
+Alexandre Premat
+Alexis Fenton
+Alfred Kramer Jr #7
+Alfredo Galinas
+Allan Sciuto
+Allan Simonsen
+Alois Meir
+Alvaro Barba
+An Suk-Won
+Anders Buchardt
+Andrea Belicchi
+Andrea DeCesaris
+Andrea Montermini
+Andrea Piccini
+Andrea Roda
+Andreas Stucki #9
+Andreas Wirth
+Andrew Davis
+Andrew Howard
+Andrew Jordan
+Andrew Kirkaldy
+Andrew Smith
+Andy Lally
+Andy Priaulx
+Andy Wallace
+Andzej Dzikevic
+Ange Barde
+Angel Andres Benitez Jr
+Anita Toth #86
+Anthony Martin
+Anton Nebylitskiy
+Antonio Garcia
+Antonio Pizzonia
+Antonio Segura
+Armaan Ebrahim
+Arnaud Peyroles
+Arnaud Vincent
+Arno Klasen
+Arthur D'Angelo
+Arturo Merzario
+Ash Hand #1
+Ash Harris
+Asmin Gosh
+Astro Krandle
+Augusto Farfus
+Austin McCusker
+Axcil Jefferies
+Ayla Agren
+Ayrton Senna
+B. Giacomelli
+B. Schneider
+Balazs Kiss #43
+Bam Toldoff
+Bart Gable
+Bastien Briere
+Bela Csiszer #4
+Ben Barker
+Ben Devlin
+Ben Marklin
+Benjamin Leuchter
+Bernd Schneider
+Bernhard van Oranje
+Bertrand Meringue
+Bill Eve
+Bill Homeier
+Billy Johnson
+Bjorn Wirdheim
+Bob Akin
+Bob Bondurant
+Bob Brown
+Bob Christie
+Bob Evans
+Bob Faieta
+Bob Nagel
+Bob Rollard
+Bob Veith
+Bobby Grim
+Bostjan Avbelj #5
+Brad Shuber
+Brendon Hartley
+Bret Curtis
+Bret LeBrac
+Brett Finucane
+Brian Frisselle
+Brian Redman
+Brian Toszt
+Brice Bosi
+Britt Nixon
+Bruno Giacomelli
+Bruno Senna
+Bryce Miller
+Buck Fulp
+Bud Morley
+Bud Tingelstad
+Buster Devall
+Buster Timms
+Butch Leitzinger
+C. Menzel
+Cameron Das
+Cameron Menzies
+Cantaro Harold
+Carlos Garcia
+Carlos Pace
+Carlos Reutemann
+Carlos Sainz
+Chandler Stohl
+Charles Jameson
+Charles Leclerc
+Charles Ng
+Charles Pic
+Charlie Charlez
+Charlie Kolb
+Chris Brown
+Chris Dyson
+Chris Fulton
+Chris Goodwin
+Chris Niarchos
+Chris van der Drift
+Christian Montanari
+Christian Munoz
+Christian Ott
+Christian Van Der Bourne
+Christian Vietoris
+Christian Zoerner
+Christina Hartmann
+Christophe Bouchut
+Christopher Elliott
+Christopher Nygaard
+Christopher Zanella
+Chuck Parsons
+Chuck Stevenson
+Claudia Hurtgen
+Clay Regazzoni
+Clint McMahan
+Cooper McNeil
+Craig Baird
+Craig Thomas
+Curtis Sullivan
+Daisy Gump
+Dakota Dickerson
+Dale VandenBush
+Damien Coens
+Damien Faulkner
+Dan Gurney
+Dane Cameron
+Daniel Brown
+Daniel Dobitsch
+Daniel Justou
+Daniel Keilwitz
+Daniel McKenzie
+Daniel Mihalik #55
+Daniel Morad
+Daniel Morad '07
+Daniel Nyffeler #33
+Daniel Ricciardo
+Daniel Vazquez
+Daniel Vereczi #95
+Daniela Schmid
+Daniil Kvyat
+Danny Watts
+Dany Slowaksky
+Daren Law
+Darin Cage
+Darren Turner
+Darryl O'Young
+Dastan Farrokhzad
+Dave Charlton
+Dave Kennedy
+Dave Morgan
+David Brabham
+David Farias
+David Foster
+David Garza
+David Hobbs
+David Jones
+David O'Reilly
+David Piper
+David Piper/Brian Redman
+David Piper/Gijs van Lennep
+David Rangel
+David Sigacev
+David Zhu
+Dean Smith
+Dejan de Zoysa
+Demarco Sala
+Dempsey Wilson
+Dennis Gebhart
+Denny Hulme
+Derek Bell
+Derek Burseth
+Derek Daly
+Derek Warwick
+Devin Wojcik
+Dick Rathmann
+Dick Roquin
+Didier Pironi
+Didier Schumann
+Diego Alessi
+Diego Romanini
+Dillon Koster #90
+Dino Calcum #36
+Dino Zamparelli
+Dion Von Moltke
+Dirk Muller
+Dirk Werner
+Dom Duhan
+Dominik Baumann
+Dominik Farnbacher
+Dominik Jackson
+Dominik Wasem
+Dominique Martin/Gerard Pillon
+Dominique Martin/Pablo Brea
+Don Branson
+Don Freeland
+Don Scurlock
+Donald Leetham
+Doug Boyer
+Duane Carter
+Duarte Felix da Costa
+Earl Bamber
+Eddie Cheever
+Eddie Johnson
+Eddie Russo
+Eddie Sachs
+Edouard Mondron
+Edward Sandstrom
+Elio De Angelis
+Eliza Charlise
+Elliot Morrisette
+Elroy Bitton
+Elton Julian
+Elvira Forcaciao
+Emanuele Lavaggi
+Emerson Fittipaldi
+Endo Mitsunobu
+Enrico Fulgenzi
+Eric Elliott
+Eric Filgueiras
+Eric Lebeau
+Eric Lux
+Eric van de Poele
+Ernie Mantooth
+Esteban Gutierrez
+Esteban Ocon
+F. Jelinski
+Fabien Giroix
+Fabio Babini
+Fabio Onidi
+Faisal Binladen
+Fawaz Algosaibi
+Federico Montoya
+Felipe Massa
+Felipe Ortiz
+Fernando Alonso
+Fernando Ortez
+Fernando Rees
+Ferrari TestDriver
+Filipe Albuquerque
+Florian Spengler
+Francesco Castellacci
+Franck Mailleux
+Franco Castellacci
+Frank Azariah
+Frank Timms
+Frankie Muniz
+Franz Engstler
+Fred Bouvy
+Fred Corleone
+Freddy Gugelman
+Frederic Bouvy
+Frederic Gabillon & Gilles Vannelet
+Frederic Makowiecki
+Gabor Czimer #48
+Gabor Tim #33
+Gabriela Jilkova #11
+Gabriele Tarquini
+Gaetan Legastelois
+Gaetano Ardagna Perez
+Garth Rickards
+Gary Chalandon
+Gary Mecca
+Gary Reid
+Gen Emoto
+Gene Force
+Gene Hartley
+Gene Martin
+Geoff Lees
+Georg Weiss
+George Alderman
+George Follmer
+George Fouche
+Gerald Blomqvist
+Gerard larousse
+Gerhard Berger
+Giacomo Piccini
+Gianluca Giraudi
+Gianluca Roda
+Gianmaria Bruni
+Giedo van der Garde
+Gilles Villeneuve
+Giovanni Lavaggi
+Giovanni Scala
+Gjon Camaj
+Gordon Shedden
+Graham Hill
+Gregoire Demoustier
+Gregor Moody
+Guillaume Carlier
+Gus Harvey
+Gus Nixon
+Gustavo Yacaman
+Guy Smith
+H. Huysman
+H. O. Rensing
+H. Stuck
+Haas TestDriver
+Hamad Al Farden
+Hamza Dirani
+Hans Giedo Riegel
+Hans Herrmann/R. Attwood
+Hans Joachim Stuck
+Hans Klemann
+Hans Muller
+Hans Stuck
+Harald Ertl
+Harald Schlegelmilch
+Hari Hanninen
+Harold MacLeod
+Harriet Cole
+Harry Rogers
+Harry Tincknell
+Haruki Kurosawa
+Hector Hurst
+Hector Rebaque
+Hector Thomson
+Helio Grindelwald
+Helmut Kelleners
+Henri Dumont
+Henri Karjalainen
+Henry Hassid
+Henry Walkenhorst
+Hideto Yasuoka
+Ho-Pin Tung
+Horst Felbermayr Jr
+Horst Felbermayr Sr
+Hotchkis
+Hugh Dibley
+Hugh Powell
+Hurley Haywood
+Ivan Bellarosa
+Ivan Capelli
+Ivan Crump
+J. Dauer
+Jaap Van Lagen
+Jack Basford
+Jack Bull
+Jack Simpson
+Jack Torrance
+Jackie Stewart
+Jacky Ickx
+Jacky olivier /pedro rodriguez
+Jacques Laffite
+Jacques Nicolet
+Jacques Villeneuve
+Jaime Melo
+Jake Plate
+James Davison
+James H.
+James Hinchcliffe
+James Hunt
+James Mongrell
+James Munro
+James Sofronas
+James Walker
+James Weaver
+James Winslow
+Jamie Campbell Walter
+Jan Charouz
+Jan Lammers
+Jan Magnussen
+Jan Seyffarth
+Jan Stovicek
+Jann Mardenborough
+Janos Hegyvari #3
+Jason Bowles
+Jason Digby
+Jason Mound
+Jean Pierre Jabouille
+Jean Pierre Jarier
+Jean Pierre Lefort
+Jean-Eric Vergne
+Jean-Louis Schlesser
+Jean-Luc Beaubelique
+Jean-Marie Alméras
+Jeff Smith
+Jeffrey van Hooydonk
+Jelle Beelen
+Jens Hoing
+Jens Klingmann
+Jens Petersen
+Jenson Button
+Jeroen Bleekemolen
+Jeroen Mul
+Jeroen Schothorst
+Jeroen den Boer
+Jerome Policand
+Jerry Grant
+Jesus Pareja
+Jia Xu
+Jim Cole
+Jim Hurtubise
+Jim McWithey
+Jim Miller
+Jim Rathmann
+Jimmy Bryan
+Jiri Micanek, Jr.
+Jo Flint
+Jo siffert/kurt ahrens
+Joakim Lambotte
+Joao Barbosa
+Joao Urbano
+Jochen Mass
+Jody Scheckter
+Jody Scheckter (P34)
+Joe Campana
+Joe Doe
+Joe Osborne
+Joel Jackson
+Joey Hand
+Johan Kristoffersson
+Johannes Rojola
+Johannes van Overbeek
+John Cannon
+John Hartshorne
+John Hille
+John Hodsoll
+John Martin
+John Mayes
+John Modystach
+John Persson
+John Steinberg
+John Surtees
+John Watson
+John Zartarian
+John-Daniel Welsh
+Johnny Boyd
+Johnny Cecotto
+Johnny Herbert
+Johnny O'Connell
+Johnny Thomson
+Jonathan Chan
+Jonathan Hirschi
+Jonathan Palmer
+Jonathan Summerton
+Jonathan Summerton '05
+Jonny Cocker
+Jonny Kane
+Jonny Reid
+Jordan Cane
+Jordan Dick
+Jordan Grogor
+Jordan Lloyd
+Jordan Taylor
+Jordan Wise
+Jorg Belmer
+Jorg Bergmeister
+Jorg Muller
+Jorgan Continanza
+Jos Verstappen
+Josh Barnes
+José Luis Abadin
+Jules Bianchi
+Jules Duc
+Julian Bailey
+Julien Briche
+Julien Canal
+Julien Draper
+Julián Campillo
+Jurgen Haring
+Jurgen Neuhaus
+Jurgen Neuhaus/Helmut Kellenhers
+Justin Wilson
+Kalle Kouri
+Karim Ojjeh
+Karl Wendlinger
+Karun Chandhok
+Kaylen Frederick
+Kazuhiko Oda
+Keith Davis
+Keke Rosberg
+Ken Minard
+Kenji Kobayashi
+Kevin Estre
+Kevin Gilardoni
+Kevin Kubatu
+Kevin Magnussen
+Kevin Miller
+Kevin Mirocha
+Kevin Snoeks
+Kevin Veltman
+Khaled Al Qubaisi
+Kimi Raikkonen
+Kimi Räikkönen
+Kirill Ladygin
+Kirk H.
+Klause Manning
+Koen Wauters
+Kony Falco
+Kota Sasaki
+Kourosh Khani
+Kris Heidorn #16
+Kristian Poulsen
+Krumm
+Kuba Giermaziak
+Kunimitsu Takahashi
+Kyle Herder
+Lance Stroll
+Larry Gervais
+Lars Viljoen
+Laureen McCormik
+Laurens Vanthoor
+Lazareus Mekinthral
+Leh Keen
+Leigh Benjafield
+Lella Lombardi
+Len Sutton
+Leo Kinnunen /pedro rodriguez
+Leo Mansell
+Leonard Hofstadter
+Leslie Simonson
+Lewis Hamilton
+Lisa Brunner #44
+Lloyd Ruby
+Loren Beggs
+Lothar Motschenbacher
+Louis Machiels
+Louis Rodriguez
+Luc Van Camp
+Luca Pirri
+Lucas Kohl
+Lucas Luhr
+Luciano Bacheta
+Ludovic Badey
+Luis Diaz
+Luis Felipe Derani
+Luis Perez Companc
+Luis Perez-Sala
+Luka Peklaj
+Luke Gabin
+Luke Longnecker
+M. Andretti
+M. Bouwman
+M. Reuter
+MATSUDA / OLIVEIRA
+Mack Ford
+Manuel Brinkmann #22
+Manuel Reuter
+Marc Busch
+Marc Lieb
+Marc Sourd
+Marcel Offermans
+Marco Cioci
+Marco Idili
+Marco Raschiani
+Marco Santos
+Marco Sorensen
+Marcus Ericsson
+Margot Laffite
+Mario Andretti
+Mario Cabral
+Mario Farnbacher
+Mark Blundell
+Mark Bradshaw
+Mark Donohue
+Mark Galvin
+Mark Sarrogh
+Mark Stanton
+Mark Webber
+Markus Niemela
+Markus Paltalla
+Markus Palttala
+Markus Pommer
+Martijn Bont
+Martin Brundle
+Martin Matzke
+Martin Ragginger
+Martin Tomczyk
+Martin van Nostrand
+Masateru Suzuki
+Masatomo Shimizu
+Mathias Beche
+Mathias Lauda
+Mathéo Tuscher
+Matias Russo
+Matsuda
+Matt Griffin
+Matt Harris
+Matt Jaskol
+Matt Lee
+Matt McMurry
+Matt Neal
+Matt Patrick
+Matteo Bobbi
+Matteo Malucelli
+Matthew Howson
+Mauricio Gugelmin
+Maurizio Mediani
+Mauro Calamia
+Max Braams
+Max Coates #71
+Max Cohen-Olivar
+Max Hanratty
+Max Snegirev
+Max Verstappen
+Maxime Martin
+Maxime Pelletier
+Maximilian Gotz
+Maximilian Sandritter
+Maximus Eroo
+Melissa Portinari
+Melvin Moh
+Melvin de Groot #29
+Memo ROJAS
+Menzies Friedman
+Michael Antonio
+Michael Avenatti
+Michael Bleekemolen #56
+Michael Borda
+Michael Enstone
+Michael Foster
+Michael Keller
+Michael Marsal
+Michael Patrizi
+Michael Rashtom
+Michael Schumacher
+Michael Vergers
+Michael Zehe
+Michai Stephens
+Michel Frey
+Michele Alboreto
+Michele La Rosa
+Mihai Marinescu
+Mika Salo
+Mika Vahamaki
+Mike Cain
+Mike Conway
+Mike DiPonio
+Mike Hedlund
+Mike Hesse #17
+Mike Parisy
+Mike Verschuur
+Mikhail Aleshin
+Mikhail Schubert
+Miko Kauppo
+Milan Berki #22
+Mitch Evans
+Mohammed Al Baharna
+Morgan Monroe
+Mort Nicolas
+Motoyama
+Motoyama / Sekiguchi
+Natacha Gachnang
+Nathan Antunes
+Nathanael Berthon
+Neil Bouwhuis
+Neil Towlson
+Nelson Panciatici
+Nelson Piquet
+Niall Quinn
+Nicholas Rostrata
+Nick Catsburg
+Nick Hamm
+Nick Heidfeld
+Nick Sheldon
+Nick de Bruijn
+Nicki Thiim
+Nicklas Oscarsson #81
+Nicky Cuypers
+Nico Hulkenberg
+Nico Pieter De Bruijn
+Nico Rosberg
+Nicola Cadei
+Nicola Larini
+Nicolas Hulkenberg
+Nicolas Minassian
+Nicolas de Crem
+Niels Mutser
+Niels Tyge
+Nigel Mansell
+Niki Lauda
+Nikita Lastochkin
+Nikita Prokopiev
+Nikos Theodorikos
+Nils Mierschke #89
+Noel Hibbard
+Noel Hubbard
+Norton Scraples
+Okano Keisuke
+Oleksandr Gaidai
+Oliveira
+Oliver Freymuth
+Oliver Gavin
+Oliver Morley
+Oliver Stewart
+Oliver Turvey
+Oliver Webb
+Olivier Beretta
+Olivier Lombard
+Olivier Pla
+Olly Bryant
+Oscar Larrauri
+Oscar Rottink
+Oswaldo Negri
+Parker Pennington
+Parker Thompson
+Parnelli Jones
+Parthiva Sureshwaren
+Pascal Gibon
+Pascal Wehrlein
+Pastor Maldonado
+Patrick Bornhauser
+Patrick Dempsey
+Patrick Depailler
+Patrick Depailler (P34)
+Patrick Hirsch
+Patrick Huisman
+Patrick Long
+Patrick Niederhauser
+Patrick Pilet
+Patrick Tambay
+Patrik Bachrati #79
+Paul Dalla Lana
+Paul Daniels
+Paul Drayson
+Paul Goldsmith
+Paul Hawkins
+Paul Loup Chatin
+Paul Rees
+Paul Van Splunteren
+Paul di Resta
+Pedro Lamy
+Penn Payne
+Pete Aron
+Peter Baggs
+Peter Dumbreck
+Peter Posavac
+Peter Rayfield
+Peter Revson
+Peter Scharmach #59
+Petri Lappalainen
+Phil Keen
+Philip Wulbusch #19
+Philipp Eng
+Philipp Peter
+Philippe Alliot
+Philippe Streiff
+Pic Rostof
+Piercarlo Ghinzani
+Pierluigi Martini
+Pierre Dieudonne
+Pierre Ehret
+Pierre Gasly
+Pierre Gual
+Pierre Kaffer
+Pierre Paoli
+Pierre Pelonero
+Pierre Ragues
+Pierre Thiriet
+Pieter Schothorst
+Plamen Kralev
+Pudlea
+Quintarelli
+Race Johnson
+Radar
+Raimo Rokka
+Ralf Oeverhaus
+Ralph Meichtry
+Ray Angus
+Razvan Umbrarescu #4
+Red Amick
+RedBull TestDriver
+Reinhold Jost/Willy Kauhsen
+Rene Arnoux
+Rene Leutenegger #6
+Rene Rast
+Rene Steenmetz #55
+Rene' Arnoux
+Reto Wuest #48
+Ricardo Gonzalez
+Riccardo Patrese
+Richard Attwood
+Richard Chmielewski
+Richard Gonda
+Richard Keen
+Richard Kressner
+Richard Lietz
+Richard Plant
+Richard Westbrook
+Richie Speed
+Richie Stanaway
+Rico Steineman/Dieter Spoerry
+Roald Goethe
+Rob Bell
+Robert Baughey
+Robert Bell
+Robert Boughey
+Robert Isler
+Robert Kubica
+Robert McDuck
+Robert McFly
+Robert Megennis
+Robert Rodriguez
+Robert Thorne
+Robert Wickens
+Roberto Plati
+Roberto Scagni
+Robin Ingston
+Robin Rudholm
+Rodger Ward
+Rodolfo Avila
+Rodolfo Gonzalez
+Roger Grouwels
+Roger McCluskey
+Roland Hertner #50
+Roland Ratzenberger
+Roland Schmid #7
+Rolf Stommelen
+Romain Grosjean
+Romain Monti
+Roman Golikov
+Roman Romanov
+Roman Rusinov
+Romeo Kapudija
+Ron Wright
+Ronald Harvey
+Ronnie Bucknum
+Ronnie Peterson
+Ruben Correa Alves
+Rudi Adams
+Rudy Saenen
+Ruud Hermans
+Ryan Campbell
+Ryan Phinny
+Salman Rashid Al Khalifa
+Sam Bird
+Sam Chastain
+Sam Hancock
+Sam Hanks
+Sam Moss
+Sam Tordoff
+Samuel Martin
+Samuele Buttarelli
+Sandro Kaibach #10
+Sandy Loess
+Sascha Maassen
+Satoru Nakajima
+Scott Schroeder
+Scott Sharp
+Sean Edwards
+Sebastiaan Bleekemolen #57
+Sebastian Bernanke
+Sebastian Buemi
+Sebastian Saavedra
+Sebastian Vettel
+Sebastien Buemi
+Sebastien Loeb
+Seisaku Suzuki
+Sekiguchi
+Sergeant Whoopass
+Sergey Ryabov
+Sergey Sirotkin
+Sergio Perez
+Shane Lewis
+Shorty Templeman
+Simon Dolan
+Simon Knap
+Simon Reicher #82
+Simon Rogers
+Simona de Silvestro
+Skan
+Skip Hudson
+Skip Scott
+Slow Motion
+Soheil Ayari
+Spencer Pumpelly
+Stanley Dickens
+Stefan Johansson
+Stefan Mucke
+Stefano Coletti
+Stefano Coletti '06
+Stefano Gai
+Stefano Modena
+Stelio Perkins
+Stephan Polderman #21
+Stephane Sarrazin
+Steve Bauer
+Steve Fodale
+Steve McQueen
+Steven Andskar
+Steven Ciofalo
+Steven Guerrero
+Steven Richards
+Stewart Bloom
+Stoffel Vandoorne
+Stuart Hall
+Stuart Moseley
+Stuart Rossin
+Stéphane Lemeret
+Suds Hanseros
+Suya Fuhari
+Sérgio Galvão
+Tabor Gilson
+Takashi Yorino
+Tamas Cseh #89
+Tapio Rinneaho
+Tautvydas Barstys
+Tazio Ottis
+Terence Calder
+Terence Groening
+Tero Dahlberg
+Terry Underwood
+Tetsu Ikuzawa
+Tetsuji Shiratori
+Tetsuya Yamano
+Thanos Ziozias
+Theresa Jordan
+Thierry Boutsen
+Thomas Biagi
+Thomas Moll
+Thor Christian Ebbesvik
+Tibor Csobolya
+Tilen Horvat
+Tim Harvey
+Tim Lee Davey
+Tim Pappas
+Tim Tzou
+Tim Vanhee
+Tim Veech
+Timo Glock
+Tobias Hegewald
+Tobias Seyffarth #14
+Tobias Zoll #18
+Tom Kimber Smith
+Tom Milner
+Tom Pringle
+Tom Pryce
+Tom Sutherland
+Tomas Kostka
+Tomas Pekar #11
+Tomasz Wojcik #25
+Tommy Erdos
+Toni Seiler
+Toni Vilander
+Tony Adamowicz/Mario Cabral
+Tony Adamowicz/Mario Casoni
+Tony Bettenhausen
+Tony Brise
+Tony Roberts
+Tony Trimmer
+Tony Vlad
+Tor Graves
+ToroRosso TestDriver
+Toto Howard
+Townsend Bell
+Tracy Krohn
+Trevor Daley
+Tristan Gommendy
+Troy Ruttman
+Tung Ho-Pin
+Uriah Groban
+Uwe Alzen
+Valentino Rossi
+Valtteri Bottas
+Vern Schuppan
+Vic Elford
+Vic Elford/Kurt Ahrens Jr.
+Victor Franzoni
+Victor Garcia
+Victor Guerin
+Vince Miller
+Vincent Capillaire
+Vito Postiglione
+Vittorio Brambilla
+Vittorio Ghirelli
+Vlad Podraza
+Vladimir Lunkin
+Vyacheslav Maleev
+Walter Brun
+Walter Crankshaw
+Walter Samson
+Warren Hughes
+Wayne Weiler
+Williams TestDriver
+Wilson Fittipaldi
+Wojtek Kedzierski
+Wolf Henzler
+Wolfgang Kaufmann
+Xavier Pompidou
+YANAGIDA / QUINTARELLI
+YASUDA / KRUMM
+Yanagida
+Yannick Dalmas
+Yannick Hofman
+Yasuda
+Yoshimi Katayama
+Yoshiyuki Ogura
+Yufeng Luo
+Zachery Nosse
+Zoltan Levai #21
+#AI players identified because they were on two servers simultaneously
