@@ -14,13 +14,13 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 
-from rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
+from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension, playerPath
-from utils import getListOfFiles, readFile, getTags
+from data.utils import getListOfFiles, readFile, getTags
 
-from data import getSingleCarData, reloadAllData
+from data.data import getSingleCarData, reloadAllData
 
-import carNtrackEditor
+import edit.carNtrackEditor
 
 def trawl_for_new_rF2_datafiles(parentFrame):
   newFiles = createDefaultDataFiles(overwrite=False)

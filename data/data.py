@@ -23,9 +23,9 @@ __tracks:
 It also handles writing the files if they've been edited.
 """
 
-from rFactoryConfig import carTags,trackTags,CarDatafilesFolder, \
+from data.rFactoryConfig import carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
-from utils import getListOfFiles, readFile, getTags
+from data.utils import getListOfFiles, readFile, getTags
 
 __cars = {
   'dummyData' : {

@@ -12,6 +12,10 @@ def readFile(filename):
     originalText = []
   return originalText
 
+def writeFile(_filepath, text):
+  with open(_filepath, "w") as f:
+    f.writelines(text)
+
 def readTags(text):
   """ Grep the tags in text and return them as a list """
   # Name=134_JUDD

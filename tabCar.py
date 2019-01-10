@@ -4,10 +4,10 @@
 import tkinter as tk
 from tkinter import ttk
 
-from MC_table import Multicolumn_Listbox
-from rFactoryConfig import config_tabCar, CarDatafilesFolder, carTags
-from data import getAllCarData, getSingleCarData
-import carNtrackEditor
+from lib.MC_table import Multicolumn_Listbox
+from data.rFactoryConfig import config_tabCar, CarDatafilesFolder, carTags
+from data.data import getAllCarData, getSingleCarData
+import edit.carNtrackEditor
 
 NOFILTER = '---' # String for not filtering
 
