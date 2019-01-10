@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ec571240-c2a5-42c2-8112-a5036becb6f3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>carNtrackEditor.py</StartupFile>
+    <StartupFile>rFactory.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,32 +22,39 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="askQuestionDialog.py">
+    <Compile Include="edit\carNtrackEditor.py" />
+    <Compile Include="data\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="carNtrackEditor.py">
+    <Compile Include="edit\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data.py">
+    <Compile Include="lib\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="editRF2files.py">
+    <Compile Include="edit\serverFavourites.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\data.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="edit\editRF2files.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="executeRF2.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jobsTree.py">
+    <Compile Include="experiments\jobsTree.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="rFactoryConfig.py">
+    <Compile Include="data\rFactoryConfig.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="scenarioData.py">
+    <Compile Include="data\scenarioData.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tabCar.py" />
-    <Compile Include="MC_table.py" />
+    <Compile Include="lib\MC_table.py" />
     <Compile Include="rFactory.py" />
     <Compile Include="tabConditions.py" />
     <Compile Include="tabJsonEditor.py">
@@ -59,13 +66,13 @@
     <Compile Include="tabServer.py" />
     <Compile Include="tabSessions.py" />
     <Compile Include="tabTrack.py" />
-    <Compile Include="trawl_rF2_datafiles.py">
+    <Compile Include="data\trawl_rF2_datafiles.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="utils.py">
+    <Compile Include="data\utils.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_tkToolTip.py">
+    <Compile Include="lib\tkToolTip.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -95,6 +102,12 @@
     <Content Include="requirements.txt" />
     <Content Include="scnNames.txt" />
     <Content Include="vehNames.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
+    <Folder Include="edit\" />
+    <Folder Include="lib\" />
+    <Folder Include="experiments\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

@@ -5,9 +5,10 @@ and UserData\player\Player.JSON
 import os
 import re
 
-from trawl_rF2_datafiles import readFile
-from rFactoryConfig import rF2root
-from data import getSingleCarData
+from data.trawl_rF2_datafiles import readFile
+from data.rFactoryConfig import rF2root
+from data.data import getSingleCarData
+from data.utils import writeFile
 
 def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):
   if vehName == '':
@@ -42,10 +43,6 @@ def changeOpponents(opponents="|1971|AC_427_1954_Endurance|DPi"):
   _edit3 = [r'( *SinglePlayerFilter *=).*',   r'\1"' + opponents+'"']
   _edited = __edit(_text3, [_edit3], doubleSlash=False)
   writeFile(allTracks, _edited)
-
-def writeFile(_filepath, text):
-  with open(_filepath, "w") as f:
-    f.writelines(text)
 
 
 def __edit(text, edits, doubleSlash):

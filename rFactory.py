@@ -18,7 +18,7 @@ import tabScenarios
 import tabJsonEditor
 
 from executeRF2 import runRF2
-from trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
+from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 
 BUILD_REVISION = 42 # The git commit count
 versionStr = 'rFactory V0.1.%d' % BUILD_REVISION

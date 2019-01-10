@@ -6,10 +6,10 @@ import sys
 import tkinter as tk
 from tkinter import ttk
 
-from MC_table import Multicolumn_Listbox
-from rFactoryConfig import config_tabServer, serverTags
+from lib.MC_table import Multicolumn_Listbox
+from data.rFactoryConfig import config_tabServer, serverTags
 ##from data import getAllServerData, getSingleServerData
-##import serverEditor
+import edit.serverFavourites
 
 rF2_serverNotify_path = r'..\rF2_serverNotify\steps'
 if os.path.exists(rF2_serverNotify_path):
@@ -36,8 +36,6 @@ class ServerQuery:
     self.serverObj = rF2_serverNotify.readServersFile()
     self.newNames = []
     self.serverData = {}
-
-    print('\nGetting server info...')
 
     servers = self.serverObj.getServerNames()
   
@@ -97,14 +95,29 @@ class Tab:
                              adjust_heading_to_content=False, 
                              cell_anchor="center")
 
+    _label = tk.Label(parentFrame, text='Getting server info...')
+    _label.grid(column=0, row=0, sticky='w')
+
+    #root.update()
+    parentFrame.update()
+
   def activate(self, event):
     """
     Don't actually fetch the data from servers until this tab is selected.
     """
     if self.activated:
       return # Already activated
+
+    # Create a temporary frame with a progress message
+    _info = ttk.Frame(self.parentFrame, width=120, height=120, relief='sunken', borderwidth=5)
+    _info.grid()
+    _label = tk.Label(_info, text='Getting server info...')
+    _label.grid(column=0, row=0, sticky='e')
+    #tk.Frame(self.parentFrame, 'Getting server info...')
+
     o_serverData = self.__ServerData()
     serverData = o_serverData.fetchData()
+    print('%d servers found' % len(serverData))
     # calculate the column widths to fit the headings and the data
     colWidths = []
     for col in config_tabServer['serverColumns']:
@@ -131,6 +144,8 @@ class Tab:
     self.activated = True
 
     self.mc.select_row(0)
+    # Kill the temporary frame with a progress message
+    _info.destroy()
 
   def getSettings(self):
     """ Return the settings for this tab """
@@ -163,7 +178,7 @@ class Tab:
 
     fields = serverTags
     ##data = getSingleServerData(id=data[-1], tags=fields)
-    ##o_tab = serverEditor.Editor(top, fields, data, DatafilesFolder=ServerDatafilesFolder)
+    o_tab = serverFavourites.Editor(top, 'Server 2', 1, 'password')
     # Need to init the Tab again to get fresh data.
 
 
