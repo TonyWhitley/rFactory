@@ -7,7 +7,7 @@ import re
 
 from data.trawl_rF2_datafiles import readFile
 from data.rFactoryConfig import rF2root
-from data.data import getSingleCarData
+from data.rFactoryData import getSingleCarData
 from data.utils import writeFile
 
 def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):

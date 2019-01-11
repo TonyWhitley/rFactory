@@ -35,7 +35,7 @@
     <Compile Include="edit\serverFavourites.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\data.py">
+    <Compile Include="data\rFactoryData.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="edit\editRF2files.py">

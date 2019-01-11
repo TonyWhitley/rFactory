@@ -5,7 +5,7 @@ as required and then call rF2 with any command switches.
 import os
 import subprocess
 
-from data.data import getAllCarData, getAllTrackData, getSingleCarData, getSingleTrackData
+from data.rFactoryData import getAllCarData, getAllTrackData, getSingleCarData, getSingleTrackData
 from edit.editRF2files import changeCar, changeTrack, changeOpponents
 from data.rFactoryConfig import SteamExe, rF2root
 

@@ -9,7 +9,7 @@ from tkinter import ttk
 
 from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
-from data.data import getSingleCarData, getSingleTrackData, reloadAllData
+from data.rFactoryData import getSingleCarData, getSingleTrackData, reloadAllData
 from data.utils import writeFile
 
 

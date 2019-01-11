@@ -6,7 +6,7 @@ from tkinter import ttk
 
 from lib.MC_table import Multicolumn_Listbox
 from data.rFactoryConfig import config_tabTrack, TrackDatafilesFolder, trackTags
-from data.data import getAllTrackData, getSingleTrackData
+from data.rFactoryData import getAllTrackData, getSingleTrackData
 import edit.carNtrackEditor
 
 NOFILTER = '---' # String for not filtering
