@@ -9,7 +9,7 @@ from tkinter import ttk
 from lib.MC_table import Multicolumn_Listbox
 from data.rFactoryConfig import config_tabServer, serverTags
 ##from data import getAllServerData, getSingleServerData
-import edit.serverFavourites
+import edit.serverFavourites as serverFavourites
 
 rF2_serverNotify_path = r'..\rF2_serverNotify\steps'
 if os.path.exists(rF2_serverNotify_path):
@@ -93,6 +93,7 @@ class Tab:
                              command=self.__on_select, 
                              right_click_command=self.__on_right_click,
                              adjust_heading_to_content=False, 
+                             height=30,
                              cell_anchor="center")
 
     _label = tk.Label(parentFrame, text='Getting server info...')

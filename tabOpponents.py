@@ -5,7 +5,6 @@ from tkinter import ttk
 from lib.MC_table import Multicolumn_Listbox
 from data.rFactoryConfig import config_tabCar, CarDatafilesFolder, carTags
 from data.rFactoryData import getAllCarData, getSingleCarData
-import edit.carNtrackEditor
 
 NOFILTER = '---' # String for not filtering
 
@@ -27,6 +26,7 @@ class Tab:
                              command=self.__on_select, 
                              right_click_command=self.__on_right_click,
                              adjust_heading_to_content=False, 
+                             height=30,
                              cell_anchor="center")
 
     # calculate the column widths to fit the headings and the data
