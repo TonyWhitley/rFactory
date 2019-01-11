@@ -3,7 +3,8 @@ Trawl rF2 data files for raw data as a baseline for rFactory data files
 1) find files
 2) read them
 3) grep for data keywords
-4) extract data into data file
+4) Title Case them
+5) extract data into data file
 """
 
 import datetime
@@ -85,7 +86,20 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
           elif tag == 'DB file ID':
             val = filename # The unique identifier for the car/track. I think.
           elif tag in ['Track Name', 'Manufacturer', 'Model']:
-            val = dict['strippedName'].replace('_', ' ')  # default
+            val = dict['strippedName'].replace('_', ' ').strip()  # default
+            if val.startswith('Isi'):
+              val = val[4:]
+            if val.startswith('Ngtc'):
+              val = val[5:]
+            if not val == '':
+              if tag == 'Manufacturer':
+                val = val.split()[0]
+                # Fix case issues:
+                _mfrs = {'Ac':'AC', 'Ats':'ATS', 'Alfaromeo': 'Alfa Romeo', 'Brm':'BRM', 'Bmw':'BMW', 'Mclaren':'McLaren'}
+                if val in _mfrs:
+                  val = _mfrs[val]
+              if tag == 'Model' and len(val.split()) > 1:
+                val = ' '.join(val.split()[1:])
           elif tag == 'Rating':
             val = '***'
           elif tag == 'F/R/4WD':
@@ -96,7 +110,7 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
             val = ''
           f.write('%s=%s\n' % (tag, val))
       _newFile = True
-    except:
+    except OSError:
       print('Failed to write %s' % _filepath)
       quit()
   return _newFile
@@ -226,6 +240,7 @@ def createDefaultDataFiles(overwrite=False):
               if __class in tags['Name']:
                 tags['Class'] = __class
                 tags['strippedName'] = tags['strippedName'].replace(__class, '')
+            tags['strippedName'] = tags['strippedName'].title() # Title Case The Name
       if tags['Category'] in carCategories:
         tags['tType'] = carCategories[tags['Category']]
       # We need the original data folder to assemble the .VEH file path to put in 
@@ -271,6 +286,7 @@ def createDefaultDataFiles(overwrite=False):
           if requiredTag == 'Name':
             tags['strippedName'] = cleanTrackName(tags['Name'])
             tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['strippedName'])
+            tags['strippedName'] = tags['strippedName'].title() # Title Case The Name
       # We need the original data folder to assemble the .SCN file path to put in 
       # "Player.JSON" to force rF2 to switch tracks.  We also need the .SCN
       # file names and that's a bit more difficult.
