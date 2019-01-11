@@ -81,6 +81,14 @@ class MainWindow:
                           self.height_of_window, 
                           x_coordinate, 
                           y_coordinate)) # setting the position of the main window 
+
+  def iconify(self):
+    """ Minimise the window """
+    self.handle.iconify()
+ 
+  def deiconify(self):
+    """ Restore the window """
+    self.handle.deiconify()
  
 # The tabs
 
@@ -285,6 +293,7 @@ class GoButtons:
     self.tkButtonRun.flash() # Flash it
     __settings = tabs.getSettings()
 
+    mainWindow.iconify()
     print('\nDEBUG')
     if self.tkButtonOnline['relief'] == tk.SUNKEN: # Online is pressed
       print('Online')
@@ -297,6 +306,7 @@ class GoButtons:
       runRF2('Replay', __settings)
     for tab in __settings:
       print(tab[0], tab[1])
+    mainWindow.deiconify()
 
   def _quit(self):
     mainWindow.handle.destroy()
@@ -307,6 +317,9 @@ if __name__ == "__main__":
   mainWindow.setSize(width=1200, height=800)
   mainWindow.centreWindow()
  
+  # Check if there are any new car/track files
+  trawl_for_new_rF2_datafiles(mainWindow)
+
   menubar = tk.Menu(mainWindow.handle)
   # display the menus
   Menus(mainWindow.handle)
@@ -319,8 +332,5 @@ if __name__ == "__main__":
   # Set initial tab state
   tabs.selectTab('Cars')
   goButtons.offline()
-
-  # Check if there are any new car/track files
-  trawl_for_new_rF2_datafiles(mainWindow)
 
   mainWindow.handle.mainloop()

@@ -8,18 +8,27 @@ import re
 from data.trawl_rF2_datafiles import readFile
 from data.rFactoryConfig import rF2root
 from data.rFactoryData import getSingleCarData
-from data.utils import writeFile
+from data.utils import getListOfFiles, writeFile
 
 def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):
   if vehName == '':
     print('Veh name not in car data file')
     return
-  _vehFile = os.path.join(rF2root, vehPath, vehName+'.veh').replace('\\', '\\\\\\\\')
+  # if vehPath is for example Installed\vehicles\Norma_M30-LMP3_2017\1.50  
+  # check for Installed\vehicles\Norma_M30-LMP3_2017\1.51
+  # which is an update.  We have to use that.
+  _vehFile = os.path.join(rF2root, vehPath)
+  _vehFile, __ = os.path.split(_vehFile)
+  _versions = getListOfFiles(_vehFile, '*.*')
+  _vehPath = _versions[-1][0]
+
+  _vehFile = os.path.join(_vehPath, vehName).replace('\\', '\\\\\\\\')  # +'.veh' no longer required
 
   allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
   _text3 = readFile(allTracks)
   _edit3 = [r'( *SinglePlayerVehicle *=).*',   r'\1"' + _vehFile+'"']
-  _edited = __edit(_text3, [_edit3], doubleSlash=False)
+  _edit5 = [r'( *SinglePlayerFilter *=).*',   r'\1""']  #blank it
+  _edited = __edit(_text3, [_edit3,_edit5], doubleSlash=False)
   writeFile(allTracks, _edited)
 
 def changeTrack(scnPath = r'F1_1988_Tracks\0.941', scnName='HOCKENHEIM_1988_C4', SceneDescription='HOCKENHEIM_1988_C4'):
