@@ -20,7 +20,7 @@ from data.utils import getListOfFiles, readFile, getTags
 
 from data.rFactoryData import getSingleCarData, reloadAllData
 
-import edit.carNtrackEditor
+import edit.carNtrackEditor as carNtrackEditor
 
 def trawl_for_new_rF2_datafiles(parentFrame):
   newFiles = createDefaultDataFiles(overwrite=False)
