@@ -18,7 +18,7 @@ from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension, playerPath
 from data.utils import getListOfFiles, readFile, getTags
 
-from data.data import getSingleCarData, reloadAllData
+from data.rFactoryData import getSingleCarData, reloadAllData
 
 import edit.carNtrackEditor
 

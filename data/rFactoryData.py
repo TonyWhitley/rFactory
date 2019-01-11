@@ -22,7 +22,9 @@ __tracks:
 
 It also handles writing the files if they've been edited.
 """
+import sys
 
+sys.path.append('..') # 
 from data.rFactoryConfig import carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
 from data.utils import getListOfFiles, readFile, getTags
