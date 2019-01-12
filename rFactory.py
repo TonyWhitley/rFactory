@@ -89,6 +89,9 @@ class MainWindow:
   def deiconify(self):
     """ Restore the window """
     self.handle.deiconify()
+    self.handle.attributes("-topmost", True)
+    # but the app is still not the foreground
+    #self.handle.update()
  
 # The tabs
 
@@ -177,7 +180,7 @@ class Menus:
       #['Sessions', tabSessions],
       #['Options', tabOptions],
       #['Server', tabServer],
-      #['Scenarios', tabScenarios],
+      ['Scenarios', tabScenarios],
       ['JSON editor', tabJsonEditor]
       ]
     menubar = tk.Menu(parentFrame)
