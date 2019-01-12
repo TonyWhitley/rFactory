@@ -54,3 +54,6 @@ config_tabServer = {
   'serverColumns' : ['Favourite', 'Server Name', 'Track Name', 'Humans', 'Maybe', 'AI', 'Max', 'Password', 'Version', 'blank'],
   'serverFilters' : ['Favourite', 'Server Name', 'Track Name', 'Humans', 'Maybe', 'AI', 'Password', 'Version']
   }
+
+scenarioFilesFolder = 'scenarioFiles' 
+scenarioFilesExtension = '.rFactory.scenario'

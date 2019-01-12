@@ -1,4 +1,4 @@
-@echo off
+::S@echo off
 setlocal
 
 python -V | find "3.7"
@@ -26,7 +26,7 @@ pyinstaller ^
   "%~dp0\rFactory.py"
 
 :useSpec
-pyinstaller --debug rFactory_data.spec 
+pyinstaller --debug all rFactory_data.spec 
 
 pause
 REM fails to get pypiwin32 on AppVeyor ####  if not exist env\scripts 	pip install -r requirements.txt
