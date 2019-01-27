@@ -56,4 +56,4 @@ config_tabServer = {
   }
 
 scenarioFilesFolder = 'scenarioFiles' 
-scenarioFilesExtension = '.rFactory.scenario'
+scenarioFilesExtension = '.rFactoryScenarioJSON'

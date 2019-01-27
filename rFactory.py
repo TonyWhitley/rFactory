@@ -17,12 +17,13 @@ import tabServer
 import tabScenarios
 import tabJsonEditor
 
+
 from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 
-BUILD_REVISION = 42 # The git commit count
+BUILD_REVISION = 49 # The git commit count
 versionStr = 'rFactory V0.1.%d' % BUILD_REVISION
-versionDate = '2019-01-09'
+versionDate = '2019-01-27'
 def about():
   messagebox.showinfo(
             'About rFactory',
@@ -155,12 +156,6 @@ class Tabs:
         self.notebook.select(tabId)
         return
     # error unknown tabName
-  def getSettings(self):
-    """ Get the settings from each tab """
-    settings = []
-    for name, _ in self.tabNames:
-      settings.append([name, self.o_tabs[name].getSettings()])
-    return settings
 
   def _testSetSettings(self):
     """ Set the settings from each tab """
@@ -294,7 +289,7 @@ class GoButtons:
   def run(self):
     """ The Run rFactor 2 button has been pressed """
     self.tkButtonRun.flash() # Flash it
-    __settings = tabs.getSettings()
+    __settings = tabScenarios.TabSettings.getAllSettings()
 
     mainWindow.iconify()
     print('\nDEBUG')
@@ -328,6 +323,7 @@ if __name__ == "__main__":
   Menus(mainWindow.handle)
 
   tabs = Tabs(mainWindow.handle)
+  tabScenarios.setTabs(tabs.tabNames, tabs.o_tabs)
   tabs._testSetSettings()
 
   goButtons = GoButtons(mainWindow.handle)
