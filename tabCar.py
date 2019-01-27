@@ -181,7 +181,7 @@ class Tab:
     def resetFilters(self):
       """ Reset all the filters to --- """
       #tbd
-      self.mc.select_row(0)
+      #self.mc.select_row(0)
 
     def setFilters(self, settings):
       """ Set all the filters to settings """

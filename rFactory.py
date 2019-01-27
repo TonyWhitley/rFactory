@@ -21,7 +21,7 @@ import tabJsonEditor
 from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 
-BUILD_REVISION = 49 # The git commit count
+BUILD_REVISION = 50 # The git commit count
 versionStr = 'rFactory V0.1.%d' % BUILD_REVISION
 versionDate = '2019-01-27'
 def about():
@@ -307,6 +307,7 @@ class GoButtons:
     mainWindow.deiconify()
 
   def _quit(self):
+    tabScenarios.saveDefaultScenario()
     mainWindow.handle.destroy()
 
 
@@ -324,7 +325,8 @@ if __name__ == "__main__":
 
   tabs = Tabs(mainWindow.handle)
   tabScenarios.setTabs(tabs.tabNames, tabs.o_tabs)
-  tabs._testSetSettings()
+  tabScenarios.openDefaultScenario()
+  #tabs._testSetSettings()
 
   goButtons = GoButtons(mainWindow.handle)
 

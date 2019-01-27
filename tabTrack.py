@@ -20,7 +20,7 @@ class Tab:
     self.parentFrame = parentFrame
     self.settings = None #PyLint
     o_trackData = self.__TrackData()
-    trackData = o_trackData.fetchData()
+    self.trackData = o_trackData.fetchData()
 
 
     self.mc = Multicolumn_Listbox(parentFrame, 
@@ -36,7 +36,7 @@ class Tab:
     colWidths = []
     for col in config_tabTrack['trackColumns']:
       colWidths.append(len(col))
-    for __, row in trackData.items():
+    for __, row in self.trackData.items():
       for col, column in enumerate(row):
         if len(row[column]) > colWidths[col]:
           colWidths[col] = len(row[column])
@@ -50,11 +50,11 @@ class Tab:
     self.mc.configure_column(2, anchor='w')
     self.mc.interior.grid(column=0, row=1, pady=2, columnspan=len(config_tabTrack['trackColumns']))
 
-    o_filter = self.__Filter(parentFrame, config_tabTrack['trackColumns'], colWidths, o_trackData, self.mc)
+    self.o_filter = self.__Filter(parentFrame, config_tabTrack['trackColumns'], colWidths, o_trackData, self.mc)
     for _filter in config_tabTrack['trackFilters']:
-      o_filter.makeFilter(_filter, trackData)
+      self.o_filter.makeFilter(_filter, self.trackData)
    
-    o_filter.filterUpdate(None) # Initial dummy filter to load data into table
+    self.o_filter.filterUpdate(None) # Initial dummy filter to load data into table
 
     self.mc.select_row(0)
 
@@ -64,10 +64,16 @@ class Tab:
 
   def setSettings(self, settings):
     """ Set the settings for this tab """
-    trackID = settings[-1]
-    i = 2 # the row for trackID 
     self.mc.deselect_all()  # clear what is selected.
-    self.mc.select_row(i)
+    self.o_filter.resetFilters()
+    trackID = settings[-1]
+    for row, track in enumerate(self.trackData):
+      if trackID == self.trackData[track]['DB file ID']:
+        # the row for trackID 
+        self.mc.select_row(row-1)
+        return
+    # Settings not in data
+    self.mc.select_row(0)
   
   def __on_select(self, data):
     self.settings = data
@@ -168,7 +174,7 @@ class Tab:
     def resetFilters(self):
       """ Reset all the filters to --- """
       #tbd
-      self.mc.select_row(0)
+      #self.mc.select_row(0)
 
     def setFilters(self, settings):
       """ Set all the filters to settings """

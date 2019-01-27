@@ -17,7 +17,7 @@ class Tab:
     self.parentFrame = parentFrame
     self.settings = None #PyLint
     o_carData = self.__CarData()
-    carData = o_carData.fetchData()
+    self.carData = o_carData.fetchData()
 
 
     self.mc = Multicolumn_Listbox(parentFrame, 
@@ -33,7 +33,7 @@ class Tab:
     colWidths = []
     for col in config_tabCar['carColumns']:
       colWidths.append(len(col))
-    for __, row in carData.items():
+    for __, row in self.carData.items():
       for col, column in enumerate(row):
         if len(row[column]) > colWidths[col]:
           colWidths[col] = len(row[column])
@@ -47,11 +47,11 @@ class Tab:
     self.mc.configure_column(2, anchor='w')
     self.mc.interior.grid(column=0, row=1, pady=2, columnspan=len(config_tabCar['carColumns']))
 
-    o_filter = self.__Filter(parentFrame, config_tabCar['carColumns'], colWidths, o_carData, self.mc)
+    self.o_filter = self.__Filter(parentFrame, config_tabCar['carColumns'], colWidths, o_carData, self.mc)
     for _filter in config_tabCar['carFilters']:
-      o_filter.makeFilter(_filter, carData)
+      self.o_filter.makeFilter(_filter, self.carData)
    
-    o_filter.filterUpdate(None) # Initial dummy filter to load data into table
+    self.o_filter.filterUpdate(None) # Initial dummy filter to load data into table
 
     self.mc.select_row(0)
 
@@ -61,16 +61,22 @@ class Tab:
 
   def setSettings(self, settings):
     """ Set the settings for this tab """
-    carID = settings[-1]
-    i = 2 # the row for carID 
     self.mc.deselect_all()  # clear what is selected.
-    self.mc.select_row(i)
+    self.o_filter.resetFilters()
+    carID = settings[-1]
+    for row, car in enumerate(self.carData):
+      if carID == self.carData[car]['DB file ID']:
+        # the row for carID 
+        self.mc.select_row(row-1)
+        return
+    # Settings not in data
+    self.mc.select_row(0)
   
   def __on_select(self, data):
-    self.settings = self.mc.selected_rows
+    self.settings = data
     print('DEBUG')
     print("called command when row is selected")
-    print(self.settings)
+    print(data)
     print("\n")
 
   def __on_right_click(self, data):
@@ -164,7 +170,7 @@ class Tab:
     def resetFilters(self):
       """ Reset all the filters to --- """
       #tbd
-      self.mc.select_row(0)
+      #self.mc.select_row(0)
 
     def setFilters(self, settings):
       """ Set all the filters to settings """
