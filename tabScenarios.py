@@ -23,43 +23,24 @@ tabs = None
 o_tabs = None
 
 settings = {}
+filename =  os.path.join(scenarioFilesFolder, 'lastScenario'+scenarioFilesExtension)
 
 class TabSettings:
   def __init__(self):
-    self.tabNames = [ \
-      ['Car', tabCar],
-      ['Track', tabTrack],
-      ['Opponents', tabOpponents],
-      ['Conditions', tabConditions],
-      ['Sessions', tabSessions],
-      ['Options', tabOptions],
-      ['Server', tabServer],
-      ['Scenarios', tabScenarios],
-      ['JSON editor', tabJsonEditor]
-      ]
-    for name, tab in self.tabNames:
-      settings[name] = [] #dummy data
+    pass
 
   def setAllSettings(self, settings):
     """ Set the settings for each tab """
     global tabs, o_tabs
-    for name, tab in tabs:
-      o_tabs[name].setSettings(settings=settings[name])
-    """
-    for name, tab in self.tabNames:
-      o_tab = tab.Tab()
-      o_tab.setSettings(settings=settings[name])
-    """
+    if tabs:
+      for name, tab in tabs:
+        o_tabs[name].setSettings(settings=settings[name])
+
   def getAllSettings(self):
     """ Get the settings from each tab """
     global tabs, o_tabs
     for name, tab in tabs:
       settings[name] = o_tabs[name].getSettings()
-    """
-    for name, tab in self.tabNames:
-      o_tab = tab.Tab()
-      settings[name] = o_tab.getSettings()
-    """
     return settings
 
 def setMenubar(menubar):
@@ -76,6 +57,7 @@ def setMenubar(menubar):
     #menubar.add_cascade(label="File", menu=filemenu)
 
 def openScenario():
+  global filename
   print('openScenario')
  
   #root = tk.Tk()
@@ -87,9 +69,11 @@ def openScenario():
   _ = _tso.setAllSettings(settings)
 
 def openDefaultScenario():
-  filename =  os.path.join(scenarioFilesFolder, 'lastScenario', scenarioFilesExtension)
+  global filename
+
+  filename =  os.path.join(scenarioFilesFolder, 'lastScenario'+scenarioFilesExtension)
   _text = readFile(filename)
-  if os.path.exist(filename):
+  if os.path.exists(filename):
     settings = json.loads(''.join(_text))
     print(settings)
     _tso = TabSettings()
@@ -98,18 +82,32 @@ def openDefaultScenario():
 
   #else there is no default settings file???
 
-def saveScenario():
-  print('saveScenario')
 def saveScenarioAs():
+  global filename
+
   filename =  filedialog.asksaveasfilename(initialdir = scenarioFilesFolder,title = "Select file",filetypes = (("rFactory Scenario files","*%s" % scenarioFilesExtension),("all files","*.*")))
   if not filename.endswith(scenarioFilesExtension):
     filename += scenarioFilesExtension
   print('saveScenarioAs "%s%s"' % (filename, scenarioFilesExtension))
+  saveScenario()
+
+def saveScenario():
+  global filename
+
+  print('saveScenario')
   _tso = TabSettings()
   _ = _tso.getAllSettings()
   _text = json.dumps(settings, sort_keys=True, indent=4)
   writeFile(filename, _text)
 
+def saveDefaultScenario():
+  global filename
+
+  filename =  os.path.join(scenarioFilesFolder, 'lastScenario'+scenarioFilesExtension)
+  _tso = TabSettings()
+  _ = _tso.getAllSettings()
+  _text = json.dumps(settings, sort_keys=True, indent=4)
+  writeFile(filename, _text)
 
 #########################
 # The tab's public class:
@@ -135,6 +133,9 @@ def dummy():
   pass
 
 def setTabs(_tabs, _o_tabs):
+  """
+  Hack to pass in tab names, modules and objects
+  """
   global tabs, o_tabs
   tabs = _tabs
   o_tabs = _o_tabs
