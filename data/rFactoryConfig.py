@@ -6,8 +6,8 @@ Some can be edited to change how rFactory works, e.g. the car table columns.
 import os
 
 # rF2 items
-rF2root = r'C:\Program Files (x86)\Steam\steamapps\common\rFactor 2'
-SteamExe = "C:/Program Files (x86)/Steam/steam.exe"
+rF2root = os.path.expandvars(r'%ProgramFiles(x86)%\Steam\steamapps\common\rFactor 2')
+SteamExe = os.path.expandvars("%ProgramFiles(x86)%/Steam/steam.exe")
 player = 'player'
 playerPath = os.path.join(rF2root, 'UserData', player)
 

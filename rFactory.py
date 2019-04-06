@@ -289,21 +289,22 @@ class GoButtons:
   def run(self):
     """ The Run rFactor 2 button has been pressed """
     self.tkButtonRun.flash() # Flash it
-    __settings = tabScenarios.TabSettings.getAllSettings()
+    _settings_o = tabScenarios.TabSettings()
+    _settings = _settings_o.getAllSettings()
 
     mainWindow.iconify()
     print('\nDEBUG')
     if self.tkButtonOnline['relief'] == tk.SUNKEN: # Online is pressed
       print('Online')
-      runRF2('Online', __settings)
+      runRF2('Online', _settings)
     if self.tkButtonOffline['relief'] == tk.SUNKEN: # Offline is pressed
       print('Offline')
-      runRF2('Offline', __settings)
+      runRF2('Offline', _settings)
     else:
       print('Replay')
-      runRF2('Replay', __settings)
-    for tab in __settings:
-      print(tab[0], tab[1])
+      runRF2('Replay', _settings)
+    for tab in _settings:
+      print(tab[0], _settings[tab])
     mainWindow.deiconify()
 
   def _quit(self):

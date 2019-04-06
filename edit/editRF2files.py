@@ -82,7 +82,7 @@ if __name__ == '__main__':
   _edited = __edit([_text1], [_edit1], doubleSlash=True)
   assert _edited[0] == '"AI Database File":"FRED"\n'
 
-  _text2 = 'SinglePlayerVehicle="C:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Vehicles\Porsche_991RSR_GTE_2017\1.49\991RSR_911.VEH"\n'
+  _text2 = 'SinglePlayerVehicle="%ProgramFiles(x86)%\Steam\steamapps\common\rFactor 2\Installed\Vehicles\Porsche_991RSR_GTE_2017\1.49\991RSR_911.VEH"\n'
   _edit2 = [r'( *SinglePlayerVehicle *=).*',   r'\1"\\rF2\CHARLIE"']
 
   _edited = __edit([_text1, _text2], [_edit1, _edit2], doubleSlash=False)
@@ -97,7 +97,7 @@ if __name__ == '__main__':
   _edit3 = [r'( *SinglePlayerVehicle *=).*',   r'\1"' + 
             os.path.join(rF2root, r'Installed\Vehicles\Norma_M30-LMP3_2017\1.51\NORMAM30_08.VEH"').replace('\\', '\\\\')]
   
-  #_edit3 = [r'( *SinglePlayerVehicle *=).*',   r'\1' '"C:\Program Files (x86)\Steam\steamapps\common\\rFactor 2\Installed\Vehicles\Oreca_07_LMP2_2017\1.41\ORECA07PREE6ED8B36.VEH"']
+  #_edit3 = [r'( *SinglePlayerVehicle *=).*',   r'\1' '"%ProgramFiles(x86)%\Steam\steamapps\common\\rFactor 2\Installed\Vehicles\Oreca_07_LMP2_2017\1.41\ORECA07PREE6ED8B36.VEH"']
   _edited = __edit(_text3, [_edit3], doubleSlash=False)
   writeFile(allTracks, _edited)
 

@@ -42,30 +42,33 @@ def runRF2(online='Offline', settings=None):
 
 def runOffline(settings):
   # Car
-  _carID = settings[0][1][-1]
+  _carID = settings['Car'][-1]
   _carData = getSingleCarData(_carID, ['originalFolder', 'vehFile'])
   changeCar(vehPath=_carData['originalFolder'], vehName=_carData['vehFile'])
 
   # Track
-  _trackID = settings[1][1][-1]
+  _trackID = settings['Track'][-1]
   _trackData = getSingleTrackData(_trackID, ['originalFolder', 'Scene Description', 'Scene Description'])
   changeTrack(scnPath=_trackData['originalFolder'], scnName=_trackData['Scene Description'], SceneDescription=_trackData['Scene Description'])
 
-  # Opponents
-  _opponentIDs = settings[2][1]
-  _opponents = []
-  for _opponent in _opponentIDs:
-    _opponents.append(_opponent[-1])  # NO, it's not the DB file ID, see AllClasses.txt - another field we have to sort out
-  _opponentStr= '|' + '|'.join(_opponents)
-  #  Need to work out the field for this     changeOpponents(opponents=_opponentStr)
+  if 0: # not working 
+    # Opponents
+    _opponentIDs = settings['Opponents']
+    _opponents = []
+    for _opponent in _opponentIDs:
+      _opponents.append(_opponent[-1])  # NO, it's not the DB file ID, see AllClasses.txt (NO SUCH FILE???) - another field we have to sort out
+    _opponentStr= '|' + '|'.join(_opponents)
+    #  Need to work out the field for this     changeOpponents(opponents=_opponentStr)
 
   cmd = SteamExe
   _cmd =  '"%s" -applaunch 365960 +singleplayer +path=".."' % (SteamExe)
   # Alternative looks to be
-  # "C:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Bin64\rFactor2.exe"
-  os.chdir('c:/Program Files (x86)/Steam/steamapps/common/rFactor 2')
-  _cmd = '"C:/Program Files (x86)/Steam/steamapps/common/rFactor 2/Bin64/rFactor2.exe" +path="."'
+  # "%ProgramFiles(x86)%\Steam\steamapps\common\rFactor 2\Bin64\rFactor2.exe"
+  os.chdir(rF2root)
+  _cmd = '"%s/Bin64/rFactor2.exe" +path="."' % rF2root
   # +profile="rFactory"
+  _cmd = os.path.normpath(_cmd) # change any / to \
+  print(_cmd)
   subprocess.call(_cmd)
 
 def runOnline(settings):
