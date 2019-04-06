@@ -153,7 +153,7 @@ def extractYear(name):
 class vehFiles:
   #[VEHICLE]
   #ID=1
-  #File="C:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Vehicles\AC_427SC_1967\1.2\427SC_BLACK.VEH"
+  #File="%ProgramFiles(x86)%\Steam\steamapps\common\rFactor 2\Installed\Vehicles\AC_427SC_1967\1.2\427SC_BLACK.VEH"
   #...
 
   vehDict = {}

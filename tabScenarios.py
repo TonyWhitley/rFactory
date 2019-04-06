@@ -38,7 +38,7 @@ class TabSettings:
 
   def getAllSettings(self):
     """ Get the settings from each tab """
-    global tabs, o_tabs
+    global tabs, o_tabs, settings
     for name, tab in tabs:
       settings[name] = o_tabs[name].getSettings()
     return settings

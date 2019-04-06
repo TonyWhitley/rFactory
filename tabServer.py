@@ -190,7 +190,25 @@ class Tab:
       self.filteredData = None
     def fetchData(self):
       """ Fetch the raw data from wherever """
-      self.data = ServerQuery().getData()
+      if 0:
+        self.data = ServerQuery().getData()
+      else: # dev. shortcut - fake server data
+        self.data = {}
+        server ='fred'
+        _entry = {}
+        _entry['Favourite'] = 'N'
+        _entry['Server Name'] = server
+        _entry['Track Name'] = 'track'
+        _entry['Humans'] = '23'
+        _entry['Maybe'] = '0'
+        _entry['AI'] = '0'
+        _entry['Max'] = '39'
+        _entry['Password'] = '1'
+        _entry['Version'] = 'version'
+        _entry['blank'] = ''
+        self.data[server] = _entry
+        self.data[server+'X'] = _entry
+
       # getAllServerData(tags=config_tabServer['serverColumns'], maxWidth=20)
       return self.data
     def filterData(self, filters):
