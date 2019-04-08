@@ -1,6 +1,7 @@
 # Python 3
 
 from multiprocessing.dummy import Pool as ThreadPool 
+import copy
 import os
 import sys
 import tkinter as tk
@@ -128,7 +129,7 @@ class Tab:
         if len(row[column]) > colWidths[col]:
           colWidths[col] = len(row[column])
       for col, column in enumerate(row):
-        self.mc.configure_column(col, width=colWidths[col]*7+6)
+        self.mc.configure_column(col, width=colWidths[col]*2+6)
     self.mc.configure_column(len(config_tabServer['serverColumns'])-1, width=0, minwidth=0)
     # Justify the data in the first three columns
     self.mc.configure_column(0, anchor='e')
@@ -150,7 +151,11 @@ class Tab:
 
   def getSettings(self):
     """ Return the settings for this tab """
-    return self.settings # filters too?  Probably not
+    settings = {}
+    settings['Server'] = 'RSVR sig-racing.boards.net'
+    settings['Password'] = 'central'
+    return settings
+    #return self.settings # filters too?  Probably not
 
   def setSettings(self, settings):
     """ Set the settings for this tab """
@@ -194,11 +199,11 @@ class Tab:
         self.data = ServerQuery().getData()
       else: # dev. shortcut - fake server data
         self.data = {}
-        server ='fred'
+        server ='Not yet implemented'
         _entry = {}
         _entry['Favourite'] = 'N'
         _entry['Server Name'] = server
-        _entry['Track Name'] = 'track'
+        _entry['Track Name'] = 'Not yet implemented'
         _entry['Humans'] = '23'
         _entry['Maybe'] = '0'
         _entry['AI'] = '0'
@@ -207,7 +212,9 @@ class Tab:
         _entry['Version'] = 'version'
         _entry['blank'] = ''
         self.data[server] = _entry
-        self.data[server+'X'] = _entry
+        self.data[server+'X'] = copy.deepcopy(_entry)
+        self.data[server+'X']['Humans'] = '0'
+        self.data[server+'X']['AI'] = '10'
 
       # getAllServerData(tags=config_tabServer['serverColumns'], maxWidth=20)
       return self.data
@@ -289,7 +296,7 @@ class Tab:
 if __name__ == '__main__':
   # To run this tab by itself for development
   root = tk.Tk()
-  tabServer = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
+  tabServer = ttk.Frame(root, width=600, height=600, relief='sunken', borderwidth=5)
   tabServer.grid()
     
   o_tab = Tab(tabServer)

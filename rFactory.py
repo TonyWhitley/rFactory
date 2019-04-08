@@ -10,6 +10,7 @@ import tkinter.font as font
 import tabCar
 import tabTrack
 import tabOpponents
+import tabFavouriteServers
 import tabConditions
 import tabSessions
 import tabOptions
@@ -21,9 +22,9 @@ import tabJsonEditor
 from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 
-BUILD_REVISION = 50 # The git commit count
-versionStr = 'rFactory V0.1.%d' % BUILD_REVISION
-versionDate = '2019-01-27'
+BUILD_REVISION = 57 # The git commit count
+versionStr = 'rFactory V0.2.%d' % BUILD_REVISION
+versionDate = '2019-04-08'
 def about():
   messagebox.showinfo(
             'About rFactory',
@@ -108,7 +109,8 @@ class Tabs:
       ['Conditions', tabConditions],
       ['Sessions', tabSessions],
       ['Options', tabOptions],
-      ['Server', tabServer],
+      #['Server', tabServer],   # disabled for now
+      ['Favourite Servers', tabFavouriteServers],
       ['Scenarios', tabScenarios],
       ['JSON editor', tabJsonEditor]
       ]
@@ -231,7 +233,10 @@ class GoButtons:
         background='orange',
         font=buttonFont,
         command=self.replay)
+    """
+    Not implemented, not sure how
     self.tkButtonReplay.grid(column=__gbc, row=2, pady=5)
+    """
 
     self.tkButtonRun = tk.Button(
         _goFrame,
@@ -260,6 +265,7 @@ class GoButtons:
     #tabs.disableTab('Conditions')
     tabs.disableTab('Sessions')
     tabs.enableTab('Server')
+    tabs.enableTab('Favourite Servers')
     self.tkButtonOnline.configure(relief=tk.SUNKEN) #, bg='green')
     self.tkButtonOffline.configure(relief=tk.RAISED) #, bg='red')
     self.tkButtonReplay.configure(relief=tk.RAISED) #, bg='red')
@@ -271,6 +277,7 @@ class GoButtons:
     tabs.enableTab('Conditions')
     tabs.enableTab('Sessions')
     tabs.disableTab('Server')
+    tabs.disableTab('Favourite Servers')
     self.tkButtonOnline.configure(relief=tk.RAISED) #, bg='red')
     self.tkButtonOffline.configure(relief=tk.SUNKEN) #, bg='green')
     self.tkButtonReplay.configure(relief=tk.RAISED) #, bg='red')
@@ -282,6 +289,7 @@ class GoButtons:
     tabs.enableTab('Conditions')
     tabs.enableTab('Sessions')
     tabs.disableTab('Server')
+    tabs.disableTab('Favourite Servers')
     self.tkButtonOnline.configure(relief=tk.RAISED) #, bg='red')
     self.tkButtonOffline.configure(relief=tk.RAISED) #, bg='green')
     self.tkButtonReplay.configure(relief=tk.SUNKEN) #, bg='red')
@@ -296,15 +304,17 @@ class GoButtons:
     print('\nDEBUG')
     if self.tkButtonOnline['relief'] == tk.SUNKEN: # Online is pressed
       print('Online')
-      runRF2('Online', _settings)
-    if self.tkButtonOffline['relief'] == tk.SUNKEN: # Offline is pressed
+      _password = _settings_o.getServerPassword()
+      _status = runRF2('Online', _settings, _password)
+    elif self.tkButtonOffline['relief'] == tk.SUNKEN: # Offline is pressed
       print('Offline')
-      runRF2('Offline', _settings)
+      _status = runRF2('Offline', _settings)
     else:
       print('Replay')
-      runRF2('Replay', _settings)
+      _status = runRF2('Replay', _settings)
     mainWindow.deiconify()
-
+    if _status != 'OK':
+      messagebox.showinfo('Failed to run', _status)
   def _quit(self):
     tabScenarios.saveDefaultScenario()
     mainWindow.handle.destroy()

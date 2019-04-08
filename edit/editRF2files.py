@@ -12,8 +12,8 @@ from data.utils import getListOfFiles, writeFile
 
 def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):
   if vehName == '':
-    print('Veh name not in car data file')
-    return
+    return "VehFile not in rFactory's car data file.\nPlease edit entry"
+    
   # if vehPath is for example Installed\vehicles\Norma_M30-LMP3_2017\1.50  
   # check for Installed\vehicles\Norma_M30-LMP3_2017\1.51
   # which is an update.  We have to use that.
@@ -30,11 +30,12 @@ def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):
   _edit5 = [r'( *SinglePlayerFilter *=).*',   r'\1""']  #blank it
   _edited = __edit(_text3, [_edit3,_edit5], doubleSlash=False)
   writeFile(allTracks, _edited)
+  return 'OK'
 
 def changeTrack(scnPath = r'F1_1988_Tracks\0.941', scnName='HOCKENHEIM_1988_C4', SceneDescription='HOCKENHEIM_1988_C4'):
   if scnName == '':
-    print('Scene Description not in track data file')
-    return
+    return "Scene Description for %s not in rFactory's track data file.\nPlease edit entry" % scnPath
+
   _scnFile = os.path.join(rF2root, scnPath, scnName+'.scn').replace('\\', '\\\\\\\\')
 
   PlayerJSON = os.path.join(rF2root, r'UserData\player\Player.JSON')
@@ -45,6 +46,7 @@ def changeTrack(scnPath = r'F1_1988_Tracks\0.941', scnName='HOCKENHEIM_1988_C4',
   _edit7 = [r'( *"Scene Signature" *:).*',   r'\1""']  #blank it  NOTE NO COMMA
   _edited = __edit(_text4, [_edit4,_edit5,_edit6,_edit7], doubleSlash=True)  
   writeFile(PlayerJSON, _edited)
+  return 'OK'
 
 def changeOpponents(opponents="|1971|AC_427_1954_Endurance|DPi"):
   allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
@@ -52,6 +54,7 @@ def changeOpponents(opponents="|1971|AC_427_1954_Endurance|DPi"):
   _edit3 = [r'( *SinglePlayerFilter *=).*',   r'\1"' + opponents+'"']
   _edited = __edit(_text3, [_edit3], doubleSlash=False)
   writeFile(allTracks, _edited)
+  return 'OK'
 
 
 def __edit(text, edits, doubleSlash):

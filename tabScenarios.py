@@ -8,6 +8,7 @@ from tkinter import ttk, filedialog
 import tabCar
 import tabTrack
 import tabOpponents
+import tabFavouriteServers
 import tabConditions
 import tabSessions
 import tabOptions
@@ -34,7 +35,10 @@ class TabSettings:
     global tabs, o_tabs
     if tabs:
       for name, tab in tabs:
-        o_tabs[name].setSettings(settings=settings[name])
+        try:
+          o_tabs[name].setSettings(settings=settings[name])
+        except:
+          print('No Scenario data to set up tab %s' % name)
 
   def getAllSettings(self):
     """ Get the settings from each tab """
@@ -42,6 +46,11 @@ class TabSettings:
     for name, tab in tabs:
       settings[name] = o_tabs[name].getSettings()
     return settings
+
+  def getServerPassword(self):
+    #Special case: get server password
+    _server = settings['Favourite Servers']
+    return o_tabs['Favourite Servers'].getPassword(_server)
 
 def setMenubar(menubar):
 
