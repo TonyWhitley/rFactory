@@ -8,6 +8,7 @@ import os
 # rF2 items
 rF2root = os.path.expandvars(r'%ProgramFiles(x86)%\Steam\steamapps\common\rFactor 2')
 SteamExe = os.path.expandvars("%ProgramFiles(x86)%/Steam/steam.exe")
+SteamDelayS = 10  # How long it takes Steam to start up
 player = 'player'
 playerPath = os.path.join(rF2root, 'UserData', player)
 
