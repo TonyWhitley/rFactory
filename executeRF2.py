@@ -8,6 +8,7 @@ import subprocess
 from data.rFactoryData import getAllCarData, getAllTrackData, getSingleCarData, getSingleTrackData
 from edit.editRF2files import changeCar, changeTrack, changeOpponents
 from data.rFactoryConfig import SteamExe, SteamDelayS, rF2root
+from rF2_joinServer import runRf2Online
 import dummyRF2
 import steam
 
@@ -34,30 +35,35 @@ settingsExample = [
     ['Scenarios', ['Scenario - what does that mean? Scenario sets all tab settings']]
   ]
 
-def runRF2(online='Offline', settings=None):
+def runRF2(online='Offline', settings=None, _password=None):
   try:
     if settings['Options']['DummyRF2'] != '0':
-      dummyRF2.dummyRF2(settings)
-      return
+      _status = dummyRF2.dummyRF2(settings, _password)
+      return _status
   except:
     pass # DummyRF2 is not in Options
   if online == 'Offline':
-    runOffline(settings)
+    _status = runOffline(settings)
   elif online == 'Online':
-    runOnline(settings)
+    _status = runOnline(settings, _password)
   else:
-    print('settings error', settings)
+    return ('settings error', settings)
+  return _status
 
 def runOffline(settings):
   # Car
   _carID = settings['Car'][-1]
   _carData = getSingleCarData(_carID, ['originalFolder', 'vehFile'])
-  changeCar(vehPath=_carData['originalFolder'], vehName=_carData['vehFile'])
+  _status = changeCar(vehPath=_carData['originalFolder'], vehName=_carData['vehFile'])
+  if _status != 'OK':
+    return _status
 
   # Track
   _trackID = settings['Track'][-1]
   _trackData = getSingleTrackData(_trackID, ['originalFolder', 'Scene Description', 'Scene Description'])
-  changeTrack(scnPath=_trackData['originalFolder'], scnName=_trackData['Scene Description'], SceneDescription=_trackData['Scene Description'])
+  _status = changeTrack(scnPath=_trackData['originalFolder'], scnName=_trackData['Scene Description'], SceneDescription=_trackData['Scene Description'])
+  if _status != 'OK':
+    return _status
 
   if 0: # not working 
     # Opponents
@@ -66,7 +72,10 @@ def runOffline(settings):
     for _opponent in _opponentIDs:
       _opponents.append(_opponent[-1])  # NO, it's not the DB file ID, see AllClasses.txt (NO SUCH FILE???) - another field we have to sort out
     _opponentStr= '|' + '|'.join(_opponents)
-    #  Need to work out the field for this     changeOpponents(opponents=_opponentStr)
+    #  Need to work out the field for this     _status = changeOpponents(opponents=_opponentStr)
+    if _status != 'OK':
+      return _status
+
 
   cmd = SteamExe
   _cmd =  '"%s" -applaunch 365960 +singleplayer +path=".."' % (SteamExe)
@@ -83,13 +92,18 @@ def runOffline(settings):
   # TBD: Need to wait for Steam to run
   subprocess.call(_cmd)
   os.chdir(_pop)
+  return 'OK'
 
-def runOnline(settings):
+def runOnline(settings, _password):
   _pop = os.getcwd()  # save current directory
   # Steam must be running
   steam.runSteamMinimised(SteamExe, SteamDelayS)
   # Use rF2_joinServer to execute (requires that it is refactored)
+  server = settings['Favourite Servers'] #['Server']
+  #password = settings['Favourite Servers']['Password']
+  runRf2Online(SteamExe, server, _password)
   os.chdir(_pop)
+  return 'OK'
 
 if __name__ == '__main__':
   for row in settingsExample:

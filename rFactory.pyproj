@@ -63,6 +63,9 @@
     <Compile Include="lib\MC_table.py" />
     <Compile Include="rFactory.py" />
     <Compile Include="tabConditions.py" />
+    <Compile Include="tabFavouriteServers.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tabJsonEditor.py">
       <SubType>Code</SubType>
     </Compile>
