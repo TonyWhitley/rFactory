@@ -3,34 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 import idlelib
 
-"""
-Tidier but needs more work
-class _Frame:
-  def __init__(self, parentFrame, name, column, row, sticky='ew', padx=10):
-    self.frame = tk.LabelFrame(parentFrame, text=name)
-    self.frame.grid(column=column, row=row, sticky=sticky, padx=padx)
-  def checkButton(self, parent, name, intialValue, text=None):
-    parent.vars[name] = tk.StringVar(name=name)
-    parent.vars[name].set(intialValue)
-    if text == None:
-      text = name
-    button = tk.Checkbutton(self.frame, 
-                            text=text,
-                            variable=parent.vars[name])
-    button.grid(sticky='w')
-    return button
-  def radioButton(self, parent, name, intialValue, text=None):
-    parent.vars[name] = tk.StringVar(name=name)
-    parent.vars[name].set(intialValue)
-    if text == None:
-      text = name
-    button = tk.Radiobutton(self.frame, 
-                                                text=name, 
-                                                variable=parent.vars[name], 
-                                                value=intialValue)
-    button.grid(sticky='w')
-    return button
-"""
+
 #########################
 # The tab's public class:
 #########################
@@ -48,31 +21,6 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
     _tkRadiobuttons = {}
 
     xPadding = 10
-
-    """
-    Tidier but needs more work
-    _f = _Frame(parentFrame, 'Gearbox', 1, 2)
-
-    name = 'RequireClutch'
-    _tkCheckbuttons[name] = _f.checkButton(self, name, False, 'Require clutch (Grinding Tranny)')
-
-    name = 'AutoClutch'
-    _tkCheckbuttons[name] = _f.checkButton(self, name, False, 'Auto clutch (std. rF2)')
-
-    name = 'AutoBlip'
-    _tkCheckbuttons[name] = _f.checkButton(self, name, False, 'Auto blip (std. rF2)')
-
-
-    _f = _Frame(parentFrame, 'Monitor', 1, 3)
-
-    name = 'Monitor'
-    _tkRadiobuttons[name] = _f.radioButton(self, name, False)
-
-    name = 'VR'
-    _tkRadiobuttons[name] = _f.radioButton(self, name, False)
-    return 
-    """
-
     ####################################################
     tkFrame_Gearbox = tk.LabelFrame(parentFrame, text='Gearbox')
     tkFrame_Gearbox.grid(column=1, row=2, sticky='ew', padx=xPadding)
