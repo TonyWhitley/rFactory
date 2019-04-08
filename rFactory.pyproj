@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>rFactory</Name>
     <RootNamespace>rFactory</RootNamespace>
-    <InterpreterId>MSBuild|PyLint|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,6 +54,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data\scenarioData.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="steam.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tabCar.py" />

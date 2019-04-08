@@ -7,8 +7,9 @@ import subprocess
 
 from data.rFactoryData import getAllCarData, getAllTrackData, getSingleCarData, getSingleTrackData
 from edit.editRF2files import changeCar, changeTrack, changeOpponents
-from data.rFactoryConfig import SteamExe, rF2root
+from data.rFactoryConfig import SteamExe, SteamDelayS, rF2root
 import dummyRF2
+import steam
 
 settingsExample = [
     ['Car', ['COPERSUCAR', 'COPERSUCAR', '', '', 2, 'RWD', 1975, '1970-', '***', '1975COPERSUCAR']],
@@ -35,7 +36,7 @@ settingsExample = [
 
 def runRF2(online='Offline', settings=None):
   try:
-    if settings['Options']['DummyRF2']:
+    if settings['Options']['DummyRF2'] != '0':
       dummyRF2.dummyRF2(settings)
       return
   except:
@@ -71,16 +72,24 @@ def runOffline(settings):
   _cmd =  '"%s" -applaunch 365960 +singleplayer +path=".."' % (SteamExe)
   # Alternative looks to be
   # "%ProgramFiles(x86)%\Steam\steamapps\common\rFactor 2\Bin64\rFactor2.exe"
+  _pop = os.getcwd()  # save current directory
   os.chdir(rF2root)
   _cmd = '"%s/Bin64/rFactor2.exe" +path="."' % rF2root
   # +profile="rFactory"
   _cmd = os.path.normpath(_cmd) # change any / to \
   print(_cmd)
+  # Steam must be running
+  steam.runSteamMinimised(SteamExe, SteamDelayS)
+  # TBD: Need to wait for Steam to run
   subprocess.call(_cmd)
+  os.chdir(_pop)
 
 def runOnline(settings):
-  #  _cmd =  '"%s" -applaunch 365960 +autojoin="%s" +connect=:%s@%s:%s +multiplayer +path=".."' % (configFileO.SteamExe, configFileO.server, configFileO.
-  pass
+  _pop = os.getcwd()  # save current directory
+  # Steam must be running
+  steam.runSteamMinimised(SteamExe, SteamDelayS)
+  # Use rF2_joinServer to execute (requires that it is refactored)
+  os.chdir(_pop)
 
 if __name__ == '__main__':
   for row in settingsExample:
