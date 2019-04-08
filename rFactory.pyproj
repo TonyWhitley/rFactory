@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="dummyRF2.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="edit\carNtrackEditor.py" />
     <Compile Include="data\__init__.py">
       <SubType>Code</SubType>

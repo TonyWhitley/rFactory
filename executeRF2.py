@@ -8,6 +8,7 @@ import subprocess
 from data.rFactoryData import getAllCarData, getAllTrackData, getSingleCarData, getSingleTrackData
 from edit.editRF2files import changeCar, changeTrack, changeOpponents
 from data.rFactoryConfig import SteamExe, rF2root
+import dummyRF2
 
 settingsExample = [
     ['Car', ['COPERSUCAR', 'COPERSUCAR', '', '', 2, 'RWD', 1975, '1970-', '***', '1975COPERSUCAR']],
@@ -33,6 +34,12 @@ settingsExample = [
   ]
 
 def runRF2(online='Offline', settings=None):
+  try:
+    if settings['Options']['DummyRF2']:
+      dummyRF2.dummyRF2(settings)
+      return
+  except:
+    pass # DummyRF2 is not in Options
   if online == 'Offline':
     runOffline(settings)
   elif online == 'Online':

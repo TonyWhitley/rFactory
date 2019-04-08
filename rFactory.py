@@ -303,8 +303,6 @@ class GoButtons:
     else:
       print('Replay')
       runRF2('Replay', _settings)
-    for tab in _settings:
-      print(tab[0], _settings[tab])
     mainWindow.deiconify()
 
   def _quit(self):
