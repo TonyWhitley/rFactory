@@ -14,7 +14,7 @@ import tabFavouriteServers
 import tabConditions
 import tabSessions
 import tabOptions
-import tabServer
+import tabServers
 import tabScenarios
 import tabJsonEditor
 
@@ -22,15 +22,65 @@ import tabJsonEditor
 from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 
-BUILD_REVISION = 57 # The git commit count
+BUILD_REVISION = 58 # The git commit count
 versionStr = 'rFactory V0.2.%d' % BUILD_REVISION
-versionDate = '2019-04-08'
+versionDate = '2019-04-09'
 def about():
-  messagebox.showinfo(
+  messagebox.askokcancel(
             'About rFactory',
             '%s  %s\nby Tony Whitley' % (versionStr, versionDate)
         )
 
+def faq():
+  messagebox.askokcancel(
+            'rFactory FAQ',
+            'This is just a prototype.  Some things don\'t work and others '
+            'need extending.\n'
+            'See list of TBDs below.\n'
+            '\n'
+            'How it works \n'
+            'rFactory edits rFactor 2\'s data files before running it so rF2 '
+            'thinks you selected car/track etc. the last time you ran it. '
+            'To do this it needs data about the cars and tracks which '
+            'cannot always be obtained easily from rF2\'s data files. '
+            'Instead rFactory has its own data files filled with data '
+            'gleaned from rF2\'s data files then corrected and extended by '
+            'humans. That data is put in tables that you can filter and '
+            'order.  Once you have selected a car, track and other options '
+            'you can save it all as a "scenario".  (rFactory saves the '
+            'current scenario when you quit then reloads it next time.)\n'
+            '\n' 
+            'There is also favourites/rFactoryConfig.JSON where you can '
+            'change basic information about the path to rF2 and Steam. '
+            'And favourites/last.favouriteServersJSON where you can add '
+            'server names and their passwords to connect online '
+            'automatically. '
+            '\n' 
+            'GOTCHA: \n'
+            'Note the \'Dummy_rF2\' checkbox on the Options tab which is '
+            'used for debugging.  '
+            'Instead of running rF2 it just dumps what rF2 *would* do.\n'
+            '\n' 
+            'See the menu JSON editor/Help/FAQ for more on that.\n'
+            '\n' 
+            'TBDs\n'
+            'Not working:\n'
+            '* Opponent selection\n'
+            '* Reading servers and picking them\n'
+            '* Running "co-programs" such as Crew Chief\n'
+            '    (next on the to do list!)\n'
+            '* Tweaking AI settings taking into account car and track\n'
+            '* Tweaking graphics settings taking into account car, track\n'
+            '    and other variables\n'
+            'Need extending\n'
+            '* Car selection of invidual cars\n'
+            '* Track selection of invidual tracks\n'
+            'Need improvment\n'
+            '* Car editor to use drop down selection for things like\n'
+            '    formula and gearbox\n'
+            '* Similarly for the track editor\n'
+            '* Improve the quality of extraction of car and track data\n'
+        )
 
 
 class Menu:
@@ -38,6 +88,7 @@ class Menu:
                menubar, 
                menu2tab=None):
     helpmenu = tk.Menu(menubar, tearoff=0)
+    helpmenu.add_command(label="FAQ", command=faq)
     helpmenu.add_command(label="About", command=about)
     menubar.add_cascade(label="Help", menu=helpmenu)
 
@@ -109,7 +160,7 @@ class Tabs:
       ['Conditions', tabConditions],
       ['Sessions', tabSessions],
       ['Options', tabOptions],
-      #['Server', tabServer],   # disabled for now
+      ['Servers', tabServers],
       ['Favourite Servers', tabFavouriteServers],
       ['Scenarios', tabScenarios],
       ['JSON editor', tabJsonEditor]
@@ -176,7 +227,7 @@ class Menus:
       #['Conditions', tabConditions],
       #['Sessions', tabSessions],
       #['Options', tabOptions],
-      #['Server', tabServer],
+      #['Server', tabServers],
       ['Scenarios', tabScenarios],
       ['JSON editor', tabJsonEditor]
       ]
@@ -264,7 +315,7 @@ class GoButtons:
     #tabs.disableTab('Opponents')
     #tabs.disableTab('Conditions')
     tabs.disableTab('Sessions')
-    tabs.enableTab('Server')
+    tabs.enableTab('Servers')
     tabs.enableTab('Favourite Servers')
     self.tkButtonOnline.configure(relief=tk.SUNKEN) #, bg='green')
     self.tkButtonOffline.configure(relief=tk.RAISED) #, bg='red')
@@ -276,7 +327,7 @@ class GoButtons:
     tabs.enableTab('Opponents')
     tabs.enableTab('Conditions')
     tabs.enableTab('Sessions')
-    tabs.disableTab('Server')
+    tabs.disableTab('Servers')
     tabs.disableTab('Favourite Servers')
     self.tkButtonOnline.configure(relief=tk.RAISED) #, bg='red')
     self.tkButtonOffline.configure(relief=tk.SUNKEN) #, bg='green')
@@ -288,7 +339,7 @@ class GoButtons:
     tabs.enableTab('Opponents')
     tabs.enableTab('Conditions')
     tabs.enableTab('Sessions')
-    tabs.disableTab('Server')
+    tabs.disableTab('Servers')
     tabs.disableTab('Favourite Servers')
     self.tkButtonOnline.configure(relief=tk.RAISED) #, bg='red')
     self.tkButtonOffline.configure(relief=tk.RAISED) #, bg='green')

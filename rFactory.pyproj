@@ -72,7 +72,7 @@
     <Compile Include="tabOpponents.py" />
     <Compile Include="tabOptions.py" />
     <Compile Include="tabScenarios.py" />
-    <Compile Include="tabServer.py" />
+    <Compile Include="tabServers.py" />
     <Compile Include="tabSessions.py" />
     <Compile Include="tabTrack.py" />
     <Compile Include="data\trawl_rF2_datafiles.py">

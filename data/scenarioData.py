@@ -20,7 +20,7 @@ scenarioData = {
   'tabOpponents' : '',
   'tabOptions' : '',
   'tabScenarios' : '',
-  'tabServer' : '',
+  'tabServers' : '',
   'tabSessions' : '',
   'tabTrack' : '',
 }

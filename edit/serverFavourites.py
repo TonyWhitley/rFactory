@@ -79,20 +79,20 @@ class Editor:
 if __name__ == '__main__':
   # To run this tab by itself for development
   root = tk.Tk()
-  tabServer = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
+  tabServerFavourites = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   root.title('Editor')
-  tabServer.grid()
+  tabServerFavourites.grid()
     
   edit = 'password'
 
   if edit == 'favourite':
-    o_tab = Editor(tabServer, 'Server 1', 1, '')
+    o_tab = Editor(tabServerFavourites, 'Server 1', 1, '')
 
   elif edit == 'password':
-    o_tab = Editor(tabServer, 'Server 2', 1, 'password')
+    o_tab = Editor(tabServerFavourites, 'Server 2', 1, 'password')
 
   elif edit == 'notFavourite':
-    o_tab = Editor(tabServer, 'Server 3', 0, '')
+    o_tab = Editor(tabServerFavourites, 'Server 3', 0, '')
 
   root.mainloop()
 
