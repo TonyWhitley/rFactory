@@ -13,7 +13,6 @@ import tabConditions
 import tabSessions
 import tabOptions
 import tabServers
-import tabScenarios
 import tabJsonEditor
 
 from data.rFactoryConfig import scenarioFilesFolder,scenarioFilesExtension
@@ -118,25 +117,6 @@ def saveDefaultScenario():
   _text = json.dumps(settings, sort_keys=True, indent=4)
   writeFile(filename, _text)
 
-#########################
-# The tab's public class:
-#########################
-class Tab:
-  def __init__(self, parentFrame):
-    """ Put this into the parent frame """
-    root = parentFrame
-    tkLabelScenarios = tk.Label(parentFrame, 
-                                text='Here a list of scenario files to load plus "Save as..."')
-    tkLabelScenarios.grid(column=4, row=3)
-
-  def getSettings(self):
-    """ Return the settings for this tab """
-    return ['Scenario - what does that mean? Scenario sets all tab settings']
-
-  def setSettings(self, settings):
-    """ Set the settings for this tab """
-    # Meaningless for this tab
-    pass
 
 def dummy():
   pass
@@ -166,7 +146,6 @@ if __name__ == '__main__':
   # display the menu
   #???? menubar.config(menu=menubar)
     
-  o_tab = Tab(tabScenarios)
   setMenubar(menubar)
 
   ##Menu(menubar)

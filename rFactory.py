@@ -22,7 +22,7 @@ import tabJsonEditor
 from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 
-BUILD_REVISION = 58 # The git commit count
+BUILD_REVISION = 59 # The git commit count
 versionStr = 'rFactory V0.2.%d' % BUILD_REVISION
 versionDate = '2019-04-09'
 def about():
@@ -40,7 +40,7 @@ def faq():
             '\n'
             'How it works \n'
             'rFactory edits rFactor 2\'s data files before running it so rF2 '
-            'thinks you selected car/track etc. the last time you ran it. '
+            'thinks you selected the car/track etc. the last time you ran it. '
             'To do this it needs data about the cars and tracks which '
             'cannot always be obtained easily from rF2\'s data files. '
             'Instead rFactory has its own data files filled with data '
@@ -54,9 +54,13 @@ def faq():
             'change basic information about the path to rF2 and Steam. '
             'And favourites/last.favouriteServersJSON where you can add '
             'server names and their passwords to connect online '
-            'automatically. '
+            'automatically.\n'
             '\n' 
-            'GOTCHA: \n'
+            'GOTCHAS: \n'
+            'If the track (or car, but that\'s less likely) data file does '
+            'not have a "Scene Description" entry (the name rF2 uses to '
+            'specify the track/car) then rFactory cannot set rF2 to use '
+            'it.\n'
             'Note the \'Dummy_rF2\' checkbox on the Options tab which is '
             'used for debugging.  '
             'Instead of running rF2 it just dumps what rF2 *would* do.\n'
@@ -162,7 +166,7 @@ class Tabs:
       ['Options', tabOptions],
       ['Servers', tabServers],
       ['Favourite Servers', tabFavouriteServers],
-      ['Scenarios', tabScenarios],
+      #['Scenarios', tabScenarios],
       ['JSON editor', tabJsonEditor]
       ]
     self.notebook = ttk.Notebook(parentFrame)

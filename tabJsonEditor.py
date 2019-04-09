@@ -5,11 +5,15 @@ import sys
 import tkinter as tk
 from tkinter import ttk
 
-SJE_path = r'..\ScriptedJsonEditor\ScriptedJsonEditor'
-if os.path.exists(SJE_path):
+if getattr( sys, 'frozen', False ) :
+  # running in a PyInstaller bundle (exe)
+  SJE_path = r'ScriptedJsonEditor'
+else :
+  # running live
+  SJE_path = r'..\ScriptedJsonEditor\ScriptedJsonEditor'
+try:
   sys.path.append(SJE_path)
-  #os.chdir(SJE_path)
-  from GUI import Tab as _Tab
+  from GUI import Tab as GUI_Tab
   from GUI import setMenu2tab
   from GUImenu import Menu
 
@@ -23,10 +27,10 @@ if os.path.exists(SJE_path):
     menu2tab = setMenu2tab(SJE_path)
     Menu(menubar=menubar, menu2tab=menu2tab)
 
-  class Tab(_Tab):
+  class Tab(GUI_Tab):
     def __init__(self, parentFrame):
       global menu2tab
-      x = _Tab(parentFrame, menu2tab)
+      x = GUI_Tab(parentFrame, menu2tab, goCommand=False)
 
       """
       tkLabelframe_jobSettings = x.tkLabelframe_jobSettings
@@ -37,7 +41,7 @@ if os.path.exists(SJE_path):
       assert o_tab.get_checkbutton('G25_jobs', 'Monitor') == 1
       """
 
-else:
+except:
   def setMenubar(_menubar):
     pass
 
