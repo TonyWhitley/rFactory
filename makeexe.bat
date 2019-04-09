@@ -16,19 +16,22 @@ set path=%path%;"C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64"
 if exist env\scripts 	set path=%path%;env\Scripts
 if not exist env\scripts	python.exe -m venv env && env/Scripts/activate && python -m pip install -r requirements.txt 
 
-goto :useSpec
+GOTO :USESPEC
 
 pyinstaller ^
   --onefile ^
-  --distpath . ^
+  --distpath .\ ^
   --add-data CarDataFiles;.\CarDataFiles ^
   --add-data TrackDataFiles;.\TrackDataFiles ^
+  --add-data jobs;..\ScriptedJsonEditor\ScriptedJsonEditor\jobs ^
+  --add-data job_definitions;..\ScriptedJsonEditor\ScriptedJsonEditor\job_definition ^
   --log-level=DEBUG ^
   --paths ..\rF2_serverNotify ^
+  --paths env\Lib\site-packages ^
   --hiddenimport rF2_joinServer ^
   "%~dp0\rFactory.py"
 
-:useSpec
+:USESPEC
 pyinstaller --debug all rFactory_data.spec 
 
 pause

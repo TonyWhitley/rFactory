@@ -56,7 +56,7 @@ scenarioFilesFolder = 'scenarioFiles'
 scenarioFilesExtension = '.rFactoryScenarioJSON'
 
 favouriteServersFilesFolder = 'favourites'
-favouriteServerFilesExtension = '.favouriteServersJSON'
+favouriteServersFilesExtension = '.JSON'
 
 rFactoryConfigFileFolder = 'favourites'
 rFactoryConfigFileExtension = '.JSON'

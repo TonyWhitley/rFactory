@@ -4,7 +4,7 @@ import os
 import tkinter as tk
 from tkinter import ttk
 
-from data.rFactoryConfig import favouriteServersFilesFolder,favouriteServerFilesExtension
+from data.rFactoryConfig import favouriteServersFilesFolder,favouriteServersFilesExtension
 from data.utils import readFile, writeFile
 
 _main = False # True if this is running standalone
@@ -22,7 +22,7 @@ class Tab:
     self.settings = {}
     self.vars = {}
 
-    filename =  os.path.join(favouriteServersFilesFolder, 'last'+favouriteServerFilesExtension)
+    filename =  os.path.join(favouriteServersFilesFolder, 'favouriteServers'+favouriteServersFilesExtension)
 
     _text = readFile(filename)
     if len(_text):

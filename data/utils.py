@@ -13,6 +13,8 @@ def readFile(filename):
   return originalText
 
 def writeFile(_filepath, text):
+  _path = os.path.dirname(_filepath)   # Create the path if it doesn't exist
+  os.makedirs(_path, exist_ok=True)
   with open(_filepath, "w") as f:
     f.writelines(text)
 
