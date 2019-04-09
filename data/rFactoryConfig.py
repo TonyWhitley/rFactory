@@ -3,14 +3,10 @@ All the configuration items for rFactory.
 Some can be edited to change how rFactory works, e.g. the car table columns.
 
 """
+import json
 import os
 
-# rF2 items
-rF2root = os.path.expandvars(r'%ProgramFiles(x86)%\Steam\steamapps\common\rFactor 2')
-SteamExe = os.path.expandvars("%ProgramFiles(x86)%/Steam/steam.exe")
-SteamDelayS = 10  # How long it takes Steam to start up
-player = 'player'
-playerPath = os.path.join(rF2root, 'UserData', player)
+from data.utils import readFile, writeFile
 
 # General items
 
@@ -61,3 +57,32 @@ scenarioFilesExtension = '.rFactoryScenarioJSON'
 
 favouriteServersFilesFolder = 'favourites'
 favouriteServerFilesExtension = '.favouriteServersJSON'
+
+rFactoryConfigFileFolder = 'favourites'
+rFactoryConfigFileExtension = '.JSON'
+
+# Editable items in config file
+filename =  os.path.join(rFactoryConfigFileFolder, 'rFactoryConfig'+rFactoryConfigFileExtension)
+
+_text = readFile(filename)
+if len(_text):
+  config = json.loads(''.join(_text))
+else: # No rFactoryConfig file, create one
+  config = {
+    # rF2 items
+    'rF2root' : '%ProgramFiles(x86)%/Steam/steamapps/common/rFactor 2',
+    'SteamExe' : "%ProgramFiles(x86)%/Steam/steam.exe",
+    'SteamDelaySeconds' : 10,  
+    '#SteamDelaySeconds How long it takes Steam to start up before we can start rF2' : "",
+    'UserData player' : 'player'
+    }
+  _text = json.dumps(config, sort_keys=True, indent=4)
+  writeFile(filename, _text)
+# rF2 items
+rF2root = os.path.expandvars(config['rF2root'])
+SteamExe = os.path.expandvars(config['SteamExe'])
+SteamDelayS = config['SteamDelaySeconds']  # How long it takes Steam to start up
+player = config['UserData player']
+playerPath = os.path.join(rF2root, 'UserData', player)
+pass
+

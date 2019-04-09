@@ -8,7 +8,7 @@ def dummyRF2(settings, _password=None):
   try:
     pp = pprint.pformat(settings, indent=2)
     if _password != None:
-      pp += '\nPassword: %s' % _password
+      pp += '\n\nPassword: %s' % _password
   except:
     pp = 'Error formatting settings'
 

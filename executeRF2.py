@@ -4,11 +4,15 @@ as required and then call rF2 with any command switches.
 """
 import os
 import subprocess
+import sys
 
 from data.rFactoryData import getAllCarData, getAllTrackData, getSingleCarData, getSingleTrackData
 from edit.editRF2files import changeCar, changeTrack, changeOpponents
 from data.rFactoryConfig import SteamExe, SteamDelayS, rF2root
-from rF2_joinServer import runRf2Online
+rF2_serverNotify_path = r'..\rF2_serverNotify\steps'
+if os.path.exists(rF2_serverNotify_path):
+  sys.path.append(rF2_serverNotify_path)
+  from rF2_joinServer import runRf2Online
 import dummyRF2
 import steam
 

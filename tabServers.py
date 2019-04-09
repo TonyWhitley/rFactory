@@ -93,7 +93,7 @@ class Tab:
                              stripped_rows=("white","#f2f2f2"), 
                              command=self.__on_select, 
                              right_click_command=self.__on_right_click,
-                             adjust_heading_to_content=False, 
+                             adjust_heading_to_content=True, 
                              height=30,
                              cell_anchor="center")
 
@@ -129,10 +129,9 @@ class Tab:
         if len(row[column]) > colWidths[col]:
           colWidths[col] = len(row[column])
       for col, column in enumerate(row):
-        self.mc.configure_column(col, width=colWidths[col]*2+6)
+        self.mc.configure_column(col, width=colWidths[col]*7+6)
     self.mc.configure_column(len(config_tabServer['serverColumns'])-1, width=0, minwidth=0)
-    # Justify the data in the first three columns
-    self.mc.configure_column(0, anchor='e')
+    # Justify the data in column 2 and 3
     self.mc.configure_column(1, anchor='w')
     self.mc.configure_column(2, anchor='w')
     self.mc.interior.grid(column=0, row=1, pady=2, columnspan=len(config_tabServer['serverColumns']))
@@ -152,8 +151,6 @@ class Tab:
   def getSettings(self):
     """ Return the settings for this tab """
     settings = {}
-    settings['Server'] = 'RSVR sig-racing.boards.net'
-    settings['Password'] = 'central'
     return settings
     #return self.settings # filters too?  Probably not
 
@@ -208,13 +205,14 @@ class Tab:
         _entry['Maybe'] = '0'
         _entry['AI'] = '0'
         _entry['Max'] = '39'
-        _entry['Password'] = '1'
-        _entry['Version'] = 'version'
+        _entry['Password'] = 'Yes'
+        _entry['Version'] = '1.59'
         _entry['blank'] = ''
         self.data[server] = _entry
         self.data[server+'X'] = copy.deepcopy(_entry)
         self.data[server+'X']['Humans'] = '0'
         self.data[server+'X']['AI'] = '10'
+        self.data[server+'X']['Password'] = 'No'
 
       # getAllServerData(tags=config_tabServer['serverColumns'], maxWidth=20)
       return self.data
@@ -296,10 +294,10 @@ class Tab:
 if __name__ == '__main__':
   # To run this tab by itself for development
   root = tk.Tk()
-  tabServer = ttk.Frame(root, width=600, height=600, relief='sunken', borderwidth=5)
-  tabServer.grid()
+  tabServers = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
+  tabServers.grid()
     
-  o_tab = Tab(tabServer)
+  o_tab = Tab(tabServers)
   o_tab.activate(None)
 
   root.mainloop()

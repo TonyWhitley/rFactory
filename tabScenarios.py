@@ -12,7 +12,7 @@ import tabFavouriteServers
 import tabConditions
 import tabSessions
 import tabOptions
-import tabServer
+import tabServers
 import tabScenarios
 import tabJsonEditor
 

@@ -22,7 +22,10 @@ pyinstaller ^
   --onefile ^
   --distpath . ^
   --add-data CarDataFiles;.\CarDataFiles ^
+  --add-data TrackDataFiles;.\TrackDataFiles ^
   --log-level=DEBUG ^
+  --paths ..\rF2_serverNotify ^
+  --hiddenimport rF2_joinServer ^
   "%~dp0\rFactory.py"
 
 :useSpec
