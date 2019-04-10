@@ -40,9 +40,13 @@ settingsExample = [
   ]
 
 def runRF2(online='Offline', settings=None, _password=None):
+  if online == 'Offline':
+    _status = editRF2Files(settings)
+    if _status != 'OK':
+      return _status
   try:
     if settings['Options']['DummyRF2'] != '0':
-      _status = dummyRF2.dummyRF2(settings, _password)
+      _status = dummyRF2.dummyRF2(online, settings, _password)
       return _status
   except:
     pass # DummyRF2 is not in Options
@@ -54,7 +58,7 @@ def runRF2(online='Offline', settings=None, _password=None):
     return ('settings error', settings)
   return _status
 
-def runOffline(settings):
+def editRF2Files(settings):
   # Car
   _carID = settings['Car'][-1]
   _carData = getSingleCarData(_carID, ['originalFolder', 'vehFile'])
@@ -79,8 +83,9 @@ def runOffline(settings):
     #  Need to work out the field for this     _status = changeOpponents(opponents=_opponentStr)
     if _status != 'OK':
       return _status
+  return 'OK'
 
-
+def runOffline(settings):
   cmd = SteamExe
   _cmd =  '"%s" -applaunch 365960 +singleplayer +path=".."' % (SteamExe)
   # Alternative looks to be
