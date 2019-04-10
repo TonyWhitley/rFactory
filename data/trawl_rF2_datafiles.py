@@ -12,6 +12,8 @@ Trawl rF2 data files for raw data as a baseline for rFactory data files
 import datetime
 import os
 import re
+import subprocess
+import time
 
 import tkinter as tk
 from tkinter import ttk
@@ -220,7 +222,6 @@ def createDefaultDataFiles(overwrite=False):
   F1_1988_trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations', 'F1_1988_Tracks'), pattern='*.mas', recurse=True)
 
   #vehNames = getVehScnNames('vehNames.txt')
-  scnNames = getVehScnNames('scnNames.txt')
   vehNames = vehFiles()
 
   tags = {}
@@ -290,60 +291,79 @@ def createDefaultDataFiles(overwrite=False):
     for track in trackFiles:
       text = readFile(track[0])
       tags = getTags(text)
-      #print('\nData file: "%s.something"' % tags['Name'])
-      for requiredTag in ['Name','Version','Type','Author','Origin','Category','ID','URL','Desc','Date','Flags','RefCount','#Signature','#MASFile','MinVersion','#BaseSignature']:
-        # MASFile, Signature and BaseSignature filtered out
-        if requiredTag in tags:
-          """filter out boilerplate
-          Author=Mod Team
-          URL=www.YourModSite.com
-          Desc=Your new mod.
-          """
-          if tags[requiredTag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
-            tags[requiredTag] = ''
-          #print('%s=%s' % (requiredTag, tags[requiredTag]))
-          if requiredTag == 'Name':
-            tags['strippedName'] = cleanTrackName(tags['Name'])
-            tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['strippedName'])
-            tags['strippedName'] = tags['strippedName'].title() # Title Case The Name
-      # We need the original data folder to assemble the .SCN file path to put in 
-      # "Player.JSON" to force rF2 to switch tracks.  We also need the .SCN
-      # file names and that's a bit more difficult.
-      # To select the track we also need the "Scene Description"
-      tags['originalFolder'], _ = os.path.split(track[0][len(rF2root)+1:]) # strip the root
-      # if scn file name is available in scnNames.txt use it
-      if tags['Name'] in scnNames:
-        tags['Scene Description'] = scnNames[tags['Name']]
+      if track[1] != 'F1_1988_Tracks.mft':
+        _filepath = os.path.join(TrackDatafilesFolder, tags['Name']+dataFilesExtension)
+        if overwrite or not os.path.exists(_filepath):
+          scns = getScnFilenames(os.path.dirname(track[0]))
+          if len(scns):
+            # First data file with the overall name
+            # otherwise this scans for SCN files every time
+            tags['Scene Description'] = tags['Name']
+            newTrack = processTrack(track, tags)
+            if newTrack:
+              newFiles.append(newTrack)
+            for scn in scns[1:]:
+              tags['Scene Description'] = scn
+              tags['Name'] = scn
+              newTrack = processTrack(track, tags)
+              if newTrack:
+                newFiles.append(newTrack)
 
-      if tags['Category'] in trackCategories:
-        tags['tType'] = trackCategories[tags['Category']]
+          else:
+            newTrack = processTrack(track, tags)
+            if newTrack:
+              newFiles.append(newTrack)
 
-      if tags['Name'] != 'F1_1988_Tracks':
-        if createDataFile(datafilesPath=TrackDatafilesFolder,
-                          filename=tags['Name'], 
-                          dict=tags, 
-                          tagsToBeWritten=trackTags,
-                          overwrite=overwrite):
-          # a new file was written
-          newFiles.append(tags['Name'])
       else: # it's a folder of several tracks
-        for f1988 in F1_1988_trackFiles:
-          tags['Name'] = f1988[1][:-4]
-          tags['strippedName'] = cleanTrackName(tags['Name'])
-          tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['strippedName'])
-          # if scn file name is available in scnNames.txt use it
-          if tags['Name'] in scnNames:
-            tags['Scene Description'] = scnNames[tags['Name']]
-          if tags['Category'] in trackCategories:
-            tags['tType'] = trackCategories[tags['Category']]
-          if createDataFile(datafilesPath=TrackDatafilesFolder,
-                            filename=tags['Name'], 
-                            dict=tags, 
-                            tagsToBeWritten=trackTags,
-                            overwrite=overwrite):
-            # a new file was written
-            newFiles.append(tags['Name'])
+        for track in F1_1988_trackFiles:
+          tags['Name'] = track[1][:-4]
+          _filepath = os.path.join(TrackDatafilesFolder, tags['Name']+dataFilesExtension)
+          if overwrite or not os.path.exists(_filepath):
+            tags['Scene Description'] = tags['Name']
+            newTrack = processTrack(track, tags)
+            if newTrack:
+              newFiles.append(newTrack)
   return newFiles
+
+def processTrack(track, tags):
+  #print('\nData file: "%s.something"' % tags['Name'])
+  for requiredTag in ['Name','Version','Type','Author','Origin','Category','ID','URL','Desc','Date','Flags','RefCount','#Signature','#MASFile','MinVersion','#BaseSignature']:
+    # MASFile, Signature and BaseSignature filtered out
+    if requiredTag in tags:
+      """filter out boilerplate
+      Author=Mod Team
+      URL=www.YourModSite.com
+      Desc=Your new mod.
+      """
+      if tags[requiredTag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
+        tags[requiredTag] = ''
+      #print('%s=%s' % (requiredTag, tags[requiredTag]))
+      if requiredTag == 'Name':
+        tags['strippedName'] = cleanTrackName(tags['Name'])
+        tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['strippedName'])
+        tags['strippedName'] = tags['strippedName'].title() # Title Case The Name
+  # We need the original data folder to assemble the .SCN file path to put in 
+  # "Player.JSON" to force rF2 to switch tracks.  We also need the .SCN
+  # file names and that's a bit more difficult.
+  # To select the track we also need the "Scene Description"
+  tags['originalFolder'], _ = os.path.split(track[0][len(rF2root)+1:]) # strip the root
+  if not 'Scene Description' in tags or tags['Scene Description'] == '':
+    # if scn file name is available in scnNames.txt use it
+    scnNames = getVehScnNames('scnNames.txt')
+    if tags['Name'] in scnNames:
+      tags['Scene Description'] = scnNames[tags['Name']]
+
+  if tags['Category'] in trackCategories:
+    tags['tType'] = trackCategories[tags['Category']]
+
+  if createDataFile(datafilesPath=TrackDatafilesFolder,
+                    filename=tags['Name'], 
+                    dict=tags, 
+                    tagsToBeWritten=trackTags):
+    # a new file was written
+    return tags['Name']
+  return None
+
 
 def listDeletedDataFiles():
   newFiles = []
@@ -368,11 +388,40 @@ def listDeletedDataFiles():
           filesToDelete.append(track[0])
   return filesToDelete
 
+def getScnFilenames(folder):
+  ModMgr = os.path.join(rF2root, r'Bin32\ModMgr.exe')
+  masFiles = getListOfFiles(folder, '*mas')
+  all = []
+  for mas in masFiles:
+    """ Return nothing
+    ls = subprocess.run([ModMgr, '-h'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(ls.stderr.decode('utf-8'))
+    #_op = subprocess.run([ModMgr, '-l%s' % mas[1]], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    #So pip to a file and read it
+    """
+    _pop = os.getcwd()  # save current directory
+    os.chdir(os.path.dirname(mas[0]))
+    cmd = '"'+ModMgr + '" -l%s 2>&1 fred' % mas[1]
+    os.system(cmd)
+    lines = readFile('fred')
+    for line in lines:
+      if '.scn' in line.lower():
+        all.append(line.strip()[:-4]) # Strip whitespace and .scn
+    try:
+      os.remove('fred')
+    except:
+      pass # No SCN files in MAS files
+    os.chdir(_pop)
+  return all
+
+
 
 if __name__ == '__main__':
   root = tk.Tk()
   tabCar = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   tabCar.grid()
+
+  #scns = getScnFilenames(r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Locations\Dundrod_1950\0.1")
 
   #createDefaultDataFiles(overwrite=True)
   newFiles = trawl_for_new_rF2_datafiles(root)
