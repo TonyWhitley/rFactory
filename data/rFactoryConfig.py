@@ -79,8 +79,8 @@ else: # No rFactoryConfig file, create one
   _text = json.dumps(config, sort_keys=True, indent=4)
   writeFile(filename, _text)
 # rF2 items
-rF2root = os.path.expandvars(config['rF2root'])
-SteamExe = os.path.expandvars(config['SteamExe'])
+rF2root = os.path.normpath(os.path.expandvars(config['rF2root']))
+SteamExe = os.path.normpath(os.path.expandvars(config['SteamExe']))
 SteamDelayS = config['SteamDelaySeconds']  # How long it takes Steam to start up
 player = config['UserData player']
 playerPath = os.path.join(rF2root, 'UserData', player)

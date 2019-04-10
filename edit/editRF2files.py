@@ -63,7 +63,9 @@ def readTrack():
   PlayerJSON = os.path.join(rF2root, r'UserData\player\Player.JSON')
   with open(PlayerJSON) as f_p:
     json_dict = json.load(f_p)
-  track = json_dict['SCENE']['Scene Description']
+  _strip = os.path.normpath(os.path.join(rF2root, r'Installed\Locations'))
+  track = json_dict['SCENE']['Scene File'][len(_strip)+1:]
+  track += '\n' + json_dict['SCENE']['Scene Description']
   return track
 
 def changeOpponents(opponents="|1971|AC_427_1954_Endurance|DPi"):
