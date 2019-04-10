@@ -45,7 +45,7 @@ class Tab:
     # Hide the final column (contains DB file ID):
     self.mc.configure_column(len(config_tabTrack['trackColumns'])-1, width=0, minwidth=0)
     # Justify the data in the first three columns
-    self.mc.configure_column(0, anchor='e')
+    self.mc.configure_column(0, anchor='w')
     self.mc.configure_column(1, anchor='w')
     self.mc.configure_column(2, anchor='w')
     self.mc.interior.grid(column=0, row=1, pady=2, columnspan=len(config_tabTrack['trackColumns']))
