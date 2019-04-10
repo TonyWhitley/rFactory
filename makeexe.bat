@@ -1,9 +1,9 @@
-::S@echo off
+@echo off
 setlocal
+@echo Freeze rFactory into a single .exe with pyInstaller
 
 python -V | find "3.7"
 if errorlevel 1 goto not37
-::python -V
 echo pyinstaller only works with versions up to 3.6
 pause
 goto :eof
@@ -18,13 +18,10 @@ if not exist env\scripts	python.exe -m venv env && env/Scripts/activate && pytho
 
 GOTO :USESPEC
 
+REM Using the command line like this should also work but there were problems at some point.
 pyinstaller ^
   --onefile ^
   --distpath .\ ^
-  --add-data CarDataFiles;.\CarDataFiles ^
-  --add-data TrackDataFiles;.\TrackDataFiles ^
-  --add-data jobs;..\ScriptedJsonEditor\ScriptedJsonEditor\jobs ^
-  --add-data job_definitions;..\ScriptedJsonEditor\ScriptedJsonEditor\job_definition ^
   --log-level=DEBUG ^
   --paths ..\rF2_serverNotify ^
   --paths env\Lib\site-packages ^
@@ -32,7 +29,7 @@ pyinstaller ^
   "%~dp0\rFactory.py"
 
 :USESPEC
-pyinstaller --debug all rFactory_data.spec 
+pyinstaller --debug all rFactory.spec 
 
 pause
 REM fails to get pypiwin32 on AppVeyor ####  if not exist env\scripts 	pip install -r requirements.txt

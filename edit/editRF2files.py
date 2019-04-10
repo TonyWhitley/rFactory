@@ -2,13 +2,14 @@
 Read, __edit and then write rF2 files like UserData\player\All Tracks & Cars.cch
 and UserData\player\Player.JSON
 """
+import json
 import os
 import re
 
 from data.trawl_rF2_datafiles import readFile
 from data.rFactoryConfig import rF2root
 from data.rFactoryData import getSingleCarData
-from data.utils import getListOfFiles, writeFile
+from data.utils import getListOfFiles, readFile, writeFile
 
 def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):
   if vehName == '':
@@ -32,6 +33,16 @@ def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):
   writeFile(allTracks, _edited)
   return 'OK'
 
+def readCar():
+  allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
+  _strip = 'SinglePlayerVehicle=%s' % os.path.normpath(os.path.join(rF2root, r'Installed\Vehicles'))
+  _lines = readFile(allTracks)
+  for line in _lines:
+    if 'SinglePlayerVehicle' in line:
+      car = line[len(_strip)+2:-2]
+      break
+  return car
+
 def changeTrack(scnPath = r'F1_1988_Tracks\0.941', scnName='HOCKENHEIM_1988_C4', SceneDescription='HOCKENHEIM_1988_C4'):
   if scnName == '':
     return "Scene Description for %s not in rFactory's track data file.\nPlease edit entry" % scnPath
@@ -48,6 +59,13 @@ def changeTrack(scnPath = r'F1_1988_Tracks\0.941', scnName='HOCKENHEIM_1988_C4',
   writeFile(PlayerJSON, _edited)
   return 'OK'
 
+def readTrack():
+  PlayerJSON = os.path.join(rF2root, r'UserData\player\Player.JSON')
+  with open(PlayerJSON) as f_p:
+    json_dict = json.load(f_p)
+  track = json_dict['SCENE']['Scene Description']
+  return track
+
 def changeOpponents(opponents="|1971|AC_427_1954_Endurance|DPi"):
   allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
   _text3 = readFile(allTracks)
@@ -55,6 +73,18 @@ def changeOpponents(opponents="|1971|AC_427_1954_Endurance|DPi"):
   _edited = __edit(_text3, [_edit3], doubleSlash=False)
   writeFile(allTracks, _edited)
   return 'OK'
+
+def readOpponents():
+  allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
+  _strip = 'SinglePlayerFilter=%s' % os.path.normpath(os.path.join(rF2root, r'Installed\Vehicles'))
+  _lines = readFile(allTracks)
+  for line in _lines:
+    if 'SinglePlayerFilter' in line:
+      opponents = line[len(_strip)+2:-2]
+      _o = opponents.split('|')
+      opponents = ' '.join(_o)
+      break
+  return opponents
 
 
 def __edit(text, edits, doubleSlash):
@@ -79,6 +109,10 @@ def __edit(text, edits, doubleSlash):
   return text
 
 if __name__ == '__main__':
+
+  print(readCar())
+  print(readTrack())
+  print(readOpponents())
 
   _text1 = '"AI Database File":"C:\\Program Files (x86)\\Steam\\steamapps\\common\\rFactor 2\\Installed\\Locations\\Road America 2016\\1.4\\RA2016.AIW",\n'
   _edit1 = [r'( *"AI Database File" *:).*',   r'\1"FRED"']

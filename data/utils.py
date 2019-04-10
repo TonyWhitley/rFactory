@@ -8,15 +8,33 @@ def readFile(filename):
   try:
     with open(filename) as f:
       originalText = f.readlines()
-  except:
-    originalText = []
+  except Exception as e:
+    originalText = ['Exception reading "%s": %s"' % (filename, e)]
   return originalText
+
+def readTextFile(filename):
+  """
+  Read a wall of text, concatenate the lines, replace \n with newlines
+  """
+  _lines = readFile(filename)
+  _txt = ''
+  for line in _lines:
+    _txt += ' '+line.strip()
+  _txt = _txt.replace(r'\n ', '\n') # That will have added spaces after \n
+  _txt = _txt.replace(r'\n', '\n')  # There may be other \n
+  _txt = _txt[1:] # throw away the first space
+  return _txt
 
 def writeFile(_filepath, text):
   _path = os.path.dirname(_filepath)   # Create the path if it doesn't exist
   os.makedirs(_path, exist_ok=True)
-  with open(_filepath, "w") as f:
-    f.writelines(text)
+  try:
+    with open(_filepath, "w") as f:
+      f.writelines(text)
+      status = None
+  except Exception as e:
+    status = ['Exception writing  "%s": %s"' % (filename, e)]
+  return status
 
 def readTags(text):
   """ Grep the tags in text and return them as a list """

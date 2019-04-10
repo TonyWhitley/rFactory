@@ -21,10 +21,11 @@ import tabJsonEditor
 
 from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
+from data.utils import readTextFile
 
-BUILD_REVISION = 59 # The git commit count
+BUILD_REVISION = 60 # The git commit count
 versionStr = 'rFactory V0.2.%d' % BUILD_REVISION
-versionDate = '2019-04-09'
+versionDate = '2019-04-10'
 def about():
   messagebox.askokcancel(
             'About rFactory',
@@ -32,58 +33,10 @@ def about():
         )
 
 def faq():
+  _faq = readTextFile('faq.txt')
   messagebox.askokcancel(
             'rFactory FAQ',
-            'This is just a prototype.  Some things don\'t work and others '
-            'need extending.\n'
-            'See list of TBDs below.\n'
-            '\n'
-            'How it works \n'
-            'rFactory edits rFactor 2\'s data files before running it so rF2 '
-            'thinks you selected the car/track etc. the last time you ran it. '
-            'To do this it needs data about the cars and tracks which '
-            'cannot always be obtained easily from rF2\'s data files. '
-            'Instead rFactory has its own data files filled with data '
-            'gleaned from rF2\'s data files then corrected and extended by '
-            'humans. That data is put in tables that you can filter and '
-            'order.  Once you have selected a car, track and other options '
-            'you can save it all as a "scenario".  (rFactory saves the '
-            'current scenario when you quit then reloads it next time.)\n'
-            '\n' 
-            'There is also favourites/rFactoryConfig.JSON where you can '
-            'change basic information about the path to rF2 and Steam. '
-            'And favourites/last.favouriteServersJSON where you can add '
-            'server names and their passwords to connect online '
-            'automatically.\n'
-            '\n' 
-            'GOTCHAS: \n'
-            'If the track (or car, but that\'s less likely) data file does '
-            'not have a "Scene Description" entry (the name rF2 uses to '
-            'specify the track/car) then rFactory cannot set rF2 to use '
-            'it.\n'
-            'Note the \'Dummy_rF2\' checkbox on the Options tab which is '
-            'used for debugging.  '
-            'Instead of running rF2 it just dumps what rF2 *would* do.\n'
-            '\n' 
-            'See the menu JSON editor/Help/FAQ for more on that.\n'
-            '\n' 
-            'TBDs\n'
-            'Not working:\n'
-            '* Opponent selection\n'
-            '* Reading servers and picking them\n'
-            '* Running "co-programs" such as Crew Chief\n'
-            '    (next on the to do list!)\n'
-            '* Tweaking AI settings taking into account car and track\n'
-            '* Tweaking graphics settings taking into account car, track\n'
-            '    and other variables\n'
-            'Need extending\n'
-            '* Car selection of invidual cars\n'
-            '* Track selection of invidual tracks\n'
-            'Need improvment\n'
-            '* Car editor to use drop down selection for things like\n'
-            '    formula and gearbox\n'
-            '* Similarly for the track editor\n'
-            '* Improve the quality of extraction of car and track data\n'
+            _faq
         )
 
 

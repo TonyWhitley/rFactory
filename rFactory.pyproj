@@ -107,8 +107,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AllClasses.txt" />
+    <Content Include="faq.txt" />
     <Content Include="Gearboxes.txt" />
+    <Content Include="makeexe.bat" />
     <Content Include="requirements.txt" />
+    <Content Include="rFactory.spec" />
     <Content Include="scnNames.txt" />
     <Content Include="vehNames.txt" />
   </ItemGroup>
