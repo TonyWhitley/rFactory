@@ -5,6 +5,8 @@ Trawl rF2 data files for raw data as a baseline for rFactory data files
 3) grep for data keywords
 4) Title Case them
 5) extract data into data file
+
+6) check if rF2 data file has been deleted
 """
 
 import datetime
@@ -24,13 +26,30 @@ from data.rFactoryData import getSingleCarData, reloadAllData
 import edit.carNtrackEditor as carNtrackEditor
 
 def trawl_for_new_rF2_datafiles(parentFrame):
+  filesToDelete = listDeletedDataFiles()
+  if len(filesToDelete):
+    delete = messagebox.askyesno(
+              'Scanned rFactory data files',
+              'rFactory data files out of date:\n%s\nDo you want to delete them?\n' % '\n'.join(filesToDelete)
+          )
+    if delete:
+      for file in filesToDelete:
+        os.remove(file)
+
   newFiles = createDefaultDataFiles(overwrite=False)
   reloadAllData()
-  if newFiles != []:
-    edit = messagebox.askyesno(
-              'Scanned rF2 data files',
-              'New rFactory data files created:\n%s\nDo you want to edit them?' % '\n'.join(newFiles)
-          )
+  if len(newFiles):
+    if len(newFiles) < 10:    # if there are too many forget it
+      edit = messagebox.askyesno(
+                'Scanned rF2 data files',
+                'New rFactory data files created:\n%s\nDo you want to edit them now?\n' % '\n'.join(newFiles)
+            )
+    else:
+      messagebox.askokcancel(
+                'Scanned rF2 data files',
+                '%s new rFactory data files created. Edit them at some time.\n' % len(newFiles)
+            )
+      edit = False
     if edit:
       for newFile in newFiles:
         root = tk.Tk()
@@ -326,11 +345,35 @@ def createDefaultDataFiles(overwrite=False):
             newFiles.append(tags['Name'])
   return newFiles
 
+def listDeletedDataFiles():
+  newFiles = []
+  rF2_dir = os.path.join(rF2root, 'Installed')
+  rFactoryVehicleFiles = getListOfFiles('CarDatafiles', pattern='*.txt', recurse=False)
+  rFactoryTrackFiles = getListOfFiles('TrackDatafiles', pattern='*.txt', recurse=False)
+
+  filesToDelete = []
+  for car in rFactoryVehicleFiles:
+    _data = readFile(car[0])
+    for line in _data:
+      if line.startswith('originalFolder'):
+        _f = line[len('originalFolder='):-1]
+        if not os.path.isdir(os.path.join(rF2root, _f)):
+          filesToDelete.append(car[0])
+  for track in rFactoryTrackFiles:
+    _data = readFile(track[0])
+    for line in _data:
+      if line.startswith('originalFolder'):
+        _f = line[len('originalFolder='):-1]
+        if not os.path.isdir(os.path.join(rF2root, _f)):
+          filesToDelete.append(track[0])
+  return filesToDelete
+
+
 if __name__ == '__main__':
   root = tk.Tk()
   tabCar = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   tabCar.grid()
-    
+
   #createDefaultDataFiles(overwrite=True)
   newFiles = trawl_for_new_rF2_datafiles(root)
   #if newFiles != []:
