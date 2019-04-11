@@ -1,7 +1,7 @@
 # rFactory
 An "External UI" for rFactor 2 like Assetto Corsa's "Content Manager"
 
-For more, click the Wiki button above.
+For more detail, click the Wiki button above.
 
 tl;dr  Most of it works but it has a number of rough edges.
 
