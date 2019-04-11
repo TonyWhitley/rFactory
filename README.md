@@ -5,6 +5,6 @@ For more detail, see the [Wiki](wiki/rFactory) or click the Wiki button above.
 
 **tl;dr**  Most of it works but it has a number of rough edges.
 
-See [faq.txt](blob/master/faq.txt) for current status (also available in the program as Help/FAQ menu).
+See [faq.txt](faq.txt) for current status (also available in the program as Help/FAQ menu).
 
 
