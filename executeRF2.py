@@ -51,12 +51,13 @@ def runRF2(online='Offline', settings=None, _password=None):
     _status = editRF2Files(settings)
     if _status != 'OK':
       return _status
-
+  
+  _dummy = False 
   try:
     if settings['Options']['DummyRF2'] != '0':
       _dummy = True
   except:
-    _dummy = False # DummyRF2 is not in Options
+    pass # DummyRF2 is not in Options
 
   if not _dummy or settings['Options']['RunCoPrograms'] != '0':
     _status = runCoProgram(settings, 'CrewChief', CrewChiefExe)
@@ -77,7 +78,7 @@ def runRF2(online='Offline', settings=None, _password=None):
     else:
       return ('settings error', settings)
     if _status == 'OK':
-      if settings['Options']['RunCoPrograms'] != '0':
+      if not _dummy or settings['Options']['RunCoPrograms'] != '0':
         _status = runCoProgram(settings, 'MyPostCommand', MyPostCommand)
   return _status
 

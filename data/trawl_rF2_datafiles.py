@@ -402,14 +402,14 @@ def getScnFilenames(folder):
     """
     _pop = os.getcwd()  # save current directory
     os.chdir(os.path.dirname(mas[0]))
-    cmd = '"'+ModMgr + '" -l%s 2>&1 fred' % mas[1]
+    cmd = '"'+ModMgr + '" -l%s 2>&1 temporaryFile' % mas[1]
     os.system(cmd)
-    lines = readFile('fred')
+    lines = readFile('temporaryFile')
     for line in lines:
       if '.scn' in line.lower():
         all.append(line.strip()[:-4]) # Strip whitespace and .scn
     try:
-      os.remove('fred')
+      os.remove('temporaryFile')
     except:
       pass # No SCN files in MAS files
     os.chdir(_pop)
