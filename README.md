@@ -11,7 +11,8 @@ The concept is a GUI that allows you to tweak the major game settings in a simil
 ## Installing and first run
 Any brave souls who want to try it out: download the rfactory.zip from the releases page https://github.com/TonyWhitley/rFactory/releases and unzip it into a new folder (referred to as `<rfactory>` from now on) and run `rFactory.exe` There will be a page scrolling away for many seconds as it makes its own data files from your rFactor installation (it only needs to do that once).
 
-#### 1st gotcha:  if your rFactor is not installed in the usual place then edit <rfactory>\Datafiles\favourites\rFactoryConfig.JSON and change this entry
+#### 1st gotcha:
+If your rFactor is not installed in the usual place then edit `<rfactory>\Datafiles\favourites\rFactoryConfig.JSON` and change this entry
 
 `"rF2root": "%ProgramFiles(x86)%/Steam/steamapps/common/rFactor 2"`
 
