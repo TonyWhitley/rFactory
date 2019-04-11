@@ -155,19 +155,31 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
                                              text='Crew Chief',
                                              variable=self.vars['CrewChief'])
 
-    self._createVar('TeamSpeak', False)
-    _tkCheckbuttons['TeamSpeak'] = tk.Checkbutton(tkFrame_Co_programs, 
-                                             text='TeamSpeak',
-                                             variable=self.vars['TeamSpeak'])
-
     self._createVar('Discord', False)
     _tkCheckbuttons['Discord'] = tk.Checkbutton(tkFrame_Co_programs, 
                                            text='Discord (voice)',
                                            variable=self.vars['Discord'])
 
+    self._createVar('TeamSpeak', False)
+    _tkCheckbuttons['TeamSpeak'] = tk.Checkbutton(tkFrame_Co_programs, 
+                                             text='TeamSpeak',
+                                             variable=self.vars['TeamSpeak'])
+
+    self._createVar('MyPreCommand', False)
+    _tkCheckbuttons['MyPreCommand'] = tk.Checkbutton(tkFrame_Co_programs, 
+                                           text='My command to run before rF2',
+                                           variable=self.vars['MyPreCommand'])
+
+    self._createVar('MyPostCommand', False)
+    _tkCheckbuttons['MyPostCommand'] = tk.Checkbutton(tkFrame_Co_programs, 
+                                           text='My command to run after rF2',
+                                           variable=self.vars['MyPostCommand'])
+
     _tkCheckbuttons['CrewChief'].grid(sticky='w')
-    _tkCheckbuttons['TeamSpeak'].grid(sticky='w')
     _tkCheckbuttons['Discord'].grid(sticky='w')
+    _tkCheckbuttons['TeamSpeak'].grid(sticky='w')
+    _tkCheckbuttons['MyPreCommand'].grid(sticky='w')
+    _tkCheckbuttons['MyPostCommand'].grid(sticky='w')
 
     ####################################################
     tkFrame_debug = tk.LabelFrame(parentFrame, text='Debug', padx=xPadding)
@@ -178,7 +190,13 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
       text='Run dummy rF2\nprogram that accesses\nthe same data files and\ndumps what rF2\nwould do with it',
       variable=self.vars['DummyRF2'])
 
+    self._createVar('RunCoPrograms', True)
+    _tkCheckbuttons['RunCoPrograms'] = tk.Checkbutton(tkFrame_debug, 
+      text='Run co-programs with dummy rF2',
+      variable=self.vars['RunCoPrograms'])
+
     _tkCheckbuttons['Dummy_rF2'].grid(sticky='w')
+    _tkCheckbuttons['RunCoPrograms'].grid(sticky='w')
 
   def _createVar(self, name, value):
     self.vars[name] = tk.StringVar(name=name)

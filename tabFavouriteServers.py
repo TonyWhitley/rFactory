@@ -25,9 +25,9 @@ class Tab:
     filename =  os.path.join(favouriteServersFilesFolder, 'favouriteServers'+favouriteServersFilesExtension)
 
     _text = readFile(filename)
-    if len(_text):
+    try:
       self.settings = json.loads(''.join(_text))
-    else: # No favourites file, create one
+    except: # No favourites file, create one
       self.settings = {'Server' : 'Password'}
       _text = json.dumps(self.settings, sort_keys=True, indent=4)
       writeFile(filename, _text)

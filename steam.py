@@ -33,7 +33,10 @@ class Steam:
     steam = self.getSteamWindow()
     if len(steam):
       # use the window handle to set focus
-      win32gui.SetForegroundWindow(steam[0])
+      try:
+        win32gui.SetForegroundWindow(steam[0])
+      except:  # error when 2nd monitor was turned off???
+        pass
     return len(steam)
   def minimise(self):
     steam = self.getSteamWindow()

@@ -8,7 +8,9 @@ import sys
 
 from data.rFactoryData import getAllCarData, getAllTrackData, getSingleCarData, getSingleTrackData
 from edit.editRF2files import changeCar, changeTrack, changeOpponents
-from data.rFactoryConfig import SteamExe, SteamDelayS, rF2root
+from data.rFactoryConfig import SteamExe, SteamDelayS, rF2root, DiscordExe
+from data.rFactoryConfig import CrewChiefExe, TeamSpeakExe, MyPreCommand, MyPostCommand
+
 if getattr( sys, 'frozen', False ) :
   # running in a PyInstaller bundle (exe)
   rF2_serverNotify_path = r'rF2_serverNotify\steps'
@@ -44,22 +46,39 @@ settingsExample = [
   ]
 
 def runRF2(online='Offline', settings=None, _password=None):
+  _status = 'OK'
   if online == 'Offline':
     _status = editRF2Files(settings)
     if _status != 'OK':
       return _status
+
   try:
     if settings['Options']['DummyRF2'] != '0':
-      _status = dummyRF2.dummyRF2(online, settings, _password)
-      return _status
+      _dummy = True
   except:
-    pass # DummyRF2 is not in Options
-  if online == 'Offline':
-    _status = runOffline(settings)
-  elif online == 'Online':
-    _status = runOnline(settings, _password)
-  else:
-    return ('settings error', settings)
+    _dummy = False # DummyRF2 is not in Options
+
+  if not _dummy or settings['Options']['RunCoPrograms'] != '0':
+    _status = runCoProgram(settings, 'CrewChief', CrewChiefExe)
+    if _status == 'OK':
+      _status = runCoProgram(settings, 'Discord', DiscordExe)
+    if _status == 'OK':
+      _status = runCoProgram(settings, 'MyPreCommand', MyPreCommand)
+    if _status == 'OK':
+      _status = runCoProgram(settings, 'TeamSpeak', TeamSpeakExe)
+
+  if _status == 'OK':
+    if _dummy:
+      _status = dummyRF2.dummyRF2(online, settings, _password)
+    elif online == 'Offline':
+      _status = runOffline(settings)
+    elif online == 'Online':
+      _status = runOnline(settings, _password)
+    else:
+      return ('settings error', settings)
+    if _status == 'OK':
+      if settings['Options']['RunCoPrograms'] != '0':
+        _status = runCoProgram(settings, 'MyPostCommand', MyPostCommand)
   return _status
 
 def editRF2Files(settings):
@@ -88,6 +107,21 @@ def editRF2Files(settings):
     if _status != 'OK':
       return _status
   return 'OK'
+
+def runCoProgram(settings, coProgramName, coProgramCmd):
+  try:
+    if settings['Options'][coProgramName] != '0':
+      if len(coProgramCmd):
+        try:
+          subprocess.Popen(coProgramCmd)
+        except:
+          try:  # again as a shell command
+            subprocess.Popen(coProgramCmd, shell=True)
+          except:
+            return "Couldn't execute '%s'" % coProgramCmd
+    return 'OK'
+  except:
+    return "Failure with co-program '%s'" % coProgramName
 
 def runOffline(settings):
   cmd = SteamExe

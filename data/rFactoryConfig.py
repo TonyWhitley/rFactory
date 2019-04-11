@@ -29,9 +29,10 @@ trackTags = ['Track Name', 'Continent', 'Country', 'tType',
 
 serverTags = ['Server name', 'Track Name', 'Players', 'Password', 'Version']
 
-CarDatafilesFolder = 'CarDatafiles'
-TrackDatafilesFolder = 'TrackDatafiles'
+CarDatafilesFolder = 'Datafiles/Cars'
+TrackDatafilesFolder = 'Datafiles/Tracks'
 dataFilesExtension = '.rFactory.txt'
+markerfileExtension = '.rFactory.marker.empty'
 
 # File-specific items
 config_tabCar = {
@@ -52,28 +53,44 @@ config_tabServer = {
   'serverFilters' : ['Favourite', 'Server Name', 'Track Name', 'Humans', 'Maybe', 'AI', 'Password', 'Version']
   }
 
-scenarioFilesFolder = 'scenarioFiles' 
+scenarioFilesFolder = 'Datafiles/scenarioFiles' 
 scenarioFilesExtension = '.rFactoryScenarioJSON'
 
-favouriteServersFilesFolder = 'favourites'
+favouriteServersFilesFolder = 'Datafiles/favourites'
 favouriteServersFilesExtension = '.JSON'
 
-rFactoryConfigFileFolder = 'favourites'
+rFactoryConfigFileFolder = 'Datafiles/favourites'
 rFactoryConfigFileExtension = '.JSON'
 
 # Editable items in config file
 filename =  os.path.join(rFactoryConfigFileFolder, 'rFactoryConfig'+rFactoryConfigFileExtension)
 
 _text = readFile(filename)
-if len(_text):
+try:
   config = json.loads(''.join(_text))
-else: # No rFactoryConfig file, create one
+except: # No rFactoryConfig file, create one
   config = {
     # rF2 items
+    '# %ProgramFiles(x86)% will be expanded to your Windows setting but you can write it explicitly if you want' : "",
+    '# Same for %LOCALAPPDATA%' : "",
+    '# Use / not backslash' : "",
     'rF2root' : '%ProgramFiles(x86)%/Steam/steamapps/common/rFactor 2',
     'SteamExe' : "%ProgramFiles(x86)%/Steam/steam.exe",
     'SteamDelaySeconds' : 10,  
-    '#SteamDelaySeconds How long it takes Steam to start up before we can start rF2' : "",
+    '#SteamDelaySeconds: How long it takes Steam to start up before we can start rF2' : "",
+    #'DiscordExe' : '"%APPDATA%/Microsoft/Windows/Start Menu/Programs/Discord Inc/Discord.lnk"',
+    #'#DiscordExe: had to use short cut as the command wouldn\'t work' : '',
+    'DiscordExe' : '%LOCALAPPDATA%/Discord/Update.exe',
+    'DiscordArgs' : '--processStart Discord.exe',
+    'CrewChiefExe' : '"%ProgramFiles(x86)%/Britton IT Ltd/CrewChiefV4/CrewChiefV4.exe"',
+    'CrewChiefArgs' : 'RF2_64BIT',
+    'TeamSpeakExe' : '"%ProgramFiles(x86)%/TeamSpeak 3 Client/ts3client_win64.exe"',
+    '#MyPreCommand: use this call a program or batch file before rF2 runs' : "",
+    'MyPreCommand' : '',
+    'MyPreCommandArgs' : '',
+    '#MyPostCommand: use this call a program or batch file after rF2 runs' : "",
+    'MyPostCommand' : '',
+    'MyPostCommandArgs' : '',
     'UserData player' : 'player'
     }
   _text = json.dumps(config, sort_keys=True, indent=4)
@@ -81,7 +98,20 @@ else: # No rFactoryConfig file, create one
 # rF2 items
 rF2root = os.path.normpath(os.path.expandvars(config['rF2root']))
 SteamExe = os.path.normpath(os.path.expandvars(config['SteamExe']))
+DiscordExe = os.path.normpath(os.path.expandvars(config['DiscordExe'])) + ' ' + config['DiscordArgs']
+CrewChiefExe = os.path.normpath(os.path.expandvars(config['CrewChiefExe'])) + ' ' + config['CrewChiefArgs']
+TeamSpeakExe = os.path.normpath(os.path.expandvars(config['TeamSpeakExe']))
+if len(config['MyPreCommand']):
+  MyPreCommand = os.path.normpath(os.path.expandvars(config['MyPreCommand'])) + ' ' + config['MyPreCommandArgs']
+else:
+  MyPreCommand = ''
+if len(config['MyPostCommand']):
+  MyPostCommand = os.path.normpath(os.path.expandvars(config['MyPostCommand'])) + ' ' + config['MyPostCommandArgs']
+else:
+  MyPostCommand = ''
+
 SteamDelayS = config['SteamDelaySeconds']  # How long it takes Steam to start up
+
 player = config['UserData player']
 playerPath = os.path.join(rF2root, 'UserData', player)
 pass

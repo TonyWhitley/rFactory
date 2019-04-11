@@ -20,8 +20,8 @@ from tkinter import ttk
 from tkinter import messagebox
 
 from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
-  TrackDatafilesFolder,dataFilesExtension, playerPath
-from data.utils import getListOfFiles, readFile, getTags
+  TrackDatafilesFolder,dataFilesExtension,playerPath,markerfileExtension
+from data.utils import getListOfFiles, readFile, writeFile, getTags
 
 from data.rFactoryData import getSingleCarData, reloadAllData
 
@@ -292,17 +292,14 @@ def createDefaultDataFiles(overwrite=False):
       text = readFile(track[0])
       tags = getTags(text)
       if track[1] != 'F1_1988_Tracks.mft':
-        _filepath = os.path.join(TrackDatafilesFolder, tags['Name']+dataFilesExtension)
-        if overwrite or not os.path.exists(_filepath):
+        _markerfilepath = os.path.join(TrackDatafilesFolder, tags['Name']+markerfileExtension)
+        if overwrite or not os.path.exists(_markerfilepath):
+          # Create a marker file with the overall name
+          # otherwise this scans for SCN files every time
+          createMarkerFile(_markerfilepath)
           scns = getScnFilenames(os.path.dirname(track[0]))
           if len(scns):
-            # First data file with the overall name
-            # otherwise this scans for SCN files every time
-            tags['Scene Description'] = tags['Name']
-            newTrack = processTrack(track, tags)
-            if newTrack:
-              newFiles.append(newTrack)
-            for scn in scns[1:]:
+            for scn in scns:
               tags['Scene Description'] = scn
               tags['Name'] = scn
               newTrack = processTrack(track, tags)
@@ -364,6 +361,9 @@ def processTrack(track, tags):
     return tags['Name']
   return None
 
+def createMarkerFile(filepath):
+  """ Create a file to mark that a track folder has been processed """
+  writeFile(filepath, 'Folder has been processed')
 
 def listDeletedDataFiles():
   newFiles = []
@@ -389,6 +389,7 @@ def listDeletedDataFiles():
   return filesToDelete
 
 def getScnFilenames(folder):
+  # Could also use this to get .veh filenames for cars.
   ModMgr = os.path.join(rF2root, r'Bin32\ModMgr.exe')
   masFiles = getListOfFiles(folder, '*mas')
   all = []
@@ -421,7 +422,7 @@ if __name__ == '__main__':
   tabCar = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   tabCar.grid()
 
-  #scns = getScnFilenames(r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Locations\Dundrod_1950\0.1")
+  scns = getScnFilenames(r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Locations\BATHURST_2016_V3\3.0" )
 
   #createDefaultDataFiles(overwrite=True)
   newFiles = trawl_for_new_rF2_datafiles(root)
