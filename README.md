@@ -33,7 +33,6 @@ Before it can connect online you need to edit `<rfactory>\Datafiles\favourites\f
 ```
 {
 "server": "password",
-"RSVR sig-racing.boards.net": "<you know what to put here>",
 "Some server that doesn't have a password": "",
 "Another server that does": "PaSsWoRd"
 }
