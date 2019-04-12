@@ -149,9 +149,9 @@ def runOnline(settings, _password):
   # Use rF2_joinServer to execute (requires that it is refactored)
   server = settings['Favourite Servers'] #['Server']
   #password = settings['Favourite Servers']['Password']
-  runRf2Online(SteamExe, server, _password)
+  _status = runRf2Online(SteamExe, server, _password)
   os.chdir(_pop)
-  return 'OK'
+  return _status 
 
 if __name__ == '__main__':
   for row in settingsExample:
