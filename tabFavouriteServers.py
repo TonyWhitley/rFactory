@@ -28,12 +28,12 @@ class Tab:
     try:
       self.settings = json.loads(''.join(_text))
     except: # No favourites file, create one
-      self.settings = {'Server' : 'Password'}
+      self.settings = {'Server name' : 'Password'}
       _text = json.dumps(self.settings, sort_keys=True, indent=4)
       writeFile(filename, _text)
 
     for server in self.settings:
-      if server != 'server':
+      if server != 'Server name':
         self.tkListbox.insert(tk.END, server)
 
     self.tkListbox.activate(1)
