@@ -23,7 +23,7 @@ from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.utils import readTextFile
 
-BUILD_REVISION = 64 # The git commit count
+BUILD_REVISION = 65 # The git commit count
 versionStr = 'rFactory V0.3.%d' % BUILD_REVISION
 versionDate = '2019-04-11'
 def about():
