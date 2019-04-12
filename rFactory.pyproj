@@ -107,9 +107,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AllClasses.txt" />
+    <Content Include="Documentation\rFactoryCars.JPG" />
+    <Content Include="Documentation\rFactoryOptions.JPG" />
+    <Content Include="Documentation\rFactoryServers.JPG" />
+    <Content Include="Documentation\rFactoryTracks.JPG" />
+    <Content Include="Documentation\rFactory_20190411.JPG" />
     <Content Include="faq.txt" />
     <Content Include="Gearboxes.txt" />
     <Content Include="makeexe.bat" />
+    <Content Include="makezip.bat" />
     <Content Include="requirements.txt" />
     <Content Include="rFactory.spec" />
     <Content Include="scnNames.txt" />
@@ -117,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
+    <Folder Include="Documentation\" />
     <Folder Include="edit\" />
     <Folder Include="lib\" />
     <Folder Include="experiments\" />

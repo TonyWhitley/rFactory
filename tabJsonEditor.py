@@ -24,13 +24,13 @@ try:
     global menu2tab
     menubar = _menubar
 
-    menu2tab = setMenu2tab(SJE_path)
+    menu2tab = setMenu2tab('')
     Menu(menubar=menubar, menu2tab=menu2tab)
 
   class Tab(GUI_Tab):
     def __init__(self, parentFrame):
       global menu2tab
-      x = GUI_Tab(parentFrame, menu2tab, goCommand=False)
+      x = GUI_Tab(parentFrame, menu2tab, goCommand=True)
 
       """
       tkLabelframe_jobSettings = x.tkLabelframe_jobSettings
@@ -41,23 +41,28 @@ try:
       assert o_tab.get_checkbutton('G25_jobs', 'Monitor') == 1
       """
 
-except:
-  def setMenubar(_menubar):
-    pass
-
-  class Tab:
-    def __init__(self, parentFrame):
-      """ Put this into the parent frame """
-      tkLabelServer = tk.Label(parentFrame, 
-                                  text='ScriptedJsonEditor module not present')
-      tkLabelServer.grid(column=4, row=3)
-    def getSettings(self):
-      """ Return the settings for this tab """
-      return ['Server', 'password']
-
-    def setSettings(self, settings):
-      """ Set the settings for this tab """
+except ImportError as e:  # expected error if ScriptedJsonEditor is not present
+  try:
+    assert (e.name == 'GUI' or e.name == 'GUImenu') # but if that's not the error...
+    def setMenubar(_menubar):
       pass
+
+    class Tab:
+      def __init__(self, parentFrame):
+        """ Put this into the parent frame """
+        tkLabelServer = tk.Label(parentFrame, 
+                                    text='ScriptedJsonEditor module not present')
+        tkLabelServer.grid(column=4, row=3)
+      def getSettings(self):
+        """ Return the settings for this tab """
+        return ['Server name', 'Password']
+
+      def setSettings(self, settings):
+        """ Set the settings for this tab """
+        pass
+  
+  except: # unexpected error (e.g ScriptedJsonEditor imports a lib not in rFactory's env)
+    raise e  # crash
 
 if __name__ == '__main__':
   # To run this tab by itself for development
