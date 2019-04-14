@@ -5,6 +5,11 @@ import sys
 import tkinter as tk
 from tkinter import ttk
 
+# tabGraphics (or something) needs all this magic to run ScriptedJsonEditor
+# It also needs an API
+# * run Jobs
+# * backup and restore player.json  for 'Racing vs. replay only' option.
+
 if getattr( sys, 'frozen', False ) :
   # running in a PyInstaller bundle (exe)
   SJE_path = r'ScriptedJsonEditor'
