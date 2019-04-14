@@ -18,7 +18,7 @@ class Tab:
                                 justify=tk.LEFT)
     tkLabelConditions.grid(column=1, row=1, sticky='nw')
 
-    self.graphicsPreferences = {}
+    self.graphicsSetup = {}
     self.vars = {}
     _tkCheckbuttons = {}
     _tkRadiobuttons = {}
@@ -41,6 +41,7 @@ class Tab:
     _tkRadiobuttons['ReplayOnly'] = tk.Radiobutton(tkFrame_Conditions, 
                                            text='Racing vs. replay only', 
                                            variable=self.vars['rFactoryControl'], 
+                                           state=tk.DISABLED,
                                            value='Replay only')
     _tkRadiobuttons['ReplayOnly'].grid(sticky='w')
 
@@ -68,48 +69,48 @@ class Tab:
     _tkCheckbuttons['NightRacing'].grid(sticky='w')
 
     ####################################################
-    tkFrame_GraphicsPreferences = tk.LabelFrame(parentFrame, text='Graphics preferences')
-    tkFrame_GraphicsPreferences.grid(column=2, row=1, rowspan=3, sticky='ew', padx=xPadding)
+    tkFrame_GraphicsSetup = tk.LabelFrame(parentFrame, text='Graphics setup')
+    tkFrame_GraphicsSetup.grid(column=2, row=1, rowspan=3, sticky='ew', padx=xPadding)
 
     _GraphicsCapabilityCol = 1
     self._createVar('GraphicsCapability', 5)
     
-    tkLabel_GraphicsCapability = tk.Label(tkFrame_GraphicsPreferences, 
+    tkLabel_GraphicsCapability = tk.Label(tkFrame_GraphicsSetup, 
                                           text='Overall\ngraphics\ncapability',
                                           font=fontBold,
                                           justify=tk.LEFT)
     tkLabel_GraphicsCapability.grid(column=_GraphicsCapabilityCol, row=1, sticky='nw')
 
-    tkScale_GraphicsCapability = tk.Scale(tkFrame_GraphicsPreferences, 
+    tkScale_GraphicsCapability = tk.Scale(tkFrame_GraphicsSetup, 
                                   from_=0, 
                                   to=10, 
                                   orient=tk.VERTICAL, 
                                   variable=self.vars['GraphicsCapability'])
     tkScale_GraphicsCapability.grid(column=_GraphicsCapabilityCol, row=2, rowspan=3, sticky='ew')
 
-    tkLabel_Graphics_0 = tk.Label(tkFrame_GraphicsPreferences, text='Potato')
+    tkLabel_Graphics_0 = tk.Label(tkFrame_GraphicsSetup, text='Potato')
     tkLabel_Graphics_0.grid(column=_GraphicsCapabilityCol, row=2, sticky='nw')
-    tkLabel_Graphics_10 = tk.Label(tkFrame_GraphicsPreferences, text='Ninja!')
+    tkLabel_Graphics_10 = tk.Label(tkFrame_GraphicsSetup, text='Ninja!')
     tkLabel_Graphics_10.grid(column=_GraphicsCapabilityCol, row=4, sticky='nw')
 
     _GraphicsPreferenceCol = 2
     self._createVar('GraphicsPreference', 5)
     
-    tkLabel_GraphicsPreference = tk.Label(tkFrame_GraphicsPreferences, 
+    tkLabel_GraphicsPreference = tk.Label(tkFrame_GraphicsSetup, 
                                           text='Graphics\npreference',
                                           font=fontBold,
                                           justify=tk.LEFT)
     tkLabel_GraphicsPreference.grid(column=_GraphicsPreferenceCol, row=1, sticky='n')
-    tkScale_GraphicsPreference = tk.Scale(tkFrame_GraphicsPreferences, 
+    tkScale_GraphicsPreference = tk.Scale(tkFrame_GraphicsSetup, 
                                   from_=0, 
                                   to=10, 
                                   orient=tk.VERTICAL, 
                                   variable=self.vars['GraphicsPreference'])
     tkScale_GraphicsPreference.grid(column=_GraphicsPreferenceCol, row=3, sticky='ewns')
 
-    tkLabel_Graphics_10 = tk.Label(tkFrame_GraphicsPreferences, text='Frame rate')
+    tkLabel_Graphics_10 = tk.Label(tkFrame_GraphicsSetup, text='Frame rate')
     tkLabel_Graphics_10.grid(column=_GraphicsPreferenceCol, row=2, sticky='nw')
-    tkLabel_Graphics_0 = tk.Label(tkFrame_GraphicsPreferences, text='Eye candy')
+    tkLabel_Graphics_0 = tk.Label(tkFrame_GraphicsSetup, text='Eye candy')
     tkLabel_Graphics_0.grid(column=_GraphicsPreferenceCol, row=4, sticky='nw')
 
 
@@ -121,8 +122,8 @@ class Tab:
   def getSettings(self):
     """ Return the settings for this tab """
     for _v in self.vars:
-      self.graphicsPreferences[self.vars[_v]._name] = self.vars[_v].get()
-    result = self.graphicsPreferences
+      self.graphicsSetup[self.vars[_v]._name] = self.vars[_v].get()
+    result = self.graphicsSetup
     return result
 
   def setSettings(self, settings):
@@ -134,16 +135,30 @@ class Tab:
         pass # value error
     pass
 
-def setGraphics(graphicsPreferences, 
+#############################################################################
+MAX_GRAPHICS_LEVEL = 10 # the number of levels of jobs of graphics settings
+                        # (actually there are 11 as it starts at 0)
+VR_FACTOR = 1.5         # Number representing the extra load of VR
+RAIN_FACTOR = 1.1       # Number representing the extra load of rain
+DARK_FACTOR = 1.1       # Number representing the extra load of darkness
+EYE_CANDY_FACTOR = 20   # Number representing the extra load of eye candy preference 10
+                        # [multiplier is (1 + ('GraphicsPreference'/EYE_CANDY_FACTOR)]
+CARS_FACTOR = 200       # Number representing the extra load of visible cars
+                        # [multiplier is (1 + (NumberOfCars/CARS_FACTOR)]
+REPLAY_FACTOR = 1.5     # Number representing the extra load we're willing
+                        # to accept for replays
+
+def setGraphics(graphicsSetup,
+                VR,
                 carGraphicDetailsFactor, 
                 trackGraphicDetailsFactor, 
                 onlineOfflineReplay,
                 NumberOfCars):
   """
-  graphicsPreferences
+  graphicsSetup
     rFactoryControl
       Off
-      Replay only
+      Replay only         !!!!! but if it pokes around to show a replay how do is it get back to player's original player.json????
       Full control
     MaybeRain
     NightRacing
@@ -153,6 +168,7 @@ def setGraphics(graphicsPreferences,
     GraphicsPreference
       0:  Maximum frame rate
       10: Eye candy
+  VR
   carGraphicDetailsFactor
     + / - percentage   (+ => it's a graphics hog)
   trackGraphicDetailsFactor
@@ -182,37 +198,49 @@ def setGraphics(graphicsPreferences,
   """
   ScriptedJsonEditorJobs = []
 
+  if graphicsSetup['rFactoryControl'] == 'Off':
+    # Don't alter graphics settings
+    return ScriptedJsonEditorJobs
+
   graphicsLoad = 1
-  if graphicsPreferences['MaybeRain'] != '0':
-    graphicsLoad *= 1.1
-  if graphicsPreferences['NightRacing'] != '0':
-    graphicsLoad *= 1.1
-  graphicsLoad *= (1 + (NumberOfCars/200))
+  if VR:
+    graphicsLoad *= VR_FACTOR
+  if graphicsSetup['MaybeRain'] != '0':
+    graphicsLoad *= RAIN_FACTOR
+  if graphicsSetup['NightRacing'] != '0':
+    graphicsLoad *= DARK_FACTOR
+  graphicsLoad *= (1 + (NumberOfCars/CARS_FACTOR))
   graphicsLoad *= carGraphicDetailsFactor
   graphicsLoad *= trackGraphicDetailsFactor
 
-
-  graphicsLevel = int(graphicsPreferences['GraphicsCapability']) \
-                  * (1 / graphicsLoad)
-
-  if graphicsPreferences['rFactoryControl'] == 'Replay only':
+  if graphicsSetup['rFactoryControl'] == 'Replay only':
     if onlineOfflineReplay == 'Replay':
       # Full graphics unless GraphicsCapability low
-      graphicsLevel *= 1.5
-      if graphicsLevel > 10:
-        graphicsLevel = 10
+      graphicsLoad *= REPLAY_FACTOR
+      graphicsLevel = int(graphicsSetup['GraphicsCapability']) \
+                      * (1 / graphicsLoad)
+      if graphicsLevel > MAX_GRAPHICS_LEVEL:
+        graphicsLevel = MAX_GRAPHICS_LEVEL
       ScriptedJsonEditorJobs = ['graphicsReplay_%d' % int(graphicsLevel/2)]
+      # Only half the number of jobs to set replay levels
     # else  # Don't alter graphics settings
-  elif graphicsPreferences['rFactoryControl'] == 'Full control':
-    graphicsLevel *= (1 + int(graphicsPreferences['GraphicsPreference']) / 20)
-    if graphicsLevel > 10:
-      graphicsLevel = 10
+  elif graphicsSetup['rFactoryControl'] == 'Full control':
+    graphicsLoad *= (1 + int(graphicsSetup['GraphicsPreference']) / EYE_CANDY_FACTOR)
+    graphicsLevel = int(graphicsSetup['GraphicsCapability']) \
+                    * (1 / graphicsLoad)
+    if graphicsLevel > MAX_GRAPHICS_LEVEL:
+      graphicsLevel = MAX_GRAPHICS_LEVEL
     ScriptedJsonEditorJobs = ['graphicsLevel_%d' % int(graphicsLevel)]
-    if graphicsPreferences['MaybeRain'] != '0':
+    if graphicsSetup['MaybeRain'] != '0':
+      # Extra settings specific to rain
       ScriptedJsonEditorJobs.append('graphicsRain_%d' % int(graphicsLevel/2))
-    if graphicsPreferences['NightRacing'] != '0':
+      # Only half the number of jobs to set rain levels
+    if graphicsSetup['NightRacing'] != '0':
+      # Extra settings specific to darkness
       ScriptedJsonEditorJobs.append('graphicsNight_%d' % int(graphicsLevel/2))
-  # else # Don't alter graphics settings
+      # Only half the number of jobs to set night levels
+      # (actually there are probably fewer than that, not many 
+      # things specific to running in darkness to tweak)
   return ScriptedJsonEditorJobs
   
 if __name__ == '__main__':
@@ -224,12 +252,14 @@ if __name__ == '__main__':
   o_tab = Tab(tabGraphics)
   root.mainloop()
 
-  graphicsPreferences = o_tab.getSettings()
+  graphicsSetup = o_tab.getSettings()
+  VR = True
   carGraphicDetailsFactor = 1.0
   trackGraphicDetailsFactor = 1.0
   onlineOfflineReplay = 'Replay'
   NumberOfCars = 20
-  ScriptedJsonEditorJobs =setGraphics(graphicsPreferences, 
+  ScriptedJsonEditorJobs = setGraphics(graphicsSetup, 
+                VR,
                 carGraphicDetailsFactor, 
                 trackGraphicDetailsFactor, 
                 onlineOfflineReplay,
