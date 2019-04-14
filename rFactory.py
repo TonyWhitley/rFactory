@@ -11,7 +11,7 @@ import tabCar
 import tabTrack
 import tabOpponents
 import tabFavouriteServers
-import tabConditions
+import tabGraphics
 import tabSessions
 import tabOptions
 import tabServers
@@ -23,9 +23,9 @@ from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.utils import readTextFile
 
-BUILD_REVISION = 65 # The git commit count
+BUILD_REVISION = 66 # The git commit count
 versionStr = 'rFactory V0.3.%d' % BUILD_REVISION
-versionDate = '2019-04-11'
+versionDate = '2019-04-14'
 def about():
   messagebox.askokcancel(
             'About rFactory',
@@ -114,7 +114,7 @@ class Tabs:
       ['Car', tabCar],
       ['Track', tabTrack],
       ['Opponents', tabOpponents],
-      ['Conditions', tabConditions],
+      ['Graphics', tabGraphics],
       ['Sessions', tabSessions],
       ['Options', tabOptions],
       ['Servers', tabServers],
@@ -181,7 +181,7 @@ class Menus:
       #['Car', tabCar],
       #['Track', tabTrack],
       #['Opponents', tabOpponents],
-      #['Conditions', tabConditions],
+      #['Graphics', tabGraphics],
       #['Sessions', tabSessions],
       #['Options', tabOptions],
       #['Server', tabServers],
@@ -270,7 +270,7 @@ class GoButtons:
     # to adjust graphics details.
     #tabs.disableTab('Track')
     #tabs.disableTab('Opponents')
-    #tabs.disableTab('Conditions')
+    #tabs.disableTab('Graphics')
     tabs.disableTab('Sessions')
     tabs.enableTab('Servers')
     tabs.enableTab('Favourite Servers')
@@ -282,7 +282,7 @@ class GoButtons:
     """ The Offline button pressed """
     tabs.enableTab('Track')
     tabs.enableTab('Opponents')
-    tabs.enableTab('Conditions')
+    tabs.enableTab('Graphics')
     tabs.enableTab('Sessions')
     tabs.disableTab('Servers')
     tabs.disableTab('Favourite Servers')
@@ -294,7 +294,7 @@ class GoButtons:
     """ The Replay button pressed """
     tabs.enableTab('Track')
     tabs.enableTab('Opponents')
-    tabs.enableTab('Conditions')
+    tabs.enableTab('Graphics')
     tabs.enableTab('Sessions')
     tabs.disableTab('Servers')
     tabs.disableTab('Favourite Servers')
