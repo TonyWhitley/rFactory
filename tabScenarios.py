@@ -9,7 +9,7 @@ import tabCar
 import tabTrack
 import tabOpponents
 import tabFavouriteServers
-import tabConditions
+import tabGraphics
 import tabSessions
 import tabOptions
 import tabServers

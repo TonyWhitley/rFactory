@@ -49,10 +49,10 @@ class Tab:
 if __name__ == '__main__':
   # To run this tab by itself for development
   root = tk.Tk()
-  tabConditions = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
-  tabConditions.grid()
+  tabGraphics = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
+  tabGraphics.grid()
     
-  o_tab = Tab(tabConditions)
+  o_tab = Tab(tabGraphics)
   root.mainloop()
 
 

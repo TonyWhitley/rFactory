@@ -62,7 +62,7 @@
     <Compile Include="tabCar.py" />
     <Compile Include="lib\MC_table.py" />
     <Compile Include="rFactory.py" />
-    <Compile Include="tabConditions.py" />
+    <Compile Include="tabGraphics.py" />
     <Compile Include="tabFavouriteServers.py">
       <SubType>Code</SubType>
     </Compile>

@@ -16,7 +16,7 @@ Crew Chief and its own Gearshift simulator.
 
 scenarioData = {
   'tabCar' : '',
-  'tabConditions' : '',
+  'tabGraphics' : '',
   'tabOpponents' : '',
   'tabOptions' : '',
   'tabScenarios' : '',
