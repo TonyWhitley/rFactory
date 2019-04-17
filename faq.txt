@@ -20,6 +20,8 @@ And favourites/last.favouriteServersJSON where you can add
 server names and their passwords to connect online
 automatically.\n
 \n 
+It can also start "co-programs" such as Crew Chief or Discord.\n
+\n
 GOTCHAS: \n
 If the track (or car, but that's less likely) data file does
 not have a "Scene Description" entry (the name rF2 uses to
@@ -35,15 +37,13 @@ TBDs\n
 Not working:\n
 * Opponent selection\n
 * Reading servers and picking them\n
-* Running "co-programs" such as Crew Chief\n
-    (next on the to do list!)\n
 * Tweaking AI settings taking into account car and track\n
 * Tweaking graphics settings taking into account car, track\n
     and other variables\n
 Need extending\n
 * Car selection of invidual cars\n
 * Track selection of invidual tracks\n
-Need improvment\n
+Need improvement\n
 * Car editor to use drop down selection for things like\n
     formula and gearbox\n
 * Similarly for the track editor\n
