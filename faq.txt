@@ -41,8 +41,8 @@ Not working:\n
 * Tweaking graphics settings taking into account car, track\n
     and other variables\n
 Need extending\n
-* Car selection of invidual cars\n
-* Track selection of invidual tracks\n
+* Car selection of individual cars\n
+* Track selection of individual tracks\n
 Need improvement\n
 * Car editor to use drop down selection for things like\n
     formula and gearbox\n
