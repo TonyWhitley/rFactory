@@ -5,6 +5,8 @@ import sys
 import tkinter as tk
 from tkinter import ttk
 
+from data.rFactoryConfig import player, rF2root
+
 # tabGraphics (or something) needs all this magic to run ScriptedJsonEditor
 # It also needs an API
 # * run Jobs
@@ -29,7 +31,7 @@ try:
     global menu2tab
     menubar = _menubar
 
-    menu2tab = setMenu2tab('')
+    menu2tab = setMenu2tab(os.getcwd(), playerID=player, rF2root=rF2root)
     Menu(menubar=menubar, menu2tab=menu2tab)
 
   class Tab(GUI_Tab):
