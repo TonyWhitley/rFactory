@@ -159,7 +159,7 @@ def setGraphics(graphicsSetup,
     rFactoryControl
       Off
       Replay only         !!!!! but if it pokes around to show a replay how do is it get back to player's original player.json????
-      Full control
+      Full control              Set up a new user called Replay and call rF2 using that profile.
     MaybeRain
     NightRacing
     GraphicsCapability 
@@ -257,6 +257,7 @@ if __name__ == '__main__':
   carGraphicDetailsFactor = 1.0
   trackGraphicDetailsFactor = 1.0
   onlineOfflineReplay = 'Replay'
+  player = 'Replay'
   NumberOfCars = 20
   ScriptedJsonEditorJobs = setGraphics(graphicsSetup, 
                 VR,
@@ -264,5 +265,6 @@ if __name__ == '__main__':
                 trackGraphicDetailsFactor, 
                 onlineOfflineReplay,
                 NumberOfCars)
+  # not defined yet  runScriptedJsonEditor(player, ScriptedJsonEditorJobs)
   pass
 
