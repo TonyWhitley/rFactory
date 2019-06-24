@@ -6,6 +6,7 @@ Also have 'Save as...' for creating variants.
 import os
 import tkinter as tk
 from tkinter import ttk
+import webbrowser
 
 from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
@@ -42,11 +43,13 @@ class Editor:
     # Then the action buttons
     saveButton = tk.Button(self.tkEditor, text='Save', command=self.savePressed)
     saveAsButton = tk.Button(self.tkEditor, text='Save as...', command=self.saveAsPressed)
+    browseButton = tk.Button(self.tkEditor, text='Browse', command=self.browsePressed)
     cancelButton = tk.Button(self.tkEditor, text='Cancel', command=self.cancelPressed)
 
     saveButton.grid(column=0, row=self.numFields+1)
     saveAsButton.grid(column=1, row=self.numFields+1)
-    cancelButton.grid(column=2, row=self.numFields+1)
+    browseButton.grid(column=2, row=self.numFields+1)
+    cancelButton.grid(column=3, row=self.numFields+1)
     self.tkEditor.grid(ipadx=10, ipady=10)
 
   def savePressed(self):
@@ -67,9 +70,27 @@ class Editor:
     # open dialog to name file
     reloadAllData()
 
+  def browsePressed(self):
+    # open a browser with a search command
+    for i, tag in enumerate(self.fields):
+      if self.label[i]['text'] == 'Name':
+        search_term = self.entry[i].get()
+        break
+    for i, tag in enumerate(self.fields):
+      if self.label[i]['text'] == 'URL':
+        if len(self.entry[i].get()) > 5:  
+          # It already has a URL
+          url = self.entry[i].get()
+        else:
+          url = "https://www.google.com/search?q=rfactor 2 {}".format(search_term)    
+          # can't do that   self.entry[i].set(url)
+    webbrowser.open(url)
+
+
+
   def cancelPressed(self):
     reloadAllData()
-    #self.parentFrame.destroy()
+    self.parentFrame.destroy()
 
 if __name__ == '__main__':
   # To run this tab by itself for development

@@ -20,10 +20,10 @@ if os.path.exists(rF2_serverNotify_path):
 NOFILTER = '---' # String for not filtering
 
 dummyData = {
-  'server 1': {'Favourite': 'N', 'Server Name': 'server 1', 'Track Name': 'Track 1', 'Humans': '3', 'Maybe': '0', 'AI': '0', 'Max': '20', 'Password': 'Y', 'Version': '11112', 'blank':''},
-  'server 2': {'Favourite': 'N', 'Server Name': 'server 2', 'Track Name': 'Track 2', 'Humans': '3', 'Maybe': '0', 'AI': '0', 'Max': '20', 'Password': '', 'Version': '11112', 'blank':''},
-  'server 3': {'Favourite': 'N', 'Server Name': 'server 3', 'Track Name': 'Track 3', 'Humans': '0', 'Maybe': '0', 'AI': '5', 'Max': '20', 'Password': 'N', 'Version': '11112', 'blank':''},
-  'server 4': {'Favourite': 'N', 'Server Name': 'server 4', 'Track Name': 'Track 4', 'Humans': '0', 'Maybe': '5', 'AI': '0', 'Max': '20', 'Password': 'Y', 'Version': '11112', 'blank':''}
+  'server 1': {'Favourite': 'N', 'Server Name': 'server 1', 'Track Name': 'Not yet implemented', 'Humans': '3', 'Maybe': '0', 'AI': '0', 'Max': '20', 'Password': 'Y', 'Version': '11112', 'blank':''},
+  'server 2': {'Favourite': 'N', 'Server Name': 'server 2', 'Track Name': 'Not yet implemented', 'Humans': '3', 'Maybe': '0', 'AI': '0', 'Max': '20', 'Password': '', 'Version': '11112', 'blank':''},
+  'server 3': {'Favourite': 'N', 'Server Name': 'Need to show', 'Track Name': 'Silverstone', 'Humans': '0', 'Maybe': '0', 'AI': '5', 'Max': '20', 'Password': 'N', 'Version': '11112', 'blank':''},
+  'server 4': {'Favourite': 'N', 'Server Name': 'session too', 'Track Name': 'Oulton Park', 'Humans': '0', 'Maybe': '5', 'AI': '0', 'Max': '20', 'Password': 'Y', 'Version': '11112', 'blank':''}
   }
 
 dummyFavourites = {
@@ -100,7 +100,6 @@ class Tab:
     _label = tk.Label(parentFrame, text='Getting server info...')
     _label.grid(column=0, row=0, sticky='w')
 
-    #root.update()
     parentFrame.update()
 
   def activate(self, event):
@@ -195,24 +194,7 @@ class Tab:
       if 0:
         self.data = ServerQuery().getData()
       else: # dev. shortcut - fake server data
-        self.data = {}
-        server ='Not yet implemented'
-        _entry = {}
-        _entry['Favourite'] = 'N'
-        _entry['Server Name'] = server
-        _entry['Track Name'] = 'Not yet implemented'
-        _entry['Humans'] = '23'
-        _entry['Maybe'] = '0'
-        _entry['AI'] = '0'
-        _entry['Max'] = '39'
-        _entry['Password'] = 'Yes'
-        _entry['Version'] = '1.59'
-        _entry['blank'] = ''
-        self.data[server] = _entry
-        self.data[server+'X'] = copy.deepcopy(_entry)
-        self.data[server+'X']['Humans'] = '0'
-        self.data[server+'X']['AI'] = '10'
-        self.data[server+'X']['Password'] = 'No'
+        self.data = dummyData
 
       # getAllServerData(tags=config_tabServer['serverColumns'], maxWidth=20)
       return self.data
