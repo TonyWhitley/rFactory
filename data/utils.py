@@ -3,6 +3,7 @@ import fnmatch
 import glob
 import os
 import re
+import sys
 
 def readFile(filename):
   try:
@@ -83,4 +84,28 @@ def getListOfFiles(path, pattern='*.c', recurse=False):
 
     return files
 
+def bundleFolder(filepath):
+    """
+    If running in a PyInstaller bundle the program is extracted into a 
+    temporary folder.  If a file in that bundle is required calculate
+    its path.
+    A file is added to the bundle with a command line option like this:
+      --add-data resources\rfactory.ico;resources 
+    or in the .spec file like this:
+      datas=[('resources\\rfactory.ico', 'resources')],
 
+    """
+    if getattr( sys, 'frozen', False ) :
+      # running in a PyInstaller bundle (exe)
+      _p = os.path.join(sys._MEIPASS, filepath)
+      #print(_p)
+      if os.path.exists(_p):
+          return _p
+      #__, _filename = os.path.split(filepath)
+      #_p = os.path.join(sys._MEIPASS, _filename)
+      #print(_p)
+      #if os.path.exists(_p):
+      #    return _p
+    else :
+      # running live
+      return filepath

@@ -5,7 +5,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-import tkinter.font as font 
+import tkinter.font as font
 # Tabs
 import tabCar
 import tabTrack
@@ -21,11 +21,11 @@ import tabJsonEditor
 
 from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
-from data.utils import readTextFile
+from data.utils import readTextFile, bundleFolder
 
-BUILD_REVISION = 93 # The git commit count
+BUILD_REVISION = 94 # The git commit count
 versionStr = 'rFactory V0.3.%d' % BUILD_REVISION
-versionDate = '2019-04-18'
+versionDate = '2019-06-24'
 def about():
   messagebox.askokcancel(
             'About rFactory',
@@ -41,8 +41,8 @@ def faq():
 
 
 class Menu:
-  def __init__(self, 
-               menubar, 
+  def __init__(self,
+               menubar,
                menu2tab=None):
     helpmenu = tk.Menu(menubar, tearoff=0)
     helpmenu.add_command(label="FAQ", command=faq)
@@ -58,6 +58,8 @@ class MainWindow:
     self.width_of_window = 500
     self.height_of_window = 300
     self.handle.title('rFactory')
+    _icon = bundleFolder('resources/rFactory.ico')
+    self.handle.iconbitmap(_icon)
     self.handle.columnconfigure(0, weight=1, pad=50)
     self.handle.columnconfigure(1, weight=1, pad=50)
     self.handle.columnconfigure(2, weight=1)
@@ -69,40 +71,40 @@ class MainWindow:
     self.handle.grid()
   def setSize(self, width, height):
     """ Set the size of the window """
-    self.width_of_window = width # The width of a GUI window. 
+    self.width_of_window = width # The width of a GUI window.
                                  # You can change this value to suit your preference
 
-    self.height_of_window = height # The height of a GUI window. 
+    self.height_of_window = height # The height of a GUI window.
                                    # You can change this value to suit your preference
 
   def centreWindow(self):
     """ Fetch the monitor size and create the x & y coordinate """
-    screen_width = self.handle.winfo_screenwidth() # this is fetching the monitor 
+    screen_width = self.handle.winfo_screenwidth() # this is fetching the monitor
                                                    # maximum width (typical monitors are 1920x1080)
     screen_height = self.handle.winfo_screenheight() # this is fetching the monitor maxium height
-    x_coordinate = (screen_width/2) - (self.width_of_window/2) # This is getting the correct 
+    x_coordinate = (screen_width/2) - (self.width_of_window/2) # This is getting the correct
                                                                # x coordinate position for the GUI
-    y_coordinate = (screen_height/2) - (self.height_of_window/2)# This is getting the correct y 
+    y_coordinate = (screen_height/2) - (self.height_of_window/2)# This is getting the correct y
                                                                 # coordinate position for the GUI
 
-    # Initialise the GUI's position 
-    self.handle.geometry("%dx%d+%d+%d" % 
-                         (self.width_of_window, 
-                          self.height_of_window, 
-                          x_coordinate, 
-                          y_coordinate)) # setting the position of the main window 
+    # Initialise the GUI's position
+    self.handle.geometry("%dx%d+%d+%d" %
+                         (self.width_of_window,
+                          self.height_of_window,
+                          x_coordinate,
+                          y_coordinate)) # setting the position of the main window
 
   def iconify(self):
     """ Minimise the window """
     self.handle.iconify()
- 
+
   def deiconify(self):
     """ Restore the window """
     self.handle.deiconify()
     self.handle.attributes("-topmost", True)
     # but the app is still not the foreground
     #self.handle.update()
- 
+
 # The tabs
 
 class Tabs:
@@ -132,7 +134,7 @@ class Tabs:
             "TNotebook": {"configure": {"tabmargins": [2, 5, 2, 0] } },
             "TNotebook.Tab": {"configure": {"padding": [10, 5] },}})
 
-    style.theme_use("MyStyle") 
+    style.theme_use("MyStyle")
     """
 
     tabHeight = 300
@@ -200,11 +202,11 @@ class Menus:
 
 # The GO buttons
 class GoButtons:
-  """ 
-  The big buttons that 
+  """
+  The big buttons that
   * switch on/offline
   * run rFactor 2
-  * quit 
+  * quit
   """
   def __init__(self, parentFrame):
     _goFrame = ttk.Frame(parentFrame)
@@ -332,7 +334,7 @@ if __name__ == "__main__":
   mainWindow = MainWindow()
   mainWindow.setSize(width=1200, height=800)
   mainWindow.centreWindow()
- 
+
   # Check if there are any new car/track files
   trawl_for_new_rF2_datafiles(mainWindow)
 

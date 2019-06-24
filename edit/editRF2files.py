@@ -18,10 +18,13 @@ def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):
   # if vehPath is for example Installed\vehicles\Norma_M30-LMP3_2017\1.50  
   # check for Installed\vehicles\Norma_M30-LMP3_2017\1.51
   # which is an update.  We have to use that.
-  _vehFile = os.path.join(rF2root, vehPath)
-  _vehFile, __ = os.path.split(_vehFile)
-  _versions = getListOfFiles(_vehFile, '*.*')
-  _vehPath = _versions[-1][0]
+  try:
+    _vehFile = os.path.join(rF2root, vehPath)
+    _vehPath, __ = os.path.split(_vehFile)
+    _versions = getListOfFiles(_vehPath, '*.*')
+    _vehPath = _versions[-1][0]
+  except:
+    return "Data file error '%s'" % _vehFile
 
   _vehFile = os.path.join(_vehPath, vehName).replace('\\', '\\\\\\\\')  # +'.veh' no longer required
 
