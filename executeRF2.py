@@ -9,7 +9,8 @@ import sys
 from data.rFactoryData import getAllCarData, getAllTrackData, getSingleCarData, getSingleTrackData
 from edit.editRF2files import changeCar, changeTrack, changeOpponents
 from data.rFactoryConfig import SteamExe, SteamDelayS, rF2root, DiscordExe
-from data.rFactoryConfig import CrewChiefExe, TeamSpeakExe, MyPreCommand, MyPostCommand
+from data.rFactoryConfig import CrewChiefExe, VolumeControlExe, TeamSpeakExe
+from data.rFactoryConfig import MyPreCommand, MyPostCommand
 
 if getattr( sys, 'frozen', False ) :
   # running in a PyInstaller bundle (exe)
@@ -65,6 +66,8 @@ def runRF2(online='Offline', settings=None, _password=None):
       _status = runCoProgram(settings, 'Discord', DiscordExe)
     if _status == 'OK':
       _status = runCoProgram(settings, 'MyPreCommand', MyPreCommand)
+    if _status == 'OK':
+      _status = runCoProgram(settings, 'VolumeControl', VolumeControlExe)
     if _status == 'OK':
       _status = runCoProgram(settings, 'TeamSpeak', TeamSpeakExe)
 
