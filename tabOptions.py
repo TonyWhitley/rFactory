@@ -1,8 +1,9 @@
 # Python 3
 import tkinter as tk
 from tkinter import ttk
-import idlelib
 
+from lib.tkToolTip import Tooltip
+wraplength = 100
 
 #########################
 # The tab's public class:
@@ -154,16 +155,33 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
     _tkCheckbuttons['CrewChief'] = tk.Checkbutton(tkFrame_Co_programs, 
                                              text='Crew Chief',
                                              variable=self.vars['CrewChief'])
+    Tooltip(_tkCheckbuttons['CrewChief'],
+            text='Spotter and voice control',
+            wraplength=wraplength)
 
     self._createVar('Discord', False)
     _tkCheckbuttons['Discord'] = tk.Checkbutton(tkFrame_Co_programs, 
                                            text='Discord (voice)',
                                            variable=self.vars['Discord'])
+    Tooltip(_tkCheckbuttons['Discord'],
+            text='Voice chat between drivers',
+            wraplength=wraplength)
+
+    self._createVar('VolumeControl', False)
+    _tkCheckbuttons['VolumeControl'] = tk.Checkbutton(tkFrame_Co_programs, 
+                                             text='VolumeControl',
+                                             variable=self.vars['VolumeControl'])
+    Tooltip(_tkCheckbuttons['VolumeControl'],
+            text='Buttons to adjust volume of rF2 and co-programs', 
+            wraplength=wraplength)
 
     self._createVar('TeamSpeak', False)
     _tkCheckbuttons['TeamSpeak'] = tk.Checkbutton(tkFrame_Co_programs, 
                                              text='TeamSpeak',
                                              variable=self.vars['TeamSpeak'])
+    Tooltip(_tkCheckbuttons['TeamSpeak'],
+            text='Voice chat between drivers',
+            wraplength=wraplength)
 
     self._createVar('MyPreCommand', False)
     _tkCheckbuttons['MyPreCommand'] = tk.Checkbutton(tkFrame_Co_programs, 
@@ -177,6 +195,7 @@ time multiplier, Main AI strength factor, VR/Monitor\n(doesn\'t do anything yet)
 
     _tkCheckbuttons['CrewChief'].grid(sticky='w')
     _tkCheckbuttons['Discord'].grid(sticky='w')
+    _tkCheckbuttons['VolumeControl'].grid(sticky='w')
     _tkCheckbuttons['TeamSpeak'].grid(sticky='w')
     _tkCheckbuttons['MyPreCommand'].grid(sticky='w')
     _tkCheckbuttons['MyPostCommand'].grid(sticky='w')

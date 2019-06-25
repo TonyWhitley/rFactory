@@ -8,6 +8,13 @@ import os
 
 from data.utils import readFile, writeFile
 
+def getKey(filename, keyname):
+    try:
+        return config[keyname]
+    except Exception as e:
+        print('Config file "%s" has no entry for "%s"' % (filename, e.args[0]))
+        return 'No such key %s' % e.args[0]
+
 # General items
 
 # Tags used by rFactory. Only some are present in rFactor files, 
@@ -84,6 +91,7 @@ except: # No rFactoryConfig file, create one
     'DiscordArgs' : '--processStart Discord.exe',
     'CrewChiefExe' : '"%ProgramFiles(x86)%/Britton IT Ltd/CrewChiefV4/CrewChiefV4.exe"',
     'CrewChiefArgs' : 'RF2_64BIT',
+    'VolumeControlExe' : '"%ProgramFiles(x86)%/VolumeControl/VolumeControl.exe"',
     'TeamSpeakExe' : '"%ProgramFiles(x86)%/TeamSpeak 3 Client/ts3client_win64.exe"',
     '#MyPreCommand: use this call a program or batch file before rF2 runs' : "",
     'MyPreCommand' : '',
@@ -96,23 +104,22 @@ except: # No rFactoryConfig file, create one
   _text = json.dumps(config, sort_keys=True, indent=4)
   writeFile(filename, _text)
 # rF2 items
-rF2root = os.path.normpath(os.path.expandvars(config['rF2root']))
-SteamExe = os.path.normpath(os.path.expandvars(config['SteamExe']))
-DiscordExe = os.path.normpath(os.path.expandvars(config['DiscordExe'])) + ' ' + config['DiscordArgs']
-CrewChiefExe = os.path.normpath(os.path.expandvars(config['CrewChiefExe'])) + ' ' + config['CrewChiefArgs']
-TeamSpeakExe = os.path.normpath(os.path.expandvars(config['TeamSpeakExe']))
-if len(config['MyPreCommand']):
-  MyPreCommand = os.path.normpath(os.path.expandvars(config['MyPreCommand'])) + ' ' + config['MyPreCommandArgs']
+rF2root = os.path.normpath(os.path.expandvars(getKey(filename, 'rF2root')))
+SteamExe = os.path.normpath(os.path.expandvars(getKey(filename, 'SteamExe')))
+DiscordExe = os.path.normpath(os.path.expandvars(getKey(filename, 'DiscordExe'))) + ' ' + getKey(filename, 'DiscordArgs')
+CrewChiefExe = os.path.normpath(os.path.expandvars(getKey(filename, 'CrewChiefExe'))) + ' ' + getKey(filename, 'CrewChiefArgs')
+VolumeControlExe = os.path.normpath(os.path.expandvars(getKey(filename, 'VolumeControlExe')))
+TeamSpeakExe = os.path.normpath(os.path.expandvars(getKey(filename, 'TeamSpeakExe')))
+if len(getKey(filename, 'MyPreCommand')):
+    MyPreCommand = os.path.normpath(os.path.expandvars(getKey(filename, 'MyPreCommand'))) + ' ' + getKey(filename, 'MyPreCommandArgs')
 else:
-  MyPreCommand = ''
-if len(config['MyPostCommand']):
-  MyPostCommand = os.path.normpath(os.path.expandvars(config['MyPostCommand'])) + ' ' + config['MyPostCommandArgs']
+    MyPreCommand = ''
+if len(getKey(filename, 'MyPostCommand')):
+    MyPostCommand = os.path.normpath(os.path.expandvars(getKey(filename, 'MyPostCommand'))) + ' ' + getKey(filename, 'MyPostCommandArgs')
 else:
-  MyPostCommand = ''
+    MyPostCommand = ''
 
-SteamDelayS = config['SteamDelaySeconds']  # How long it takes Steam to start up
+SteamDelayS = getKey(filename, 'SteamDelaySeconds')  # How long it takes Steam to start up
 
-player = config['UserData player']
+player = getKey(filename, 'UserData player')
 playerPath = os.path.join(rF2root, 'UserData', player)
-pass
-
