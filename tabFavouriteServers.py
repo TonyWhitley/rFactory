@@ -48,7 +48,10 @@ class Tab:
       self.tkListbox.bind("<Double-Button-1>", self.ok) # Double click selects the server
 
   def getPassword(self, serverName):
-    return self.settings[serverName]
+    for k,v in self.settings.items():
+      if v[0] == serverName:
+        return v[1]
+    return ''
   
   def ok(self, __):
     now = self.tkListbox.get(tk.ACTIVE)
@@ -58,20 +61,21 @@ class Tab:
 
   def getSettings(self):
     """ Return the settings for this tab """
-    value = self.settings[self.tkListbox.get(tk.ACTIVE)]
-    result = value[0]
-    # self.settings[value]  # Server, password
-    # No, just the server name, get the password from favourites file
-    return result
+    _descriptiveName = self.tkListbox.get(tk.ACTIVE)
+    # Just the descriptive name for the server, get the password from favourites file
+    return _descriptiveName
 
   def setSettings(self, settings):
     """ Set the settings for this tab """
     # Need to ID the server in the listbox and activate it.
-    for _v in settings:
-      try:
-        self.tkListbox.activate(0)
-      except:
-        pass # value error
+    _listbox = self.tkListbox.get(0, tk.END)
+    _item = _listbox.index(settings)
+    try:
+      self.tkListbox.activate(_item)
+      self.tkListbox.see(_item) # Makes sure the given list index is visible.
+      self.tkListbox.selection_set(_item) # Highlights it
+    except:
+      pass # value error
     pass
 
 def getServerInfo(serverName):
