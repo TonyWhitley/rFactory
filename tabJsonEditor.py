@@ -16,7 +16,7 @@ if getattr( sys, 'frozen', False ) :
   # running in a PyInstaller bundle (exe)
   SJE_path = r'ScriptedJsonEditor'
 else :
-  # running live
+  # running live under rFactory
   SJE_path = r'..\ScriptedJsonEditor\ScriptedJsonEditor'
 try:
   sys.path.append(SJE_path)
@@ -31,7 +31,7 @@ try:
     global menu2tab
     menubar = _menubar
 
-    menu2tab = setMenu2tab(os.getcwd(), playerID=player, rF2root=rF2root)
+    menu2tab = setMenu2tab(basedir=SJE_path, playerID=player, rF2root=rF2root)
     Menu(menubar=menubar, menu2tab=menu2tab)
 
   class Tab(GUI_Tab):

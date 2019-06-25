@@ -23,9 +23,9 @@ from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.utils import readTextFile, bundleFolder
 
-BUILD_REVISION = 94 # The git commit count
+BUILD_REVISION = 95 # The git commit count
 versionStr = 'rFactory V0.3.%d' % BUILD_REVISION
-versionDate = '2019-06-24'
+versionDate = '2019-06-25'
 def about():
   messagebox.askokcancel(
             'About rFactory',
@@ -33,7 +33,7 @@ def about():
         )
 
 def faq():
-  _faq = readTextFile('faq.txt')
+  _faq = readTextFile(bundleFolder('faq.txt'))
   messagebox.askokcancel(
             'rFactory FAQ',
             _faq
