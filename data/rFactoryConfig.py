@@ -9,11 +9,12 @@ import os
 from data.utils import readFile, writeFile
 
 def getKey(filename, keyname):
+    """ Error trap when reading config file keys """
     try:
         return config[keyname]
     except Exception as e:
         print('Config file "%s" has no entry for "%s"' % (filename, e.args[0]))
-        return 'No such key %s' % e.args[0]
+        return '"No such key %s"' % e.args[0]
 
 # General items
 
