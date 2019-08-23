@@ -1,0 +1,9 @@
+[submodule "ScriptedJsonEditor"]
+	path = ScriptedJsonEditor
+	url = https://github.com/TonyWhitley/ScriptedJsonEditor
+[submodule "rF2_serverNotify"]
+	path = rF2_serverNotify
+	url = https://github.com/TonyWhitley/rF2_serverNotify
+[submodule "rF2headlights"]
+	path = rF2headlights
+	url = https://github.com/TonyWhitley/rF2headlights

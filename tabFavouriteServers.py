@@ -5,7 +5,7 @@ import sys
 import tkinter as tk
 from tkinter import ttk
 
-rF2_serverNotify_path = r'..\rF2_serverNotify\steps'
+rF2_serverNotify_path = r'rF2_serverNotify\steps'
 sys.path.append(rF2_serverNotify_path)
 from rF2_serverNotify import Servers
 

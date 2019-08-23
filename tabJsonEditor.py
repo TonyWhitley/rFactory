@@ -17,7 +17,7 @@ if getattr( sys, 'frozen', False ) :
   SJE_path = r'ScriptedJsonEditor'
 else :
   # running live under rFactory
-  SJE_path = r'..\ScriptedJsonEditor\ScriptedJsonEditor'
+  SJE_path = r'ScriptedJsonEditor\ScriptedJsonEditor'
 try:
   sys.path.append(SJE_path)
   from GUI import Tab as GUI_Tab

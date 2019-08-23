@@ -14,6 +14,7 @@ import tabSessions
 import tabOptions
 import tabServers
 import tabJsonEditor
+import rF2headlights.gui
 
 from data.rFactoryConfig import scenarioFilesFolder,scenarioFilesExtension
 from data.utils import readFile, writeFile
