@@ -17,7 +17,7 @@ if getattr( sys, 'frozen', False ) :
   rF2_serverNotify_path = r'rF2_serverNotify\steps'
 else :
   # running live
-  rF2_serverNotify_path = r'..\rF2_serverNotify\steps'
+  rF2_serverNotify_path = r'rF2_serverNotify\steps'
 sys.path.append(rF2_serverNotify_path)
 from rF2_joinServer import runRf2Online
 import dummyRF2
@@ -52,8 +52,8 @@ def runRF2(online='Offline', settings=None, _password=None):
     _status = editRF2Files(settings)
     if _status != 'OK':
       return _status
-  
-  _dummy = False 
+
+  _dummy = False
   try:
     if settings['Options']['DummyRF2'] != '0':
       _dummy = True
@@ -100,7 +100,7 @@ def editRF2Files(settings):
   if _status != 'OK':
     return _status
 
-  if 0: # not working 
+  if 0: # not working
     # Opponents
     _opponentIDs = settings['Opponents']
     _opponents = []
@@ -154,7 +154,7 @@ def runOnline(settings, _password):
   #password = settings['Favourite Servers']['Password']
   _status = runRf2Online(SteamExe, server, _password)
   os.chdir(_pop)
-  return _status 
+  return _status
 
 if __name__ == '__main__':
   for row in settingsExample:

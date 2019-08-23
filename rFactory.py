@@ -17,7 +17,7 @@ import tabOptions
 import tabServers
 import tabScenarios
 import tabJsonEditor
-
+import rF2headlights.gui
 
 from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
@@ -122,7 +122,8 @@ class Tabs:
       ['Servers', tabServers],
       ['Favourite Servers', tabFavouriteServers],
       #['Scenarios', tabScenarios],
-      ['JSON editor', tabJsonEditor]
+      ['JSON editor', tabJsonEditor],
+      ['Headlights control', rF2headlights.gui]
       ]
     self.notebook = ttk.Notebook(parentFrame)
 
