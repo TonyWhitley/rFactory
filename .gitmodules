@@ -7,3 +7,7 @@
 [submodule "rF2headlights"]
 	path = rF2headlights
 	url = https://github.com/TonyWhitley/rF2headlights
+[submodule "gearshift"]
+	path = gearshift
+	url = https://github.com/TonyWhitley/gearshift
+	branch = Shared-Memory-Only
