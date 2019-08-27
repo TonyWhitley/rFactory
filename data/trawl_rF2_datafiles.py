@@ -198,8 +198,8 @@ class vehFiles:
 
 
 def getVehScnNames(dataFilepath):
-  """ 
-  Read the data file containing Name xxxxx.veh pairs 
+  """
+  Read the data file containing Name xxxxx.veh pairs
   Also for xxxxx.scn pairs
   """
   _dict = {}
@@ -237,7 +237,7 @@ def createDefaultDataFiles(overwrite=False):
       tags = getTags(text)
       #print('\nData file: "%s.something"' % tags['Name'])
       for requiredTag in ['Name','Version','Type','Author','Origin','Category','ID','URL','Desc','Date','Flags','RefCount','#Signature','#MASFile','MinVersion','#BaseSignature']:
-        # MASFile, Signature and BaseSignature filtered out - NO THEY AREN'T, 
+        # MASFile, Signature and BaseSignature filtered out - NO THEY AREN'T,
         # tags[] still contains them.  tagsToBeWritten filters them out.
         # Not sure what this for loop is, er, for.
         if requiredTag in tags:
@@ -263,14 +263,14 @@ def createDefaultDataFiles(overwrite=False):
             tags['strippedName'] = tags['strippedName'].title() # Title Case The Name
       if tags['Category'] in carCategories:
         tags['tType'] = carCategories[tags['Category']]
-      # We need the original data folder to assemble the .VEH file path to put in 
-      # "All Tracks & Cars.cch" to force rF2 to switch cars.  We also need the .VEH 
+      # We need the original data folder to assemble the .VEH file path to put in
+      # "All Tracks & Cars.cch" to force rF2 to switch cars.  We also need the .VEH
       # file names and that's a bit more difficult.
       # Not difficult, they're in all_vehicles.ini
       tags['originalFolder'], _ = os.path.split(veh[0][len(rF2root)+1:]) # strip the root
       # if veh file name is available in vehNames.txt use it
       tags['vehFile'] = vehNames.veh(tags['Name'])
-      if createDataFile(datafilesPath=CarDatafilesFolder, 
+      if createDataFile(datafilesPath=CarDatafilesFolder,
                         filename=tags['Name'],
                         dict=tags,
                         tagsToBeWritten=carTags,
@@ -292,7 +292,8 @@ def createDefaultDataFiles(overwrite=False):
       text = readFile(track[0])
       tags = getTags(text)
       if track[1] != 'F1_1988_Tracks.mft':
-        _markerfilepath = os.path.join(TrackDatafilesFolder, tags['Name']+markerfileExtension)
+        _markerfilepath = os.path.join(TrackDatafilesFolder,
+                                       tags['Name']+markerfileExtension)
         if overwrite or not os.path.exists(_markerfilepath):
           # Create a marker file with the overall name
           # otherwise this scans for SCN files every time
@@ -339,7 +340,7 @@ def processTrack(track, tags):
         tags['strippedName'] = cleanTrackName(tags['Name'])
         tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['strippedName'])
         tags['strippedName'] = tags['strippedName'].title() # Title Case The Name
-  # We need the original data folder to assemble the .SCN file path to put in 
+  # We need the original data folder to assemble the .SCN file path to put in
   # "Player.JSON" to force rF2 to switch tracks.  We also need the .SCN
   # file names and that's a bit more difficult.
   # To select the track we also need the "Scene Description"
@@ -354,8 +355,8 @@ def processTrack(track, tags):
     tags['tType'] = trackCategories[tags['Category']]
 
   if createDataFile(datafilesPath=TrackDatafilesFolder,
-                    filename=tags['Name'], 
-                    dict=tags, 
+                    filename=tags['Name'],
+                    dict=tags,
                     tagsToBeWritten=trackTags):
     # a new file was written
     return tags['Name']
@@ -363,13 +364,17 @@ def processTrack(track, tags):
 
 def createMarkerFile(filepath):
   """ Create a file to mark that a track folder has been processed """
-  writeFile(filepath, 'Folder has been processed')
+  writeFile(filepath,
+            'This marks that the track folder has been processed.\n'
+            'No need to scan for SCN files again.')
 
 def listDeletedDataFiles():
   newFiles = []
   rF2_dir = os.path.join(rF2root, 'Installed')
-  rFactoryVehicleFiles = getListOfFiles('CarDatafiles', pattern='*.txt', recurse=False)
-  rFactoryTrackFiles = getListOfFiles('TrackDatafiles', pattern='*.txt', recurse=False)
+  rFactoryVehicleFiles = getListOfFiles('CarDatafiles',
+                                        pattern='*.txt', recurse=False)
+  rFactoryTrackFiles = getListOfFiles('TrackDatafiles',
+                                      pattern='*.txt', recurse=False)
 
   filesToDelete = []
   for car in rFactoryVehicleFiles:
@@ -398,16 +403,19 @@ def getScnFilenames(folder):
     ls = subprocess.run([ModMgr, '-h'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print(ls.stderr.decode('utf-8'))
     #_op = subprocess.run([ModMgr, '-l%s' % mas[1]], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    #So pip to a file and read it
+    #So pipe to a file and read it
     """
     _pop = os.getcwd()  # save current directory
     os.chdir(os.path.dirname(mas[0]))
+    #cmd = '"'+ModMgr + '" -l%s > temporaryFile 2>>errors' % mas[1]
     cmd = '"'+ModMgr + '" -l%s 2>&1 temporaryFile' % mas[1]
     os.system(cmd)
     lines = readFile('temporaryFile')
     for line in lines:
       if '.scn' in line.lower():
         all.append(line.strip()[:-4]) # Strip whitespace and .scn
+      if 'unable to open package file' in line.lower():
+        print(mas[1])
     try:
       os.remove('temporaryFile')
     except:
