@@ -1,4 +1,4 @@
-""" 
+"""
 All the configuration items for rFactory.
 Some can be edited to change how rFactory works, e.g. the car table columns.
 
@@ -18,9 +18,9 @@ def getKey(filename, keyname):
 
 # General items
 
-# Tags used by rFactory. Only some are present in rFactor files, 
+# Tags used by rFactory. Only some are present in rFactor files,
 # the rest are all included but may be blank
-carTags = ['Manufacturer', 'Model', 'Class', 'tType', 'F/R/4WD', 
+carTags = ['Manufacturer', 'Model', 'Class', 'tType', 'F/R/4WD',
            'Year', 'Decade', 'Rating', 'DB file ID', 'Gearshift', 'Aids',
            'AIstrengthFactor', 'GraphicDetailsFactor', 'originalFolder', 'vehFile',
            # The standard ones we include:
@@ -29,7 +29,7 @@ carTags = ['Manufacturer', 'Model', 'Class', 'tType', 'F/R/4WD',
 # Omit 'Signature','MASFile','BaseSignature'
 
 trackTags = ['Track Name', 'Continent', 'Country', 'tType',
-             'Year', 'Decade', 'Rating', 'DB file ID', 
+             'Year', 'Decade', 'Rating', 'DB file ID',
              'AIstrengthFactor', 'GraphicDetailsFactor', 'originalFolder', 'Scene Description',
              # The standard ones we include:
              'Name','Version','Type','Author','Origin','Category',
@@ -40,7 +40,7 @@ serverTags = ['Server name', 'Track Name', 'Players', 'Password', 'Version']
 CarDatafilesFolder = 'Datafiles/Cars'
 TrackDatafilesFolder = 'Datafiles/Tracks'
 dataFilesExtension = '.rFactory.txt'
-markerfileExtension = '.rFactory.marker.empty'
+markerfileExtension = '.folder.SCNs.scanned'
 
 # File-specific items
 config_tabCar = {
@@ -61,7 +61,7 @@ config_tabServer = {
   'serverFilters' : ['Favourite', 'Server Name', 'Track Name', 'Humans', 'Maybe', 'AI', 'Password', 'Version']
   }
 
-scenarioFilesFolder = 'Datafiles/scenarioFiles' 
+scenarioFilesFolder = 'Datafiles/scenarioFiles'
 scenarioFilesExtension = '.rFactoryScenarioJSON'
 
 favouriteServersFilesFolder = 'Datafiles/favourites'
@@ -84,7 +84,7 @@ except: # No rFactoryConfig file, create one
     '# Use / not backslash' : "",
     'rF2root' : '%ProgramFiles(x86)%/Steam/steamapps/common/rFactor 2',
     'SteamExe' : "%ProgramFiles(x86)%/Steam/steam.exe",
-    'SteamDelaySeconds' : 10,  
+    'SteamDelaySeconds' : 10,
     '#SteamDelaySeconds: How long it takes Steam to start up before we can start rF2' : "",
     #'DiscordExe' : '"%APPDATA%/Microsoft/Windows/Start Menu/Programs/Discord Inc/Discord.lnk"',
     #'#DiscordExe: had to use short cut as the command wouldn\'t work' : '',

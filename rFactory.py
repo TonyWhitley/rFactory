@@ -18,14 +18,15 @@ import tabServers
 import tabScenarios
 import tabJsonEditor
 import rF2headlights.gui
+import tabGearshift
 
 from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.utils import readTextFile, bundleFolder
 
-BUILD_REVISION = 95 # The git commit count
-versionStr = 'rFactory V0.3.%d' % BUILD_REVISION
-versionDate = '2019-06-25'
+BUILD_REVISION = 101 # The git commit count
+versionStr = 'rFactory V0.4.%d' % BUILD_REVISION
+versionDate = '2019-08-27'
 def about():
   messagebox.askokcancel(
             'About rFactory',
@@ -123,7 +124,8 @@ class Tabs:
       ['Favourite Servers', tabFavouriteServers],
       #['Scenarios', tabScenarios],
       ['JSON editor', tabJsonEditor],
-      ['Headlights control', rF2headlights.gui]
+      ['Headlights control', rF2headlights.gui],
+      ['Gearshift', tabGearshift]
       ]
     self.notebook = ttk.Notebook(parentFrame)
 
