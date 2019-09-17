@@ -23,6 +23,7 @@ def getKey(filename, keyname):
 carTags = ['Manufacturer', 'Model', 'Class', 'tType', 'F/R/4WD',
            'Year', 'Decade', 'Rating', 'DB file ID', 'Gearshift', 'Aids',
            'AIstrengthFactor', 'GraphicDetailsFactor', 'originalFolder', 'vehFile',
+           'Aero', 'Turbo', 'Mass',
            # The standard ones we include:
            'Name','Version','Type','Author','Origin','Category',
            'ID','URL','Desc','Date','Flags','RefCount','MinVersion']
@@ -45,9 +46,9 @@ markerfileExtension = '.folder.SCNs.scanned'
 # File-specific items
 config_tabCar = {
   'carColumns' : ['Manufacturer', 'Model', 'Class', 'Author', 'tType', 'Date',
-                  'F/R/4WD', 'Year', 'Decade', 'Rating', 'DB file ID'],
+                  'F/R/4WD', 'Aero', 'Turbo', 'Mass', 'Year', 'Decade', 'Rating', 'DB file ID'],
   'carFilters' : ['Manufacturer', 'Model', 'Class', 'Author', 'tType',  'Date',
-                  'F/R/4WD', 'Year', 'Decade', 'Rating']
+                  'F/R/4WD', 'Aero', 'Turbo', 'Year', 'Decade', 'Rating']
   }
 
 config_tabTrack = {

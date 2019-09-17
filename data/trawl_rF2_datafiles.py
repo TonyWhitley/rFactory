@@ -88,6 +88,32 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
   _newFile = False
   if overwrite or not os.path.exists(_filepath):
     try:
+      if datafilesPath == 'Datafiles/Cars':
+          __scn, mas_tags = getCarInfo(
+              os.path.join(rF2root, dict['originalFolder']))
+          if 'SemiAutomatic' in mas_tags:
+              if mas_tags['SemiAutomatic'] == '0':
+                dict['Gearshift'] = 'H' + mas_tags['ForwardGears']
+              else: # Paddles or sequential
+                dict['Gearshift'] = 'Paddles'
+          if 'WheelDrive' in mas_tags:
+             dict['F/R/4WD'] = mas_tags['WheelDrive']
+          if 'FWSetting' in mas_tags and 'RWSetting' in mas_tags:
+              if mas_tags['FWSetting'] == '0' and mas_tags['RWSetting'] == '0':
+                  dict['Aero'] = 0
+              else:
+                  dict['Aero'] = 1
+          if 'DumpValve' in mas_tags:
+              dict['Turbo'] = '1'
+          else:
+              dict['Turbo'] = '0'
+          if 'Mass' in mas_tags:
+              dict['Mass'] = int(mas_tags['Mass'].split('.')[0]) # May be float
+          else: # that probably indicates that mas was encrypted => S397
+              dict['Mass'] = ''
+              if dict['Author'] == '':
+                  dict['Author'] = 'Studio 397?'
+
       os.makedirs(datafilesPath, exist_ok=True)
       with open(_filepath, "w") as f:
         for tag in tagsToBeWritten:
@@ -123,8 +149,6 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
                 val = ' '.join(val.split()[1:])
           elif tag == 'Rating':
             val = '***'
-          elif tag == 'F/R/4WD':
-            val = 'RWD' # Most cars are
           elif tag == 'Gearshift':
             val = 'Paddles' # a reasonable default
           else: # value not available
@@ -408,7 +432,7 @@ def getScnFilenames(folder):
     _pop = os.getcwd()  # save current directory
     os.chdir(os.path.dirname(mas[0]))
     #cmd = '"'+ModMgr + '" -l%s > temporaryFile 2>>errors' % mas[1]
-    cmd = '"'+ModMgr + '" -l%s 2>&1 temporaryFile' % mas[1]
+    cmd = '"'+ModMgr + '" -q -l%s temporaryFile > nul 2>&1' % mas[1]
     os.system(cmd)
     lines = readFile('temporaryFile')
     for line in lines:
@@ -424,6 +448,105 @@ def getScnFilenames(folder):
   return all
 
 
+def getCarInfo(folder):
+  """
+  Open the mas files and look for
+  *.hdv
+    ForwardGears=6
+    WheelDrive=REAR // which wheels are driven: REAR, FOUR, or FRONT
+    SemiAutomatic=0 // whether throttle and clutch are operated automatically (like an F1 car)
+
+    maybe:
+    TCSetting=0 ????
+    TractionControlGrip=(1.4, 0.2)    // average driven wheel grip multiplied by 1st number, then added to 2nd
+    TractionControlLevel=(0.33, 1.0)  // effect of grip on throttle for low TC and high TC
+    ABS4Wheel=0                       // 0 = old-style single brake pulse, 1 = more effective 4-wheel ABS
+    ABSGrip=(1.7, 0.0)                // grip multiplied by 1st number and added to 2nd
+    ABSLevel=(0.31, 0.92)             // effect of grip on brakes for low ABS and high ABS
+    Mass=828.0      Weight threshold
+    FWRange=(0, 1, 1)             // front wing range
+    FWSetting=0                   // front wing setting
+    RWRange=(0, 1, 1)             // rear wing range
+    RWSetting=0                   // rear wing setting
+
+  (engine)*.ini
+    BoostPower=0 no turbo?
+    DumpValve=
+    Turbo*
+
+
+  """
+
+  hdv_keywords = [
+      'ForwardGears',
+      'WheelDrive',
+      'SemiAutomatic',
+      'Mass',
+      'FWSetting',
+      'RWSetting'
+      ]
+
+  ini_keywords = [
+      'DumpValve',
+      'Turbo'
+      ]
+
+  ModMgr = os.path.join(rF2root, r'Bin32\ModMgr.exe')
+  masFiles = getListOfFiles(folder, '*mas')
+  all = []
+  car_dict = {}
+  for mas in masFiles:
+    """ Return nothing
+    ls = subprocess.run([ModMgr, '-h'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(ls.stderr.decode('utf-8'))
+    #_op = subprocess.run([ModMgr, '-l%s' % mas[1]], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    #So pipe to a file and read it
+    """
+    _pop = os.getcwd()  # save current directory
+    os.chdir(os.path.dirname(mas[0]))
+    #cmd = '"'+ModMgr + '" -l%s > temporaryFile 2>>errors' % mas[1]
+    cmd = '"'+ModMgr + '" -q -l%s 2>&1 temporaryFile > nul 2>&1' % mas[1]
+    os.system(cmd)
+    lines = readFile('temporaryFile')
+    for line in lines:
+      if '.scn' in line.lower():
+        all.append(line.strip()[:-4]) # Strip whitespace and .scn
+      if 'unable to open package file' in line.lower():
+        print(mas[1])
+      line = line.strip()
+      if '.hdv' in line.lower():
+          cmd = '"'+ModMgr + '" -q -x%s %s > nul 2>&1' % (mas[1], line)
+          os.system(cmd)
+          hdv_lines = readFile(line)
+          for hdv_line in hdv_lines:
+              for kw in hdv_keywords:
+                  if hdv_line.startswith(f'{kw}='):
+                      car_dict[kw]=re.split('[= /\t]+', hdv_line)[1].strip()
+          try:
+            os.remove(line)   # delete extracted file
+          except:
+            print('Failed to extract %s from %s' % (line, mas[1]))
+      if '.ini' in line.lower():
+          cmd = '"'+ModMgr + '" -q -x%s %s > nul 2>&1' % (mas[1], line)
+          os.system(cmd)
+          ini_lines = readFile(line)
+          for ini_line in ini_lines:
+              for kw in ini_keywords:
+                  if ini_line.startswith(f'{kw}'):
+                      car_dict[kw]=re.split('[= /\t]+', ini_line)[1].strip()
+          try:
+            os.remove(line)   # delete extracted file
+          except:
+            print('Failed to extract %s from %s' % (line, mas[1]))
+            pass # ini file name has spaces?
+    try:
+      os.remove('temporaryFile')
+    except:
+      pass # No SCN files in MAS files
+    os.chdir(_pop)
+  return all, car_dict
+
+
 
 if __name__ == '__main__':
   root = tk.Tk()
@@ -436,3 +559,14 @@ if __name__ == '__main__':
   newFiles = trawl_for_new_rF2_datafiles(root)
   #if newFiles != []:
   #  root.mainloop()
+
+  rF2_dir = r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed"
+  vehicleFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles'), pattern='*', recurse=False)
+
+  car_scn, car_dict = getCarInfo(r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Vehicles\ferrari_312_67\1.2")
+  print(car_dict)
+
+  for vehicleFile in vehicleFiles:
+      folder = getListOfFiles(vehicleFile[0], pattern='*')[0][0]
+      car_scn, car_dict = getCarInfo(folder)
+      print(car_dict)
