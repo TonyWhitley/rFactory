@@ -42,6 +42,8 @@ CarDatafilesFolder = 'Datafiles/Cars'
 TrackDatafilesFolder = 'Datafiles/Tracks'
 dataFilesExtension = '.rFactory.txt'
 markerfileExtension = '.folder.SCNs.scanned'
+modMakerFilesFolder = 'Datafiles/ModMaker'
+modMakerFilesExtension = 'ModMaker.txt'
 
 # File-specific items
 config_tabCar = {
