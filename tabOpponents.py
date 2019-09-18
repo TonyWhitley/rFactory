@@ -22,7 +22,7 @@ class Tab:
 
     self.mc = Multicolumn_Listbox(parentFrame, 
                              config_tabCar['carColumns'], 
-                             stripped_rows=("white","#f2f2f2"), 
+                             striped_rows=("white","#f2f2f2"), 
                              command=self.__on_select, 
                              right_click_command=self.__on_right_click,
                              adjust_heading_to_content=False, 

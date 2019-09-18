@@ -23,15 +23,14 @@ class Tab:
     self.carData = o_carData.fetchData()
 
 
-    self.mc = Multicolumn_Listbox(parentFrame, 
-                             config_tabCar['carColumns'], 
-                             stripped_rows=("white","#f2f2f2"), 
-                             command=self.__on_select, 
+    self.mc = Multicolumn_Listbox(parentFrame,
+                             config_tabCar['carColumns'],
+                             striped_rows=("white","#f2f2f2"),
+                             command=self.__on_select,
                              right_click_command=self.__on_right_click,
-                             adjust_heading_to_content=False, 
+                             adjust_heading_to_content=False,
                              height=30,
                              cell_anchor="center")
-
     # calculate the column widths to fit the headings and the data
     colWidths = []
     for col in config_tabCar['carColumns']:
@@ -40,6 +39,9 @@ class Tab:
       for col, column in enumerate(row):
         if len(row[column]) > colWidths[col]:
           colWidths[col] = len(row[column])
+      #Bodge mfr and model widths down
+      colWidths[0] -= 1
+      colWidths[1] -= 1
       for col, column in enumerate(row):
         self.mc.configure_column(col, width=colWidths[col]*7+6)
     # Hide the final column (contains DB file ID):
@@ -53,7 +55,7 @@ class Tab:
     self.o_filter = self.__Filter(parentFrame, config_tabCar['carColumns'], colWidths, o_carData, self.mc)
     for _filter in config_tabCar['carFilters']:
       self.o_filter.makeFilter(_filter, self.carData)
-   
+
     self.o_filter.filterUpdate(None) # Initial dummy filter to load data into table
 
     self.mc.select_row(0)
@@ -69,12 +71,12 @@ class Tab:
     carID = settings[-1]
     for row, car in enumerate(self.carData):
       if carID == self.carData[car]['DB file ID']:
-        # the row for carID 
+        # the row for carID
         self.mc.select_row(row-1)
         return
     # Settings not in data
     self.mc.select_row(0)
-  
+
   def __on_select(self, data):
     self.settings = data
     print('DEBUG')
@@ -104,6 +106,11 @@ class Tab:
     o_tab = carNtrackEditor.Editor(top, fields, data, DatafilesFolder=CarDatafilesFolder)
     # Need to init the Tab again to get fresh data.
 
+  def get_selection(self):
+      """
+      Get the data from a set of selected rows
+      """
+      return self.mc.selected_rows
 
   class __CarData:
     """ Fetch and filter the car data """
@@ -115,7 +122,7 @@ class Tab:
       self.data = getAllCarData(tags=config_tabCar['carColumns'], maxWidth=20)
       return self.data
     def filterData(self, filters):
-      """ 
+      """
       Filter items of the data dict that match all of the filter combobox selections.
       filters is a list of column name, comboBox text() function pairs """
       _data = []
@@ -171,7 +178,7 @@ class Tab:
       tkComboFilter.current(0)
       tkComboFilter.bind("<<ComboboxSelected>>", self.filterUpdate)
       self.filters.append([filterName, tkComboFilter.get])
-    
+
     def filterUpdate(self, event):
       """ Callback function when combobox changes """
       carData = self.o_carData.filterData(self.filters)
@@ -194,7 +201,7 @@ if __name__ == '__main__':
   root = tk.Tk()
   tabCar = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   tabCar.grid()
-    
+
   o_tab = Tab(tabCar)
 
   root.mainloop()
