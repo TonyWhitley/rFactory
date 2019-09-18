@@ -97,6 +97,12 @@ class Tab:
     o_tab = carNtrackEditor.Editor(top, fields, data, DatafilesFolder=TrackDatafilesFolder)
     # Need to init the Tab again to get fresh data.
 
+  def get_selection(self):
+      """
+      Get the data from a set of selected rows
+      """
+      return self.mc.selected_rows
+
 
   class __TrackData:
     """ Fetch and filter the track data """

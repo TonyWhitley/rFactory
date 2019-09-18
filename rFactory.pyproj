@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ec571240-c2a5-42c2-8112-a5036becb6f3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>rFactory.py</StartupFile>
+    <StartupFile>rFactoryModManager.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -46,6 +46,9 @@
     <Compile Include="gearshift\pyRfactor2SharedMemory\tests\test_sharedMemoryAPI.py" />
     <Compile Include="gearshift\pyRfactor2SharedMemory\__init__.py" />
     <Compile Include="gearshift\scheduler.py" />
+    <Compile Include="rFactoryModManager.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tabGearshift.py" />
     <Compile Include="gearshift\tests\logMemoryMapInputs.py" />
     <Compile Include="gearshift\tests\test_Gearshift.py" />
@@ -113,6 +116,7 @@
     <Compile Include="tabJsonEditor.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tabMMOptions.py" />
     <Compile Include="tabOpponents.py" />
     <Compile Include="tabOptions.py" />
     <Compile Include="tabScenarios.py" />

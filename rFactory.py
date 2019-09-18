@@ -24,9 +24,9 @@ from executeRF2 import runRF2
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.utils import readTextFile, bundleFolder
 
-BUILD_REVISION = 102 # The git commit count
+BUILD_REVISION = 103 # The git commit count
 versionStr = 'rFactory V0.5.%d' % BUILD_REVISION
-versionDate = '2019-09-17'
+versionDate = '2019-09-18'
 def about():
   messagebox.askokcancel(
             'About rFactory',
@@ -40,6 +40,31 @@ def faq():
             _faq
         )
 
+tabNames = [ \
+      ['Car', tabCar],
+      ['Track', tabTrack],
+      ['Opponents', tabOpponents],
+      ['Graphics', tabGraphics],
+      ['Sessions', tabSessions],
+      ['Options', tabOptions],
+      ['Servers', tabServers],
+      ['Favourite Servers', tabFavouriteServers],
+      #['Scenarios', tabScenarios],
+      ['JSON editor', tabJsonEditor],
+      ['Headlights control', rF2headlights.gui],
+      #['Gearshift', tabGearshift]
+      ]
+menuNames = [ \
+      #['Car', tabCar],
+      #['Track', tabTrack],
+      #['Opponents', tabOpponents],
+      #['Graphics', tabGraphics],
+      #['Sessions', tabSessions],
+      #['Options', tabOptions],
+      #['Server', tabServers],
+      ['Scenarios', tabScenarios],
+      ['JSON editor', tabJsonEditor]
+      ]
 
 class Menu:
   def __init__(self,
@@ -112,21 +137,8 @@ class Tabs:
   """ The tabs in the main window """
   tabs = {}   # the tab Frames
   o_tabs = {} # the Tab objects
-  def __init__(self, parentFrame):
-    self.tabNames = [ \
-      ['Car', tabCar],
-      ['Track', tabTrack],
-      ['Opponents', tabOpponents],
-      ['Graphics', tabGraphics],
-      ['Sessions', tabSessions],
-      ['Options', tabOptions],
-      ['Servers', tabServers],
-      ['Favourite Servers', tabFavouriteServers],
-      #['Scenarios', tabScenarios],
-      ['JSON editor', tabJsonEditor],
-      ['Headlights control', rF2headlights.gui],
-      #['Gearshift', tabGearshift]
-      ]
+  def __init__(self, parentFrame, tabNames):
+    self.tabNames = tabNames
     self.notebook = ttk.Notebook(parentFrame)
 
     """
@@ -181,18 +193,8 @@ class Tabs:
 class Menus:
   """ The sub-menus for tabs in the main window """
   menus = {}  # the Menu objects
-  def __init__(self, parentFrame):
-    self.menuNames = [ \
-      #['Car', tabCar],
-      #['Track', tabTrack],
-      #['Opponents', tabOpponents],
-      #['Graphics', tabGraphics],
-      #['Sessions', tabSessions],
-      #['Options', tabOptions],
-      #['Server', tabServers],
-      ['Scenarios', tabScenarios],
-      ['JSON editor', tabJsonEditor]
-      ]
+  def __init__(self, parentFrame, menuNames=[]):
+    self.menuNames = menuNames
     menubar = tk.Menu(parentFrame)
 
     for menuLabel, o_menu in self.menuNames:
@@ -343,9 +345,9 @@ if __name__ == "__main__":
 
   menubar = tk.Menu(mainWindow.handle)
   # display the menus
-  Menus(mainWindow.handle)
+  Menus(mainWindow.handle, menuNames)
 
-  tabs = Tabs(mainWindow.handle)
+  tabs = Tabs(mainWindow.handle, tabNames)
   tabScenarios.setTabs(tabs.tabNames, tabs.o_tabs)
   tabScenarios.openDefaultScenario()
   #tabs._testSetSettings()
