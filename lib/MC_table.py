@@ -19,7 +19,7 @@ It has several options for styling:
     height
     padding
     adjust_heading_to_content
-    stripped_rows
+    striped_rows
     headers
     selection_background
     selection_foreground
@@ -166,9 +166,9 @@ class Multicolumn_Listbox(object):
         def __len__(self): 
             return self._multicolumn_listbox.number_of_columns
 
-    def __init__(self, master, columns, data=None, command=None, sort=True, select_mode=None, heading_anchor = CENTER, cell_anchor=W, style=None, height=None, padding=None, adjust_heading_to_content=False, stripped_rows=None, selection_background=None, selection_foreground=None, field_background=None, heading_font= None, heading_background=None, heading_foreground=None, cell_pady=2, cell_background=None, cell_foreground=None, cell_font=None, headers=True, right_click_command=None):
+    def __init__(self, master, columns, data=None, command=None, sort=True, select_mode=None, heading_anchor = CENTER, cell_anchor=W, style=None, height=None, padding=None, adjust_heading_to_content=False, striped_rows=None, selection_background=None, selection_foreground=None, field_background=None, heading_font= None, heading_background=None, heading_foreground=None, cell_pady=2, cell_background=None, cell_foreground=None, cell_font=None, headers=True, right_click_command=None):
 
-        self._stripped_rows = stripped_rows
+        self._striped_rows = striped_rows
 
         self._columns = columns
         
@@ -191,7 +191,7 @@ class Multicolumn_Listbox(object):
             style_map["background"] = [('selected', selection_background)]
             
         if selection_foreground is not None:
-            style_map["foeground"] = [('selected', selection_foreground)]
+            style_map["foreground"] = [('selected', selection_foreground)]
 
         if style_map:
             s.map(style_name, **style_map)
@@ -340,9 +340,9 @@ class Multicolumn_Listbox(object):
         self.interior.delete(item_ID)
         self._number_of_rows -= 1
         
-        if self._stripped_rows:
+        if self._striped_rows:
             for i in range(index, self._number_of_rows):
-                self.interior.tag_configure(list_of_items[i+1], background=self._stripped_rows[i%2])
+                self.interior.tag_configure(list_of_items[i+1], background=self._striped_rows[i%2])
             
     def insert_row(self, data, index=None):
         if len(data) != self._number_of_columns:
@@ -356,13 +356,13 @@ class Multicolumn_Listbox(object):
 
         self._number_of_rows += 1        
 
-        if self._stripped_rows:            
+        if self._striped_rows:            
             list_of_items = self.interior.get_children()
 
-            self.interior.tag_configure(item_ID, background=self._stripped_rows[index%2])
+            self.interior.tag_configure(item_ID, background=self._striped_rows[index%2])
 
             for i in range(index+1, self._number_of_rows):
-                self.interior.tag_configure(list_of_items[i], background=self._stripped_rows[i%2])
+                self.interior.tag_configure(list_of_items[i], background=self._striped_rows[i%2])
 
     def column_data(self, index):
         return [self.interior.set(child_ID, index) for child_ID in self.interior.get_children('')]
@@ -565,10 +565,10 @@ class Multicolumn_Listbox(object):
         # switch the heading so that it will sort in the opposite direction
         self.interior.heading(col, command=lambda col=col: self.sort_by(col, not descending))
         
-        if self._stripped_rows:
+        if self._striped_rows:
             list_of_items = self.interior.get_children('')
             for i in range(len(list_of_items)):
-                self.interior.tag_configure(list_of_items[i], background=self._stripped_rows[i%2])
+                self.interior.tag_configure(list_of_items[i], background=self._striped_rows[i%2])
 
     def destroy(self):
         self.interior.destroy()
@@ -599,8 +599,8 @@ if __name__ == '__main__':
     def show_info(msg):
         messagebox.showinfo("Table Data", msg)
 
-    mc = Multicolumn_Listbox(root, ["column one","column two", "column three"], stripped_rows = ("white","#f2f2f2"), command=on_select, cell_anchor="center", right_click_command=on_right_click)
-    mc.interior.pack()
+    mc = Multicolumn_Listbox(root, ["column one","column two", "column three"], striped_rows = ("white","#f2f2f2"), command=on_select, cell_anchor="center", right_click_command=on_right_click)
+    mc.interior.grid()
     
     mc.insert_row([1,2,3])
     show_info("mc.insert_row([1,2,3])")

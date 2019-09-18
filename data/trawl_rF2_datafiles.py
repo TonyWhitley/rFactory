@@ -113,6 +113,10 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
               dict['Mass'] = ''
               if dict['Author'] == '':
                   dict['Author'] = 'Studio 397?'
+              if dict['Gearshift'] == '':
+                  dict['Gearshift'] = 'Paddles'
+              if dict['F/R/4WD'] == '':
+                  dict['F/R/4WD'] = 'REAR'
 
       os.makedirs(datafilesPath, exist_ok=True)
       with open(_filepath, "w") as f:
