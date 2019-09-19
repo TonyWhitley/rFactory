@@ -42,6 +42,7 @@ CarDatafilesFolder = 'Datafiles/Cars'
 TrackDatafilesFolder = 'Datafiles/Tracks'
 dataFilesExtension = '.rFactory.txt'
 markerfileExtension = '.folder.SCNs.scanned'
+CacheDataFile = 'Datafiles/rFactoryCache.csv'
 modMakerFilesFolder = 'Datafiles/ModMaker'
 modMakerFilesExtension = 'ModMaker.txt'
 
