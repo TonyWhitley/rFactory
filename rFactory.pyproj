@@ -46,6 +46,7 @@
     <Compile Include="gearshift\pyRfactor2SharedMemory\tests\test_sharedMemoryAPI.py" />
     <Compile Include="gearshift\pyRfactor2SharedMemory\__init__.py" />
     <Compile Include="gearshift\scheduler.py" />
+    <Compile Include="data\LatLong2Addr.py" />
     <Compile Include="rFactoryModManager.py">
       <SubType>Code</SubType>
     </Compile>
