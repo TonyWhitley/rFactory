@@ -24,6 +24,7 @@ from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
 from data.utils import getListOfFiles, readFile, writeFile, getTags
 
 from data.rFactoryData import getSingleCarData, reloadAllData
+from data.LatLong2Addr import google_address, country_to_continent
 
 import edit.carNtrackEditor as carNtrackEditor
 
@@ -89,7 +90,7 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
   if overwrite or not os.path.exists(_filepath):
     try:
       if datafilesPath == 'Datafiles/Cars':
-          __scn, mas_tags = getCarInfo(
+          __scn, mas_tags = getMasInfo(
               os.path.join(rF2root, dict['originalFolder']))
           if 'SemiAutomatic' in mas_tags:
               if mas_tags['SemiAutomatic'] == '0':
@@ -117,6 +118,16 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
                   dict['Gearshift'] = 'Paddles'
               if dict['F/R/4WD'] == '':
                   dict['F/R/4WD'] = 'REAR'
+      else: # Tracks
+          __scn, mas_tags = getMasInfo(
+              os.path.join(rF2root, dict['originalFolder']))
+          if 'Latitude' in mas_tags and 'Longitude' in mas_tags:
+              lat = float(mas_tags['Latitude'])
+              long = float(mas_tags['Longitude'])
+              address_o = google_address(lat, long)
+
+              dict['Country'] = address_o.get_country()
+              dict['Continent'] = country_to_continent(dict['Country'])
 
       os.makedirs(datafilesPath, exist_ok=True)
       with open(_filepath, "w") as f:
@@ -161,6 +172,9 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
       _newFile = True
     except OSError:
       print('Failed to write %s' % _filepath)
+      quit()
+    except Exception as e:
+      print(e)
       quit()
   return _newFile
 
@@ -452,7 +466,7 @@ def getScnFilenames(folder):
   return all
 
 
-def getCarInfo(folder):
+def getMasInfo(folder):
   """
   Open the mas files and look for
   *.hdv
@@ -495,10 +509,16 @@ def getCarInfo(folder):
       'Turbo'
       ]
 
+  gdb_keywords = [
+      'Latitude',
+      'Longitude'
+      ]
+
   ModMgr = os.path.join(rF2root, r'Bin32\ModMgr.exe')
   masFiles = getListOfFiles(folder, '*mas')
   all = []
-  car_dict = {}
+  mas_dict = {}
+  circuit_dict = {}
   for mas in masFiles:
     """ Return nothing
     ls = subprocess.run([ModMgr, '-h'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -523,9 +543,10 @@ def getCarInfo(folder):
           os.system(cmd)
           hdv_lines = readFile(line)
           for hdv_line in hdv_lines:
+              hdv_line = hdv_line.strip()
               for kw in hdv_keywords:
                   if hdv_line.startswith(f'{kw}='):
-                      car_dict[kw]=re.split('[= /\t]+', hdv_line)[1].strip()
+                      mas_dict[kw]=re.split('[= /\t]+', hdv_line)[1].strip()
           try:
             os.remove(line)   # delete extracted file
           except:
@@ -535,20 +556,34 @@ def getCarInfo(folder):
           os.system(cmd)
           ini_lines = readFile(line)
           for ini_line in ini_lines:
+              ini_line = ini_line.strip()
               for kw in ini_keywords:
                   if ini_line.startswith(f'{kw}'):
-                      car_dict[kw]=re.split('[= /\t]+', ini_line)[1].strip()
+                      mas_dict[kw]=re.split('[= /\t]+', ini_line)[1].strip()
           try:
             os.remove(line)   # delete extracted file
           except:
             print('Failed to extract %s from %s' % (line, mas[1]))
             pass # ini file name has spaces?
+      if '.gdb' in line.lower():
+          cmd = '"'+ModMgr + '" -q -x%s %s > nul 2>&1' % (mas[1], line)
+          os.system(cmd)
+          gdb_lines = readFile(line)
+          for gdb_line in gdb_lines:
+              gdb_line = gdb_line.strip()
+              for kw in gdb_keywords:
+                  if gdb_line.startswith(f'{kw}'):
+                      mas_dict[kw]=re.split('[= /\t]+', gdb_line)[1].strip()
+          try:
+            os.remove(line)   # delete extracted file
+          except:
+            print('Failed to extract %s from %s' % (line, mas[1]))
     try:
       os.remove('temporaryFile')
     except:
       pass # No SCN files in MAS files
     os.chdir(_pop)
-  return all, car_dict
+  return all, mas_dict
 
 
 
@@ -567,10 +602,10 @@ if __name__ == '__main__':
   rF2_dir = r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed"
   vehicleFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles'), pattern='*', recurse=False)
 
-  car_scn, car_dict = getCarInfo(r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Vehicles\ferrari_312_67\1.2")
-  print(car_dict)
+  car_scn, mas_dict = getMasInfo(r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Vehicles\ferrari_312_67\1.2")
+  print(mas_dict)
 
   for vehicleFile in vehicleFiles:
       folder = getListOfFiles(vehicleFile[0], pattern='*')[0][0]
-      car_scn, car_dict = getCarInfo(folder)
-      print(car_dict)
+      car_scn, mas_dict = getMasInfo(folder)
+      print(mas_dict)
