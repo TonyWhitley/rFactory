@@ -25,6 +25,7 @@ from data.utils import getListOfFiles, readFile, writeFile, getTags
 
 from data.rFactoryData import getSingleCarData, reloadAllData
 from data.LatLong2Addr import google_address, country_to_continent
+from data.cached_data import Cached_data
 
 import edit.carNtrackEditor as carNtrackEditor
 
@@ -89,46 +90,6 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
   _newFile = False
   if overwrite or not os.path.exists(_filepath):
     try:
-      if datafilesPath == 'Datafiles/Cars':
-          __scn, mas_tags = getMasInfo(
-              os.path.join(rF2root, dict['originalFolder']))
-          if 'SemiAutomatic' in mas_tags:
-              if mas_tags['SemiAutomatic'] == '0':
-                dict['Gearshift'] = 'H' + mas_tags['ForwardGears']
-              else: # Paddles or sequential
-                dict['Gearshift'] = 'Paddles'
-          if 'WheelDrive' in mas_tags:
-             dict['F/R/4WD'] = mas_tags['WheelDrive']
-          if 'FWSetting' in mas_tags and 'RWSetting' in mas_tags:
-              if mas_tags['FWSetting'] == '0' and mas_tags['RWSetting'] == '0':
-                  dict['Aero'] = 0
-              else:
-                  dict['Aero'] = 1
-          if 'DumpValve' in mas_tags:
-              dict['Turbo'] = '1'
-          else:
-              dict['Turbo'] = '0'
-          if 'Mass' in mas_tags:
-              dict['Mass'] = int(mas_tags['Mass'].split('.')[0]) # May be float
-          else: # that probably indicates that mas was encrypted => S397
-              dict['Mass'] = ''
-              if dict['Author'] == '':
-                  dict['Author'] = 'Studio 397?'
-              if dict['Gearshift'] == '':
-                  dict['Gearshift'] = 'Paddles'
-              if dict['F/R/4WD'] == '':
-                  dict['F/R/4WD'] = 'REAR'
-      else: # Tracks
-          __scn, mas_tags = getMasInfo(
-              os.path.join(rF2root, dict['originalFolder']))
-          if 'Latitude' in mas_tags and 'Longitude' in mas_tags:
-              lat = float(mas_tags['Latitude'])
-              long = float(mas_tags['Longitude'])
-              address_o = google_address(lat, long)
-
-              dict['Country'] = address_o.get_country()
-              dict['Continent'] = country_to_continent(dict['Country'])
-
       os.makedirs(datafilesPath, exist_ok=True)
       with open(_filepath, "w") as f:
         for tag in tagsToBeWritten:
@@ -262,6 +223,8 @@ def createDefaultDataFiles(overwrite=False):
   vehicleFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles'), pattern='*.mft', recurse=True)
   trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations'), pattern='*.mft', recurse=True)
   F1_1988_trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations', 'F1_1988_Tracks'), pattern='*.mas', recurse=True)
+  cache_o = Cached_data()
+  cache_o.load()
 
   #vehNames = getVehScnNames('vehNames.txt')
   vehNames = vehFiles()
@@ -312,6 +275,54 @@ def createDefaultDataFiles(overwrite=False):
       tags['originalFolder'], _ = os.path.split(veh[0][len(rF2root)+1:]) # strip the root
       # if veh file name is available in vehNames.txt use it
       tags['vehFile'] = vehNames.veh(tags['Name'])
+
+      cached_tags = cache_o.get_values(tags['Name'])
+      cache_write = False
+      if not cached_tags:
+          # We don't already have data scanned from MAS files
+
+          __scn, mas_tags = getMasInfo(
+                os.path.join(rF2root, tags['originalFolder']))
+          if 'SemiAutomatic' in mas_tags:
+              if mas_tags['SemiAutomatic'] == '0':
+                tags['Gearshift'] = 'H' + mas_tags['ForwardGears']
+              else: # Paddles or sequential
+                tags['Gearshift'] = 'Paddles'
+          if 'WheelDrive' in mas_tags:
+                tags['F/R/4WD'] = mas_tags['WheelDrive']
+          tags['Aero'] = 1
+          if 'FWSetting' in mas_tags and 'RWSetting' in mas_tags:
+                if mas_tags['FWSetting'] == '0' and mas_tags['RWSetting'] == '0':
+                    tags['Aero'] = 0
+          if 'DumpValve' in mas_tags:
+                tags['Turbo'] = '1'
+          else:
+                tags['Turbo'] = '0'
+          if 'Mass' in mas_tags:
+                tags['Mass'] = int(mas_tags['Mass'].split('.')[0]) # May be float
+          else: # that probably indicates that mas was encrypted => S397
+                tags['Mass'] = ''
+                if tags['Author'] == '':
+                    tags['Author'] = 'Studio 397?'
+                if not 'Gearshift' in tags or tags['Gearshift'] == '':
+                    tags['Gearshift'] = 'Paddles'
+                if not 'F/R/4WD' in tags or tags['F/R/4WD'] == '':
+                    tags['F/R/4WD'] = 'REAR'
+          for tag in ['Gearshift','F/R/4WD','Aero','Turbo','Mass','Author']:
+            if tag in tags:
+              cache_o.set_value(tags['Name'], tag, tags[tag])
+          cache_write = True
+
+
+      for tag in tags:
+        if cached_tags and tag in cached_tags:
+          if cached_tags[tag] != '':
+            # We have a cached tag for this one
+            tags[tag] = cached_tags[tag]
+          else:
+            cache_o.set_value(tags['Name'], tag, tags[tag])
+            cache_write = True
+
       if createDataFile(datafilesPath=CarDatafilesFolder,
                         filename=tags['Name'],
                         dict=tags,
@@ -319,7 +330,8 @@ def createDefaultDataFiles(overwrite=False):
                         overwrite=overwrite):
         # a new file was written
         newFiles.append(tags['Name'])
-
+  if cache_write:
+      cache_o.write()
 
   #print('\n\nTracks:')
   tags = {}
@@ -367,6 +379,9 @@ def createDefaultDataFiles(overwrite=False):
 
 def processTrack(track, tags):
   #print('\nData file: "%s.something"' % tags['Name'])
+  cache_o = Cached_data()
+  cache_o.load()
+
   for requiredTag in ['Name','Version','Type','Author','Origin','Category','ID','URL','Desc','Date','Flags','RefCount','#Signature','#MASFile','MinVersion','#BaseSignature']:
     # MASFile, Signature and BaseSignature filtered out
     if requiredTag in tags:
@@ -395,6 +410,32 @@ def processTrack(track, tags):
 
   if tags['Category'] in trackCategories:
     tags['tType'] = trackCategories[tags['Category']]
+
+  cached_tags = cache_o.get_values(tags['Name'])
+  cache_write = False
+
+  if not cached_tags or cached_tags['Country'] == '':
+    __scn, mas_tags = getMasInfo(
+        os.path.join(rF2root, tags['originalFolder']))
+    if 'Latitude' in mas_tags and 'Longitude' in mas_tags:
+        lat = float(mas_tags['Latitude'])
+        long = float(mas_tags['Longitude'])
+        address_o = google_address(lat, long)
+
+        tags['Country'] = address_o.get_country()
+        tags['Continent'] = country_to_continent(tags['Country'])
+
+  for tag in tags:
+    if cached_tags and tag in cached_tags:
+      if cached_tags[tag] != '':
+        # We have a cached tag for this one
+        tags[tag] = cached_tags[tag]
+    else:
+        cache_o.set_value(tags['Name'], tag, tags[tag])
+        cache_write = True
+
+  if cache_write:
+      cache_o.write()
 
   if createDataFile(datafilesPath=TrackDatafilesFolder,
                     filename=tags['Name'],

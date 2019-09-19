@@ -23,6 +23,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="data\cached_data.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\tests\test_cached_data.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="dummyRF2.py">
       <SubType>Code</SubType>
     </Compile>
@@ -285,6 +291,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
+    <Folder Include="data\tests\" />
     <Folder Include="Documentation\" />
     <Folder Include="edit\" />
     <Folder Include="gearshift\" />
