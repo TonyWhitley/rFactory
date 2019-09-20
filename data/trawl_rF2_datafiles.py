@@ -108,21 +108,6 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
               val = ts.strftime("%Y-%m-%d")
           elif tag == 'DB file ID':
             val = filename # The unique identifier for the car/track. I think.
-          elif tag in ['Track Name', 'Manufacturer', 'Model']:
-            val = dict['strippedName'].replace('_', ' ').strip()  # default
-            if val.startswith('Isi'):
-              val = val[4:]
-            if val.startswith('Ngtc'):
-              val = val[5:]
-            if not val == '':
-              if tag == 'Manufacturer':
-                val = val.split()[0]
-                # Fix case issues:
-                _mfrs = {'Ac':'AC', 'Ats':'ATS', 'Alfaromeo': 'Alfa Romeo', 'Brm':'BRM', 'Bmw':'BMW', 'Mclaren':'McLaren'}
-                if val in _mfrs:
-                  val = _mfrs[val]
-              if tag == 'Model' and len(val.split()) > 1:
-                val = ' '.join(val.split()[1:])
           elif tag == 'Rating':
             val = '***'
           elif tag == 'Gearshift':
@@ -276,6 +261,23 @@ def createDefaultDataFiles(overwrite=False):
       # if veh file name is available in vehNames.txt use it
       tags['vehFile'] = vehNames.veh(tags['Name'])
 
+      for tag in ['Manufacturer', 'Model']:
+        val = tags['strippedName'].replace('_', ' ').strip()  # default
+        if val.startswith('Isi'):
+            val = val[4:]
+        if val.startswith('Ngtc'):
+            val = val[5:]
+        if not val == '':
+            if tag == 'Manufacturer':
+                val = val.split()[0]
+                # Fix case issues:
+                _mfrs = {'Ac':'AC', 'Ats':'ATS', 'Alfaromeo': 'Alfa Romeo', 'Brm':'BRM', 'Bmw':'BMW', 'Mclaren':'McLaren'}
+                if val in _mfrs:
+                  val = _mfrs[val]
+            if tag == 'Model' and len(val.split()) > 1:
+                val = ' '.join(val.split()[1:])
+        tags[tag] = val
+
       cached_tags = cache_o.get_values(tags['Name'])
       cache_write = False
       if not cached_tags:
@@ -352,17 +354,17 @@ def createDefaultDataFiles(overwrite=False):
           # Create a marker file with the overall name
           # otherwise this scans for SCN files every time
           createMarkerFile(_markerfilepath)
-          scns = getScnFilenames(os.path.dirname(track[0]))
+          scns, mas_tags = getMasInfo(os.path.dirname(track[0]))
           if len(scns):
             for scn in scns:
               tags['Scene Description'] = scn
               tags['Name'] = scn
-              newTrack = processTrack(track, tags)
+              newTrack = processTrack(track, tags, mas_tags)
               if newTrack:
                 newFiles.append(newTrack)
 
           else:
-            newTrack = processTrack(track, tags)
+            newTrack = processTrack(track, tags, mas_tags)
             if newTrack:
               newFiles.append(newTrack)
 
@@ -371,13 +373,14 @@ def createDefaultDataFiles(overwrite=False):
           tags['Name'] = track[1][:-4]
           _filepath = os.path.join(TrackDatafilesFolder, tags['Name']+dataFilesExtension)
           if overwrite or not os.path.exists(_filepath):
+            scns, mas_tags = getMasInfo(None, track[0])
             tags['Scene Description'] = tags['Name']
-            newTrack = processTrack(track, tags)
+            newTrack = processTrack(track, tags, mas_tags)
             if newTrack:
               newFiles.append(newTrack)
   return newFiles
 
-def processTrack(track, tags):
+def processTrack(track, tags, mas_tags=None):
   #print('\nData file: "%s.something"' % tags['Name'])
   cache_o = Cached_data()
   cache_o.load()
@@ -411,12 +414,13 @@ def processTrack(track, tags):
   if tags['Category'] in trackCategories:
     tags['tType'] = trackCategories[tags['Category']]
 
+  tag = 'Track Name'
+  val = tags['strippedName'].replace('_', ' ').strip()  # default
+  tags[tag] = val
   cached_tags = cache_o.get_values(tags['Name'])
   cache_write = False
 
   if not cached_tags or cached_tags['Country'] == '':
-    __scn, mas_tags = getMasInfo(
-        os.path.join(rF2root, tags['originalFolder']))
     if 'Latitude' in mas_tags and 'Longitude' in mas_tags:
         lat = float(mas_tags['Latitude'])
         long = float(mas_tags['Longitude'])
@@ -424,6 +428,9 @@ def processTrack(track, tags):
 
         tags['Country'] = address_o.get_country()
         tags['Continent'] = country_to_continent(tags['Country'])
+    else:
+        tags['Country'] = 'No Lat'
+        tags['Continent'] = 'No Long'
 
   for tag in tags:
     if cached_tags and tag in cached_tags:
@@ -507,7 +514,7 @@ def getScnFilenames(folder):
   return all
 
 
-def getMasInfo(folder):
+def getMasInfo(folder, masFile=None):
   """
   Open the mas files and look for
   *.hdv
@@ -556,7 +563,10 @@ def getMasInfo(folder):
       ]
 
   ModMgr = os.path.join(rF2root, r'Bin32\ModMgr.exe')
-  masFiles = getListOfFiles(folder, '*mas')
+  if masFile:
+      masFiles = [(masFile, os.path.basename(masFile))]
+  else:
+      masFiles = getListOfFiles(folder, '*mas')
   all = []
   mas_dict = {}
   circuit_dict = {}

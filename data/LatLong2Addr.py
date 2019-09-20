@@ -393,7 +393,8 @@ class google_address:
                 API_key = data.google_api.key
             except Exception as e:
                 print(e)
-                print('google_api.py not present')
+                self.country = 'google API key'
+                self.city = 'not present'
                 return
         http = urllib3.PoolManager()
         url = f'https://maps.googleapis.com/maps/api/geocode/json?latlng={lat},{long}&key={API_key}'.format()

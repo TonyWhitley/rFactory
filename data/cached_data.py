@@ -16,17 +16,22 @@ from data.LatLong2Addr import google_address, country_to_continent
 
 class Cached_data:
     cache = []
-    cache_tags = list(set(carTags + trackTags)) # dedupe union of all tags
+    cache_tags_set = set(carTags + trackTags) # dedupe union of all tags
+    cache_tags_set.discard('DB file ID') # Remove to move to col 1
+    cache_tags_set.discard('Desc')      # Remove because it's verbose
+    cache_tags = ['DB file ID']+list(cache_tags_set)
 
     def __init__(self, cache_filename=CacheDataFile):
         self.cache_filename = cache_filename
 
     def load(self):
         """ Load the cached data CSV """
+        self.cache = []
         if os.path.isfile(self.cache_filename):
             with open(self.cache_filename, mode='r') as csv_file:
                 for row in csv.DictReader(csv_file):
                     self.cache.append(row)
+                pass
         else:
             self.cache = []
 
@@ -61,5 +66,6 @@ class Cached_data:
             writer = csv.DictWriter(csv_file, fieldnames=self.cache_tags)
             writer.writeheader()
             for row in self.cache:
+                row.pop('Desc', None) # Remove Desc if present
                 writer.writerow(row)
 
