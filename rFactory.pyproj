@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AllClasses.txt" />
+    <Content Include="dataFiles\rFactoryCache.csv" />
     <Content Include="Documentation\rFactoryCars.JPG" />
     <Content Include="Documentation\rFactoryOptions.JPG" />
     <Content Include="Documentation\rFactoryServers.JPG" />
@@ -290,6 +291,7 @@
     <Content Include="vehNames.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="dataFiles\" />
     <Folder Include="data\" />
     <Folder Include="data\tests\" />
     <Folder Include="Documentation\" />
