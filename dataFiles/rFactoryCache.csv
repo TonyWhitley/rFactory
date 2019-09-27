@@ -1,468 +1,468 @@
-DB file ID,Author,Country,Decade,Manufacturer,vehFile,Turbo,Gearshift,Name,Track Name,tType,Scene Description,Aids,Aero,Origin,Type,originalFolder,F/R/4WD,Year,Model,Rating,URL,Class,Flags,RefCount,Category,GraphicDetailsFactor,ID,AIstrengthFactor,Continent,MinVersion,Version,Mass
-134_JUDD,PortoAlto and rstRmods,,,134,134_JUDD.VEH,0,Paddles,134_JUDD,,Prototype,,,1,2,2,Installed\vehicles\134_JUDD\0.7,REAR,,Judd,,,,271593472,3,7,,,,,,0.7,828
-1975BRABHAM,,,1970-,Brabham,PACE_08.VEH,0,H5,1975BRABHAM,,,,,1,0,2,Installed\vehicles\1975BRABHAM\1.0,REAR,1975,Brabham,,,,3149824,1,0,,,,,,1,653
-1975BRM,,,1970-,BRM,EVANS_14.VEH,0,H5,1975BRM,,,,,1,0,2,Installed\vehicles\1975BRM\1.0,REAR,1975,Brm,,,,3149824,1,0,,,,,,1,661
-1975COPERSUCAR,,,1970-,Copersucar,FITTIPALDI_30.VEH,0,H5,1975COPERSUCAR,,,,,1,0,2,Installed\vehicles\1975COPERSUCAR\1.0,REAR,1975,Copersucar,,,,3149824,1,0,,,,,,1,677
-1975EMBASSY,,,1970-,Embassy,BRISE_23.VEH,0,H5,1975EMBASSY,,,,,1,0,2,Installed\vehicles\1975EMBASSY\1.0,REAR,1975,Embassy,,,,3149824,1,0,,,,,,1,667
-1975FERRARI,,,1970-,Ferrari,LAUDA_12.VEH,0,H5,1975FERRARI,,,,,1,0,2,Installed\vehicles\1975FERRARI\1.0,REAR,1975,Ferrari,,,,3149824,1,0,,,,,,1,651
-1975HESKETH,,,1970-,Hesketh,ERTL_32.VEH,0,H5,1975HESKETH,,,,,1,0,2,Installed\vehicles\1975HESKETH\1.0,REAR,1975,Hesketh,,,,3149824,1,0,,,,,,1,669
-1975LOTUS,,,1970-,Lotus,PETERSON_05.VEH,0,H5,1975LOTUS,,,,,1,0,2,Installed\vehicles\1975LOTUS\1.0,REAR,1975,Lotus,,,,3149824,1,0,,,,,,1,654
-1975MAKI,,,1970-,Maki,TRIMMER_35.VEH,0,H5,1975MAKI,,,,,1,0,2,Installed\vehicles\1975MAKI\1.0,REAR,1975,Maki,,,,3149824,1,0,,,,,,1,725
-1975MARCH,,,1970-,March,STUCK_10.VEH,0,H5,1975MARCH,,,,,1,0,2,Installed\vehicles\1975MARCH\1.0,REAR,1975,March,,,,3149824,1,0,,,,,,1,668
-1975MCLAREN,,,1970-,McLaren,FITTIPALDI_01.VEH,0,H6,1975MCLAREN,,,,,1,0,2,Installed\vehicles\1975MCLAREN\1.0,REAR,1975,Mclaren,,,,3149824,1,0,,,,,,1,651
-1975PARNELLI,,,1970-,Parnelli,ANDRETTI_27.VEH,0,H5,1975PARNELLI,,,,,1,0,2,Installed\vehicles\1975PARNELLI\1.0,REAR,1975,Parnelli,,,,3149824,1,0,,,,,,1,655
-1975PENSKE,,,1970-,Penske,DONOHUE_28.VEH,0,H5,1975PENSKE,,,,,1,0,2,Installed\vehicles\1975PENSKE\1.0,REAR,1975,Penske,,,,3149824,1,0,,,,,,1,656
-1975SHADOW,,,1970-,Shadow,JARIER_17.VEH,0,H5,1975SHADOW,,,,,1,0,2,Installed\vehicles\1975SHADOW\1.0,REAR,1975,Shadow,,,,3149824,1,0,,,,,,1,664
-1975SURTEES,,,1970-,Surtees,MORGAN_19.VEH,0,H5,1975SURTEES,,,,,1,0,2,Installed\vehicles\1975SURTEES\1.0,REAR,1975,Surtees,,,,3149824,1,0,,,,,,1,666
-1975TYRRELL,,,1970-,Tyrrell,DEPAILLER_04.VEH,0,H5,1975TYRRELL,,,,,1,0,2,Installed\vehicles\1975TYRRELL\1.0,REAR,1975,Tyrrell,,,,3149824,1,0,,,,,,1,663
-1975TYRRELLP34,,,1970-,Tyrrellp34,DEPAILLER_04P34.VEH,0,H5,1975TYRRELLP34,,,,,1,0,2,Installed\vehicles\1975TYRRELLP34\1.0,REAR,1975,Tyrrellp34,,,,3149824,1,0,,,,,,1,670
-1975WILLIAMS,,,1970-,Williams,LAFFITE_21.VEH,0,H5,1975WILLIAMS,,,,,1,0,2,Installed\vehicles\1975WILLIAMS\1.0,REAR,1975,Williams,,,,3149824,1,0,,,,,,1,654
-1986_BT55,,,1980-,Bt55,PATRESE_7.VEH,1,Paddles,1986_BT55,,,,,1,0,2,Installed\vehicles\1986_BT55\1.1,REAR,1986,Bt55,,,,270536704,1,0,,,,,,1.1,630
-207s2000,Slow Motion Group,,2000-,207S,207XXX_MG59.VEH,1,H6,207s2000,,Touring,,,1,3,2,Installed\vehicles\207s2000\1.44,FOUR,2000,207S,,,,270536704,1,10,,,,,,1.44,1270
-AC_427SC_1967,Studio 397?,,1960-,AC,427SC_LBLUE.VEH,0,Paddles,AC_427SC_1967,,,,,1,0,2,Installed\vehicles\ac_427sc_1967\1.2,REAR,1967,427Sc,,,,271593472,1,0,,,,,,1.2,
-AC_Cobra_1954_Endurance,"woochoo, ISI/S397",,1950-,AC,COBRA_1954ENDUR_57.VEH,0,H5,AC_Cobra_1954_Endurance,,GT,,,0,3,2,Installed\vehicles\ac_cobra_1954_endurance\1.230,REAR,1954,Cobra Endurance,,,,3145728,1,3,,,,,,1.23,1149
-AM_FIAGT3_2012_799,Apex Modding,,2010-,Am,10_WTM_03.VEH,0,Paddles,AM_FIAGT3_2012_799,,GT,,,1,1,2,Installed\vehicles\AM_FIAGT3_2012_799\1.05,REAR,2012,Fia 799,,,GT3,270536704,1,3,,,,,,1.05,1295
-AM_FIAGT3_2012_854GT3,Apex Modding,,2010-,Am,12_FER_06.VEH,0,Paddles,AM_FIAGT3_2012_854GT3,,GT,,,1,1,2,Installed\vehicles\AM_FIAGT3_2012_854GT3\1.05,REAR,2012,Fia 854,,,GT3,270536704,1,3,,,,,,1.05,1330
-AM_FIAGT3_2012_CAMARO,ISI/Apex Modding,,2010-,Chevrolet,AM_CAMARO_ADAC_35.VEH,0,Paddles,AM_FIAGT3_2012_CAMARO,,GT,,,1,1,2,Installed\vehicles\AM_FIAGT3_2012_CAMARO\1.05,REAR,2012,Fia Camaro,,,GT3,270536704,1,3,,,,,,1.05,1385
-AM_FIAGT3_2012_MP412CGT3,Apex Modding,,2010-,McLaren,12_MRS_14.VEH,1,Paddles,AM_FIAGT3_2012_MP412CGT3,,GT,,,1,1,2,Installed\vehicles\AM_FIAGT3_2012_MP412CGT3\1.05,REAR,2012,Fia Mp412C,,,GT3,270536704,1,3,,,,,,1.05,1340
-AM_FIAGT3_2012_SLSAMG,Apex Modding,,2010-,Mercedes,ADAC_12_HHM_65.VEH,0,Paddles,AM_FIAGT3_2012_SLSAMG,,GT,,,1,1,2,Installed\vehicles\AM_FIAGT3_2012_SLSAMG\1.05,REAR,2012,Fia Slsamg,,,GT3,270536704,1,3,,,,,,1.05,1325
-AM_FIAGT3_2012_Z06R,Apex Modding,,2010-,Corvette,08_MCR_01.VEH,0,Paddles,AM_FIAGT3_2012_Z06R,,GT,,,1,1,2,Installed\vehicles\AM_FIAGT3_2012_Z06R\1.05,REAR,2012,Fia Z06R,,,GT3,270536704,1,3,,,,,,1.05,1310
-AM_FIAGT3_2012_Z4GT3,Apex Modding,,2010-,BMW,Z4_GT3_SFS_01.VEH,0,Paddles,AM_FIAGT3_2012_Z4GT3,,GT,,,1,1,2,Installed\vehicles\AM_FIAGT3_2012_Z4GT3\1.05,REAR,2012,Fia Z4,,,GT3,270536704,1,3,,,,,,1.05,1330
-AM_FIAGT3_2015_bentleyGT3,Apex Modding,,2010-,Bentley,BGT3_BMSP_85.VEH,1,Paddles,AM_FIAGT3_2015_bentleyGT3,,GT,,,1,1,2,Installed\vehicles\AM_FIAGT3_2015_bentleyGT3\1.05,REAR,2015,Fia Bentley,,,GT3,270536704,1,3,,,,,,1.05,1395
-ASR_OWC_1991_020,ASR Formula,,1990-,Asr,020_03.VEH,0,Paddles,ASR_OWC_1991_020,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1991_020\2.0,REAR,1991,Owc 020,,www.asrformula.com,,270536704,1,6,,,,,,2,580
-ASR_OWC_1991_643,ASR Formula,,1990-,Asr,643_27.VEH,0,Paddles,ASR_OWC_1991_643,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1991_643\2.0,REAR,1991,Owc 643,,www.asrformula.com,,270536704,1,6,,,,,,2,580
-ASR_OWC_1991_B191,ASR Formula,,1990-,Benetton,B191_19.VEH,0,Paddles,ASR_OWC_1991_B191,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1991_B191\2.0,REAR,1991,Owc B191,,www.asrformula.com,,270536704,1,6,,,,,,2,580
-ASR_OWC_1991_FW14,ASR Formula,,1990-,Williams,FW14_06.VEH,0,Paddles,ASR_OWC_1991_FW14,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1991_FW14\2.0,REAR,1991,Owc Fw14,,www.asrformula.com,,270536704,1,6,,,,,,2,580
-ASR_OWC_1991_J191,ASR Formula,,1990-,Asr,J191_32.VEH,0,Paddles,ASR_OWC_1991_J191,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1991_J191\2.0,REAR,1991,Owc J191,,www.asrformula.com,,270536704,1,6,,,,,,2,580
-ASR_OWC_1991_M191,ASR Formula,,1990-,Asr,M191_23.VEH,0,Paddles,ASR_OWC_1991_M191,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1991_M191\2.0,REAR,1991,Owc M191,,www.asrformula.com,,270536704,1,6,,,,,,2,580
-ASR_OWC_1991_MP4-6,ASR Formula,,1990-,McLaren,MP46_02.VEH,0,Paddles,ASR_OWC_1991_MP4-6,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1991_MP4-6\2.0,REAR,1991,Owc Mp4-6,,www.asrformula.com,,270536704,1,6,,,,,,2,580
-ASR_OWC_1993_MP4-8,ASR Formula,,1990-,McLaren,SENNA93_08.VEH,0,Paddles,ASR_OWC_1993_MP4-8,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1993_MP4-8\1.5,REAR,1993,Owc Mp4-8,,www.asrformula.com,,3145728,1,6,,,,,,1.5,580
-ASR_OWC_2004_F2004,ASR Formula,,2000-,Asr,F2004_01.VEH,0,Paddles,ASR_OWC_2004_F2004,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_2004_F2004\1.53,REAR,2004,Owc F,,www.asrformula.com,,270536704,1,6,,,,,,1.53,643
-Bentley_Continental_GT3_2017,Studio 397?,,2010-,Bentley,1SFH4F8ACF4E.VEH,0,Paddles,Bentley_Continental_GT3_2017,,,,,1,0,2,Installed\vehicles\Bentley_Continental_GT3_2017\2.53,REAR,2017,Continental,,,GT3,270569473,1,0,,AAA9999,,,,2.53,
-BMW_M8_GTE_2018,Studio 397?,,2010-,BMW,BMW1CB2E1566.VEH,0,Paddles,BMW_M8_GTE_2018,,,,,1,0,2,Installed\vehicles\BMW_M8_GTE_2018\1.73,REAR,2018,M8,,,GTE,270569473,1,0,,AAA9999,,,,1.73,
-Brabham_1966,Studio 397?,,1960-,Brabham,BT20_5.VEH,0,Paddles,Brabham_1966,,,,,1,0,2,Installed\vehicles\brabham_1966\1.95,REAR,1966,Brabham,,,,271593472,1,0,,AAA9999,,,,1.95,
-Brabham_BT44_1975,Studio 397?,,1970-,Brabham,BT44_7.VEH,0,Paddles,Brabham_BT44_1975,,,,,1,0,2,Installed\vehicles\brabham_bt44_1975\2.06,REAR,1975,Bt44,,,,270536704,1,0,,AAA9999,,,,2.06,
-BTCC_NGTC_BMW_125i,,,,BMW,125I_10_14.VEH,1,Paddles,BTCC_NGTC_BMW_125i,,Touring,,,0,0,2,Installed\vehicles\BTCC_NGTC_BMW_125i\1.3,REAR,,125i,,,BTCC,3158016,1,10,,,,,,1.3,1325
-BTCC_NGTC_Chevrolet_Cruze,,,,Chevrolet,CRUZE44_13.VEH,1,Paddles,BTCC_NGTC_Chevrolet_Cruze,,Touring,,,0,0,2,Installed\vehicles\BTCC_NGTC_Chevrolet_Cruze\1.3,FRONT,,Cruze,,,BTCC,3158016,1,10,,,,,,1.3,1326
-BTCC_NGTC_Ford_Focus,,,,Ford,FOCUS4_12.VEH,1,Paddles,BTCC_NGTC_Ford_Focus,,Touring,,,0,0,2,Installed\vehicles\BTCC_NGTC_Ford_Focus\1.3,FRONT,,Focus,,,BTCC,3158016,1,10,,,,,,1.3,1326
-BTCC_NGTC_Ford_Focus_RS,Studio 397?,,,Ford,FOCUS_RS_20_18.VEH,0,Paddles,BTCC_NGTC_Ford_Focus_RS,,Touring,,,1,0,2,Installed\vehicles\BTCC_NGTC_Ford_Focus_RS\0.95,REAR,,Focus RS,,,BTCC,271593472,6,10,,,,,,0.95,
-BTCC_NGTC_Mercedes_A45,Studio 397?,,1940-,Mercedes,A45_33_15.VEH,0,Paddles,BTCC_NGTC_Mercedes_A45,,Touring,,,1,0,2,Installed\vehicles\BTCC_NGTC_Mercedes_A45\0.95,REAR,1945,A45,,,BTCC,271593536,6,10,,,,,,0.95,
-BTCC_NGTC_MG6_GT,Studio 397?,,,MG,MG6_66_16.VEH,0,Paddles,BTCC_NGTC_MG6_GT,,Touring,,,1,0,2,Installed\vehicles\BTCC_NGTC_MG6_GT\0.95,REAR,,6 GT,,,BTCC,271593472,6,10,,,,,,0.95,
-BTCC_NGTC_Subaru_Levorg,Studio 397?,,,Subaru,LEVORG_116_17.VEH,0,Paddles,BTCC_NGTC_Subaru_Levorg,,Touring,,,1,0,2,Installed\vehicles\BTCC_NGTC_Subaru_Levorg\0.95,REAR,,Levorg,,,BTCC,271593472,6,10,,,,,,0.95,
-BTCC_NGTC_Toyota_Avensis,,,,Toyota,AVENSIS11_11.VEH,1,Paddles,BTCC_NGTC_Toyota_Avensis,,Touring,,,0,0,2,Installed\vehicles\BTCC_NGTC_Toyota_Avensis\1.3,FRONT,,Avensis,,,BTCC,3158016,1,10,,,,,,1.3,1326
-BTCC_NGTC_Vauxhall_Astra,Studio 397?,,,Vauxhall,ASTRA_18S_17.VEH,0,Paddles,BTCC_NGTC_Vauxhall_Astra,,Touring,,,1,1,2,Installed\vehicles\BTCC_NGTC_Vauxhall_Astra\0.95,REAR,,Astra,,,BTCC,271593472,6,10,,,,,,0.95,
-C6R_2009,Studio 397?,,2000-,Chevrolet,C6R_00.VEH,0,Paddles,C6R_2009,,,,,1,0,2,Installed\vehicles\C6R_2009\1.93,REAR,2009,C6R,,,,270536704,1,0,,AAA9999,,,,1.93,
-Callaway_Corvette_GT3_2017,Studio 397?,,2010-,Callaway,121AJIRABAA3D65D.VEH,0,Paddles,Callaway_Corvette_GT3_2017,,,,,1,0,2,Installed\vehicles\Callaway_Corvette_GT3_2017\2.49,REAR,2017,Corvette,,,GT3,270569473,1,0,,AAA9999,,,,2.49,
-Camaro_2012,Studio 397?,,2010-,Chevrolet,CAMARO_27.VEH,0,Paddles,Camaro_2012,,,,,1,0,2,Installed\vehicles\Camaro_2012\1.94,REAR,2012,Camaro,,,,271593472,1,0,,AAA9999,,,,1.94,
-Caterham7_14K_Classic,MikeeCZ & MajorParts,,2010-,Caterham7,CLASSIC_BLACKYELLOW_B.VEH,0,H5,Caterham7_14K_Classic,,Street,,,0,1,2,Installed\vehicles\Caterham7_14K_Classic\1.01,REAR,2014,K Classic,,,,270536704,1,9,,cat7_14k,,,,1.01,610
-ClioCup_2010,Studio 397?,,2010-,Renault,CLIO_17.VEH,0,Paddles,ClioCup_2010,,,,,1,0,2,Installed\vehicles\ClioCup_2010\1.93,REAR,2010,Clio Cup,,,,270536704,1,0,,AAA9999,,,,1.93,
-Clio_PC,,,,Renault,CLIO_PC.VEH,0,Paddles,Clio_PC,,Street,,,1,1,2,Installed\vehicles\Clio_PC\1.0,FRONT,,PC,,,,0,1,9,,,,,,1,1130
-CorvettePC,ISI,,,Chevrolet,CORVETTEPC.VEH,0,Paddles,CorvettePC,,Street,,,1,1,2,Installed\vehicles\CorvettePC\1.0,REAR,,Corvette PC,,http://rfactor.net/downloads/getmod.php,,3145728,1,9,,,,,,1,1624
-CorvettePCLights,,,,Chevrolet,CORVETTEPCLIGHTS.VEH,0,Paddles,CorvettePCLights,,,,,1,0,2,Installed\vehicles\CorvettePCLights\1.0,REAR,,Corvette PC Lights,,,,0,1,0,,,,,,1,1624
-Corvette_C7R_GTE_2017,Studio 397?,,2010-,Corvette,MAX_ERU329ADE028.VEH,0,Paddles,Corvette_C7R_GTE_2017,,,,,1,0,2,Installed\vehicles\Corvette_C7R_GTE_2017\2.01,REAR,2017,C7R,,,GTE,270569473,1,0,,AAA9999,,,,2.01,
-DallaraDW12_2014,Studio 397?,,2010-,Dallara,DW12_19.VEH,0,Paddles,DallaraDW12_2014,,,,,1,0,2,Installed\vehicles\DallaraDW12_2014\1.998,REAR,2014,DW12,,,,270536704,1,0,,AAA9999,,,,1.998,
-Datsun Bluebird,,,,Datsun,BLUEBIRD_SSS_1.VEH,0,H5,Datsun Bluebird,,,,,0,0,2,Installed\vehicles\datsun bluebird\0.2.0,REAR,,Bluebird,,,,270536704,1,0,,,,,,0.2.0,850
-Devbot Enterprises Super Formula V10 2017,Devin,,2010-,Devbot,DESF_2017_10.VEH,0,Paddles,Devbot Enterprises Super Formula V10 2017,,Open,,,1,1,2,Installed\vehicles\Devbot Enterprises Super Formula V10 2017\2.1.1,REAR,2017,Enterprises Super Formula V10,,,,270536704,1,6,,DESFV102017,,,,2.1.1,663
-ER_Endurance_Series_rF2,EnduRacers & GR,,,Porsche,FLAT6GTC_100023.VEH,0,Paddles,ER_Endurance_Series_rF2,,GT,,,1,1,2,Installed\vehicles\ER_Endurance_Series_rF2\3.00,REAR,,Endurance Series Rf2,,www.enduracers.com,,270536704,1,3,,,,,,3,
-ER_Flat6_Series_rF2,EnduRacers & GR,,,Porsche,FLAT6GT3_106009.VEH,0,Paddles,ER_Flat6_Series_rF2,,Touring,,,1,1,2,Installed\vehicles\ER_Flat6_Series_rF2\5.00,REAR,,Flat6 Series Rf2,,www.enduracers.com,,270536704,1,10,,,,,,5,
-EVE_MATRA_F1,,,,Eve,MS10MATRA_09.VEH,0,H5,EVE_MATRA_F1,,,,,0,0,2,Installed\vehicles\eve_matra_f1\1.0,REAR,,Matra,,,F1,271593472,2,0,,,,,,1,660
-F1 1968,Billy Blaze,,1960-,,MS10_1.VEH,0,Paddles,F1 1968,,Open,,,1,0,2,Installed\vehicles\F1 1968\1.0,REAR,1968,,,,F1,271593472,2,6,,,,,,1,
-F1 1996 - SL1DE,SL1DE,,1990-,-,1996_FERRARI_01_EQ.VEH,0,Paddles,F1 1996 - SL1DE,,Open,,,1,2,2,Installed\vehicles\F1 1996 - SL1DE\1.77,REAR,1996,Sl1De,,,F1,270536704,1,6,,,,,,1.77,595
-F1 1998,Studio 397?,,1990-,,F1_1998_17.VEH,0,Paddles,F1 1998,,Open,,,1,2,2,Installed\vehicles\F1 1998\0.1,REAR,1998,,,,F1,270536704,1,6,,,,,,0.1,
-F1RFT_2013_FB_1.4,"F1RFT, Frenky & Bjørn",,2010-,Rft,F1RFT_20.VEH,0,Paddles,F1RFT_2013_FB_1.4,,Open,,,1,3,2,Installed\vehicles\F1RFT_2013_FB_1.4\1.4,REAR,2013,Fb 1.4,,,F1,3145728,1,6,,,,,,1.4,1714
-F1_1979_ALFAROMEO_HE,,,1970-,Alfa Romeo,35_GIACOMELLI.VEH,0,H6,F1_1979_ALFAROMEO_HE,,,,,1,0,2,Installed\vehicles\F1_1979_ALFAROMEO_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,670
-F1_1979_ARROWS_HE,,,1970-,Arrows,29_PATRESE.VEH,0,H5,F1_1979_ARROWS_HE,,,,,1,0,2,Installed\vehicles\F1_1979_ARROWS_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,666
-F1_1979_ATS_HE,,,1970-,ATS,9_STUCK.VEH,0,H5,F1_1979_ATS_HE,,,,,1,0,2,Installed\vehicles\F1_1979_ATS_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,695
-F1_1979_BRABHAM_HE,,,1970-,Brabham,5_LAUDA.VEH,0,H6,F1_1979_BRABHAM_HE,,,,,1,0,2,Installed\vehicles\F1_1979_BRABHAM_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,655
-F1_1979_ENSIGN_HE,,,1970-,Ensign,22_DALY.VEH,0,H5,F1_1979_ENSIGN_HE,,,,,1,0,2,Installed\vehicles\F1_1979_ENSIGN_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,687
-F1_1979_FERRARI_HE,,,1970-,Ferrari,11_SCHECKTER.VEH,0,H5,F1_1979_FERRARI_HE,,,,,1,0,2,Installed\vehicles\F1_1979_FERRARI_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,665
-F1_1979_FITTIPALDI_HE,,,1970-,Fittipaldi,14_FITTIPALDI.VEH,0,H5,F1_1979_FITTIPALDI_HE,,,,,1,0,2,Installed\vehicles\F1_1979_FITTIPALDI_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,687
-F1_1979_LIGIER_HE,,,1970-,Ligier,25_DEPAILLER.VEH,0,H6,F1_1979_LIGIER_HE,,,,,1,0,2,Installed\vehicles\F1_1979_LIGIER_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,657
-F1_1979_LOTUS_HE,,,1970-,Lotus,2_REUTEMANN.VEH,0,H5,F1_1979_LOTUS_HE,,,,,1,0,2,Installed\vehicles\F1_1979_LOTUS_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,685
-F1_1979_MCLAREN_HE,,,1970-,McLaren,8_TAMBAY.VEH,0,H6,F1_1979_MCLAREN_HE,,,,,1,0,2,Installed\vehicles\F1_1979_MCLAREN_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,700
-F1_1979_MERZARIO_HE,,,1970-,Merzario,24_MERZARIO.VEH,0,H5,F1_1979_MERZARIO_HE,,,,,1,0,2,Installed\vehicles\F1_1979_MERZARIO_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,677
-F1_1979_REBAQUE_HE,,,1970-,Rebaque,31_REBAQUE.VEH,0,H5,F1_1979_REBAQUE_HE,,,,,1,0,2,Installed\vehicles\F1_1979_REBAQUE_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,685
-F1_1979_RENAULT_HE,,,1970-,Renault,15_JABOUILLE.VEH,1,H6,F1_1979_RENAULT_HE,,,,,1,0,2,Installed\vehicles\F1_1979_RENAULT_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,670
-F1_1979_SHADOW_HE,,,1970-,Shadow,18_DE ANGELIS.VEH,0,H5,F1_1979_SHADOW_HE,,,,,1,0,2,Installed\vehicles\F1_1979_SHADOW_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,680
-F1_1979_TYRRELL_HE,,,1970-,Tyrrell,4_JARIER.VEH,0,H5,F1_1979_TYRRELL_HE,,,,,1,0,2,Installed\vehicles\F1_1979_TYRRELL_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,667
-F1_1979_WILLIAMS_HE,,,1970-,Williams,27_JONES.VEH,0,H5,F1_1979_WILLIAMS_HE,,,,,1,0,2,Installed\vehicles\F1_1979_WILLIAMS_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,654
-F1_1979_WOLF_HE,,,1970-,Wolf,20_HUNT.VEH,0,H5,F1_1979_WOLF_HE,,,,,1,0,2,Installed\vehicles\F1_1979_WOLF_HE\0.97,REAR,1979,He,,,F1,271593472,1,0,,,,,,0.97,665
-F1_1986_Cars,,,1980-,Cars,DEANGELIS_LE__08.VEH,1,Paddles,F1_1986_Cars,,,,,1,0,2,Installed\vehicles\F1_1986_Cars\1.0,REAR,1986,Cars,,,F1,3149824,1,0,,,,,,1,615
-F1_1986_LE_0.97,,,1980-,Le,BOUTSEN_LE_18.VEH,1,Paddles,F1_1986_LE_0.97,,,,,1,0,2,Installed\vehicles\F1_1986_LE_0.97\0.97,REAR,1986,0.97,,,F1,270536704,1,0,,,,,,0.97,615
-F1_1988_Cars,carrera.4,,1980-,Cars,1988_AGS14.VEH,1,H6,F1_1988_Cars,,Open,,,1,1,2,Installed\vehicles\F1_1988_Cars\0.941,REAR,1988,Cars,,,F1,3158016,1,6,,,,,,0.941,620
-Ferrari_312_67,Chief Wiggum and Postipate,,1960-,Ferrari,SCARFIOTTI_22.VEH,0,H5,Ferrari_312_67,,Open,,,0,1,2,Installed\vehicles\ferrari_312_67\1.2,REAR,1967,312,,https://forum.studio-397.com/index.php?threads/ferrari-312-1967.,,271593472,2,6,,,,,,1.2,623
-FISIR2012_2012,Studio 397?,,2010-,FISIR,FISIR_2012_08.VEH,0,Paddles,FISIR2012_2012,,,,,1,0,2,Installed\vehicles\FISIR2012_2012\1.68,REAR,2012,FISIR,,,,270536704,1,0,,AAA9999,,,,1.68,
-FLAT12_917k_1971,Apex Modding Team,,1970-,Porsche,09_GULF_917K.VEH,0,H5,FLAT12_917k_1971,,GT,,,0,3,2,Installed\vehicles\flat12_917k_1971\0.76,REAR,1971,917K,,,,270536704,1,3,,,,,,0.76,875
-Formula BMW,Slow Motion Group,,,Formula,USA04_056.VEH,0,Paddles,Formula BMW,,Open,,,1,3,2,Installed\vehicles\Formula BMW\1.28,REAR,,Bmw,,,,271593472,4,6,,,,,,1.28,532
-Formula2_2012,Studio 397?,,2010-,Formula,FORMULA2_07.VEH,0,Paddles,Formula2_2012,,,,,1,0,2,Installed\vehicles\Formula2_2012\1.95,REAR,2012,2,,,,270536704,1,0,,AAA9999,,,,1.95,
-FormulaFord,,,,Formula,FR_08.VEH,1,H5,FormulaFord,,,,,0,0,2,Installed\vehicles\FormulaFord\0.624,REAR,,Ford,,,,3145728,1,0,,,,,,0.624,495
-FormulaRenault_35_2014,Studio 397?,,2010-,Formularenault,FR35_2014_1.VEH,0,Paddles,FormulaRenault_35_2014,,,,,1,0,2,Installed\vehicles\FormulaRenault_35_2014\1.6,REAR,2014,35,,,,271593472,1,0,,,,,,1.6,
-FVR V8Supercars FGx,FVRFactor,,,Fvr,DJR17_AU14.VEH,0,H6,FVR V8Supercars FGx,,Touring,,,1,1,2,Installed\vehicles\FVR V8Supercars FGx\6.5,REAR,,V8Supercars Fgx,,www.fvrfactor.com,,271593472,1,10,,,,,,6.5,1410
-FVR V8Supercars MB,FVRFactor,,,Fvr,EMS4_AU14.VEH,0,H6,FVR V8Supercars MB,,Touring,,,1,1,2,Installed\vehicles\FVR V8Supercars MB\6.5,REAR,,V8Supercars Mb,,www.fvrfactor.com,,271593472,1,10,,,,,,6.5,1410
-FVR V8Supercars NA,FVRFactor,,,Fvr,JDR15_AU14.VEH,0,H6,FVR V8Supercars NA,,Touring,,,1,1,2,Installed\vehicles\FVR V8Supercars NA\6.5,REAR,,V8Supercars Na,,www.fvrfactor.com,,271593472,1,10,,,,,,6.5,1410
-FVR V8Supercars VF,FVRFactor,,,Fvr,BJR8_AU14.VEH,0,H6,FVR V8Supercars VF,,Touring,,,1,1,2,Installed\vehicles\FVR V8Supercars VF\6.5,REAR,,V8Supercars Vf,,www.fvrfactor.com,,271593472,1,10,,,,,,6.5,1410
-FVR V8Supercars VO,FVRFactor,,,Fvr,GRM33_AU14.VEH,0,H6,FVR V8Supercars VO,,Touring,,,1,1,2,Installed\vehicles\FVR V8Supercars VO\6.5,REAR,,V8Supercars Vo,,www.fvrfactor.com,,271593472,1,10,,,,,,6.5,1410
-GP3 Series,Slow Motion Group,,,GP3,GP3_16_09.VEH,0,Paddles,GP3 Series,,Open,,,1,1,2,Installed\vehicles\GP3 Series\2.25,REAR,,Series,,,,270536704,1,6,,,,,,2.25,660
-Historic Challenge_EVE_1968,Studio 397?,,1960-,Eve,MS10_7.VEH,0,Paddles,Historic Challenge_EVE_1968,,,,,1,0,2,Installed\vehicles\historic challenge_eve_1968\2.00,REAR,1968,Challenge,,,,271593472,3,0,,AAA9999,,,,2,
-Historic Challenge_spark_1968,Studio 397?,,1960-,Spark,SPARKF1_32.VEH,0,Paddles,Historic Challenge_spark_1968,,,,,1,0,2,Installed\vehicles\historic challenge_spark_1968\2.00,REAR,1968,Challenge,,,,271593472,3,0,,AAA9999,,,,2,
-HondaCivicBTCC_2013,Studio 397?,,2010-,Honda,CIVIC_BTCC_6.VEH,0,Paddles,HondaCivicBTCC_2013,,,,,1,0,2,Installed\vehicles\HondaCivicBTCC_2013\1.99,REAR,2013,Civic,,,BTCC,271593472,6,0,,AAA9999,,,,1.99,
-Howston_DISS_1974,Studio 397?,,1970-,Howston,DISS_52.VEH,0,Paddles,Howston_DISS_1974,,,,,1,0,2,Installed\vehicles\howston_diss_1974\1.94,REAR,1974,Diss,,,,270536704,1,0,,AAA9999,,,,1.94,
-Howston_G4_1967_Endurance,"woochoo, & ISI/S397",,1960-,Howston,HG4_1967ENDUR_44.VEH,1,H4,Howston_G4_1967_Endurance,,Prototype,,,0,3,2,Installed\vehicles\howston_g4_1967_endurance\1.51,REAR,1967,G4 Endurance,,,,271593472,1,7,,,,,,1.51,1088
-Howston_G4_1968,Studio 397?,,1960-,Howston,HG4_14.VEH,0,Paddles,Howston_G4_1968,,,,,1,0,2,Installed\vehicles\howston_g4_1968\1.96,REAR,1968,G4,,,,271593472,1,0,,AAA9999,,,,1.96,
-Howston_G6_1968,Studio 397?,,1960-,Howston,HG6_11.VEH,0,Paddles,Howston_G6_1968,,,,,1,0,2,Installed\vehicles\howston_g6_1968\1.96,REAR,1968,G6,,,,271593472,1,0,,AAA9999,,,,1.96,
-ISI_Boxmaster_2015,ISI,,2010-,Boxmaster,MT55_01.VEH,1,H6,ISI_Boxmaster_2015,,Novel,,,0,1,2,Installed\vehicles\ISI_Boxmaster_2015\0.99,REAR,2015,Boxmaster,,http://rfactor.net/downloads/getmod.php,,270536768,1,5,,,,,1036,0.99,4700
-ISI_Honda_NSX_1991,ISI - Third Party,,1990-,Honda,NSXR_BLUE.VEH,0,H5,ISI_Honda_NSX_1991,,Street,,,0,2,2,Installed\vehicles\ISI_Honda_NSX_1991\1.00,REAR,1991,Nsx,,http://rfactor.net/downloads/getmod.php,,270536704,1,9,,,,,,1,1260
-ISI_KodiZR_2005,ISI,,2000-,Kodi,DRD_ZR25.VEH,0,H5,ISI_KodiZR_2005,,Street,,,1,2,2,Installed\vehicles\ISI_KodiZR_2005\1.00,REAR,2005,ZR,,http://rfactor.net/downloads/getmod.php,,270536768,1,9,,,,,998,1,1280
-ISI_MercedesSLS_SafetyCar_2012,,,2010-,Mercedes,SLSSAFETYCAR01.VEH,0,Paddles,ISI_MercedesSLS_SafetyCar_2012,,,,,1,0,2,Installed\vehicles\ISI_MercedesSLS_SafetyCar_2012\1.47,REAR,2012,SLS Safety Car,,,,270536704,1,0,,,,,,1.47,1714
-ISI_Renault_Formula35_2010,ISI,,2010-,Renault,FR35_28.VEH,0,Paddles,ISI_Renault_Formula35_2010,,Open,,,1,1,2,Installed\vehicles\ISI_Renault_Formula35_2010\1.44,REAR,2010,Formula35,,http://rfactor.net/downloads/getmod.php,,270536704,1,6,,,,,,1.44,703
-ISI_SkipBarber_2013,ISI,,2010-,Skip Barber,SKIPBARBER_77B.VEH,1,H5,ISI_SkipBarber_2013,,Open,,,0,1,2,Installed\vehicles\ISI_SkipBarber_2013\1.54,REAR,2013,Skipbarber,,http://rfactor.net/downloads/getmod.php,,270536704,1,6,,,,,,1.54,629
-Kart cup_2014,Studio 397?,,2010-,Kart,K100_02.VEH,0,Paddles,Kart cup_2014,,,,,1,0,2,Installed\vehicles\Kart cup_2014\1.92,REAR,2014,Cup,,,,271593472,2,0,,AAA9999,,,,1.92,
-LegacyGT300,"Mexes, Izukon, NeverKrash and Lasse Ougaard",,,Legacy,LEGACYGT300_0962.VEH,1,Paddles,LegacyGT300,,GT,,,1,3,2,Installed\vehicles\LegacyGT300\1.10,REAR,,GT300,,,GT3,2101248,1,3,,,,,,1.1,1225
-Lola_T70_Spyder,crossplymods@gmail.com,,1970-,Lola,MK1_8.VEH,0,H4,Lola_T70_Spyder,,Prototype,,,0,3,2,Installed\vehicles\lola_t70_spyder\1.0.5,REAR,1970,T70 Spyder,,,,271593472,1,7,,,,,,1.0.5,814
-MAK-Corp_Group_C,MAK-Corp,,,Mak-Corp,MAZDA_56.VEH,1,Paddles,MAK-Corp_Group_C,,Prototype,,,1,1,2,Installed\vehicles\mak-corp_group_c\1.1,REAR,,Group C,,http://www.mak-corp.com.au/,,270536704,1,7,,,,,,1.1,980
-March_M761_1976,Studio 397?,,1970-,March,M761_09.VEH,0,Paddles,March_M761_1976,,,,,1,0,2,Installed\vehicles\March_M761_1976\2.05,REAR,1976,M761,,,,270536704,1,0,,AAA9999,,,,2.05,
-Marussia_2012,Studio 397?,,2010-,Marussia,MR01_24.VEH,0,Paddles,Marussia_2012,,,,,1,0,2,Installed\vehicles\Marussia_2012\1.94,REAR,2012,Marussia,,,,270536704,1,0,,AAA9999,,,,1.94,
-McLaren M4B,The Garage,,,McLaren,M4B_14.VEH,0,H5,McLaren M4B,,Open,,,0,0,2,Installed\vehicles\mclaren m4b\1.0,REAR,,M4B,,,,271593472,2,6,,,,,,1,573
-McLaren_650S_GT3_2017,Studio 397?,,2010-,McLaren,55TEAMREDL876D95D8.VEH,0,Paddles,McLaren_650S_GT3_2017,,,,,1,0,2,Installed\vehicles\McLaren_650S_GT3_2017\2.43,REAR,2017,650S,,,GT3,270569473,1,0,,AAA9999,,,,2.43,
-McLaren_M23_1975,Studio 397?,,1970-,McLaren,M23_11.VEH,0,Paddles,McLaren_M23_1975,,,,,1,0,2,Installed\vehicles\McLaren_M23_1975\1.01,REAR,1975,M23,,,,270536704,1,0,,AAA9999,,,,1.01,
-McLaren_MP4_13_1998,Studio 397?,,1990-,McLaren,MP413T_5C0FFBCD2.VEH,0,Paddles,McLaren_MP4_13_1998,,Open,,,1,3,2,Installed\vehicles\McLaren_MP4_13_1998\1998.2,REAR,1998,MP4/13,,www.RGPL.eu,,270569473,1,6,,AAA9999,,,,1998.2,
-McLaren_MP4_8_1993,Studio 397?,,1990-,McLaren,MP48_8.VEH,0,Paddles,McLaren_MP4_8_1993,,,,,1,0,2,Installed\vehicles\McLaren_MP4_8_1993\1.07,REAR,1993,MP4/8,,,,270536704,1,0,,AAA9999,,,,1.07,
-Mercedes_AMG_GT3_2017,Studio 397?,,2010-,Mercedes,1AJIRA937639EE.VEH,0,Paddles,Mercedes_AMG_GT3_2017,,,,,1,0,2,Installed\vehicles\Mercedes_AMG_GT3_2017\2.51,REAR,2017,AMG,,,GT3,270569473,1,0,,AAA9999,,,,2.51,
-Metalmoro MR1,Slow Motion Group,,,Metalmoro,MR1_31.VEH,1,Paddles,Metalmoro MR1,,Prototype,,,1,3,2,Installed\vehicles\Metalmoro MR1\1.42,REAR,,MR1,,,,270536704,1,7,,,,,,1.42,840
-Nissan_370z_2012,Studio 397?,,2010-,Nissan,370Z_11.VEH,0,Paddles,Nissan_370z_2012,,,,,1,0,2,Installed\vehicles\Nissan_370z_2012\1.93,REAR,2012,370Z,,,,271593472,1,0,,AAA9999,,,,1.93,
-Nissan_GT500_2013,Studio 397?,,2010-,Nissan,SUPERGT_1.VEH,0,Paddles,Nissan_GT500_2013,,,,,1,0,2,Installed\vehicles\Nissan_GT500_2013\1.96,REAR,2013,GT500,,,,270536704,1,0,,AAA9999,,,,1.96,
-Nissan_GTR_2011,Studio 397?,,2010-,Nissan,NGTR_03.VEH,0,Paddles,Nissan_GTR_2011,,,,,1,0,2,Installed\vehicles\Nissan_GTR_2011\1.93,REAR,2011,GTR,,,,270536704,1,0,,AAA9999,,,,1.93,
-Norma_M30-LMP3_2017,Studio 397?,,2010-,Norma,10ALTED25A742.VEH,0,Paddles,Norma_M30-LMP3_2017,,,,,1,0,2,Installed\vehicles\Norma_M30-LMP3_2017\1.77,REAR,2017,M30,,,LMP3,270569473,1,0,,AAA9999,,,,1.77,
-Oreca_07_LMP2_2017,Studio 397?,,2010-,Oreca,85_JDC_ALTC562C0FF.VEH,0,Paddles,Oreca_07_LMP2_2017,,,,,1,0,2,Installed\vehicles\Oreca_07_LMP2_2017\1.69,REAR,2017,7,,,LMP2,270569473,1,0,,AAA9999,,,,1.69,
-Palatov_D4,Slow Motion Group,,,Palatov,DP4_TDSE_187.VEH,1,Paddles,Palatov_D4,,Prototype,,,1,3,2,Installed\vehicles\Palatov_D4\1.95,REAR,,D4,,,,271593472,5,7,,,,,,1.95,443
-Panoz_AIV_Roadster_1999,,,1990-,Panoz,PANOZ_ROADSTER_02.VEH,0,H5,Panoz_AIV_Roadster_1999,,,,,0,0,2,Installed\vehicles\Panoz_AIV_Roadster_1999\1.2,REAR,1999,AIV Roadster,,,,270536704,1,0,,,,,,1.2,1240
-PM3DM_PrimeraBTCC,,,,Pm3Dm,PBTCC_9704.VEH,0,Paddles,PM3DM_PrimeraBTCC,,,,,0,0,2,Installed\vehicles\PM3DM_PrimeraBTCC\0.70,FRONT,,Primera,,,BTCC,270536704,1,0,,,,,,0.7,1055
-Porsche_991RSR_GTE_2017,Studio 397?,,2010-,Porsche,78KCMGALTB0600FA2.VEH,0,Paddles,Porsche_991RSR_GTE_2017,,,,,1,0,2,Installed\vehicles\Porsche_991RSR_GTE_2017\1.93,REAR,2017,991 RSR,,,GTE,270569473,1,0,,AAA9999,,,,1.93,
-Radical_RXC_GT3_2017,Studio 397?,,2010-,Radical,R_RXC-GT3_90CBBFFC.VEH,0,Paddles,Radical_RXC_GT3_2017,,,,,1,0,2,Installed\vehicles\Radical_RXC_GT3_2017\2.53,REAR,2017,RXC,,,GT3,270569473,1,0,,AAA9999,,,,2.53,
-Radical_SR3-RSX_2017,Studio 397?,,2010-,Radical,SR3_LD_48.VEH,0,Paddles,Radical_SR3-RSX_2017,,,,,1,0,2,Installed\vehicles\Radical_SR3-RSX_2017\2.00,REAR,2017,SR3-RSX,,,,270536704,1,0,,AAA9999,,,,2,
-Renault_MeganeTrophyII_2013,Studio 397?,,2010-,Renault,MT2013_20.VEH,0,Paddles,Renault_MeganeTrophyII_2013,,,,,1,0,2,Installed\vehicles\Renault_MeganeTrophyII_2013\1.95,REAR,2013,Megane Trophy II,,,,270536704,1,0,,AAA9999,,,,1.95,
-rF2r_Superkart,sangreone,,,Rf2R,01.VEH,0,Paddles,rF2r_Superkart,,,,,1,0,2,Installed\vehicles\rF2r_Superkart\1328,REAR,,Superkart,,www.rfactor2race.com,,3145728,1,4,,,,,,1328,
-SC2015_2015,Studio 397?,,2010-,Sc,SC2015_31.VEH,0,Paddles,SC2015_2015,,,,,1,0,2,Installed\vehicles\SC2015_2015\1.96,REAR,2015,Safety Car,,,,270536704,1,0,,AAA9999,,,,1.96,
-SMCClio2016,SIMCO,,2010-,Renault,SMC_CC_BRINK.VEH,1,Paddles,SMCClio2016,,Touring,,,1,1,2,Installed\vehicles\SMCClio2016\1.43,FRONT,2016,Clio,,www.simcompany.hu,,3149824,1,10,,,,,,1.43,1160
-STK 488 GT3,,,,Ferrari,488_GT3_16037AG.VEH,1,Paddles,STK 488 GT3,,,,,1,0,2,Installed\vehicles\STK 488 GT3\1.20,REAR,,488,,,GT3,270536704,1,0,,,,,,1.2,1320
-STK 991 GT3-R,,,,Porsche,991GT3R_16099GT.VEH,0,Paddles,STK 991 GT3-R,,,,,1,0,2,Installed\vehicles\STK 991 GT3-R\1.20,REAR,,991,,,GT3,270536704,1,0,,,,,,1.2,1375
-STK AMG GT3,,,,AMG,16001_AMG_GT3.VEH,0,Paddles,STK AMG GT3,,,,,1,0,2,Installed\vehicles\STK AMG GT3\1.20,REAR,,Amg,,,GT3,270536704,1,0,,,,,,1.2,1385
-STK Bentley GT3,,,,Bentley,BENTLEY_GT3_15007.VEH,1,Paddles,STK Bentley GT3,,,,,1,0,2,Installed\vehicles\STK Bentley GT3\1.20,REAR,,Bentley,,,GT3,270536704,1,0,,,,,,1.2,1375
-STK BMW M6 GT3,,,,BMW,M6_GT3_17007A_B12HR.VEH,1,Paddles,STK BMW M6 GT3,,,,,1,0,2,Installed\vehicles\STK BMW M6 GT3\1.20,REAR,,M6,,,GT3,270536704,1,0,,,,,,1.2,1375
-STK Camaro GT3,,,,Chevrolet,12YACORACING34.VEH,0,Paddles,STK Camaro GT3,,,,,1,0,2,Installed\vehicles\STK Camaro GT3\1.20,REAR,,Camaro,,,GT3,270536704,1,0,,,,,,1.2,1385
-STK Huracan GT3,,,,Lamborghini,15063GT_HURACAN_GT3.VEH,0,Paddles,STK Huracan GT3,,,,,1,0,2,Installed\vehicles\STK Huracan GT3\1.20,REAR,,Huracan,,,GT3,270536704,1,0,,,,,,1.2,1360
-STK Mcl.650s GT3,,,,McLaren,MCL_650S_16011.VEH,1,Paddles,STK Mcl.650s GT3,,,,,1,0,2,Installed\vehicles\STK Mcl.650s GT3\1.20,REAR,,650S,,,GT3,270536704,1,0,,,,,,1.2,1320
-SuperCharged_Miata_Level1,PlickBadger,,,Supercharged,SPCL173.VEH,0,H6,SuperCharged_Miata_Level1,,Touring,,,1,1,2,Installed\vehicles\SuperCharged_Miata_Level1\1.32,REAR,,Miata Level1,,http://getmod.srrs-racing.net/getmod.php/PlickBadger,,3149824,1,10,,,,,,1.32,1036
-Supra_Drift,"Some1,Niels Heusinkveld and rstRmods",,,Toyota,CHUCKY.VEH,1,H4,Supra_Drift,,Street,,,0,2,2,Installed\vehicles\Supra_Drift\0.8,REAR,,Supra,,,,270536704,1,9,,,,,,0.8,1340
-T70 MkIIIb,Billy Blaze,,1970-,Lola,G4_01.VEH,0,Paddles,T70 MkIIIb,,Prototype,,,1,0,2,Installed\vehicles\t70 mkiiib\1.0,REAR,1970,T70 MkIIIB,,,,271593472,1,7,,,,,,1,
-Tatuus_F3_T318_2018,Studio 397?,,2010-,Tatuus,ASIA_F3_SU31CE5C3B.VEH,0,Paddles,Tatuus_F3_T318_2018,,,,,1,0,2,Installed\vehicles\Tatuus_F3_T318_2018\1.03,REAR,2018,T318,,,F3,270536704,1,0,,AAA9999,,,,1.03,
-Tatuus_F4_2018,Studio 397?,,2010-,Tatuus,F4 SMP RACD6B9DF14.VEH,0,Paddles,Tatuus_F4_2018,,,,,1,0,2,Installed\vehicles\Tatuus_F4_2018\1.03,REAR,2018,F4,,,,270536704,1,0,,AAA9999,,,,1.03,
-Tatuus_FT-50_2018,Studio 397?,,2010-,Tatuus,LAUNCH_LIVC53ED9DF.VEH,0,Paddles,Tatuus_FT-50_2018,,,,,1,0,2,Installed\vehicles\Tatuus_FT-50_2018\1.03,REAR,2018,Ft-50,,,,270536704,1,0,,AAA9999,,,,1.03,
-Tatuus_PM-18_2018,Studio 397?,,2010-,Tatuus,02JUNCOS97731899.VEH,0,Paddles,Tatuus_PM-18_2018,,,,,1,0,2,Installed\vehicles\Tatuus_PM-18_2018\1.03,REAR,2018,Pm-18,,,,2101248,2,0,,AAA9999,,,,1.03,
-Tatuus_USF-17_2018,Studio 397?,,2010-,Tatuus,01USF_LAUNACFFF9BE.VEH,0,Paddles,Tatuus_USF-17_2018,,,,,1,0,2,Installed\vehicles\Tatuus_USF-17_2018\1.03,REAR,2018,Usf-17,,,,270536704,1,0,,AAA9999,,,,1.03,
-ToyotaCelicaGTO_1986,,,1980-,Toyota,CELICA_44.VEH,1,H5,ToyotaCelicaGTO_1986,,GT,,,1,1,2,Installed\vehicles\toyotacelicagto_1986\1.97,REAR,1986,Celica GTO,,,,270536704,1,3,,,,,,1.97,1066
-USF2000_2016,Studio 397?,,2010-,USF2000,USF2000_22.VEH,0,Paddles,USF2000_2016,,,,,1,0,2,Installed\vehicles\USF2000_2016\1.94,REAR,2016,USF2000,,,,270536704,1,0,,AAA9999,,,,1.94,
-Melbourne_2013GP,Frenky,Australia,2010-,,,,,Melbourne_2013GP,Melbourne GP,Temporary,Melbourne_2013GP,,,1,1,Installed\locations\2013_Melbourne\1.0,,2013,,,http://www.racerfactor.com,,3145728,1,57,,,,Oceania,,1,
-MONACO_GP,Frenky,,,,,,,MONACO_GP,Monaco GP,Temporary,MONACO_GP,,,1,1,Installed\locations\2013_MONACO\1.0,,,,,http://racerfactor.com/es/,,3145728,1,57,,,,Europe,,1,
-MONTREAL_GP,Frenky,,,,,,,MONTREAL_GP,Montreal GP,Permanent,MONTREAL_GP,,,1,1,Installed\locations\2013_MONTREAL\1.0,,,,,,,3145728,1,55,,,,North America,,1,
-Monza_GP,Frenky,Ireland,,,,,,Monza_GP,Monza GP,Permanent,Monza_GP,,,1,1,Installed\locations\2013_MONZA\1.0,,,,,http://www.racerfactor.com,,3145728,1,55,,,,Europe,,1,
-Silverstone_GTLayout,Frenky,United Kingdom,,,,,,Silverstone_GTLayout,Silverstone Gtlayout,Permanent,Silverstone_GTLayout,,,1,1,Installed\locations\2013_Silverstone\1.0,,,,,http://rfactor.net/downloads/getmod.php,,3145728,1,55,,AAA9999,,Europe,356,1,
-Silverstone_International,Frenky,United Kingdom,,,,,,Silverstone_International,Silverstone International,Permanent,Silverstone_International,,,1,1,Installed\locations\2013_Silverstone\1.0,,,,,http://rfactor.net/downloads/getmod.php,,3145728,1,55,,AAA9999,,Europe,356,1,
-Silverstone_National,Frenky,United Kingdom,,,,,,Silverstone_National,Silverstone National,Permanent,Silverstone_National,,,1,1,Installed\locations\2013_Silverstone\1.0,,,,,http://rfactor.net/downloads/getmod.php,,3145728,1,55,,AAA9999,,Europe,356,1,
-SINGAPUR_GP,Frenky,No Lat,,,,,,SINGAPUR_GP,Singapur GP,Temporary,SINGAPUR_GP,,,1,1,Installed\locations\2013_SINGAPORE\1.0,,,,,,,3145728,1,57,,,,Asia,,1,
-BARCELONA_GP,Frenky,Spain,,,,,,BARCELONA_GP,Barcelona GP,Permanent,BARCELONA_GP,,,1,1,Installed\locations\2013_SPAIN\1.0,,,,,http://getmod.srrs-racing.net/getmod.php/~IsR~Barabba,,3145728,1,55,,,,Europe,,1,
-SUZUKA,Frenky,Japan,,,,,,SUZUKA,Suzuka,Permanent,SUZUKA,,,1,1,Installed\locations\2013_SUZUKA\1.0,,,,,,,3145728,1,55,,,,Asia,,1,
-COTA_GP,Frenky,United States,,,,,,COTA_GP,COTA GP,Permanent,COTA_GP,,,1,1,Installed\locations\2013_USA\1.0,,,,,,,3145728,1,55,,,,North America,,1,
-Bathurst,mianiak,Australia,,,,,,Bathurst,Bathurst,Temporary,Bathurst,,,3,1,Installed\locations\3pa_bathurst_2014\1.02,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,57,,,,Oceania,,1.02,
-Matsusaka_East,"woochoo, & ISI",Japan,,,,,,Matsusaka_East,Matsusaka East,Permanent,Matsusaka_East,,,3,1,Installed\locations\3PA_Matsusaka_2015\1.00,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,Asia,,1,
-Matsusaka_GP,"woochoo, & ISI",Japan,,,,,,Matsusaka_GP,Matsusaka GP,Permanent,Matsusaka_GP,,,3,1,Installed\locations\3PA_Matsusaka_2015\1.00,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,Asia,,1,
-Matsusaka_International,"woochoo, & ISI",Japan,,,,,,Matsusaka_International,Matsusaka International,Permanent,Matsusaka_International,,,3,1,Installed\locations\3PA_Matsusaka_2015\1.00,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,Asia,,1,
-MATSUSAKA_Intl_Old_Chicane,"woochoo, & ISI",Japan,,,,,,MATSUSAKA_Intl_Old_Chicane,Matsusaka Intl Old Chicane,Permanent,MATSUSAKA_Intl_Old_Chicane,,,3,1,Installed\locations\3PA_Matsusaka_2015\1.00,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,Asia,,1,
-Matsusaka_Intl_West_Chicane,"woochoo, & ISI",Japan,,,,,,Matsusaka_Intl_West_Chicane,Matsusaka Intl West Chicane,Permanent,Matsusaka_Intl_West_Chicane,,,3,1,Installed\locations\3PA_Matsusaka_2015\1.00,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,Asia,,1,
-Matsusaka_Motorcycle,"woochoo, & ISI",Japan,,,,,,Matsusaka_Motorcycle,Matsusaka Motorcycle,Permanent,Matsusaka_Motorcycle,,,3,1,Installed\locations\3PA_Matsusaka_2015\1.00,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,Asia,,1,
-Matsusaka_West,"woochoo, & ISI",Japan,,,,,,Matsusaka_West,Matsusaka West,Permanent,Matsusaka_West,,,3,1,Installed\locations\3PA_Matsusaka_2015\1.00,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,Asia,,1,
-Matsusaka_West_West_Chicane,"woochoo, & ISI",Japan,,,,,,Matsusaka_West_West_Chicane,Matsusaka West West Chicane,Permanent,Matsusaka_West_West_Chicane,,,3,1,Installed\locations\3PA_Matsusaka_2015\1.00,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,Asia,,1,
-60SHOCKENHEIM,,Germany,1960-,,,,,60SHOCKENHEIM,Hockenheim,Permanent,60SHOCKENHEIM,,,3,1,Installed\locations\60sHockenheim\0.85,,1960,,,,,3158016,3,55,,,,Europe,,0.85,
-70SGLEN,"motorfx,philrob rf1,gtl,gtr2,rf2",United States,1970-,,,,,70SGLEN,Watkins Glen,Permanent,70SGLEN,,,2,1,Installed\locations\70sWatkinsGlen\0.14dx,,1970,,,,,3158016,2,55,,1412,,North America,,0.14dx,
-ADELAIDE,,Australia,,,,,,ADELAIDE,Adelaide,Temporary,ADELAIDE,,,0,1,Installed\locations\adelaide_street_circuit\1.07,,,,,,,270536704,1,57,,,,Oceania,,1.07,
-ADR2016,ƒab,France,2010-,,,,,ADR2016,Adr,Permanent,ADR2016,,,3,1,Installed\locations\AnneauduRhin2016\1.02,,2016,,,,,271593472,2,55,,,,Europe,,1.02,
-Aquitania,"R07 conv Corti,DX11 and update prob",France,,,,,,Aquitania,Aquitania,Temporary,Aquitania,,,2,1,Installed\locations\Aquitania\1.1,,,,,,,3149824,2,57,,,,Europe,,1.1,
-_output,"R07 conv Corti,DX11 and update prob",France,,,,,,_output,Output,Temporary,_output,,,2,1,Installed\locations\Aquitania\1.1,,,,,,,3149824,2,57,,,,Europe,,1.1,
-AtlantaMP_KT_A,,United States,,,,,,AtlantaMP_KT_A,Atlantamp Kt A,,AtlantaMP_KT_A,,,0,1,Installed\locations\AtlantaMP_2014\1.28,,,,,,,271593472,3,0,,AAA9999,,North America,,1.28,
-AtlantaMP_KT_B,,United States,,,,,,AtlantaMP_KT_B,Atlantamp Kt B,,AtlantaMP_KT_B,,,0,1,Installed\locations\AtlantaMP_2014\1.28,,,,,,,271593472,3,0,,AAA9999,,North America,,1.28,
-AtlantaMP_KT_BPlus,,United States,,,,,,AtlantaMP_KT_BPlus,Atlantamp Kt Bplus,,AtlantaMP_KT_BPlus,,,0,1,Installed\locations\AtlantaMP_2014\1.28,,,,,,,271593472,3,0,,AAA9999,,North America,,1.28,
-AtlantaMP_KT_C,,United States,,,,,,AtlantaMP_KT_C,Atlantamp Kt C,,AtlantaMP_KT_C,,,0,1,Installed\locations\AtlantaMP_2014\1.28,,,,,,,271593472,3,0,,AAA9999,,North America,,1.28,
-AtlantaMP_RT,,United States,,,,,,AtlantaMP_RT,Atlantamp Rt,,AtlantaMP_RT,,,0,1,Installed\locations\AtlantaMP_2014\1.28,,,,,,,271593472,3,0,,AAA9999,,North America,,1.28,
-BARBAGALLO,Nibiru,Australia,,,,,,BARBAGALLO,Barbagallo,Permanent,BARBAGALLO,,,2,1,Installed\locations\barbagallo_v2.3\2.3,,,,,,,271593472,2,55,,,,Oceania,,2.3,
-BARBAGALLO_SHORT,Nibiru,Australia,,,,,,BARBAGALLO_SHORT,Barbagallo Short,Permanent,BARBAGALLO_SHORT,,,2,1,Installed\locations\barbagallo_v2.3\2.3,,,,,,,271593472,2,55,,,,Oceania,,2.3,
-BATHURST12h2016,,Australia,2010-,,,,,BATHURST12h2016,Bathurst 12H,Temporary,BATHURST12h2016,,,3,1,Installed\locations\bathurst_2016_v3\3.0,,2016,,,,,3149824,2,57,,,,Oceania,,3,
-BATHURST2016,,Australia,2010-,,,,,BATHURST2016,Bathurst,Temporary,BATHURST2016,,,3,1,Installed\locations\bathurst_2016_v3\3.0,,2016,,,,,3149824,2,57,,,,Oceania,,3,
-birminghamsuperprix,rf1 to rf2   philrob update,United Kingdom,,,,,,birminghamsuperprix,Birmingham Superprix,Temporary,birminghamsuperprix,,,2,1,Installed\locations\Birminghamsuperprix\0.10,,,,,,,2101248,2,57,,1412,,Europe,,0.1,
-BLACKWOOD_CL,Leonardo1962,United Kingdom,,,,,,BLACKWOOD_CL,Blackwood Cl,Permanent,BLACKWOOD_CL,,,2,1,Installed\locations\Blackwood\DX11a,,,,,https://forum.studio-397.com/index.php?find-new/757770/posts,,271593472,2,55,,,,Europe,,DX11a,
-BLACKWOOD_CL_REV,Leonardo1962,United Kingdom,,,,,,BLACKWOOD_CL_REV,Blackwood Cl Rev,Permanent,BLACKWOOD_CL_REV,,,2,1,Installed\locations\Blackwood\DX11a,,,,,https://forum.studio-397.com/index.php?find-new/757770/posts,,271593472,2,55,,,,Europe,,DX11a,
-BLACKWOOD_GR,Leonardo1962,United Kingdom,,,,,,BLACKWOOD_GR,Blackwood Gr,Permanent,BLACKWOOD_GR,,,2,1,Installed\locations\Blackwood\DX11a,,,,,https://forum.studio-397.com/index.php?find-new/757770/posts,,271593472,2,55,,,,Europe,,DX11a,
-BLACKWOOD_GR_Rev,Leonardo1962,United Kingdom,,,,,,BLACKWOOD_GR_Rev,Blackwood Gr Rev,Permanent,BLACKWOOD_GR_Rev,,,2,1,Installed\locations\Blackwood\DX11a,,,,,https://forum.studio-397.com/index.php?find-new/757770/posts,,271593472,2,55,,,,Europe,,DX11a,
-BLACKWOOD_GX,Leonardo1962,United Kingdom,,,,,,BLACKWOOD_GX,Blackwood Gx,Permanent,BLACKWOOD_GX,,,2,1,Installed\locations\Blackwood\DX11a,,,,,https://forum.studio-397.com/index.php?find-new/757770/posts,,271593472,2,55,,,,Europe,,DX11a,
-BLACKWOOD_GX_REV,Leonardo1962,United Kingdom,,,,,,BLACKWOOD_GX_REV,Blackwood Gx Rev,Permanent,BLACKWOOD_GX_REV,,,2,1,Installed\locations\Blackwood\DX11a,,,,,https://forum.studio-397.com/index.php?find-new/757770/posts,,271593472,2,55,,,,Europe,,DX11a,
-BLACKWOOD_RL,Leonardo1962,United Kingdom,,,,,,BLACKWOOD_RL,Blackwood Rl,Permanent,BLACKWOOD_RL,,,2,1,Installed\locations\Blackwood\DX11a,,,,,https://forum.studio-397.com/index.php?find-new/757770/posts,,271593472,2,55,,,,Europe,,DX11a,
-Blackwood_RL_REV,Leonardo1962,United Kingdom,,,,,,Blackwood_RL_REV,Blackwood Rl Rev,Permanent,Blackwood_RL_REV,,,2,1,Installed\locations\Blackwood\DX11a,,,,,https://forum.studio-397.com/index.php?find-new/757770/posts,,271593472,2,55,,,,Europe,,DX11a,
-BLACKWOOD_RT,Leonardo1962,United Kingdom,,,,,,BLACKWOOD_RT,Blackwood Rt,Permanent,BLACKWOOD_RT,,,2,1,Installed\locations\Blackwood\DX11a,,,,,https://forum.studio-397.com/index.php?find-new/757770/posts,,271593472,2,55,,,,Europe,,DX11a,
-BLACKWOOD_RT_Rev,Leonardo1962,United Kingdom,,,,,,BLACKWOOD_RT_Rev,Blackwood Rt Rev,Permanent,BLACKWOOD_RT_Rev,,,2,1,Installed\locations\Blackwood\DX11a,,,,,https://forum.studio-397.com/index.php?find-new/757770/posts,,271593472,2,55,,,,Europe,,DX11a,
-BLACKWOOD_SkidPad,Leonardo1962,United Kingdom,,,,,,BLACKWOOD_SkidPad,Blackwood Skidpad,Permanent,BLACKWOOD_SkidPad,,,2,1,Installed\locations\Blackwood\DX11a,,,,,https://forum.studio-397.com/index.php?find-new/757770/posts,,271593472,2,55,,,,Europe,,DX11a,
-BOTNIARING_Chicane,,Finland,,,,,,BOTNIARING_Chicane,Botniaring Chicane,,BOTNIARING_Chicane,,,0,1,Installed\locations\Botniaring_2017\1.02,,,,,,,271593472,2,0,,AAA9999,,Europe,,1.02,
-BOTNIARING_Long,,Finland,,,,,,BOTNIARING_Long,Botniaring Long,,BOTNIARING_Long,,,0,1,Installed\locations\Botniaring_2017\1.02,,,,,,,271593472,2,0,,AAA9999,,Europe,,1.02,
-Botniaring_Short,,Finland,,,,,,Botniaring_Short,Botniaring Short,,Botniaring_Short,,,0,1,Installed\locations\Botniaring_2017\1.02,,,,,,,271593472,2,0,,AAA9999,,Europe,,1.02,
-BrandsGP,AC convert,United Kingdom,,,,,,BrandsGP,Brands GP,Permanent,BrandsGP,,,2,1,Installed\locations\brandsacdx\0.78dx,,,,,,,3149824,2,55,,,,Europe,,0.78dx,
-BrandsIndy,AC convert,United Kingdom,,,,,,BrandsIndy,Brands Indy,Permanent,BrandsIndy,,,2,1,Installed\locations\brandsacdx\0.78dx,,,,,,,3149824,2,55,,,,Europe,,0.78dx,
-Brands_Hatch_GP,spidey,United Kingdom,,,,,,Brands_Hatch_GP,Brands Hatch GP,Permanent,Brands_Hatch_GP,,,3,1,Installed\locations\brandshatch\1.22,,,,,http://www.premiersimracing.com/tracks/rf2/BrandsHatch_v1.22.rfc,,3158016,5,55,,,,Europe,,1.22,
-Brands_Hatch_INDY,spidey,United Kingdom,,,,,,Brands_Hatch_INDY,Brands Hatch Indy,Permanent,Brands_Hatch_INDY,,,3,1,Installed\locations\brandshatch\1.22,,,,,http://www.premiersimracing.com/tracks/rf2/BrandsHatch_v1.22.rfc,,3158016,5,55,,,,Europe,,1.22,
-BremgartenGP_54,"R07 conv Corti,DX11 and update prob",Switzerland,1950-,,,,,BremgartenGP_54,Bremgarten GP,Temporary,BremgartenGP_54,,,2,1,Installed\locations\Bremgarten54\0.85,,1954,,,,,3149824,2,57,,,,Europe,,1.1,
-Brianza_Blancpain,orig. by ISI converted by Turb,Italy,,,,,,Brianza_Blancpain,Brianza Blancpain,Permanent,Brianza_Blancpain,,,2,1,Installed\locations\Brianza\1.7,,,,,,,271593472,2,55,,,,Europe,,1.7,
-Brianza_GP,orig. by ISI converted by Turb,Italy,,,,,,Brianza_GP,Brianza GP,Permanent,Brianza_GP,,,2,1,Installed\locations\Brianza\1.7,,,,,,,271593472,2,55,,,,Europe,,1.7,
-Brianza_HistA,orig. by ISI converted by Turb,Italy,,,,,,Brianza_HistA,Brianza HistA,Permanent,Brianza_HistA,,,2,1,Installed\locations\Brianza\1.7,,,,,,,271593472,2,55,,,,Europe,,1.7,
-Brianza_HistB,orig. by ISI converted by Turb,Italy,,,,,,Brianza_HistB,Brianza HistB,Permanent,Brianza_HistB,,,2,1,Installed\locations\Brianza\1.7,,,,,,,271593472,2,55,,,,Europe,,1.7,
-Brianza_JR,orig. by ISI converted by Turb,Italy,,,,,,Brianza_JR,Brianza Jr,Permanent,Brianza_JR,,,2,1,Installed\locations\Brianza\1.7,,,,,,,271593472,2,55,,,,Europe,,1.7,
-Brianza10K,,Italy,2010-,,,,,Brianza10K,Brianza 10K,,Brianza10K,,,0,1,Installed\locations\Brianza_1966\2.04,,2010,,,,,271593472,3,0,,AAA9999,,Europe,,2.04,
-Brianza1966,,Italy,1960-,,,,,Brianza1966,Brianza,,Brianza1966,,,0,1,Installed\locations\Brianza_1966\2.04,,1966,,,,,271593472,3,0,,AAA9999,,Europe,,2.04,
-BrianzaJr,,Italy,,,,,,BrianzaJr,Brianza Jr,,BrianzaJr,,,0,1,Installed\locations\Brianza_1966\2.04,,,,,,,271593472,3,0,,AAA9999,,Europe,,2.04,
-Bridgehampton,LilSki / digga,United States,,,,,,Bridgehampton,Bridgehampton,Permanent,Bridgehampton,,,1,1,Installed\locations\Bridgehampton\1.03,,,,,www.simracingteam.net,,270536704,1,55,,,,North America,,1.03,
-Bridgehampton_a,LilSki / digga,United States,,,,,,Bridgehampton_a,Bridgehampton A,Permanent,Bridgehampton_a,,,1,1,Installed\locations\Bridgehampton\1.03,,,,,www.simracingteam.net,,270536704,1,55,,,,North America,,1.03,
-BUENOS_AIRES_HISTORIC,conversion from rf1 Rik and Mauro,Argentina,,,,,,BUENOS_AIRES_HISTORIC,Buenos Aires Historic,Permanent,BUENOS_AIRES_HISTORIC,,,2,1,Installed\locations\Buenos_Aires_Historic\1.02,,,,,,,271593472,2,55,,1412,,South America,,1.02,
-CadwellParkSRW,,United Kingdom,,,,,,CadwellParkSRW,Cadwell Park,Permanent,CadwellParkSRW,,,2,1,Installed\locations\cadwell_park_circuit\1.55,,,,,,,3158016,2,55,,,,Europe,,1.55,
-Castlecombe_classic,,United Kingdom,,,,,,Castlecombe_classic,Castle Combe Classic,Permanent,Castlecombe_classic,,,0,1,Installed\locations\castle_combe_circuit\1.05,,,,,,,271593472,4,55,,,,Europe,,1.05,
-castlecombe_modern,,United Kingdom,,,,,,castlecombe_modern,Castle Combe Modern,Permanent,castlecombe_modern,,,0,1,Installed\locations\castle_combe_circuit\1.05,,,,,,,271593472,4,55,,,,Europe,,1.05,
-PaulRicard_HTTT_GT,,France,,,,,,PaulRicard_HTTT_GT,Paul Ricard HTTT GT,Permanent,PaulRicard_HTTT_GT,,,2,1,Installed\locations\Circuit_Paul_Ricard\1.05,,,,,,,271593472,2,55,,,,Europe,,1.05,
-PaulRicard_HTTT_GTC,,France,,,,,,PaulRicard_HTTT_GTC,Paul Ricard HTTT GTC,Permanent,PaulRicard_HTTT_GTC,,,2,1,Installed\locations\Circuit_Paul_Ricard\1.05,,,,,,,271593472,2,55,,,,Europe,,1.05,
-PaulRicard_HTTT_GTP,,France,,,,,,PaulRicard_HTTT_GTP,Paul Ricard HTTT GTP,Permanent,PaulRicard_HTTT_GTP,,,2,1,Installed\locations\Circuit_Paul_Ricard\1.05,,,,,,,271593472,2,55,,,,Europe,,1.05,
-PaulRicard_HTTT_PR,,France,,,,,,PaulRicard_HTTT_PR,Paul Ricard HTTT PR,Permanent,PaulRicard_HTTT_PR,,,2,1,Installed\locations\Circuit_Paul_Ricard\1.05,,,,,,,271593472,2,55,,,,Europe,,1.05,
-PaulRicard_HTTT_PR_DRS,,France,,,,,,PaulRicard_HTTT_PR_DRS,Paul Ricard HTTT PR DRS,Permanent,PaulRicard_HTTT_PR_DRS,,,2,1,Installed\locations\Circuit_Paul_Ricard\1.05,,,,,,,271593472,2,55,,,,Europe,,1.05,
-PaulRicard_HTTT_SH,,France,,,,,,PaulRicard_HTTT_SH,Paul Ricard HTTT SH,Permanent,PaulRicard_HTTT_SH,,,2,1,Installed\locations\Circuit_Paul_Ricard\1.05,,,,,,,271593472,2,55,,,,Europe,,1.05,
-CROFT_ROAD_COURSE,feels3,United Kingdom,,,,,,CROFT_ROAD_COURSE,Croft Road Course,Permanent,CROFT_ROAD_COURSE,,,1,1,Installed\locations\croft circuit\1.01sm,,,,,,,271593472,2,55,,,,Europe,,1.01sm,
-CroixenTernois2017,ƒab,France,2010-,,,,,CroixenTernois2017,Croix en Ternois,Permanent,CroixenTernois2017,,,1,1,Installed\locations\CROIXENTERNOIS2017\1.12,,2017,,,,,271593472,2,55,,,,Europe,,1.12,
-Crystal,ƒab,United Kingdom,,,,,,Crystal,Crystal Palace,Permanent,Crystal,,,3,1,Installed\locations\CRYSTAL PALACE 1969\1.1,,,,,,,271593472,2,55,,,,Europe,,1.1,
-Dijon79,MotorFX converted by Arnao,France,1970-,,,,,Dijon79,Dijon,Permanent,Dijon79,,,2,1,Installed\locations\Dijon79\0.51,,1979,,,,,3158016,2,55,,,,Europe,,0.51,
-DIJON_PRENOIS_GC,,France,,,,,,DIJON_PRENOIS_GC,Dijon Prenois Gc,Permanent,DIJON_PRENOIS_GC,,,0,1,Installed\locations\Dijon_Prenois_Circuit\1.07,,,,,,,270536704,1,55,,,,Europe,,1.07,
-DIJON_PRENOIS_PC,,France,,,,,,DIJON_PRENOIS_PC,Dijon Prenois Pc,Permanent,DIJON_PRENOIS_PC,,,0,1,Installed\locations\Dijon_Prenois_Circuit\1.07,,,,,,,270536704,1,55,,,,Europe,,1.07,
-Dix-Racing Baku,,Azerbaijan,,,,,,Dix-Racing Baku,Baku,,,,,0,1,Installed\locations\Dix-Racing Baku\2017,,,,,,,3158016,2,0,,,,Asia,,2017,
-DONINGTON 2013,,United Kingdom,2010-,,,,,DONINGTON 2013,Donington,,,,,0,1,Installed\locations\donington 2013\2.0,,2013,,,,,3158016,2,0,,,,Europe,,2,
-DUNDROD_1950,,Northern Ireland,1950-,,,,,DUNDROD_1950,Dundrod,,DUNDROD_1950,,,0,1,Installed\locations\Dundrod_1950\0.1,,1950,,,,,3158080,2,0,,,,Europe,,0.1,
-BugattiCircuit_N,ECAR_TRACKS,France,,,,,,BugattiCircuit_N,Bugatti Circuit N,Permanent,BugattiCircuit_N,,,1,1,Installed\locations\ECAR_LeMans_Bugatti\1.0,,,,,https://twitter.com/ECAR_Tracks,,271593472,2,55,,,,Europe,,1,
-betons_60,Sergio Loro,Germany,1960-,,,,,betons_60,Betonschleife,Permanent,betons_60,,,1,1,Installed\locations\Eifel Betonschleife\1.14,,1960,,,www.f3classictracks.com,,3145728,1,55,,,,Europe,,1.14,
-ETT_1,,Spain,,,,,,ETT_1,Ett 1,,ETT_1,,,0,1,Installed\locations\EuskoTestTrack\1.04,,,,,,,3158016,2,0,,,,Europe,,1.04,
-ACSpa,"R07 conv Corti,DX11 and update prob",Belgium,,,,,,ACSpa,Spa,Temporary,ACSpa,,,2,1,Installed\locations\exm_spa\1.1,,,,,,,3149824,2,57,,,,Europe,,1.1,
-Hocke_F3,Sergio Loro,Libya,,,,,,Hocke_F3,Hocke F3,Permanent,Hocke_F3,,,1,1,Installed\locations\Forestheim\0.70,,,,,,,3145728,1,55,,,,Africa,,0.7,
-QUICK,Sergio Loro,Libya,,,,,,QUICK,Quick,Permanent,QUICK,,,1,1,Installed\locations\Forestheim\0.70,,,,,,,3145728,1,55,,,,Africa,,0.7,
-FUJI2012GP,RF2WEC,Japan,2010-,,,,,FUJI2012GP,Fuji GP,Permanent,FUJI2012GP,,,2,1,Installed\locations\Fuji_rf2wec\2.0,,2012,,,www.rf2wec.eu,,271593472,2,55,,rf2wec0004,,Asia,,2,
-FUJI2012GT,RF2WEC,Japan,2010-,,,,,FUJI2012GT,Fuji GT,Permanent,FUJI2012GT,,,2,1,Installed\locations\Fuji_rf2wec\2.0,,2012,,,www.rf2wec.eu,,271593472,2,55,,rf2wec0004,,Asia,,2,
-GENK_KARTING_ALONSO,GVE,Netherlands,,,,,,GENK_KARTING_ALONSO,Genk Karting Alonso,,GENK_KARTING_ALONSO,,,1,1,Installed\locations\Genk Karting\0.91,,,,,http://getmod.srrs-racing.net/getmod.php/RD,,271593472,2,52,,,,Europe,,0.91,
-GENK_KARTING_CIK,GVE,Netherlands,,,,,,GENK_KARTING_CIK,Genk Karting Cik,,GENK_KARTING_CIK,,,1,1,Installed\locations\Genk Karting\0.91,,,,,http://getmod.srrs-racing.net/getmod.php/RD,,271593472,2,52,,,,Europe,,0.91,
-Indianapolis2007GP,,United States,2000-,,,,,Indianapolis2007GP,Indianapolis GP,,Indianapolis2007GP,,,0,1,Installed\locations\Indianapolis_2013\2.05,,2007,,,,,270536704,1,0,,AAA9999,,North America,,2.05,
-Indianapolis2013GP,,United States,2010-,,,,,Indianapolis2013GP,Indianapolis GP,,Indianapolis2013GP,,,0,1,Installed\locations\Indianapolis_2013\2.05,,2013,,,,,270536704,1,0,,AAA9999,,North America,,2.05,
-Indianapolis2014GP,,United States,2010-,,,,,Indianapolis2014GP,Indianapolis GP,,Indianapolis2014GP,,,0,1,Installed\locations\Indianapolis_2013\2.05,,2014,,,,,270536704,1,0,,AAA9999,,North America,,2.05,
-Indianapolis400,,United States,,,,,,Indianapolis400,Indianapolis 400,,Indianapolis400,,,0,1,Installed\locations\Indianapolis_2013\2.05,,,,,,,270536704,1,0,,AAA9999,,North America,,2.05,
-Indianapolis500,,United States,,,,,,Indianapolis500,Indianapolis 500,,Indianapolis500,,,0,1,Installed\locations\Indianapolis_2013\2.05,,,,,,,270536704,1,0,,AAA9999,,North America,,2.05,
-INTERLAGOS,,Brazil,,,,,,INTERLAGOS,Interlagos,Permanent,INTERLAGOS,,,0,1,Installed\locations\Interlagos_GP\1.3,,,,,,,3149824,2,55,,,,South America,,1.3,
-BelgianGP_1966,Image Space Incorporated,Belgium,1960-,,,,,BelgianGP_1966,Belgian GP,Permanent,BelgianGP_1966,,,1,1,Installed\locations\ISI_Belgium_1966\2.01,,1966,,,http://rfactor.net/downloads/getmod.php,,271593472,2,55,,,,Europe,,2.01,
-LOCHDRUMMOND_LONG,ISI,United Kingdom,,,,,,LOCHDRUMMOND_LONG,Loch Drummond Long,Permanent,LOCHDRUMMOND_LONG,,,1,1,Installed\locations\ISI_LochDrummond_2013\1.1,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,55,,,,Europe,300,1.1,
-LOCHDRUMMOND_SHORT,ISI,United Kingdom,,,,,,LOCHDRUMMOND_SHORT,Loch Drummond Short,Permanent,LOCHDRUMMOND_SHORT,,,1,1,Installed\locations\ISI_LochDrummond_2013\1.1,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,55,,,,Europe,300,1.1,
-Montreal_2006,gJED,Canada,2000-,,,,,Montreal_2006,Montreal,Permanent,Montreal_2006,,,2,1,Installed\locations\ISI_Montreal_2000\1.01,,2006,,,http://rfactor.net/downloads/getmod.php,,271593536,2,55,,,,North America,880,1.01,
-InfieldRoadCourse,Image Space Incorporated,United States,,,,,,InfieldRoadCourse,Infieldroadcourse,,InfieldRoadCourse,,,1,1,Installed\locations\ISI_MountainPeakSW_2014\1.20,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,54,,,,North America,982,1.2,
-KartOval,Image Space Incorporated,United States,,,,,,KartOval,Kartoval,,KartOval,,,1,1,Installed\locations\ISI_MountainPeakSW_2014\1.20,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,54,,,,North America,982,1.2,
-KartRC1,Image Space Incorporated,United States,,,,,,KartRC1,Kartrc1,,KartRC1,,,1,1,Installed\locations\ISI_MountainPeakSW_2014\1.20,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,54,,,,North America,982,1.2,
-KartRC2,Image Space Incorporated,United States,,,,,,KartRC2,Kartrc2,,KartRC2,,,1,1,Installed\locations\ISI_MountainPeakSW_2014\1.20,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,54,,,,North America,982,1.2,
-KartRC3,Image Space Incorporated,United States,,,,,,KartRC3,Kartrc3,,KartRC3,,,1,1,Installed\locations\ISI_MountainPeakSW_2014\1.20,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,54,,,,North America,982,1.2,
-LegendsOval,Image Space Incorporated,United States,,,,,,LegendsOval,Legendsoval,,LegendsOval,,,1,1,Installed\locations\ISI_MountainPeakSW_2014\1.20,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,54,,,,North America,982,1.2,
-Synergy300,Image Space Incorporated,United States,,,,,,Synergy300,Synergy300,,Synergy300,,,1,1,Installed\locations\ISI_MountainPeakSW_2014\1.20,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,54,,,,North America,982,1.2,
-Sardian_Long,Image Space Incorporated,,,,,,,Sardian_Long,Sardian Long,Temporary,Sardian_Long,,,2,1,Installed\locations\ISI_SardianHeights_2004\1.00,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,57,,,,,946,1,
-Sardian_Short,Image Space Incorporated,,,,,,,Sardian_Short,Sardian Short,Temporary,Sardian_Short,,,2,1,Installed\locations\ISI_SardianHeights_2004\1.00,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,57,,,,,946,1,
-TigerMoth_R1,Image Space Incorporated,United Kingdom,,,,,,TigerMoth_R1,Tigermoth R1,Permanent,TigerMoth_R1,,,1,1,Installed\locations\isi_tigermoth_2014\1.02,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,55,,,,Europe,860,1.02,
-TigerMoth_R2,Image Space Incorporated,United Kingdom,,,,,,TigerMoth_R2,Tigermoth R2,Permanent,TigerMoth_R2,,,1,1,Installed\locations\isi_tigermoth_2014\1.02,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,55,,,,Europe,860,1.02,
-TigerMoth_R3,Image Space Incorporated,United Kingdom,,,,,,TigerMoth_R3,Tigermoth R3,Permanent,TigerMoth_R3,,,1,1,Installed\locations\isi_tigermoth_2014\1.02,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,55,,,,Europe,860,1.02,
-TigerMoth_TestTrack,Image Space Incorporated,United Kingdom,,,,,,TigerMoth_TestTrack,Tigermoth Testtrack,Permanent,TigerMoth_TestTrack,,,1,1,Installed\locations\isi_tigermoth_2014\1.02,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,55,,,,Europe,860,1.02,
-TigerMoth_TT_Training,Image Space Incorporated,United Kingdom,,,,,,TigerMoth_TT_Training,Tigermoth Tt Training,Permanent,TigerMoth_TT_Training,,,1,1,Installed\locations\isi_tigermoth_2014\1.02,,,,,http://rfactor.net/downloads/getmod.php,,271593536,2,55,,,,Europe,860,1.02,
-JARAMA79,,Spain,1970-,,,,,JARAMA79,Jarama,Permanent,JARAMA79,,,3,1,Installed\locations\Jarama79\0.8,,1979,,,16/10/2012,,3145728,1,55,,16/10/2012,,Europe,,0.8,
-Knockhill,,Scotland,,,,,,Knockhill,Knockhill,,,,,0,1,Installed\locations\knockhill\1.3,,,,,http://getmod.srrs-racing.net/getmod.php/~IsR~Barabba,,3158016,2,0,,,,Europe,,1.3,
-ksRing,Kunos Simulazioni,Germany,,,,,,ksRing,Ksring,Permanent,ksRing,,,2,1,Installed\locations\ksRing\0.60,,,,,,,1716224,2,55,,,,Europe,,0.6,
-Kyalami_Legends_[1976],,South Africa,1970-,,,,,Kyalami_Legends_[1976],Kyalami Legends [],Permanent,KYALAMI_LEGENDS_GP,,,2,1,Installed\locations\Kyalami_Legends_[1976]\1.01LE_dx11,,1976,,,,,3149824,2,55,,56e5833eb5cdfbca91b81a41f54f95cea69dcc2c1f7d7ad27172c712077c4546,,Africa,,1.01LE_dx11,
-smc_LAGUNASECA_GP,,United States,,,,,,smc_LAGUNASECA_GP,Smc Lagunaseca GP,Permanent,smc_LAGUNASECA_GP,,,1,1,Installed\locations\Laguna Seca\1.07b,,,,,,,3145728,1,55,,,,North America,,1.07b,
-Lausitzring_GPL,,Germany,,,,,,Lausitzring_GPL,Lausitzring GPl,Permanent,Lausitzring_GPL,,,0,1,Installed\locations\Lausitzring_2016\1.061,,,,,,,271593472,2,55,,,,Europe,,1.061,
-Lausitzring_GPS,,Germany,,,,,,Lausitzring_GPS,Lausitzring GPs,Permanent,Lausitzring_GPS,,,0,1,Installed\locations\Lausitzring_2016\1.061,,,,,,,271593472,2,55,,,,Europe,,1.061,
-Lausitzring_SWAY,,Germany,,,,,,Lausitzring_SWAY,Lausitzring Sway,Permanent,Lausitzring_SWAY,,,0,1,Installed\locations\Lausitzring_2016\1.061,,,,,,,271593472,2,55,,,,Europe,,1.061,
-LeMans91,Virtua_LM Modding Team,France,1990-,,,,,LeMans91,Lemans,Temporary,LeMans91,,,1,1,Installed\locations\Le Mans 91-96 Virtua_LM\1.11,,1991,,,http://getmod.srrs-racing.net/getmod.php/RD,,271593472,3,57,,,,Europe,,1.11,
-lester,,,,,,,,lester,Lester,,lester,,,0,1,Installed\locations\Lester 2.0\2.01,,,,,,,270536704,1,0,,,,,,2.01,
-lesterSprint,,,,,,,,lesterSprint,Lestersprint,,lesterSprint,,,0,1,Installed\locations\Lester 2.0\2.01,,,,,,,270536704,1,0,,,,,,2.01,
-lester_FE,,,,,,,,lester_FE,Lester Fe,,lester_FE,,,0,1,Installed\locations\Lester_FE_2019\2.02,,,,,,,270536704,1,0,,AAA9999,,,,2.02,
-Le_Grand_Circuit_1967,"woochoo, in assoc. w/ Virtua_LM",France,1960-,,,,,Le_Grand_Circuit_1967,Le Grand Circuit,Temporary,Le_Grand_Circuit_1967,,,3,1,Installed\locations\Le_Grand_Circuit_1967\0.5,,1967,,,,,3158016,2,57,,,,Europe,,0.5,
-Le_Mans_2017,SRT,France,2010-,,,,,Le_Mans_2017,Le Mans,Temporary,Le_Mans_2017,,,0,1,Installed\locations\Le_Mans_2017\0.91,,2017,,,,,3145728,1,57,,,,Europe,,0.91,
-LIENZ_GP,Mario Morais,Austria,,,,,,LIENZ_GP,Lienz GP,Novel,LIENZ_GP,,,2,1,Installed\locations\LIENZ\0.92,,,,,http://www.mj-multimedia.net,,3158016,2,53,,MM_LIENZCOV,,Europe,,0.92,
-LimeRockPark_AllChicanes,,United States,,,,,,LimeRockPark_AllChicanes,Limerockpark Allchicanes,,LimeRockPark_AllChicanes,,,0,1,Installed\locations\LimeRockPark_2012\2.02,,,,,,,271593472,2,0,,AAA9999,,North America,,2.02,
-LimeRockPark_NoChicanes,,United States,,,,,,LimeRockPark_NoChicanes,Limerockpark Nochicanes,,LimeRockPark_NoChicanes,,,0,1,Installed\locations\LimeRockPark_2012\2.02,,,,,,,271593472,2,0,,AAA9999,,North America,,2.02,
-LimeRockPark_RC,,United States,,,,,,LimeRockPark_RC,Limerockpark Rc,,LimeRockPark_RC,,,0,1,Installed\locations\LimeRockPark_2012\2.02,,,,,,,271593472,2,0,,AAA9999,,North America,,2.02,
-LimeRockPark_UphillChicane,,United States,,,,,,LimeRockPark_UphillChicane,Limerockpark Uphillchicane,,LimeRockPark_UphillChicane,,,0,1,Installed\locations\LimeRockPark_2012\2.02,,,,,,,271593472,2,0,,AAA9999,,North America,,2.02,
-LimeRockPark_WestBendChicane,,United States,,,,,,LimeRockPark_WestBendChicane,Limerockpark Westbendchicane,,LimeRockPark_WestBendChicane,,,0,1,Installed\locations\LimeRockPark_2012\2.02,,,,,,,271593472,2,0,,AAA9999,,North America,,2.02,
-LONGFORD_1967,,Australia,1960-,,,,,LONGFORD_1967,Longford,,LONGFORD_1967,,,0,1,Installed\locations\Longford_1967\1.00,,1967,,,,,271593472,2,0,,AAA9999,,Oceania,,1,
-Enduro,Harry Seb,France,,,,,,Enduro,Enduro,Permanent,Enduro,,,2,1,Installed\locations\Magnificent_Park_v098\0.98,,,,,,,3158016,2,55,,,,Europe,,0.98,
-International,Harry Seb,France,,,,,,International,International,Permanent,International,,,2,1,Installed\locations\Magnificent_Park_v098\0.98,,,,,,,3158016,2,55,,,,Europe,,0.98,
-National,Harry Seb,France,,,,,,National,National,Permanent,National,,,2,1,Installed\locations\Magnificent_Park_v098\0.98,,,,,,,3158016,2,55,,,,Europe,,0.98,
-MagnyCours,,France,,,,,,MagnyCours,Magnycours,Permanent,MagnyCours,,,0,1,Installed\locations\MagnyCours_GP\1.52,,,,,,,3145728,1,55,,,,Europe,,1.52,
-Malaysian_GP,Frenky,Malaysia,,,,,,Malaysian_GP,Malaysian GP,Permanent,Malaysian_GP,,,0,1,Installed\locations\Malaysia_2007\1.82,,,,,,,271593472,2,0,,AAA9999,,Asia,,1.82,
-Malaysia_NLoop,Frenky,Malaysia,,,,,,Malaysia_NLoop,Malaysia Nloop,Permanent,Malaysia_NLoop,,,0,1,Installed\locations\Malaysia_2007\1.82,,,,,,,271593472,2,0,,AAA9999,,Asia,,1.82,
-Malaysia_SLoop,Frenky,Malaysia,,,,,,Malaysia_SLoop,Malaysia Sloop,Permanent,Malaysia_SLoop,,,0,1,Installed\locations\Malaysia_2007\1.82,,,,,,,271593472,2,0,,AAA9999,,Asia,,1.82,
-MidOhio_Chicane,Virtua_LM,United States,,,,,,MidOhio_Chicane,Midohio Chicane,Permanent,MidOhio_Chicane,,,1,1,Installed\locations\MidOhio_Virtua_LM\2.02,,,,,,,271593472,2,55,,,,North America,,2.02,
-MidOhio_Mi200,Virtua_LM,United States,,,,,,MidOhio_Mi200,Midohio Mi200,Permanent,MidOhio_Mi200,,,1,1,Installed\locations\MidOhio_Virtua_LM\2.02,,,,,,,271593472,2,55,,,,North America,,2.02,
-MidOhio_NoChicane,Virtua_LM,United States,,,,,,MidOhio_NoChicane,Midohio Nochicane,Permanent,MidOhio_NoChicane,,,1,1,Installed\locations\MidOhio_Virtua_LM\2.02,,,,,,,271593472,2,55,,,,North America,,2.02,
-Mills_InnerLoopA,S397,United States,,,,,,Mills_InnerLoopA,Mills Innerloopa,Permanent,Mills_InnerLoopA,,,1,1,Installed\locations\MillsMetro_2011\2.1,,,,,http://rfactor.net/downloads/getmod.php,,271593472,2,55,,,,North America,,2.1,
-Mills_InnerLoopB,S397,United States,,,,,,Mills_InnerLoopB,Mills Innerloopb,Permanent,Mills_InnerLoopB,,,1,1,Installed\locations\MillsMetro_2011\2.1,,,,,http://rfactor.net/downloads/getmod.php,,271593472,2,55,,,,North America,,2.1,
-Mills_InnerLoopC,S397,United States,,,,,,Mills_InnerLoopC,Mills Innerloopc,Permanent,Mills_InnerLoopC,,,1,1,Installed\locations\MillsMetro_2011\2.1,,,,,http://rfactor.net/downloads/getmod.php,,271593472,2,55,,,,North America,,2.1,
-Mills_OuterLoopA,S397,United States,,,,,,Mills_OuterLoopA,Mills Outerloopa,Permanent,Mills_OuterLoopA,,,1,1,Installed\locations\MillsMetro_2011\2.1,,,,,http://rfactor.net/downloads/getmod.php,,271593472,2,55,,,,North America,,2.1,
-Mills_OuterLoopB,S397,United States,,,,,,Mills_OuterLoopB,Mills Outerloopb,Permanent,Mills_OuterLoopB,,,1,1,Installed\locations\MillsMetro_2011\2.1,,,,,http://rfactor.net/downloads/getmod.php,,271593472,2,55,,,,North America,,2.1,
-Mills_OuterLoopC,S397,United States,,,,,,Mills_OuterLoopC,Mills Outerloopc,Permanent,Mills_OuterLoopC,,,1,1,Installed\locations\MillsMetro_2011\2.1,,,,,http://rfactor.net/downloads/getmod.php,,271593472,2,55,,,,North America,,2.1,
-Miseluk_kart,lemax,Serbia,,,,,,Miseluk_kart,Miseluk Kart,,Miseluk_kart,,,1,1,Installed\locations\miseluk_kart\1.01,,,,,lemaxsimracing.com,,2101248,2,52,,,,Europe,,1.01,
-MonteCarlo_1966,S397,Monaco,1960-,,,,,MonteCarlo_1966,Montecarlo,Temporary,MonteCarlo_1966,,,1,1,Installed\locations\MonteCarlo_1966\2.1,,1966,,,,,271593472,2,57,,,,Europe,,2.1,
-Mores_Short,,Italy,,,,,,Mores_Short,Mores Short,,Mores_Short,,,0,1,Installed\locations\Mores_2013\1.82,,,,,,,271593472,2,0,,AAA9999,,Europe,,1.82,
-mosportpost2013,,Canada,2010-,,,,,mosportpost2013,Mosportpost,,mosportpost2013,,,0,1,Installed\locations\Mosport (CTMP)\0.901,,2013,,,,,3149824,2,0,,,,North America,,0.901,
-mosportpre2013,,Canada,2010-,,,,,mosportpre2013,Mosportpre,,mosportpre2013,,,0,1,Installed\locations\Mosport (CTMP)\0.901,,2013,,,,,3149824,2,0,,,,North America,,0.901,
-Mugello_Circuit,,Italy,,,,,,Mugello_Circuit,Mugello Circuit,Permanent,Mugello_Circuit,,,2,1,Installed\locations\Mugello Circuit\1.0,,,,,,,3145728,1,55,,,,Europe,,1,
-NJMP_LIGHTNING,LilSki / DIGGA,United States,,,,,,NJMP_LIGHTNING,Njmp Lightning,Permanent,NJMP_LIGHTNING,,,2,1,Installed\locations\NJMP_Lightning\1.0,,,,,,,270536704,1,55,,,,North America,,1,
-NolaMP_KT_A,,United States,,,,,,NolaMP_KT_A,Nolamp Kt A,,NolaMP_KT_A,,,0,1,Installed\locations\NolaMP_2016\1.30,,,,,,,271593472,3,0,,AAA9999,,North America,,1.3,
-NolaMP_KT_B,,United States,,,,,,NolaMP_KT_B,Nolamp Kt B,,NolaMP_KT_B,,,0,1,Installed\locations\NolaMP_2016\1.30,,,,,,,271593472,3,0,,AAA9999,,North America,,1.3,
-NolaMP_KT_C,,United States,,,,,,NolaMP_KT_C,Nolamp Kt C,,NolaMP_KT_C,,,0,1,Installed\locations\NolaMP_2016\1.30,,,,,,,271593472,3,0,,AAA9999,,North America,,1.3,
-NolaMP_KT_D,,United States,,,,,,NolaMP_KT_D,Nolamp Kt D,,NolaMP_KT_D,,,0,1,Installed\locations\NolaMP_2016\1.30,,,,,,,271593472,3,0,,AAA9999,,North America,,1.3,
-NolaMP_KT_E,,United States,,,,,,NolaMP_KT_E,Nolamp Kt E,,NolaMP_KT_E,,,0,1,Installed\locations\NolaMP_2016\1.30,,,,,,,271593472,3,0,,AAA9999,,North America,,1.3,
-NolaMP_RT_A,,United States,,,,,,NolaMP_RT_A,Nolamp Rt A,,NolaMP_RT_A,,,0,1,Installed\locations\NolaMP_2016\1.30,,,,,,,271593472,3,0,,AAA9999,,North America,,1.3,
-NolaMP_RT_B,,United States,,,,,,NolaMP_RT_B,Nolamp Rt B,,NolaMP_RT_B,,,0,1,Installed\locations\NolaMP_2016\1.30,,,,,,,271593472,3,0,,AAA9999,,North America,,1.3,
-NolaMP_RT_C,,United States,,,,,,NolaMP_RT_C,Nolamp Rt C,,NolaMP_RT_C,,,0,1,Installed\locations\NolaMP_2016\1.30,,,,,,,271593472,3,0,,AAA9999,,North America,,1.3,
-NolaMP_RT_D,,United States,,,,,,NolaMP_RT_D,Nolamp Rt D,,NolaMP_RT_D,,,0,1,Installed\locations\NolaMP_2016\1.30,,,,,,,271593472,3,0,,AAA9999,,North America,,1.3,
-NolaMP_RT_INDYCAR,,United States,,,,,,NolaMP_RT_INDYCAR,Nolamp Rt Indycar,,NolaMP_RT_INDYCAR,,,0,1,Installed\locations\NolaMP_2016\1.30,,,,,,,271593472,3,0,,AAA9999,,North America,,1.3,
-NORDSCHLEIFE2_24HOUR,,Germany,1920-,,,,,NORDSCHLEIFE2_24HOUR,Nordschleife2 Hour,Permanent,NORDSCHLEIFE2_24HOUR,,,2,1,Installed\locations\Nordschleife2\2.30,,1924,,,http://getmod.srrs-racing.net/getmod.php/DJC,,3158016,2,55,,,,Europe,,2.3,
-Nordschleife2_Tourist_Autumn,,Germany,,,,,,Nordschleife2_Tourist_Autumn,Nordschleife2 Tourist Autumn,Permanent,Nordschleife2_Tourist_Autumn,,,2,1,Installed\locations\Nordschleife2\2.30,,,,,http://getmod.srrs-racing.net/getmod.php/DJC,,3158016,2,55,,,,Europe,,2.3,
-Nordschleife2_Tourist_Summer,,Germany,,,,,,Nordschleife2_Tourist_Summer,Nordschleife2 Tourist Summer,Permanent,Nordschleife2_Tourist_Summer,,,2,1,Installed\locations\Nordschleife2\2.30,,,,,http://getmod.srrs-racing.net/getmod.php/DJC,,3158016,2,55,,,,Europe,,2.3,
-NORDSCHLEIFE2_VLN,,Germany,,,,,,NORDSCHLEIFE2_VLN,Nordschleife2 Vln,Permanent,NORDSCHLEIFE2_VLN,,,2,1,Installed\locations\Nordschleife2\2.30,,,,,http://getmod.srrs-racing.net/getmod.php/DJC,,3158016,2,55,,,,Europe,,2.3,
-NORISRING,,Germany,,,,,,NORISRING,Norisring,Temporary,NORISRING,,,0,1,Installed\locations\Norisring\1.15,,,,,,,270536704,1,57,,,,Europe,,1.15,
-Nuer_EuropeanGP,ISI,Germany,,,,,,Nuer_EuropeanGP,Nuer Europeangp,Permanent,Nuer_EuropeanGP,,,2,1,Installed\locations\NuerburgRing\0.98,,,,,,,3149824,2,55,,,,Europe,,0.98,
-Nuer_Sprint,ISI,Germany,,,,,,Nuer_Sprint,Nuer Sprint,Permanent,Nuer_Sprint,,,2,1,Installed\locations\NuerburgRing\0.98,,,,,,,3149824,2,55,,,,Europe,,0.98,
-OULTONPARK_FOS,,United Kingdom,,,,,,OULTONPARK_FOS,Oultonpark Fos,Permanent,OULTONPARK_FOS,,,0,1,Installed\locations\oulton_park_circuit_2015\1.25,,,,,,,271593472,4,55,,,,Europe,,1.25,
-OULTONPARK_INT,,United Kingdom,,,,,,OULTONPARK_INT,Oultonpark Int,Permanent,OULTONPARK_INT,,,0,1,Installed\locations\oulton_park_circuit_2015\1.25,,,,,,,271593472,4,55,,,,Europe,,1.25,
-OULTONPARK_INTNC,,United Kingdom,,,,,,OULTONPARK_INTNC,Oultonpark Intnc,Permanent,OULTONPARK_INTNC,,,0,1,Installed\locations\oulton_park_circuit_2015\1.25,,,,,,,271593472,4,55,,,,Europe,,1.25,
-OULTONPARK_INTNC_DRS,,United Kingdom,,,,,,OULTONPARK_INTNC_DRS,Oultonpark Intnc Drs,Permanent,OULTONPARK_INTNC_DRS,,,0,1,Installed\locations\oulton_park_circuit_2015\1.25,,,,,,,271593472,4,55,,,,Europe,,1.25,
-OULTONPARK_ISL,,United Kingdom,,,,,,OULTONPARK_ISL,Oultonpark Isl,Permanent,OULTONPARK_ISL,,,0,1,Installed\locations\oulton_park_circuit_2015\1.25,,,,,,,271593472,4,55,,,,Europe,,1.25,
-PalmBeachKart,,United States,,,,,,PalmBeachKart,Palmbeachkart,,PalmBeachKart,,,0,1,Installed\locations\PalmBeach_2012\2.20,,,,,,,271593472,2,0,,AAA9999,,North America,,2.2,
-PalmBeachRC,,United States,,,,,,PalmBeachRC,Palmbeachrc,,PalmBeachRC,,,0,1,Installed\locations\PalmBeach_2012\2.20,,,,,,,271593472,2,0,,AAA9999,,North America,,2.2,
-PHILLIPISLAND_2013,,Australia,2010-,,,,,PHILLIPISLAND_2013,Phillipisland,Permanent,PHILLIPISLAND_2013,,,2,1,Installed\locations\phillip island\0.65,,2013,,,,,271593472,2,55,,,,Oceania,,0.65,
-Portimao_C1,,Portugal,,,,,,Portimao_C1,Portimao C1,Permanent,Portimao_C1,,,0,1,Installed\locations\Portimao\1.13,,,,,,,271593472,2,55,,,,Europe,,1.13,
-Portimao_C6,,Portugal,,,,,,Portimao_C6,Portimao C6,Permanent,Portimao_C6,,,0,1,Installed\locations\Portimao\1.13,,,,,,,271593472,2,55,,,,Europe,,1.13,
-PIR_CHICANE,Alex Coutie,United States,,,,,,PIR_CHICANE,Pir Chicane,Permanent,PIR_CHICANE,,,1,1,Installed\locations\Portland_International_Raceway\0.18,,,,,,,270536704,1,55,,,,North America,,0.18,
-PIR_NOCHICANE,Alex Coutie,United States,,,,,,PIR_NOCHICANE,Pir Nochicane,Permanent,PIR_NOCHICANE,,,1,1,Installed\locations\Portland_International_Raceway\0.18,,,,,,,270536704,1,55,,,,North America,,0.18,
-Portugal_GP,,Portugal,,,,,,Portugal_GP,Portugal GP,,Portugal_GP,,,0,1,Installed\locations\Portugal_2009\2.28,,,,,,,271593472,3,0,,AAA9999,,Europe,,2.28,
-Portugal_GT,,Portugal,,,,,,Portugal_GT,Portugal Gt,,Portugal_GT,,,0,1,Installed\locations\Portugal_2009\2.28,,,,,,,271593472,3,0,,AAA9999,,Europe,,2.28,
-QuebecKart_RT1,S397,Canada,,,,,,QuebecKart_RT1,Quebeckart Rt1,Permanent,QuebecKart_RT1,,,1,1,Installed\locations\QuebecSuperKart_2011\1.11,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,North America,,1.11,
-QuebecKart_RT2,S397,Canada,,,,,,QuebecKart_RT2,Quebeckart Rt2,Permanent,QuebecKart_RT2,,,1,1,Installed\locations\QuebecSuperKart_2011\1.11,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,North America,,1.11,
-QuebecKart_RT3,S397,Canada,,,,,,QuebecKart_RT3,Quebeckart Rt3,Permanent,QuebecKart_RT3,,,1,1,Installed\locations\QuebecSuperKart_2011\1.11,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,North America,,1.11,
-QuebecKart_RT4,S397,Canada,,,,,,QuebecKart_RT4,Quebeckart Rt4,Permanent,QuebecKart_RT4,,,1,1,Installed\locations\QuebecSuperKart_2011\1.11,,,,,http://rfactor.net/downloads/getmod.php,,271593472,3,55,,,,North America,,1.11,
-HUNGARORING,RaceRfactor,Serbia,,,,,,HUNGARORING,Hungaroring,Permanent,HUNGARORING,,,2,1,Installed\locations\RaceRfactor_Hungaroring_2013\1.56,,,,,http://racerfactor.com/es/,,3158016,2,55,,,,Europe,,1.56,
-Monza_ACCD,"ISI, McNolo & lagg",Ireland,,,,,,Monza_ACCD,Monza Accd,Permanent,Monza_ACCD,,,2,1,Installed\locations\RaceRfactor_Monza_2014\1.96,,,,,http://www.racerfactor.com,,271593472,3,55,,,,Europe,,1.96,
-Monza_SRE,Frenky,Ireland,,,,,,Monza_SRE,Monza Sre,Permanent,Monza_SRE,,,1,1,Installed\locations\RaceRfactor_Monza_2014\1.96,,,,,http://www.racerfactor.com,,3145728,1,55,,,,Europe,,1,
-SPA,RaceRfactor,Belgium,,,,,,SPA,Spa,Permanent,SPA,,,2,1,Installed\locations\RaceRfactor_Spa_2013\1.48,,,,,http://www.racerfactor.com,,3158016,3,55,,,,Europe,,1.48,
-Long,LilSki,United States,,,,,,Long,Long,Permanent,Long,,,0,1,Installed\locations\Riverside International Raceway\1.02,,,,,,,270536704,1,55,,,,North America,,1.02,
-Nascar,LilSki,United States,,,,,,Nascar,Nascar,Permanent,Nascar,,,0,1,Installed\locations\Riverside International Raceway\1.02,,,,,,,270536704,1,55,,,,North America,,1.02,
-Short,LilSki,United States,,,,,,Short,Short,Permanent,Short,,,0,1,Installed\locations\Riverside International Raceway\1.02,,,,,,,270536704,1,55,,,,North America,,1.02,
-ra2016bend,Bela Valko,United States,2010-,,,,,ra2016bend,Rabend,Permanent,ra2016bend,,,1,1,Installed\locations\Road America 2016\1.4,,2016,,,,,271593472,2,55,,,,North America,,1.4,
-ra2016,Bela Valko,United States,2010-,,,,,ra2016,Ra,Permanent,ra2016,,,1,1,Installed\locations\Road America 2016\1.4,,2016,,,,,271593472,2,55,,,,North America,,1.4,
-RoadAtlanta2017,,United States,2010-,,,,,RoadAtlanta2017,Roadatlanta,,RoadAtlanta2017,,,0,1,Installed\locations\RoadAtlanta2017\1.10,,2017,,,,,271593472,2,0,,,,North America,,1.1,
-Sachsenring_GP,,Germany,,,,,,Sachsenring_GP,Sachsenring GP,Permanent,Sachsenring_GP,,,0,1,Installed\locations\Sachsenring_GP\1.13,,,,,,,271593472,2,55,,,,Europe,,1.13,
-SALZBURGRING,DiGGa,Austria,,,,,,SALZBURGRING,Salzburgring,Permanent,SALZBURGRING,,,2,1,Installed\locations\Salzburgring_2016\1.01,,,,,,,271593472,2,55,,,,Europe,,1.01,
-SaoPauloGP,S397,Brazil,,,,,,SaoPauloGP,Saopaulogp,Permanent,SaoPauloGP,,,1,1,Installed\locations\SaoPaulo_2013\1.07,,,,,,,3158016,2,55,,,,South America,,1.07,
-Sao_Paulo_Streets,,United States,,,,,,Sao_Paulo_Streets,Sao Paulo Streets,Temporary,Sao_Paulo_Streets,,,2,1,Installed\locations\Sao_Paulo_Streets\1.1,,,,,,,3145728,1,57,,,,North America,,1.1,
-Sebring_12h,Virtua_LM,United States,2010-,,,,,Sebring_12h,Sebring H,Permanent,Sebring_12h,,,1,1,Installed\locations\Sebring_Virtua_LM\2.02,,2012,,,www.virtua-lm.com,,3149824,2,55,,,,North America,,2.02,
-Sebring_12h_le,Virtua_LM,United States,2010-,,,,,Sebring_12h_le,Sebring H Le,Permanent,Sebring_12h_le,,,1,1,Installed\locations\Sebring_Virtua_LM\2.02,,2012,,,www.virtua-lm.com,,3149824,2,55,,,,North America,,2.02,
-Sebring_Club,Virtua_LM,United States,,,,,,Sebring_Club,Sebring Club,Permanent,Sebring_Club,,,1,1,Installed\locations\Sebring_Virtua_LM\2.02,,,,,www.virtua-lm.com,,3149824,2,55,,,,North America,,2.02,
-Sebring_Modified,Virtua_LM,United States,,,,,,Sebring_Modified,Sebring Modified,Permanent,Sebring_Modified,,,1,1,Installed\locations\Sebring_Virtua_LM\2.02,,,,,www.virtua-lm.com,,3149824,2,55,,,,North America,,2.02,
-Silverstone90s,philrob Rf1 to rf2 convert dx11,United Kingdom,1990-,,,,,Silverstone90s,Silverstones,Permanent,Silverstone90s,,,2,1,Installed\locations\Silverstone90s\0.36,,1990,,,,,3158016,2,55,,1412,,Europe,,0.36,
-RoadAmerica_Full,VLM/SimHQM,United States,,,,,,RoadAmerica_Full,Roadamerica Full,Permanent,RoadAmerica_Full,,,1,1,Installed\locations\SMVLM_RoadAmerica\1.42,,,,,,,271593472,2,55,,,,North America,,1.42,
-Bush_Creek_Sprint,senormen,United States,,,,,,Bush_Creek_Sprint,Bush Creek Sprint,Rally,Bush_Creek_Sprint,,,2,1,Installed\locations\sm_Aspen_v0.1\0.1,,,,,,,3158016,2,56,,,,North America,,0.1,
-Autodromo_di_Imola_DRS,senormen,Italy,,,,,,Autodromo_di_Imola_DRS,Autodromo Di Imola Drs,Permanent,Autodromo_di_Imola_DRS,,,2,1,Installed\locations\sm_Autodromo_di_Imola_v1.2\1.2,,,,,,,3158016,3,55,,,,Europe,,1.2,
-Autodromo_di_Imola_Endurance,senormen,Italy,,,,,,Autodromo_di_Imola_Endurance,Autodromo Di Imola Endurance,Permanent,Autodromo_di_Imola_Endurance,,,2,1,Installed\locations\sm_Autodromo_di_Imola_v1.2\1.2,,,,,,,3158016,3,55,,,,Europe,,1.2,
-Autodromo_di_Imola_GP,senormen,Italy,,,,,,Autodromo_di_Imola_GP,Autodromo Di Imola GP,Permanent,Autodromo_di_Imola_GP,,,2,1,Installed\locations\sm_Autodromo_di_Imola_v1.2\1.2,,,,,,,3158016,3,55,,,,Europe,,1.2,
-Circuito_de_Jerez_Chicane,,Spain,,,,,,Circuito_de_Jerez_Chicane,Circuito De Jerez Chicane,Permanent,Circuito_de_Jerez_Chicane,,,0,1,Installed\locations\sm_Circuito_de_Jerez_dd\1.26,,,,,,,271593472,2,55,,,,Europe,,1.26,
-Circuito_de_Jerez_GP,,Spain,,,,,,Circuito_de_Jerez_GP,Circuito De Jerez GP,Permanent,Circuito_de_Jerez_GP,,,0,1,Installed\locations\sm_Circuito_de_Jerez_dd\1.26,,,,,,,271593472,2,55,,,,Europe,,1.26,
-DPARK_GP,senormen,United Kingdom,,,,,,DPARK_GP,Dpark GP,,DPARK_GP,,,2,1,Installed\locations\sm_donington_park_v1.53\1.53,,,,,,,271593472,2,0,,,,Europe,,1.53,
-DPARK_NATIONAL,senormen,United Kingdom,,,,,,DPARK_NATIONAL,Dpark National,,DPARK_NATIONAL,,,2,1,Installed\locations\sm_donington_park_v1.53\1.53,,,,,,,271593472,2,0,,,,Europe,,1.53,
-Kyalami_Legends,senormen,Egypt,,,,,,Kyalami_Legends,Kyalami Legends,Permanent,Kyalami_Legends,,,2,1,Installed\locations\sm_Kyalami_Legends_v1.01LE\1.01LE,,,,,,,3158016,2,55,,,,Africa,,1.01LE,
-Misano_World_Circuit,senormen,United Kingdom,,,,,,Misano_World_Circuit,Misano World Circuit,Permanent,Misano_World_Circuit,,,0,1,Installed\locations\sm_Misano_World_Circuit_v1.21\1.21,,,,,,,270536704,1,55,,,,Europe,,1.21,
-Red_Bull_Ring_GP,senormen,United Kingdom,,,,,,Red_Bull_Ring_GP,Red Bull Ring GP,Permanent,Red_Bull_Ring_GP,,,2,1,Installed\locations\sm_Red_Bull_Ring_v1.3\1.3,,,,,,,3158016,2,55,,,,Europe,,1.3,
-Red_Bull_Ring_National,senormen,United Kingdom,,,,,,Red_Bull_Ring_National,Red Bull Ring National,Permanent,Red_Bull_Ring_National,,,2,1,Installed\locations\sm_Red_Bull_Ring_v1.3\1.3,,,,,,,3158016,2,55,,,,Europe,,1.3,
-Ring_Knutstorp,senormen,Sweden,,,,,,Ring_Knutstorp,Ring Knutstorp,Permanent,Ring_Knutstorp,,,2,1,Installed\locations\sm_Ring_Knutstorp_v1.0\1.0,,,,,,,271593472,2,55,,,,Europe,,1,
-Silverstone_Legends,senormen,United Kingdom,,,,,,Silverstone_Legends,Silverstone Legends,Permanent,Silverstone_Legends,,,2,1,Installed\locations\sm_Silverstone_Legends_v1.4\1.4,,,,,,,271593472,2,55,,,,Europe,,1.4,
-Singapore_GP,senormen,Singapore,,,,,,Singapore_GP,Singapore GP,Temporary,Singapore_GP,,,2,1,Installed\locations\sm_Singapore_v0.11\0.11,,,,,,,3158016,2,57,,,,Asia,,0.11,
-Snett_100,senormen,United Kingdom,,,,,,Snett_100,Snett 100,Permanent,Snett_100,,,2,1,Installed\locations\sm_snetterton_v1.02\1.02,,,,,,,3158016,3,55,,,,Europe,,1.02,
-Snett_200,senormen,United Kingdom,,,,,,Snett_200,Snett 200,Permanent,Snett_200,,,2,1,Installed\locations\sm_snetterton_v1.02\1.02,,,,,,,3158016,3,55,,,,Europe,,1.02,
-Snett_300,senormen,United Kingdom,,,,,,Snett_300,Snett 300,Permanent,Snett_300,,,2,1,Installed\locations\sm_snetterton_v1.02\1.02,,,,,,,3158016,3,55,,,,Europe,,1.02,
-Spielberg_Historic,,Austria,,,,,,Spielberg_Historic,Spielberg Historic,Permanent,Spielberg_Historic,,,2,1,Installed\locations\Spielberg_Historic\1.0,,,,,,,3145728,1,55,,a18d6ed8e9215c89dc002015e995a7ce0303390a6a861b40509ecccae0effacb,,Europe,,1,
-Sportsland_SUGO,,Japan,,,,,,Sportsland_SUGO,Sportsland Sugo,Permanent,Sportsland_SUGO,,,2,1,Installed\locations\Sportsland_Sugo\1.05,,,,,,,3145728,1,55,,,,Asia,,1.05,
-Sportsland_SUGO_NC,"R07 conv Corti,DX11 and update prob",Japan,,,,,,Sportsland_SUGO_NC,Sportsland Sugo Nc,Temporary,Sportsland_SUGO_NC,,,2,1,Installed\locations\Sportsland_Sugo\1.05,,,,,,,3149824,2,57,,,,Asia,,1.1,
-EasternCreek_Druitt,,Australia,,,,,,EasternCreek_Druitt,Easterncreek Druitt,,EasternCreek_Druitt,,,0,1,Installed\locations\Sydney Motorsport Park\1.00,,,,,,,270536704,1,0,,,,Oceania,,1,
-EasternCreek_Gardner,,Australia,,,,,,EasternCreek_Gardner,Easterncreek Gardner,,EasternCreek_Gardner,,,0,1,Installed\locations\Sydney Motorsport Park\1.00,,,,,,,270536704,1,0,,,,Oceania,,1,
-THRUXTON,,United Kingdom,,,,,,THRUXTON,Thruxton,Permanent,THRUXTON,,,1,1,Installed\locations\thruxton\0.99,,,,,,,271593472,2,55,,,,Europe,,0.99,
-Toban_Long,S397,United States,,,,,,Toban_Long,Toban Long,Permanent,Toban_Long,,,1,1,Installed\locations\TobanRP_2016\1.1,,,,,http://rfactor.net/downloads/getmod.php,,3158016,2,55,,,,North America,,1.1,
-Toban_Long_24,S397,United States,1920-,,,,,Toban_Long_24,Toban Long,Permanent,Toban_Long_24,,,1,1,Installed\locations\TobanRP_2016\1.1,,1924,,,http://rfactor.net/downloads/getmod.php,,3158016,2,55,,,,North America,,1.1,
-TOBAN_LONG_REV,S397,United States,,,,,,TOBAN_LONG_REV,Toban Long Rev,Permanent,TOBAN_LONG_REV,,,1,1,Installed\locations\TobanRP_2016\1.1,,,,,http://rfactor.net/downloads/getmod.php,,3158016,2,55,,,,North America,,1.1,
-TOBAN_Medium,S397,United States,,,,,,TOBAN_Medium,Toban Medium,Permanent,TOBAN_Medium,,,1,1,Installed\locations\TobanRP_2016\1.1,,,,,http://rfactor.net/downloads/getmod.php,,3158016,2,55,,,,North America,,1.1,
-TOBAN_Medium_REV,S397,United States,,,,,,TOBAN_Medium_REV,Toban Medium Rev,Permanent,TOBAN_Medium_REV,,,1,1,Installed\locations\TobanRP_2016\1.1,,,,,http://rfactor.net/downloads/getmod.php,,3158016,2,55,,,,North America,,1.1,
-TOBAN_Short,S397,United States,,,,,,TOBAN_Short,Toban Short,Permanent,TOBAN_Short,,,1,1,Installed\locations\TobanRP_2016\1.1,,,,,http://rfactor.net/downloads/getmod.php,,3158016,2,55,,,,North America,,1.1,
-TOBAN_Short_REV,S397,United States,,,,,,TOBAN_Short_REV,Toban Short Rev,Permanent,TOBAN_Short_REV,,,1,1,Installed\locations\TobanRP_2016\1.1,,,,,http://rfactor.net/downloads/getmod.php,,3158016,2,55,,,,North America,,1.1,
-Vancouver,,United States,,,,,,Vancouver,Vancouver,Temporary,Vancouver,,,2,1,Installed\locations\Vancouver\1.1,,,,,,,3145728,1,57,,,,North America,,1.1,
-Full,Nibiru,United States,,,,,,Full,Full,Permanent,Full,,,2,1,Installed\locations\VIR_v085\0.85,,,,,,,271593472,2,55,,,,North America,,0.85,
-Full_Oak,Nibiru,United States,,,,,,Full_Oak,Full Oak,Permanent,Full_Oak,,,2,1,Installed\locations\VIR_v085\0.85,,,,,,,271593472,2,55,,,,North America,,0.85,
-GRAND,Nibiru,United States,,,,,,GRAND,Grand,Permanent,GRAND,,,2,1,Installed\locations\VIR_v085\0.85,,,,,,,271593472,2,55,,,,North America,,0.85,
-NORTH,Nibiru,United States,,,,,,NORTH,North,Permanent,NORTH,,,2,1,Installed\locations\VIR_v085\0.85,,,,,,,271593472,2,55,,,,North America,,0.85,
-PATRIOT,Nibiru,United States,,,,,,PATRIOT,Patriot,Permanent,PATRIOT,,,2,1,Installed\locations\VIR_v085\0.85,,,,,,,271593472,2,55,,,,North America,,0.85,
-PATRIOT_Reverse,Nibiru,United States,,,,,,PATRIOT_Reverse,Patriot Reverse,Permanent,PATRIOT_Reverse,,,2,1,Installed\locations\VIR_v085\0.85,,,,,,,271593472,2,55,,,,North America,,0.85,
-South,Nibiru,United States,,,,,,South,South,Permanent,South,,,2,1,Installed\locations\VIR_v085\0.85,,,,,,,271593472,2,55,,,,North America,,0.85,
-Rouen 1955-70,,France,1950-,,,,,Rouen 1955-70,Rouen -70,Temporary,Rouen 1955-70,,,0,1,Installed\locations\VLM_Rouen-Les-Essarts_sj.dd\0.97,,1955,,,,,271593472,2,57,,,,Europe,,0.97,
-Rouen 1974-94,,France,1970-,,,,,Rouen 1974-94,Rouen -94,Temporary,Rouen 1974-94,,,0,1,Installed\locations\VLM_Rouen-Les-Essarts_sj.dd\0.97,,1974,,,,,271593472,2,57,,,,Europe,,0.97,
-WatkinsGlen_Chicane,Garry Cross,United States,,,,,,WatkinsGlen_Chicane,Watkinsglen Chicane,Permanent,WatkinsGlen_Chicane,,,3,1,Installed\locations\Watkins_Glen_2016\0.85,,,,,,,271593472,2,55,,,,North America,,0.85,
-WatkinsGlen_Full,Garry Cross,United States,,,,,,WatkinsGlen_Full,Watkinsglen Full,Permanent,WatkinsGlen_Full,,,3,1,Installed\locations\Watkins_Glen_2016\0.85,,,,,,,271593472,2,55,,,,North America,,0.85,
-WatkinsGlen_Nascar,Garry Cross,United States,,,,,,WatkinsGlen_Nascar,Watkinsglen Nascar,Permanent,WatkinsGlen_Nascar,,,3,1,Installed\locations\Watkins_Glen_2016\0.85,,,,,,,271593472,2,55,,,,North America,,0.85,
-Watkins_Glen_Boot,,United States,,,,,,Watkins_Glen_Boot,Watkins Glen Boot,Permanent,Watkins_Glen_Boot,,,1,1,Installed\locations\Watkins_Glen_International\1.02,,,,,,,271593472,2,55,,,,North America,,1.02,
-Watkins_Glen_Boot_END,,United States,,,,,,Watkins_Glen_Boot_END,Watkins Glen Boot End,Permanent,Watkins_Glen_Boot_END,,,1,1,Installed\locations\Watkins_Glen_International\1.02,,,,,,,271593472,2,55,,,,North America,,1.02,
-Watkins_Glen_Boot_NC,,United States,,,,,,Watkins_Glen_Boot_NC,Watkins Glen Boot Nc,Permanent,Watkins_Glen_Boot_NC,,,1,1,Installed\locations\Watkins_Glen_International\1.02,,,,,,,271593472,2,55,,,,North America,,1.02,
-Watkins_Glen_Boot_NC_END,,United States,,,,,,Watkins_Glen_Boot_NC_END,Watkins Glen Boot Nc End,Permanent,Watkins_Glen_Boot_NC_END,,,1,1,Installed\locations\Watkins_Glen_International\1.02,,,,,,,271593472,2,55,,,,North America,,1.02,
-Watkins_Glen_Short,,United States,,,,,,Watkins_Glen_Short,Watkins Glen Short,Permanent,Watkins_Glen_Short,,,1,1,Installed\locations\Watkins_Glen_International\1.02,,,,,,,271593472,2,55,,,,North America,,1.02,
-Watkins_Glen_Short_END,,United States,,,,,,Watkins_Glen_Short_END,Watkins Glen Short End,Permanent,Watkins_Glen_Short_END,,,1,1,Installed\locations\Watkins_Glen_International\1.02,,,,,,,271593472,2,55,,,,North America,,1.02,
-Watkins_Glen_Short_NC,,United States,,,,,,Watkins_Glen_Short_NC,Watkins Glen Short Nc,Permanent,Watkins_Glen_Short_NC,,,1,1,Installed\locations\Watkins_Glen_International\1.02,,,,,,,271593472,2,55,,,,North America,,1.02,
-Watkins_Glen_Short_NC_END,,United States,,,,,,Watkins_Glen_Short_NC_END,Watkins Glen Short Nc End,Permanent,Watkins_Glen_Short_NC_END,,,1,1,Installed\locations\Watkins_Glen_International\1.02,,,,,,,271593472,2,55,,,,North America,,1.02,
-ZandvoortClub,,Netherlands,,,,,,ZandvoortClub,Zandvoortclub,,ZandvoortClub,,,0,1,Installed\locations\Zandvoort_2017\1.05,,,,,,,270536704,1,0,,AAA9999,,Europe,,1.05,
-ZandvoortEast,,Netherlands,,,,,,ZandvoortEast,Zandvoorteast,,ZandvoortEast,,,0,1,Installed\locations\Zandvoort_2017\1.05,,,,,,,270536704,1,0,,AAA9999,,Europe,,1.05,
-ZandvoortGP,,Netherlands,,,,,,ZandvoortGP,Zandvoortgp,,ZandvoortGP,,,0,1,Installed\locations\Zandvoort_2017\1.05,,,,,,,270536704,1,0,,AAA9999,,Europe,,1.05,
-ZandvoortGPchicane,,Netherlands,,,,,,ZandvoortGPchicane,Zandvoortgpchicane,,ZandvoortGPchicane,,,0,1,Installed\locations\Zandvoort_2017\1.05,,,,,,,270536704,1,0,,AAA9999,,Europe,,1.05,
-ZandvoortNational,,Netherlands,,,,,,ZandvoortNational,Zandvoortnational,,ZandvoortNational,,,0,1,Installed\locations\Zandvoort_2017\1.05,,,,,,,270536704,1,0,,AAA9999,,Europe,,1.05,
-Zolder2016,Paulmarc,Belgium,2010-,,,,,Zolder2016,Zolder,Permanent,Zolder2016,,,1,1,Installed\locations\Zolder2016\1.1,,2016,,,,,271593472,2,55,,,,Europe,,1.1,
-ZOLDER79,"mfx rf1, rf2 convert Arnao, DX11 philrob",Belgium,1970-,,,,,ZOLDER79,Zolder,Permanent,ZOLDER79,,,2,1,Installed\locations\Zolder79\0.82,,1979,,,,,3145728,1,55,,1412,,Europe,,0.82,
-F1_1988_Adelaide,carrera.4,Australia,1980-,,,,,F1_1988_Adelaide,F1  Adelaide,Permanent,F1_1988_Adelaide,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Oceania,,0.941,
-F1_1988_Detroit,carrera.4,Canada,1980-,,,,,F1_1988_Detroit,F1  Detroit,Permanent,F1_1988_Detroit,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,North America,,0.941,
-F1_1988_Estoril,carrera.4,Portugal,1980-,,,,,F1_1988_Estoril,F1  Estoril,Permanent,F1_1988_Estoril,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Europe,,0.941,
-F1_1988_Hermanos,carrera.4,Canada,1980-,,,,,F1_1988_Hermanos,F1  Hermanos,Permanent,F1_1988_Hermanos,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,North America,,0.941,
-F1_1988_Hockenheim,carrera.4,Germany,1980-,,,,,F1_1988_Hockenheim,F1  Hockenheim,Permanent,F1_1988_Hockenheim,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Europe,,0.941,
-F1_1988_Hungaroring,carrera.4,Hungary,1980-,,,,,F1_1988_Hungaroring,F1  Hungaroring,Permanent,F1_1988_Hungaroring,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Europe,,0.941,
-F1_1988_Imola,carrera.4,Italy,1980-,,,,,F1_1988_Imola,F1  Imola,Permanent,F1_1988_Imola,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Europe,,0.941,
-F1_1988_Jacarepagua,carrera.4,Brazil,1980-,,,,,F1_1988_Jacarepagua,F1  Jacarepagua,Permanent,F1_1988_Jacarepagua,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,South America,,0.941,
-F1_1988_Jerez,carrera.4,Spain,1980-,,,,,F1_1988_Jerez,F1  Jerez,Permanent,F1_1988_Jerez,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Europe,,0.941,
-F1_1988_MonteCarlo,carrera.4,France,1980-,,,,,F1_1988_MonteCarlo,F1  Montecarlo,Permanent,F1_1988_MonteCarlo,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Europe,,0.941,
-F1_1988_Montreal,carrera.4,Canada,1980-,,,,,F1_1988_Montreal,F1  Montreal,Permanent,F1_1988_Montreal,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,North America,,0.941,
-F1_1988_Monza,carrera.4,Italy,1980-,,,,,F1_1988_Monza,F1  Monza,Permanent,F1_1988_Monza,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Europe,,0.941,
-F1_1988_PaulRicard,carrera.4,France,1980-,,,,,F1_1988_PaulRicard,F1  Paulricard,Permanent,F1_1988_PaulRicard,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Europe,,0.941,
-F1_1988_Silverstone,carrera.4,United Kingdom,1980-,,,,,F1_1988_Silverstone,F1  Silverstone,Permanent,F1_1988_Silverstone,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Europe,,0.941,
-F1_1988_Spa,carrera.4,Belgium,1980-,,,,,F1_1988_Spa,F1  Spa,Permanent,F1_1988_Spa,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Europe,,0.941,
-F1_1988_Suzuka,carrera.4,Japan,1980-,,,,,F1_1988_Suzuka,F1  Suzuka,Permanent,F1_1988_Suzuka,,,1,1,Installed\locations\F1_1988_Tracks\0.941,,1988,,,,,3158016,2,55,,,,Asia,,0.941,
-2013_BAHRAIN,Frenky,Kazakhstan,2010-,,,,,2013_BAHRAIN,Bahrain,Permanent,2013_BAHRAIN,,,1,1,Installed\locations\2013_BAHRAIN\1.0,,2013,,,,,3145728,1,55,,,,Asia,,1.0,
-China_GP,Frenky,China,,,,,,China_GP,China Gp,Permanent,China_GP,,,1,1,Installed\locations\2013_CHINA\1.0,,,,,,,3145728,1,55,,,,Asia,,1.0,
-HockenheimringGP,Frenky,Germany,,,,,,HockenheimringGP,Hockenheimringgp,Permanent,HockenheimringGP,,,1,1,Installed\locations\2013_GERMANY\1.0,,,,,,,3145728,1,55,,,,Europe,,1.0,
-2013_INDIA,Frenky,No Lat,2010-,,,,,2013_INDIA,India,Permanent,2013_INDIA,,,1,1,Installed\locations\2013_INDIA\1.0,,2013,,,,,3145728,1,55,,,,No Long,,1.0,
-2013_KOREA,Frenky,No Lat,2010-,,,,,2013_KOREA,Korea,Permanent,2013_KOREA,,,1,1,Installed\locations\2013_KOREA\1.0,,2013,,,,,3145728,1,55,,,,No Long,,1.0,
-ASR_OWC_1987_99T,ASR Formula,,1980-,Asr,,0,H6,ASR_OWC_1987_99T,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1987_99T\1.11,REAR,1987,Owc 99T,,www.asrformula.com,,270536704,1,6,,,,,,1.11,620
-ASR_OWC_1990_641-2,ASR Formula,,1990-,Asr,641_01.VEH,0,H6,ASR_OWC_1990_641-2,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1990_641-2\1.7,REAR,1990,Owc 641-2,,www.asrformula.com,,270536704,1,6,,,,,,1.7,600
-ASR_OWC_1992_M191B,ASR Formula,,1990-,Asr,M191B_23.VEH,0,Paddles,ASR_OWC_1992_M191B,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1992_M191B\1.01,REAR,1992,Owc M191B,,www.asrformula.com,,270536704,1,6,,,,,,1.01,580
-ASR_OWC_1993_F93A,ASR Formula,,1990-,Asr,F93A_27.VEH,0,Paddles,ASR_OWC_1993_F93A,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1993_F93A\1.12,REAR,1993,Owc F93A,,www.asrformula.com,,270536704,1,6,,,,,,1.12,580
-ASR_OWC_1995_412T2,ASR Formula,,1990-,Asr,412T2_27.VEH,0,Paddles,ASR_OWC_1995_412T2,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1995_412T2\2.3,REAR,1995,Owc 412T2,,www.asrformula.com,,270536704,1,6,,,,,,2.3,595
-ASR_OWC_1996_F310,ASR Formula,,1990-,Asr,,0,Paddles,ASR_OWC_1996_F310,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_1996_F310\2.11,REAR,1996,Owc 10,,www.asrformula.com,F3,270536704,1,6,,,,,,2.11,595
-ASR_OWC_2004_FW26,ASR Formula,,2000-,Asr,,0,Paddles,ASR_OWC_2004_FW26,,Open,,,1,1,2,Installed\vehicles\ASR_OWC_2004_FW26\1.01,REAR,2004,Owc Fw26,,www.asrformula.com,,270536704,1,6,,,,,,1.01,643
+DB file ID,MinVersion,Decade,GraphicDetailsFactor,Class,Aids,Name,Manufacturer,Continent,RefCount,AIstrengthFactor,Author,Year,URL,Flags,Origin,Rating,Model,Category,Aero,Mass,vehFile,F/R/4WD,Track Name,Version,originalFolder,Scene Description,Country,Gearshift,Turbo,Type,tType,ID
+134_JUDD,,,,,,134_JUDD,134,,3,,PortoAlto and rstRmods,,,271593472,2,,Judd,7,1,828,134_JUDD.VEH,REAR,,0.7,Installed\vehicles\134_JUDD\0.7,,,Paddles,0,2,Prototype,
+1975BRABHAM,,1970-,,,,1975BRABHAM,Brabham,,1,,,1975,,3149824,0,,Brabham,0,1,653,PACE_08.VEH,REAR,,1,Installed\vehicles\1975BRABHAM\1.0,,,H5,0,2,,
+1975BRM,,1970-,,,,1975BRM,BRM,,1,,,1975,,3149824,0,,Brm,0,1,661,EVANS_14.VEH,REAR,,1,Installed\vehicles\1975BRM\1.0,,,H5,0,2,,
+1975COPERSUCAR,,1970-,,,,1975COPERSUCAR,Copersucar,,1,,,1975,,3149824,0,,Copersucar,0,1,677,FITTIPALDI_30.VEH,REAR,,1,Installed\vehicles\1975COPERSUCAR\1.0,,,H5,0,2,,
+1975EMBASSY,,1970-,,,,1975EMBASSY,Embassy,,1,,,1975,,3149824,0,,Embassy,0,1,667,BRISE_23.VEH,REAR,,1,Installed\vehicles\1975EMBASSY\1.0,,,H5,0,2,,
+1975FERRARI,,1970-,,,,1975FERRARI,Ferrari,,1,,,1975,,3149824,0,,Ferrari,0,1,651,LAUDA_12.VEH,REAR,,1,Installed\vehicles\1975FERRARI\1.0,,,H5,0,2,,
+1975HESKETH,,1970-,,,,1975HESKETH,Hesketh,,1,,,1975,,3149824,0,,Hesketh,0,1,669,ERTL_32.VEH,REAR,,1,Installed\vehicles\1975HESKETH\1.0,,,H5,0,2,,
+1975LOTUS,,1970-,,,,1975LOTUS,Lotus,,1,,,1975,,3149824,0,,Lotus,0,1,654,PETERSON_05.VEH,REAR,,1,Installed\vehicles\1975LOTUS\1.0,,,H5,0,2,,
+1975MAKI,,1970-,,,,1975MAKI,Maki,,1,,,1975,,3149824,0,,Maki,0,1,725,TRIMMER_35.VEH,REAR,,1,Installed\vehicles\1975MAKI\1.0,,,H5,0,2,,
+1975MARCH,,1970-,,,,1975MARCH,March,,1,,,1975,,3149824,0,,March,0,1,668,STUCK_10.VEH,REAR,,1,Installed\vehicles\1975MARCH\1.0,,,H5,0,2,,
+1975MCLAREN,,1970-,,,,1975MCLAREN,McLaren,,1,,,1975,,3149824,0,,Mclaren,0,1,651,FITTIPALDI_01.VEH,REAR,,1,Installed\vehicles\1975MCLAREN\1.0,,,H6,0,2,,
+1975PARNELLI,,1970-,,,,1975PARNELLI,Parnelli,,1,,,1975,,3149824,0,,Parnelli,0,1,655,ANDRETTI_27.VEH,REAR,,1,Installed\vehicles\1975PARNELLI\1.0,,,H5,0,2,,
+1975PENSKE,,1970-,,,,1975PENSKE,Penske,,1,,,1975,,3149824,0,,Penske,0,1,656,DONOHUE_28.VEH,REAR,,1,Installed\vehicles\1975PENSKE\1.0,,,H5,0,2,,
+1975SHADOW,,1970-,,,,1975SHADOW,Shadow,,1,,,1975,,3149824,0,,Shadow,0,1,664,JARIER_17.VEH,REAR,,1,Installed\vehicles\1975SHADOW\1.0,,,H5,0,2,,
+1975SURTEES,,1970-,,,,1975SURTEES,Surtees,,1,,,1975,,3149824,0,,Surtees,0,1,666,MORGAN_19.VEH,REAR,,1,Installed\vehicles\1975SURTEES\1.0,,,H5,0,2,,
+1975TYRRELL,,1970-,,,,1975TYRRELL,Tyrrell,,1,,,1975,,3149824,0,,Tyrrell,0,1,663,DEPAILLER_04.VEH,REAR,,1,Installed\vehicles\1975TYRRELL\1.0,,,H5,0,2,,
+1975TYRRELLP34,,1970-,,,,1975TYRRELLP34,Tyrrellp34,,1,,,1975,,3149824,0,,Tyrrellp34,0,1,670,DEPAILLER_04P34.VEH,REAR,,1,Installed\vehicles\1975TYRRELLP34\1.0,,,H5,0,2,,
+1975WILLIAMS,,1970-,,,,1975WILLIAMS,Williams,,1,,,1975,,3149824,0,,Williams,0,1,654,LAFFITE_21.VEH,REAR,,1,Installed\vehicles\1975WILLIAMS\1.0,,,H5,0,2,,
+1986_BT55,,1980-,,,,1986_BT55,Bt55,,1,,,1986,,270536704,0,,Bt55,0,1,630,PATRESE_7.VEH,REAR,,1.1,Installed\vehicles\1986_BT55\1.1,,,Paddles,1,2,,
+207s2000,,2000-,,,,207s2000,207S,,1,,Slow Motion Group,2000,,270536704,3,,207S,10,1,1270,207XXX_MG59.VEH,FOUR,,1.44,Installed\vehicles\207s2000\1.44,,,H6,1,2,Touring,
+AC_427SC_1967,,1960-,,,,AC_427SC_1967,AC,,1,,Studio 397?,1967,,271593472,0,,427Sc,0,1,,427SC_LBLUE.VEH,REAR,,1.2,Installed\vehicles\ac_427sc_1967\1.2,,,Paddles,0,2,,
+AC_Cobra_1954_Endurance,,1950-,,,,AC_Cobra_1954_Endurance,AC,,1,,"woochoo, ISI/S397",1954,,3145728,3,,Cobra Endurance,3,0,1149,COBRA_1954ENDUR_57.VEH,REAR,,1.23,Installed\vehicles\ac_cobra_1954_endurance\1.230,,,H5,0,2,GT,
+AM_FIAGT3_2012_799,,2010-,,GT3,,AM_FIAGT3_2012_799,Am,,1,,Apex Modding,2012,,270536704,1,,Fia 799,3,1,1295,10_WTM_03.VEH,REAR,,1.05,Installed\vehicles\AM_FIAGT3_2012_799\1.05,,,Paddles,0,2,GT,
+AM_FIAGT3_2012_854GT3,,2010-,,GT3,,AM_FIAGT3_2012_854GT3,Am,,1,,Apex Modding,2012,,270536704,1,,Fia 854,3,1,1330,12_FER_06.VEH,REAR,,1.05,Installed\vehicles\AM_FIAGT3_2012_854GT3\1.05,,,Paddles,0,2,GT,
+AM_FIAGT3_2012_CAMARO,,2010-,,GT3,,AM_FIAGT3_2012_CAMARO,Chevrolet,,1,,ISI/Apex Modding,2012,,270536704,1,,Fia Camaro,3,1,1385,AM_CAMARO_ADAC_35.VEH,REAR,,1.05,Installed\vehicles\AM_FIAGT3_2012_CAMARO\1.05,,,Paddles,0,2,GT,
+AM_FIAGT3_2012_MP412CGT3,,2010-,,GT3,,AM_FIAGT3_2012_MP412CGT3,McLaren,,1,,Apex Modding,2012,,270536704,1,,Fia Mp412C,3,1,1340,12_MRS_14.VEH,REAR,,1.05,Installed\vehicles\AM_FIAGT3_2012_MP412CGT3\1.05,,,Paddles,1,2,GT,
+AM_FIAGT3_2012_SLSAMG,,2010-,,GT3,,AM_FIAGT3_2012_SLSAMG,Mercedes,,1,,Apex Modding,2012,,270536704,1,,Fia Slsamg,3,1,1325,ADAC_12_HHM_65.VEH,REAR,,1.05,Installed\vehicles\AM_FIAGT3_2012_SLSAMG\1.05,,,Paddles,0,2,GT,
+AM_FIAGT3_2012_Z06R,,2010-,,GT3,,AM_FIAGT3_2012_Z06R,Corvette,,1,,Apex Modding,2012,,270536704,1,,Fia Z06R,3,1,1310,08_MCR_01.VEH,REAR,,1.05,Installed\vehicles\AM_FIAGT3_2012_Z06R\1.05,,,Paddles,0,2,GT,
+AM_FIAGT3_2012_Z4GT3,,2010-,,GT3,,AM_FIAGT3_2012_Z4GT3,BMW,,1,,Apex Modding,2012,,270536704,1,,Fia Z4,3,1,1330,Z4_GT3_SFS_01.VEH,REAR,,1.05,Installed\vehicles\AM_FIAGT3_2012_Z4GT3\1.05,,,Paddles,0,2,GT,
+AM_FIAGT3_2015_bentleyGT3,,2010-,,GT3,,AM_FIAGT3_2015_bentleyGT3,Bentley,,1,,Apex Modding,2015,,270536704,1,,Fia Bentley,3,1,1395,BGT3_BMSP_85.VEH,REAR,,1.05,Installed\vehicles\AM_FIAGT3_2015_bentleyGT3\1.05,,,Paddles,1,2,GT,
+ASR_OWC_1991_020,,1990-,,,,ASR_OWC_1991_020,Asr,,1,,ASR Formula,1991,www.asrformula.com,270536704,1,,Owc 020,6,1,580,020_03.VEH,REAR,,2,Installed\vehicles\ASR_OWC_1991_020\2.0,,,Paddles,0,2,Open,
+ASR_OWC_1991_643,,1990-,,,,ASR_OWC_1991_643,Asr,,1,,ASR Formula,1991,www.asrformula.com,270536704,1,,Owc 643,6,1,580,643_27.VEH,REAR,,2,Installed\vehicles\ASR_OWC_1991_643\2.0,,,Paddles,0,2,Open,
+ASR_OWC_1991_B191,,1990-,,,,ASR_OWC_1991_B191,Benetton,,1,,ASR Formula,1991,www.asrformula.com,270536704,1,,Owc B191,6,1,580,B191_19.VEH,REAR,,2,Installed\vehicles\ASR_OWC_1991_B191\2.0,,,Paddles,0,2,Open,
+ASR_OWC_1991_FW14,,1990-,,,,ASR_OWC_1991_FW14,Williams,,1,,ASR Formula,1991,www.asrformula.com,270536704,1,,Owc Fw14,6,1,580,FW14_06.VEH,REAR,,2,Installed\vehicles\ASR_OWC_1991_FW14\2.0,,,Paddles,0,2,Open,
+ASR_OWC_1991_J191,,1990-,,,,ASR_OWC_1991_J191,Asr,,1,,ASR Formula,1991,www.asrformula.com,270536704,1,,Owc J191,6,1,580,J191_32.VEH,REAR,,2,Installed\vehicles\ASR_OWC_1991_J191\2.0,,,Paddles,0,2,Open,
+ASR_OWC_1991_M191,,1990-,,,,ASR_OWC_1991_M191,Asr,,1,,ASR Formula,1991,www.asrformula.com,270536704,1,,Owc M191,6,1,580,M191_23.VEH,REAR,,2,Installed\vehicles\ASR_OWC_1991_M191\2.0,,,Paddles,0,2,Open,
+ASR_OWC_1991_MP4-6,,1990-,,,,ASR_OWC_1991_MP4-6,McLaren,,1,,ASR Formula,1991,www.asrformula.com,270536704,1,,Owc Mp4-6,6,1,580,MP46_02.VEH,REAR,,2,Installed\vehicles\ASR_OWC_1991_MP4-6\2.0,,,Paddles,0,2,Open,
+ASR_OWC_1993_MP4-8,,1990-,,,,ASR_OWC_1993_MP4-8,McLaren,,1,,ASR Formula,1993,www.asrformula.com,3145728,1,,Owc Mp4-8,6,1,580,SENNA93_08.VEH,REAR,,1.5,Installed\vehicles\ASR_OWC_1993_MP4-8\1.5,,,Paddles,0,2,Open,
+ASR_OWC_2004_F2004,,2000-,,,,ASR_OWC_2004_F2004,Asr,,1,,ASR Formula,2004,www.asrformula.com,270536704,1,,Owc F,6,1,643,F2004_01.VEH,REAR,,1.53,Installed\vehicles\ASR_OWC_2004_F2004\1.53,,,Paddles,0,2,Open,
+Bentley_Continental_GT3_2017,,2010-,,GT3,,Bentley_Continental_GT3_2017,Bentley,,1,,Studio 397?,2017,,270569473,0,,Continental,0,1,,1SFH4F8ACF4E.VEH,REAR,,2.53,Installed\vehicles\Bentley_Continental_GT3_2017\2.53,,,Paddles,0,2,,AAA9999
+BMW_M8_GTE_2018,,2010-,,GTE,,BMW_M8_GTE_2018,BMW,,1,,Studio 397?,2018,,270569473,0,,M8,0,1,,BMW1CB2E1566.VEH,REAR,,1.73,Installed\vehicles\BMW_M8_GTE_2018\1.73,,,Paddles,0,2,,AAA9999
+Brabham_1966,,1960-,,,,Brabham_1966,Brabham,,1,,Studio 397?,1966,,271593472,0,,Brabham,0,1,,BT20_5.VEH,REAR,,1.95,Installed\vehicles\brabham_1966\1.95,,,Paddles,0,2,,AAA9999
+Brabham_BT44_1975,,1970-,,,,Brabham_BT44_1975,Brabham,,1,,Studio 397?,1975,,270536704,0,,Bt44,0,1,,BT44_7.VEH,REAR,,2.06,Installed\vehicles\brabham_bt44_1975\2.06,,,Paddles,0,2,,AAA9999
+BTCC_NGTC_BMW_125i,,,,BTCC,,BTCC_NGTC_BMW_125i,BMW,,1,,,,,3158016,0,,125i,10,0,1325,125I_10_14.VEH,REAR,,1.3,Installed\vehicles\BTCC_NGTC_BMW_125i\1.3,,,Paddles,1,2,Touring,
+BTCC_NGTC_Chevrolet_Cruze,,,,BTCC,,BTCC_NGTC_Chevrolet_Cruze,Chevrolet,,1,,,,,3158016,0,,Cruze,10,0,1326,CRUZE44_13.VEH,FRONT,,1.3,Installed\vehicles\BTCC_NGTC_Chevrolet_Cruze\1.3,,,Paddles,1,2,Touring,
+BTCC_NGTC_Ford_Focus,,,,BTCC,,BTCC_NGTC_Ford_Focus,Ford,,1,,,,,3158016,0,,Focus,10,0,1326,FOCUS4_12.VEH,FRONT,,1.3,Installed\vehicles\BTCC_NGTC_Ford_Focus\1.3,,,Paddles,1,2,Touring,
+BTCC_NGTC_Ford_Focus_RS,,,,BTCC,,BTCC_NGTC_Ford_Focus_RS,Ford,,6,,Studio 397?,,,271593472,0,,Focus RS,10,1,,FOCUS_RS_20_18.VEH,REAR,,0.95,Installed\vehicles\BTCC_NGTC_Ford_Focus_RS\0.95,,,Paddles,0,2,Touring,
+BTCC_NGTC_Mercedes_A45,,1940-,,BTCC,,BTCC_NGTC_Mercedes_A45,Mercedes,,6,,Studio 397?,1945,,271593536,0,,A45,10,1,,A45_33_15.VEH,REAR,,0.95,Installed\vehicles\BTCC_NGTC_Mercedes_A45\0.95,,,Paddles,0,2,Touring,
+BTCC_NGTC_MG6_GT,,,,BTCC,,BTCC_NGTC_MG6_GT,MG,,6,,Studio 397?,,,271593472,0,,6 GT,10,1,,MG6_66_16.VEH,REAR,,0.95,Installed\vehicles\BTCC_NGTC_MG6_GT\0.95,,,Paddles,0,2,Touring,
+BTCC_NGTC_Subaru_Levorg,,,,BTCC,,BTCC_NGTC_Subaru_Levorg,Subaru,,6,,Studio 397?,,,271593472,0,,Levorg,10,1,,LEVORG_116_17.VEH,REAR,,0.95,Installed\vehicles\BTCC_NGTC_Subaru_Levorg\0.95,,,Paddles,0,2,Touring,
+BTCC_NGTC_Toyota_Avensis,,,,BTCC,,BTCC_NGTC_Toyota_Avensis,Toyota,,1,,,,,3158016,0,,Avensis,10,0,1326,AVENSIS11_11.VEH,FRONT,,1.3,Installed\vehicles\BTCC_NGTC_Toyota_Avensis\1.3,,,Paddles,1,2,Touring,
+BTCC_NGTC_Vauxhall_Astra,,,,BTCC,,BTCC_NGTC_Vauxhall_Astra,Vauxhall,,6,,Studio 397?,,,271593472,1,,Astra,10,1,,ASTRA_18S_17.VEH,REAR,,0.95,Installed\vehicles\BTCC_NGTC_Vauxhall_Astra\0.95,,,Paddles,0,2,Touring,
+C6R_2009,,2000-,,,,C6R_2009,Chevrolet,,1,,Studio 397?,2009,,270536704,0,,C6R,0,1,,C6R_00.VEH,REAR,,1.93,Installed\vehicles\C6R_2009\1.93,,,Paddles,0,2,,AAA9999
+Callaway_Corvette_GT3_2017,,2010-,,GT3,,Callaway_Corvette_GT3_2017,Callaway,,1,,Studio 397?,2017,,270569473,0,,Corvette,0,1,,121AJIRABAA3D65D.VEH,REAR,,2.49,Installed\vehicles\Callaway_Corvette_GT3_2017\2.49,,,Paddles,0,2,,AAA9999
+Camaro_2012,,2010-,,,,Camaro_2012,Chevrolet,,1,,Studio 397?,2012,,271593472,0,,Camaro,0,1,,CAMARO_27.VEH,REAR,,1.94,Installed\vehicles\Camaro_2012\1.94,,,Paddles,0,2,,AAA9999
+Caterham7_14K_Classic,,2010-,,,,Caterham7_14K_Classic,Caterham7,,1,,MikeeCZ & MajorParts,2014,,270536704,1,,K Classic,9,0,610,CLASSIC_BLACKYELLOW_B.VEH,REAR,,1.01,Installed\vehicles\Caterham7_14K_Classic\1.01,,,H5,0,2,Street,cat7_14k
+ClioCup_2010,,2010-,,,,ClioCup_2010,Renault,,1,,Studio 397?,2010,,270536704,0,,Clio Cup,0,1,,CLIO_17.VEH,REAR,,1.93,Installed\vehicles\ClioCup_2010\1.93,,,Paddles,0,2,,AAA9999
+Clio_PC,,,,,,Clio_PC,Renault,,1,,,,,0,1,,PC,9,1,1130,CLIO_PC.VEH,FRONT,,1,Installed\vehicles\Clio_PC\1.0,,,Paddles,0,2,Street,
+CorvettePC,,,,,,CorvettePC,Chevrolet,,1,,ISI,,http://rfactor.net/downloads/getmod.php,3145728,1,,Corvette PC,9,1,1624,CORVETTEPC.VEH,REAR,,1,Installed\vehicles\CorvettePC\1.0,,,Paddles,0,2,Street,
+CorvettePCLights,,,,,,CorvettePCLights,Chevrolet,,1,,,,,0,0,,Corvette PC Lights,0,1,1624,CORVETTEPCLIGHTS.VEH,REAR,,1,Installed\vehicles\CorvettePCLights\1.0,,,Paddles,0,2,,
+Corvette_C7R_GTE_2017,,2010-,,GTE,,Corvette_C7R_GTE_2017,Corvette,,1,,Studio 397?,2017,,270569473,0,,C7R,0,1,,MAX_ERU329ADE028.VEH,REAR,,2.01,Installed\vehicles\Corvette_C7R_GTE_2017\2.01,,,Paddles,0,2,,AAA9999
+DallaraDW12_2014,,2010-,,,,DallaraDW12_2014,Dallara,,1,,Studio 397?,2014,,270536704,0,,DW12,0,1,,DW12_19.VEH,REAR,,1.998,Installed\vehicles\DallaraDW12_2014\1.998,,,Paddles,0,2,,AAA9999
+Datsun Bluebird,,,,,,Datsun Bluebird,Datsun,,1,,,,,270536704,0,,Bluebird,0,0,850,BLUEBIRD_SSS_1.VEH,REAR,,0.2.0,Installed\vehicles\datsun bluebird\0.2.0,,,H5,0,2,,
+Devbot Enterprises Super Formula V10 2017,,2010-,,,,Devbot Enterprises Super Formula V10 2017,Devbot,,1,,Devin,2017,,270536704,1,,Enterprises Super Formula V10,6,1,663,DESF_2017_10.VEH,REAR,,2.1.1,Installed\vehicles\Devbot Enterprises Super Formula V10 2017\2.1.1,,,Paddles,0,2,Open,DESFV102017
+ER_Endurance_Series_rF2,,,,,,ER_Endurance_Series_rF2,Porsche,,1,,EnduRacers & GR,,www.enduracers.com,270536704,1,,Endurance Series Rf2,3,1,,FLAT6GTC_100023.VEH,REAR,,3,Installed\vehicles\ER_Endurance_Series_rF2\3.00,,,Paddles,0,2,GT,
+ER_Flat6_Series_rF2,,,,,,ER_Flat6_Series_rF2,Porsche,,1,,EnduRacers & GR,,www.enduracers.com,270536704,1,,Flat6 Series Rf2,10,1,,FLAT6GT3_106009.VEH,REAR,,5,Installed\vehicles\ER_Flat6_Series_rF2\5.00,,,Paddles,0,2,Touring,
+EVE_MATRA_F1,,,,F1,,EVE_MATRA_F1,Eve,,2,,,,,271593472,0,,Matra,0,0,660,MS10MATRA_09.VEH,REAR,,1,Installed\vehicles\eve_matra_f1\1.0,,,H5,0,2,,
+F1 1968,,1960-,,F1,,F1 1968,,,2,,Billy Blaze,1968,,271593472,0,,,6,1,,MS10_1.VEH,REAR,,1,Installed\vehicles\F1 1968\1.0,,,Paddles,0,2,Open,
+F1 1996 - SL1DE,,1990-,,F1,,F1 1996 - SL1DE,-,,1,,SL1DE,1996,,270536704,2,,Sl1De,6,1,595,1996_FERRARI_01_EQ.VEH,REAR,,1.77,Installed\vehicles\F1 1996 - SL1DE\1.77,,,Paddles,0,2,Open,
+F1 1998,,1990-,,F1,,F1 1998,,,1,,Studio 397?,1998,,270536704,2,,,6,1,,F1_1998_17.VEH,REAR,,0.1,Installed\vehicles\F1 1998\0.1,,,Paddles,0,2,Open,
+F1RFT_2013_FB_1.4,,2010-,,F1,,F1RFT_2013_FB_1.4,Rft,,1,,"F1RFT, Frenky & Bjørn",2013,,3145728,3,,Fb 1.4,6,1,1714,F1RFT_20.VEH,REAR,,1.4,Installed\vehicles\F1RFT_2013_FB_1.4\1.4,,,Paddles,0,2,Open,
+F1_1979_ALFAROMEO_HE,,1970-,,F1,,F1_1979_ALFAROMEO_HE,Alfa Romeo,,1,,,1979,,271593472,0,,He,0,1,670,35_GIACOMELLI.VEH,REAR,,0.97,Installed\vehicles\F1_1979_ALFAROMEO_HE\0.97,,,H6,0,2,,
+F1_1979_ARROWS_HE,,1970-,,F1,,F1_1979_ARROWS_HE,Arrows,,1,,,1979,,271593472,0,,He,0,1,666,29_PATRESE.VEH,REAR,,0.97,Installed\vehicles\F1_1979_ARROWS_HE\0.97,,,H5,0,2,,
+F1_1979_ATS_HE,,1970-,,F1,,F1_1979_ATS_HE,ATS,,1,,,1979,,271593472,0,,He,0,1,695,9_STUCK.VEH,REAR,,0.97,Installed\vehicles\F1_1979_ATS_HE\0.97,,,H5,0,2,,
+F1_1979_BRABHAM_HE,,1970-,,F1,,F1_1979_BRABHAM_HE,Brabham,,1,,,1979,,271593472,0,,He,0,1,655,5_LAUDA.VEH,REAR,,0.97,Installed\vehicles\F1_1979_BRABHAM_HE\0.97,,,H6,0,2,,
+F1_1979_ENSIGN_HE,,1970-,,F1,,F1_1979_ENSIGN_HE,Ensign,,1,,,1979,,271593472,0,,He,0,1,687,22_DALY.VEH,REAR,,0.97,Installed\vehicles\F1_1979_ENSIGN_HE\0.97,,,H5,0,2,,
+F1_1979_FERRARI_HE,,1970-,,F1,,F1_1979_FERRARI_HE,Ferrari,,1,,,1979,,271593472,0,,He,0,1,665,11_SCHECKTER.VEH,REAR,,0.97,Installed\vehicles\F1_1979_FERRARI_HE\0.97,,,H5,0,2,,
+F1_1979_FITTIPALDI_HE,,1970-,,F1,,F1_1979_FITTIPALDI_HE,Fittipaldi,,1,,,1979,,271593472,0,,He,0,1,687,14_FITTIPALDI.VEH,REAR,,0.97,Installed\vehicles\F1_1979_FITTIPALDI_HE\0.97,,,H5,0,2,,
+F1_1979_LIGIER_HE,,1970-,,F1,,F1_1979_LIGIER_HE,Ligier,,1,,,1979,,271593472,0,,He,0,1,657,25_DEPAILLER.VEH,REAR,,0.97,Installed\vehicles\F1_1979_LIGIER_HE\0.97,,,H6,0,2,,
+F1_1979_LOTUS_HE,,1970-,,F1,,F1_1979_LOTUS_HE,Lotus,,1,,,1979,,271593472,0,,He,0,1,685,2_REUTEMANN.VEH,REAR,,0.97,Installed\vehicles\F1_1979_LOTUS_HE\0.97,,,H5,0,2,,
+F1_1979_MCLAREN_HE,,1970-,,F1,,F1_1979_MCLAREN_HE,McLaren,,1,,,1979,,271593472,0,,He,0,1,700,8_TAMBAY.VEH,REAR,,0.97,Installed\vehicles\F1_1979_MCLAREN_HE\0.97,,,H6,0,2,,
+F1_1979_MERZARIO_HE,,1970-,,F1,,F1_1979_MERZARIO_HE,Merzario,,1,,,1979,,271593472,0,,He,0,1,677,24_MERZARIO.VEH,REAR,,0.97,Installed\vehicles\F1_1979_MERZARIO_HE\0.97,,,H5,0,2,,
+F1_1979_REBAQUE_HE,,1970-,,F1,,F1_1979_REBAQUE_HE,Rebaque,,1,,,1979,,271593472,0,,He,0,1,685,31_REBAQUE.VEH,REAR,,0.97,Installed\vehicles\F1_1979_REBAQUE_HE\0.97,,,H5,0,2,,
+F1_1979_RENAULT_HE,,1970-,,F1,,F1_1979_RENAULT_HE,Renault,,1,,,1979,,271593472,0,,He,0,1,670,15_JABOUILLE.VEH,REAR,,0.97,Installed\vehicles\F1_1979_RENAULT_HE\0.97,,,H6,1,2,,
+F1_1979_SHADOW_HE,,1970-,,F1,,F1_1979_SHADOW_HE,Shadow,,1,,,1979,,271593472,0,,He,0,1,680,18_DE ANGELIS.VEH,REAR,,0.97,Installed\vehicles\F1_1979_SHADOW_HE\0.97,,,H5,0,2,,
+F1_1979_TYRRELL_HE,,1970-,,F1,,F1_1979_TYRRELL_HE,Tyrrell,,1,,,1979,,271593472,0,,He,0,1,667,4_JARIER.VEH,REAR,,0.97,Installed\vehicles\F1_1979_TYRRELL_HE\0.97,,,H5,0,2,,
+F1_1979_WILLIAMS_HE,,1970-,,F1,,F1_1979_WILLIAMS_HE,Williams,,1,,,1979,,271593472,0,,He,0,1,654,27_JONES.VEH,REAR,,0.97,Installed\vehicles\F1_1979_WILLIAMS_HE\0.97,,,H5,0,2,,
+F1_1979_WOLF_HE,,1970-,,F1,,F1_1979_WOLF_HE,Wolf,,1,,,1979,,271593472,0,,He,0,1,665,20_HUNT.VEH,REAR,,0.97,Installed\vehicles\F1_1979_WOLF_HE\0.97,,,H5,0,2,,
+F1_1986_Cars,,1980-,,F1,,F1_1986_Cars,Cars,,1,,,1986,,3149824,0,,Cars,0,1,615,DEANGELIS_LE__08.VEH,REAR,,1,Installed\vehicles\F1_1986_Cars\1.0,,,Paddles,1,2,,
+F1_1986_LE_0.97,,1980-,,F1,,F1_1986_LE_0.97,Le,,1,,,1986,,270536704,0,,0.97,0,1,615,BOUTSEN_LE_18.VEH,REAR,,0.97,Installed\vehicles\F1_1986_LE_0.97\0.97,,,Paddles,1,2,,
+F1_1988_Cars,,1980-,,F1,,F1_1988_Cars,Cars,,1,,carrera.4,1988,,3158016,1,,Cars,6,1,620,1988_AGS14.VEH,REAR,,0.941,Installed\vehicles\F1_1988_Cars\0.941,,,H6,1,2,Open,
+Ferrari_312_67,,1960-,,,,Ferrari_312_67,Ferrari,,2,,Chief Wiggum and Postipate,1967,https://forum.studio-397.com/index.php?threads/ferrari-312-1967.,271593472,1,,312,6,0,623,SCARFIOTTI_22.VEH,REAR,,1.2,Installed\vehicles\ferrari_312_67\1.2,,,H5,0,2,Open,
+FISIR2012_2012,,2010-,,,,FISIR2012_2012,FISIR,,1,,Studio 397?,2012,,270536704,0,,FISIR,0,1,,FISIR_2012_08.VEH,REAR,,1.68,Installed\vehicles\FISIR2012_2012\1.68,,,Paddles,0,2,,AAA9999
+FLAT12_917k_1971,,1970-,,,,FLAT12_917k_1971,Porsche,,1,,Apex Modding Team,1971,,270536704,3,,917K,3,0,875,09_GULF_917K.VEH,REAR,,0.76,Installed\vehicles\flat12_917k_1971\0.76,,,H5,0,2,GT,
+Formula BMW,,,,,,Formula BMW,Formula,,4,,Slow Motion Group,,,271593472,3,,Bmw,6,1,532,USA04_056.VEH,REAR,,1.28,Installed\vehicles\Formula BMW\1.28,,,Paddles,0,2,Open,
+Formula2_2012,,2010-,,,,Formula2_2012,Formula,,1,,Studio 397?,2012,,270536704,0,,2,0,1,,FORMULA2_07.VEH,REAR,,1.95,Installed\vehicles\Formula2_2012\1.95,,,Paddles,0,2,,AAA9999
+FormulaFord,,,,,,FormulaFord,Formula,,1,,,,,3145728,0,,Ford,0,0,495,FR_08.VEH,REAR,,0.624,Installed\vehicles\FormulaFord\0.624,,,H5,1,2,,
+FormulaRenault_35_2014,,2010-,,,,FormulaRenault_35_2014,Formularenault,,1,,Studio 397?,2014,,271593472,0,,35,0,1,,FR35_2014_1.VEH,REAR,,1.6,Installed\vehicles\FormulaRenault_35_2014\1.6,,,Paddles,0,2,,
+FVR V8Supercars FGx,,,,,,FVR V8Supercars FGx,Fvr,,1,,FVRFactor,,www.fvrfactor.com,271593472,1,,V8Supercars Fgx,10,1,1410,DJR17_AU14.VEH,REAR,,6.5,Installed\vehicles\FVR V8Supercars FGx\6.5,,,H6,0,2,Touring,
+FVR V8Supercars MB,,,,,,FVR V8Supercars MB,Fvr,,1,,FVRFactor,,www.fvrfactor.com,271593472,1,,V8Supercars Mb,10,1,1410,EMS4_AU14.VEH,REAR,,6.5,Installed\vehicles\FVR V8Supercars MB\6.5,,,H6,0,2,Touring,
+FVR V8Supercars NA,,,,,,FVR V8Supercars NA,Fvr,,1,,FVRFactor,,www.fvrfactor.com,271593472,1,,V8Supercars Na,10,1,1410,JDR15_AU14.VEH,REAR,,6.5,Installed\vehicles\FVR V8Supercars NA\6.5,,,H6,0,2,Touring,
+FVR V8Supercars VF,,,,,,FVR V8Supercars VF,Fvr,,1,,FVRFactor,,www.fvrfactor.com,271593472,1,,V8Supercars Vf,10,1,1410,BJR8_AU14.VEH,REAR,,6.5,Installed\vehicles\FVR V8Supercars VF\6.5,,,H6,0,2,Touring,
+FVR V8Supercars VO,,,,,,FVR V8Supercars VO,Fvr,,1,,FVRFactor,,www.fvrfactor.com,271593472,1,,V8Supercars Vo,10,1,1410,GRM33_AU14.VEH,REAR,,6.5,Installed\vehicles\FVR V8Supercars VO\6.5,,,H6,0,2,Touring,
+GP3 Series,,,,,,GP3 Series,GP3,,1,,Slow Motion Group,,,270536704,1,,Series,6,1,660,GP3_16_09.VEH,REAR,,2.25,Installed\vehicles\GP3 Series\2.25,,,Paddles,0,2,Open,
+Historic Challenge_EVE_1968,,1960-,,,,Historic Challenge_EVE_1968,Eve,,3,,Studio 397?,1968,,271593472,0,,Challenge,0,1,,MS10_7.VEH,REAR,,2,Installed\vehicles\historic challenge_eve_1968\2.00,,,Paddles,0,2,,AAA9999
+Historic Challenge_spark_1968,,1960-,,,,Historic Challenge_spark_1968,Spark,,3,,Studio 397?,1968,,271593472,0,,Challenge,0,1,,SPARKF1_32.VEH,REAR,,2,Installed\vehicles\historic challenge_spark_1968\2.00,,,Paddles,0,2,,AAA9999
+HondaCivicBTCC_2013,,2010-,,BTCC,,HondaCivicBTCC_2013,Honda,,6,,Studio 397?,2013,,271593472,0,,Civic,0,1,,CIVIC_BTCC_6.VEH,REAR,,1.99,Installed\vehicles\HondaCivicBTCC_2013\1.99,,,Paddles,0,2,,AAA9999
+Howston_DISS_1974,,1970-,,,,Howston_DISS_1974,Howston,,1,,Studio 397?,1974,,270536704,0,,Diss,0,1,,DISS_52.VEH,REAR,,1.94,Installed\vehicles\howston_diss_1974\1.94,,,Paddles,0,2,,AAA9999
+Howston_G4_1967_Endurance,,1960-,,,,Howston_G4_1967_Endurance,Howston,,1,,"woochoo, & ISI/S397",1967,,271593472,3,,G4 Endurance,7,0,1088,HG4_1967ENDUR_44.VEH,REAR,,1.51,Installed\vehicles\howston_g4_1967_endurance\1.51,,,H4,1,2,Prototype,
+Howston_G4_1968,,1960-,,,,Howston_G4_1968,Howston,,1,,Studio 397?,1968,,271593472,0,,G4,0,1,,HG4_14.VEH,REAR,,1.96,Installed\vehicles\howston_g4_1968\1.96,,,Paddles,0,2,,AAA9999
+Howston_G6_1968,,1960-,,,,Howston_G6_1968,Howston,,1,,Studio 397?,1968,,271593472,0,,G6,0,1,,HG6_11.VEH,REAR,,1.96,Installed\vehicles\howston_g6_1968\1.96,,,Paddles,0,2,,AAA9999
+ISI_Boxmaster_2015,1036,2010-,,,,ISI_Boxmaster_2015,Boxmaster,,1,,ISI,2015,http://rfactor.net/downloads/getmod.php,270536768,1,,Boxmaster,5,0,4700,MT55_01.VEH,REAR,,0.99,Installed\vehicles\ISI_Boxmaster_2015\0.99,,,H6,1,2,Novel,
+ISI_Honda_NSX_1991,,1990-,,,,ISI_Honda_NSX_1991,Honda,,1,,ISI - Third Party,1991,http://rfactor.net/downloads/getmod.php,270536704,2,,Nsx,9,0,1260,NSXR_BLUE.VEH,REAR,,1,Installed\vehicles\ISI_Honda_NSX_1991\1.00,,,H5,0,2,Street,
+ISI_KodiZR_2005,998,2000-,,,,ISI_KodiZR_2005,Kodi,,1,,ISI,2005,http://rfactor.net/downloads/getmod.php,270536768,2,,ZR,9,1,1280,DRD_ZR25.VEH,REAR,,1,Installed\vehicles\ISI_KodiZR_2005\1.00,,,H5,0,2,Street,
+ISI_MercedesSLS_SafetyCar_2012,,2010-,,,,ISI_MercedesSLS_SafetyCar_2012,Mercedes,,1,,,2012,,270536704,0,,SLS Safety Car,0,1,1714,SLSSAFETYCAR01.VEH,REAR,,1.47,Installed\vehicles\ISI_MercedesSLS_SafetyCar_2012\1.47,,,Paddles,0,2,,
+ISI_Renault_Formula35_2010,,2010-,,,,ISI_Renault_Formula35_2010,Renault,,1,,ISI,2010,http://rfactor.net/downloads/getmod.php,270536704,1,,Formula35,6,1,703,FR35_28.VEH,REAR,,1.44,Installed\vehicles\ISI_Renault_Formula35_2010\1.44,,,Paddles,0,2,Open,
+ISI_SkipBarber_2013,,2010-,,,,ISI_SkipBarber_2013,Skip Barber,,1,,ISI,2013,http://rfactor.net/downloads/getmod.php,270536704,1,,Skipbarber,6,0,629,SKIPBARBER_77B.VEH,REAR,,1.54,Installed\vehicles\ISI_SkipBarber_2013\1.54,,,H5,1,2,Open,
+Kart cup_2014,,2010-,,,,Kart cup_2014,Kart,,2,,Studio 397?,2014,,271593472,0,,Cup,0,1,,K100_02.VEH,REAR,,1.92,Installed\vehicles\Kart cup_2014\1.92,,,Paddles,0,2,,AAA9999
+LegacyGT300,,,,GT3,,LegacyGT300,Legacy,,1,,"Mexes, Izukon, NeverKrash and Lasse Ougaard",,,2101248,3,,GT300,3,1,1225,LEGACYGT300_0962.VEH,REAR,,1.1,Installed\vehicles\LegacyGT300\1.10,,,Paddles,1,2,GT,
+Lola_T70_Spyder,,1970-,,,,Lola_T70_Spyder,Lola,,1,,crossplymods@gmail.com,1970,,271593472,3,,T70 Spyder,7,0,814,MK1_8.VEH,REAR,,1.0.5,Installed\vehicles\lola_t70_spyder\1.0.5,,,H4,0,2,Prototype,
+MAK-Corp_Group_C,,,,,,MAK-Corp_Group_C,Mak-Corp,,1,,MAK-Corp,,http://www.mak-corp.com.au/,270536704,1,,Group C,7,1,980,MAZDA_56.VEH,REAR,,1.1,Installed\vehicles\mak-corp_group_c\1.1,,,Paddles,1,2,Prototype,
+March_M761_1976,,1970-,,,,March_M761_1976,March,,1,,Studio 397?,1976,,270536704,0,,M761,0,1,,M761_09.VEH,REAR,,2.05,Installed\vehicles\March_M761_1976\2.05,,,Paddles,0,2,,AAA9999
+Marussia_2012,,2010-,,,,Marussia_2012,Marussia,,1,,Studio 397?,2012,,270536704,0,,Marussia,0,1,,MR01_24.VEH,REAR,,1.94,Installed\vehicles\Marussia_2012\1.94,,,Paddles,0,2,,AAA9999
+McLaren M4B,,,,,,McLaren M4B,McLaren,,2,,The Garage,,,271593472,0,,M4B,6,0,573,M4B_14.VEH,REAR,,1,Installed\vehicles\mclaren m4b\1.0,,,H5,0,2,Open,
+McLaren_650S_GT3_2017,,2010-,,GT3,,McLaren_650S_GT3_2017,McLaren,,1,,Studio 397?,2017,,270569473,0,,650S,0,1,,55TEAMREDL876D95D8.VEH,REAR,,2.43,Installed\vehicles\McLaren_650S_GT3_2017\2.43,,,Paddles,0,2,,AAA9999
+McLaren_M23_1975,,1970-,,,,McLaren_M23_1975,McLaren,,1,,Studio 397?,1975,,270536704,0,,M23,0,1,,M23_11.VEH,REAR,,1.01,Installed\vehicles\McLaren_M23_1975\1.01,,,Paddles,0,2,,AAA9999
+McLaren_MP4_13_1998,,1990-,,,,McLaren_MP4_13_1998,McLaren,,1,,Studio 397?,1998,www.RGPL.eu,270569473,3,,MP4/13,6,1,,MP413T_5C0FFBCD2.VEH,REAR,,1998.2,Installed\vehicles\McLaren_MP4_13_1998\1998.2,,,Paddles,0,2,Open,AAA9999
+McLaren_MP4_8_1993,,1990-,,,,McLaren_MP4_8_1993,McLaren,,1,,Studio 397?,1993,,270536704,0,,MP4/8,0,1,,MP48_8.VEH,REAR,,1.07,Installed\vehicles\McLaren_MP4_8_1993\1.07,,,Paddles,0,2,,AAA9999
+Mercedes_AMG_GT3_2017,,2010-,,GT3,,Mercedes_AMG_GT3_2017,Mercedes,,1,,Studio 397?,2017,,270569473,0,,AMG,0,1,,1AJIRA937639EE.VEH,REAR,,2.51,Installed\vehicles\Mercedes_AMG_GT3_2017\2.51,,,Paddles,0,2,,AAA9999
+Metalmoro MR1,,,,,,Metalmoro MR1,Metalmoro,,1,,Slow Motion Group,,,270536704,3,,MR1,7,1,840,MR1_31.VEH,REAR,,1.42,Installed\vehicles\Metalmoro MR1\1.42,,,Paddles,1,2,Prototype,
+Nissan_370z_2012,,2010-,,,,Nissan_370z_2012,Nissan,,1,,Studio 397?,2012,,271593472,0,,370Z,0,1,,370Z_11.VEH,REAR,,1.93,Installed\vehicles\Nissan_370z_2012\1.93,,,Paddles,0,2,,AAA9999
+Nissan_GT500_2013,,2010-,,,,Nissan_GT500_2013,Nissan,,1,,Studio 397?,2013,,270536704,0,,GT500,0,1,,SUPERGT_1.VEH,REAR,,1.96,Installed\vehicles\Nissan_GT500_2013\1.96,,,Paddles,0,2,,AAA9999
+Nissan_GTR_2011,,2010-,,,,Nissan_GTR_2011,Nissan,,1,,Studio 397?,2011,,270536704,0,,GTR,0,1,,NGTR_03.VEH,REAR,,1.93,Installed\vehicles\Nissan_GTR_2011\1.93,,,Paddles,0,2,,AAA9999
+Norma_M30-LMP3_2017,,2010-,,LMP3,,Norma_M30-LMP3_2017,Norma,,1,,Studio 397?,2017,,270569473,0,,M30,0,1,,10ALTED25A742.VEH,REAR,,1.77,Installed\vehicles\Norma_M30-LMP3_2017\1.77,,,Paddles,0,2,,AAA9999
+Oreca_07_LMP2_2017,,2010-,,LMP2,,Oreca_07_LMP2_2017,Oreca,,1,,Studio 397?,2017,,270569473,0,,7,0,1,,85_JDC_ALTC562C0FF.VEH,REAR,,1.69,Installed\vehicles\Oreca_07_LMP2_2017\1.69,,,Paddles,0,2,,AAA9999
+Palatov_D4,,,,,,Palatov_D4,Palatov,,5,,Slow Motion Group,,,271593472,3,,D4,7,1,443,DP4_TDSE_187.VEH,REAR,,1.95,Installed\vehicles\Palatov_D4\1.95,,,Paddles,1,2,Prototype,
+Panoz_AIV_Roadster_1999,,1990-,,,,Panoz_AIV_Roadster_1999,Panoz,,1,,,1999,,270536704,0,,AIV Roadster,0,0,1240,PANOZ_ROADSTER_02.VEH,REAR,,1.2,Installed\vehicles\Panoz_AIV_Roadster_1999\1.2,,,H5,0,2,,
+PM3DM_PrimeraBTCC,,,,BTCC,,PM3DM_PrimeraBTCC,Pm3Dm,,1,,,,,270536704,0,,Primera,0,0,1055,PBTCC_9704.VEH,FRONT,,0.7,Installed\vehicles\PM3DM_PrimeraBTCC\0.70,,,Paddles,0,2,,
+Porsche_991RSR_GTE_2017,,2010-,,GTE,,Porsche_991RSR_GTE_2017,Porsche,,1,,Studio 397?,2017,,270569473,0,,991 RSR,0,1,,78KCMGALTB0600FA2.VEH,REAR,,1.93,Installed\vehicles\Porsche_991RSR_GTE_2017\1.93,,,Paddles,0,2,,AAA9999
+Radical_RXC_GT3_2017,,2010-,,GT3,,Radical_RXC_GT3_2017,Radical,,1,,Studio 397?,2017,,270569473,0,,RXC,0,1,,R_RXC-GT3_90CBBFFC.VEH,REAR,,2.53,Installed\vehicles\Radical_RXC_GT3_2017\2.53,,,Paddles,0,2,,AAA9999
+Radical_SR3-RSX_2017,,2010-,,,,Radical_SR3-RSX_2017,Radical,,1,,Studio 397?,2017,,270536704,0,,SR3-RSX,0,1,,SR3_LD_48.VEH,REAR,,2,Installed\vehicles\Radical_SR3-RSX_2017\2.00,,,Paddles,0,2,,AAA9999
+Renault_MeganeTrophyII_2013,,2010-,,,,Renault_MeganeTrophyII_2013,Renault,,1,,Studio 397?,2013,,270536704,0,,Megane Trophy II,0,1,,MT2013_20.VEH,REAR,,1.95,Installed\vehicles\Renault_MeganeTrophyII_2013\1.95,,,Paddles,0,2,,AAA9999
+rF2r_Superkart,,,,,,rF2r_Superkart,Rf2R,,1,,sangreone,,www.rfactor2race.com,3145728,0,,Superkart,4,1,,01.VEH,REAR,,1328,Installed\vehicles\rF2r_Superkart\1328,,,Paddles,0,2,,
+SC2015_2015,,2010-,,,,SC2015_2015,Sc,,1,,Studio 397?,2015,,270536704,0,,Safety Car,0,1,,SC2015_31.VEH,REAR,,1.96,Installed\vehicles\SC2015_2015\1.96,,,Paddles,0,2,,AAA9999
+SMCClio2016,,2010-,,,,SMCClio2016,Renault,,1,,SIMCO,2016,www.simcompany.hu,3149824,1,,Clio,10,1,1160,SMC_CC_BRINK.VEH,FRONT,,1.43,Installed\vehicles\SMCClio2016\1.43,,,Paddles,1,2,Touring,
+STK 488 GT3,,,,GT3,,STK 488 GT3,Ferrari,,1,,,,,270536704,0,,488,0,1,1320,488_GT3_16037AG.VEH,REAR,,1.2,Installed\vehicles\STK 488 GT3\1.20,,,Paddles,1,2,,
+STK 991 GT3-R,,,,GT3,,STK 991 GT3-R,Porsche,,1,,,,,270536704,0,,991,0,1,1375,991GT3R_16099GT.VEH,REAR,,1.2,Installed\vehicles\STK 991 GT3-R\1.20,,,Paddles,0,2,,
+STK AMG GT3,,,,GT3,,STK AMG GT3,AMG,,1,,,,,270536704,0,,Amg,0,1,1385,16001_AMG_GT3.VEH,REAR,,1.2,Installed\vehicles\STK AMG GT3\1.20,,,Paddles,0,2,,
+STK Bentley GT3,,,,GT3,,STK Bentley GT3,Bentley,,1,,,,,270536704,0,,Bentley,0,1,1375,BENTLEY_GT3_15007.VEH,REAR,,1.2,Installed\vehicles\STK Bentley GT3\1.20,,,Paddles,1,2,,
+STK BMW M6 GT3,,,,GT3,,STK BMW M6 GT3,BMW,,1,,,,,270536704,0,,M6,0,1,1375,M6_GT3_17007A_B12HR.VEH,REAR,,1.2,Installed\vehicles\STK BMW M6 GT3\1.20,,,Paddles,1,2,,
+STK Camaro GT3,,,,GT3,,STK Camaro GT3,Chevrolet,,1,,,,,270536704,0,,Camaro,0,1,1385,12YACORACING34.VEH,REAR,,1.2,Installed\vehicles\STK Camaro GT3\1.20,,,Paddles,0,2,,
+STK Huracan GT3,,,,GT3,,STK Huracan GT3,Lamborghini,,1,,,,,270536704,0,,Huracan,0,1,1360,15063GT_HURACAN_GT3.VEH,REAR,,1.2,Installed\vehicles\STK Huracan GT3\1.20,,,Paddles,0,2,,
+STK Mcl.650s GT3,,,,GT3,,STK Mcl.650s GT3,McLaren,,1,,,,,270536704,0,,650S,0,1,1320,MCL_650S_16011.VEH,REAR,,1.2,Installed\vehicles\STK Mcl.650s GT3\1.20,,,Paddles,1,2,,
+SuperCharged_Miata_Level1,,,,,,SuperCharged_Miata_Level1,Supercharged,,1,,PlickBadger,,http://getmod.srrs-racing.net/getmod.php/PlickBadger,3149824,1,,Miata Level1,10,1,1036,SPCL173.VEH,REAR,,1.32,Installed\vehicles\SuperCharged_Miata_Level1\1.32,,,H6,0,2,Touring,
+Supra_Drift,,,,,,Supra_Drift,Toyota,,1,,"Some1,Niels Heusinkveld and rstRmods",,,270536704,2,,Supra,9,0,1340,CHUCKY.VEH,REAR,,0.8,Installed\vehicles\Supra_Drift\0.8,,,H4,1,2,Street,
+T70 MkIIIb,,1970-,,,,T70 MkIIIb,Lola,,1,,Billy Blaze,1970,,271593472,0,,T70 MkIIIB,7,1,,G4_01.VEH,REAR,,1,Installed\vehicles\t70 mkiiib\1.0,,,Paddles,0,2,Prototype,
+Tatuus_F3_T318_2018,,2010-,,F3,,Tatuus_F3_T318_2018,Tatuus,,1,,Studio 397?,2018,,270536704,0,,T318,0,1,,ASIA_F3_SU31CE5C3B.VEH,REAR,,1.03,Installed\vehicles\Tatuus_F3_T318_2018\1.03,,,Paddles,0,2,,AAA9999
+Tatuus_F4_2018,,2010-,,,,Tatuus_F4_2018,Tatuus,,1,,Studio 397?,2018,,270536704,0,,F4,0,1,,F4 SMP RACD6B9DF14.VEH,REAR,,1.03,Installed\vehicles\Tatuus_F4_2018\1.03,,,Paddles,0,2,,AAA9999
+Tatuus_FT-50_2018,,2010-,,,,Tatuus_FT-50_2018,Tatuus,,1,,Studio 397?,2018,,270536704,0,,Ft-50,0,1,,LAUNCH_LIVC53ED9DF.VEH,REAR,,1.03,Installed\vehicles\Tatuus_FT-50_2018\1.03,,,Paddles,0,2,,AAA9999
+Tatuus_PM-18_2018,,2010-,,,,Tatuus_PM-18_2018,Tatuus,,2,,Studio 397?,2018,,2101248,0,,Pm-18,0,1,,02JUNCOS97731899.VEH,REAR,,1.03,Installed\vehicles\Tatuus_PM-18_2018\1.03,,,Paddles,0,2,,AAA9999
+Tatuus_USF-17_2018,,2010-,,,,Tatuus_USF-17_2018,Tatuus,,1,,Studio 397?,2018,,270536704,0,,Usf-17,0,1,,01USF_LAUNACFFF9BE.VEH,REAR,,1.03,Installed\vehicles\Tatuus_USF-17_2018\1.03,,,Paddles,0,2,,AAA9999
+ToyotaCelicaGTO_1986,,1980-,,,,ToyotaCelicaGTO_1986,Toyota,,1,,,1986,,270536704,1,,Celica GTO,3,1,1066,CELICA_44.VEH,REAR,,1.97,Installed\vehicles\toyotacelicagto_1986\1.97,,,H5,1,2,GT,
+USF2000_2016,,2010-,,,,USF2000_2016,USF2000,,1,,Studio 397?,2016,,270536704,0,,USF2000,0,1,,USF2000_22.VEH,REAR,,1.94,Installed\vehicles\USF2000_2016\1.94,,,Paddles,0,2,,AAA9999
+Melbourne_2013GP,,2010-,,,,Melbourne_2013GP,,Oceania,1,,Frenky,2013,http://www.racerfactor.com,3145728,1,,,57,,,,,Melbourne GP,1,Installed\locations\2013_Melbourne\1.0,Melbourne_2013GP,Australia,,,1,Temporary,
+MONACO_GP,,,,,,MONACO_GP,,Europe,1,,Frenky,,http://racerfactor.com/es/,3145728,1,,,57,,,,,Monaco GP,1,Installed\locations\2013_MONACO\1.0,MONACO_GP,,,,1,Temporary,
+MONTREAL_GP,,,,,,MONTREAL_GP,,North America,1,,Frenky,,,3145728,1,,,55,,,,,Montreal GP,1,Installed\locations\2013_MONTREAL\1.0,MONTREAL_GP,,,,1,Permanent,
+Monza_GP,,,,,,Monza_GP,,Europe,1,,Frenky,,http://www.racerfactor.com,3145728,1,,,55,,,,,Monza GP,1,Installed\locations\2013_MONZA\1.0,Monza_GP,Ireland,,,1,Permanent,
+Silverstone_GTLayout,356,,,,,Silverstone_GTLayout,,Europe,1,,Frenky,,http://rfactor.net/downloads/getmod.php,3145728,1,,,55,,,,,Silverstone Gtlayout,1,Installed\locations\2013_Silverstone\1.0,Silverstone_GTLayout,United Kingdom,,,1,Permanent,AAA9999
+Silverstone_International,356,,,,,Silverstone_International,,Europe,1,,Frenky,,http://rfactor.net/downloads/getmod.php,3145728,1,,,55,,,,,Silverstone International,1,Installed\locations\2013_Silverstone\1.0,Silverstone_International,United Kingdom,,,1,Permanent,AAA9999
+Silverstone_National,356,,,,,Silverstone_National,,Europe,1,,Frenky,,http://rfactor.net/downloads/getmod.php,3145728,1,,,55,,,,,Silverstone National,1,Installed\locations\2013_Silverstone\1.0,Silverstone_National,United Kingdom,,,1,Permanent,AAA9999
+SINGAPUR_GP,,,,,,SINGAPUR_GP,,Asia,1,,Frenky,,,3145728,1,,,57,,,,,Singapur GP,1,Installed\locations\2013_SINGAPORE\1.0,SINGAPUR_GP,No Lat,,,1,Temporary,
+BARCELONA_GP,,,,,,BARCELONA_GP,,Europe,1,,Frenky,,http://getmod.srrs-racing.net/getmod.php/~IsR~Barabba,3145728,1,,,55,,,,,Barcelona GP,1,Installed\locations\2013_SPAIN\1.0,BARCELONA_GP,Spain,,,1,Permanent,
+SUZUKA,,,,,,SUZUKA,,Asia,1,,Frenky,,,3145728,1,,,55,,,,,Suzuka,1,Installed\locations\2013_SUZUKA\1.0,SUZUKA,Japan,,,1,Permanent,
+COTA_GP,,,,,,COTA_GP,,North America,1,,Frenky,,,3145728,1,,,55,,,,,COTA GP,1,Installed\locations\2013_USA\1.0,COTA_GP,United States,,,1,Permanent,
+Bathurst,,,,,,Bathurst,,Oceania,3,,mianiak,,http://rfactor.net/downloads/getmod.php,271593472,3,,,57,,,,,Bathurst,1.02,Installed\locations\3pa_bathurst_2014\1.02,Bathurst,Australia,,,1,Temporary,
+Matsusaka_East,,,,,,Matsusaka_East,,Asia,3,,"woochoo, & ISI",,http://rfactor.net/downloads/getmod.php,271593472,3,,,55,,,,,Matsusaka East,1,Installed\locations\3PA_Matsusaka_2015\1.00,Matsusaka_East,Japan,,,1,Permanent,
+Matsusaka_GP,,,,,,Matsusaka_GP,,Asia,3,,"woochoo, & ISI",,http://rfactor.net/downloads/getmod.php,271593472,3,,,55,,,,,Matsusaka GP,1,Installed\locations\3PA_Matsusaka_2015\1.00,Matsusaka_GP,Japan,,,1,Permanent,
+Matsusaka_International,,,,,,Matsusaka_International,,Asia,3,,"woochoo, & ISI",,http://rfactor.net/downloads/getmod.php,271593472,3,,,55,,,,,Matsusaka International,1,Installed\locations\3PA_Matsusaka_2015\1.00,Matsusaka_International,Japan,,,1,Permanent,
+MATSUSAKA_Intl_Old_Chicane,,,,,,MATSUSAKA_Intl_Old_Chicane,,Asia,3,,"woochoo, & ISI",,http://rfactor.net/downloads/getmod.php,271593472,3,,,55,,,,,Matsusaka Intl Old Chicane,1,Installed\locations\3PA_Matsusaka_2015\1.00,MATSUSAKA_Intl_Old_Chicane,Japan,,,1,Permanent,
+Matsusaka_Intl_West_Chicane,,,,,,Matsusaka_Intl_West_Chicane,,Asia,3,,"woochoo, & ISI",,http://rfactor.net/downloads/getmod.php,271593472,3,,,55,,,,,Matsusaka Intl West Chicane,1,Installed\locations\3PA_Matsusaka_2015\1.00,Matsusaka_Intl_West_Chicane,Japan,,,1,Permanent,
+Matsusaka_Motorcycle,,,,,,Matsusaka_Motorcycle,,Asia,3,,"woochoo, & ISI",,http://rfactor.net/downloads/getmod.php,271593472,3,,,55,,,,,Matsusaka Motorcycle,1,Installed\locations\3PA_Matsusaka_2015\1.00,Matsusaka_Motorcycle,Japan,,,1,Permanent,
+Matsusaka_West,,,,,,Matsusaka_West,,Asia,3,,"woochoo, & ISI",,http://rfactor.net/downloads/getmod.php,271593472,3,,,55,,,,,Matsusaka West,1,Installed\locations\3PA_Matsusaka_2015\1.00,Matsusaka_West,Japan,,,1,Permanent,
+Matsusaka_West_West_Chicane,,,,,,Matsusaka_West_West_Chicane,,Asia,3,,"woochoo, & ISI",,http://rfactor.net/downloads/getmod.php,271593472,3,,,55,,,,,Matsusaka West West Chicane,1,Installed\locations\3PA_Matsusaka_2015\1.00,Matsusaka_West_West_Chicane,Japan,,,1,Permanent,
+60SHOCKENHEIM,,1960-,,,,60SHOCKENHEIM,,Europe,3,,,1960,,3158016,3,,,55,,,,,Hockenheim,0.85,Installed\locations\60sHockenheim\0.85,60SHOCKENHEIM,Germany,,,1,Permanent,
+70SGLEN,,1970-,,,,70SGLEN,,North America,2,,"motorfx,philrob rf1,gtl,gtr2,rf2",1970,,3158016,2,,,55,,,,,Watkins Glen,0.14dx,Installed\locations\70sWatkinsGlen\0.14dx,70SGLEN,United States,,,1,Permanent,1412
+ADELAIDE,,,,,,ADELAIDE,,Oceania,1,,,,,270536704,0,,,57,,,,,Adelaide,1.07,Installed\locations\adelaide_street_circuit\1.07,ADELAIDE,Australia,,,1,Temporary,
+ADR2016,,2010-,,,,ADR2016,,Europe,2,,ƒab,2016,,271593472,3,,,55,,,,,Adr,1.02,Installed\locations\AnneauduRhin2016\1.02,ADR2016,France,,,1,Permanent,
+Aquitania,,,,,,Aquitania,,Europe,2,,"R07 conv Corti,DX11 and update prob",,,3149824,2,,,57,,,,,Aquitania,1.1,Installed\locations\Aquitania\1.1,Aquitania,France,,,1,Temporary,
+_output,,,,,,_output,,Europe,2,,"R07 conv Corti,DX11 and update prob",,,3149824,2,,,57,,,,,Output,1.1,Installed\locations\Aquitania\1.1,_output,France,,,1,Temporary,
+AtlantaMP_KT_A,,,,,,AtlantaMP_KT_A,,North America,3,,,,,271593472,0,,,0,,,,,Atlantamp Kt A,1.28,Installed\locations\AtlantaMP_2014\1.28,AtlantaMP_KT_A,United States,,,1,,AAA9999
+AtlantaMP_KT_B,,,,,,AtlantaMP_KT_B,,North America,3,,,,,271593472,0,,,0,,,,,Atlantamp Kt B,1.28,Installed\locations\AtlantaMP_2014\1.28,AtlantaMP_KT_B,United States,,,1,,AAA9999
+AtlantaMP_KT_BPlus,,,,,,AtlantaMP_KT_BPlus,,North America,3,,,,,271593472,0,,,0,,,,,Atlantamp Kt Bplus,1.28,Installed\locations\AtlantaMP_2014\1.28,AtlantaMP_KT_BPlus,United States,,,1,,AAA9999
+AtlantaMP_KT_C,,,,,,AtlantaMP_KT_C,,North America,3,,,,,271593472,0,,,0,,,,,Atlantamp Kt C,1.28,Installed\locations\AtlantaMP_2014\1.28,AtlantaMP_KT_C,United States,,,1,,AAA9999
+AtlantaMP_RT,,,,,,AtlantaMP_RT,,North America,3,,,,,271593472,0,,,0,,,,,Atlantamp Rt,1.28,Installed\locations\AtlantaMP_2014\1.28,AtlantaMP_RT,United States,,,1,,AAA9999
+BARBAGALLO,,,,,,BARBAGALLO,,Oceania,2,,Nibiru,,,271593472,2,,,55,,,,,Barbagallo,2.3,Installed\locations\barbagallo_v2.3\2.3,BARBAGALLO,Australia,,,1,Permanent,
+BARBAGALLO_SHORT,,,,,,BARBAGALLO_SHORT,,Oceania,2,,Nibiru,,,271593472,2,,,55,,,,,Barbagallo Short,2.3,Installed\locations\barbagallo_v2.3\2.3,BARBAGALLO_SHORT,Australia,,,1,Permanent,
+BATHURST12h2016,,2010-,,,,BATHURST12h2016,,Oceania,2,,,2016,,3149824,3,,,57,,,,,Bathurst 12H,3,Installed\locations\bathurst_2016_v3\3.0,BATHURST12h2016,Australia,,,1,Temporary,
+BATHURST2016,,2010-,,,,BATHURST2016,,Oceania,2,,,2016,,3149824,3,,,57,,,,,Bathurst,3,Installed\locations\bathurst_2016_v3\3.0,BATHURST2016,Australia,,,1,Temporary,
+birminghamsuperprix,,,,,,birminghamsuperprix,,Europe,2,,rf1 to rf2   philrob update,,,2101248,2,,,57,,,,,Birmingham Superprix,0.1,Installed\locations\Birminghamsuperprix\0.10,birminghamsuperprix,United Kingdom,,,1,Temporary,1412
+BLACKWOOD_CL,,,,,,BLACKWOOD_CL,,Europe,2,,Leonardo1962,,https://forum.studio-397.com/index.php?find-new/757770/posts,271593472,2,,,55,,,,,Blackwood Cl,DX11a,Installed\locations\Blackwood\DX11a,BLACKWOOD_CL,United Kingdom,,,1,Permanent,
+BLACKWOOD_CL_REV,,,,,,BLACKWOOD_CL_REV,,Europe,2,,Leonardo1962,,https://forum.studio-397.com/index.php?find-new/757770/posts,271593472,2,,,55,,,,,Blackwood Cl Rev,DX11a,Installed\locations\Blackwood\DX11a,BLACKWOOD_CL_REV,United Kingdom,,,1,Permanent,
+BLACKWOOD_GR,,,,,,BLACKWOOD_GR,,Europe,2,,Leonardo1962,,https://forum.studio-397.com/index.php?find-new/757770/posts,271593472,2,,,55,,,,,Blackwood Gr,DX11a,Installed\locations\Blackwood\DX11a,BLACKWOOD_GR,United Kingdom,,,1,Permanent,
+BLACKWOOD_GR_Rev,,,,,,BLACKWOOD_GR_Rev,,Europe,2,,Leonardo1962,,https://forum.studio-397.com/index.php?find-new/757770/posts,271593472,2,,,55,,,,,Blackwood Gr Rev,DX11a,Installed\locations\Blackwood\DX11a,BLACKWOOD_GR_Rev,United Kingdom,,,1,Permanent,
+BLACKWOOD_GX,,,,,,BLACKWOOD_GX,,Europe,2,,Leonardo1962,,https://forum.studio-397.com/index.php?find-new/757770/posts,271593472,2,,,55,,,,,Blackwood Gx,DX11a,Installed\locations\Blackwood\DX11a,BLACKWOOD_GX,United Kingdom,,,1,Permanent,
+BLACKWOOD_GX_REV,,,,,,BLACKWOOD_GX_REV,,Europe,2,,Leonardo1962,,https://forum.studio-397.com/index.php?find-new/757770/posts,271593472,2,,,55,,,,,Blackwood Gx Rev,DX11a,Installed\locations\Blackwood\DX11a,BLACKWOOD_GX_REV,United Kingdom,,,1,Permanent,
+BLACKWOOD_RL,,,,,,BLACKWOOD_RL,,Europe,2,,Leonardo1962,,https://forum.studio-397.com/index.php?find-new/757770/posts,271593472,2,,,55,,,,,Blackwood Rl,DX11a,Installed\locations\Blackwood\DX11a,BLACKWOOD_RL,United Kingdom,,,1,Permanent,
+Blackwood_RL_REV,,,,,,Blackwood_RL_REV,,Europe,2,,Leonardo1962,,https://forum.studio-397.com/index.php?find-new/757770/posts,271593472,2,,,55,,,,,Blackwood Rl Rev,DX11a,Installed\locations\Blackwood\DX11a,Blackwood_RL_REV,United Kingdom,,,1,Permanent,
+BLACKWOOD_RT,,,,,,BLACKWOOD_RT,,Europe,2,,Leonardo1962,,https://forum.studio-397.com/index.php?find-new/757770/posts,271593472,2,,,55,,,,,Blackwood Rt,DX11a,Installed\locations\Blackwood\DX11a,BLACKWOOD_RT,United Kingdom,,,1,Permanent,
+BLACKWOOD_RT_Rev,,,,,,BLACKWOOD_RT_Rev,,Europe,2,,Leonardo1962,,https://forum.studio-397.com/index.php?find-new/757770/posts,271593472,2,,,55,,,,,Blackwood Rt Rev,DX11a,Installed\locations\Blackwood\DX11a,BLACKWOOD_RT_Rev,United Kingdom,,,1,Permanent,
+BLACKWOOD_SkidPad,,,,,,BLACKWOOD_SkidPad,,Europe,2,,Leonardo1962,,https://forum.studio-397.com/index.php?find-new/757770/posts,271593472,2,,,55,,,,,Blackwood Skidpad,DX11a,Installed\locations\Blackwood\DX11a,BLACKWOOD_SkidPad,United Kingdom,,,1,Permanent,
+BOTNIARING_Chicane,,,,,,BOTNIARING_Chicane,,Europe,2,,,,,271593472,0,,,0,,,,,Botniaring Chicane,1.02,Installed\locations\Botniaring_2017\1.02,BOTNIARING_Chicane,Finland,,,1,,AAA9999
+BOTNIARING_Long,,,,,,BOTNIARING_Long,,Europe,2,,,,,271593472,0,,,0,,,,,Botniaring Long,1.02,Installed\locations\Botniaring_2017\1.02,BOTNIARING_Long,Finland,,,1,,AAA9999
+Botniaring_Short,,,,,,Botniaring_Short,,Europe,2,,,,,271593472,0,,,0,,,,,Botniaring Short,1.02,Installed\locations\Botniaring_2017\1.02,Botniaring_Short,Finland,,,1,,AAA9999
+BrandsGP,,,,,,BrandsGP,,Europe,2,,AC convert,,,3149824,2,,,55,,,,,Brands GP,0.78dx,Installed\locations\brandsacdx\0.78dx,BrandsGP,United Kingdom,,,1,Permanent,
+BrandsIndy,,,,,,BrandsIndy,,Europe,2,,AC convert,,,3149824,2,,,55,,,,,Brands Indy,0.78dx,Installed\locations\brandsacdx\0.78dx,BrandsIndy,United Kingdom,,,1,Permanent,
+Brands_Hatch_GP,,,,,,Brands_Hatch_GP,,Europe,5,,spidey,,http://www.premiersimracing.com/tracks/rf2/BrandsHatch_v1.22.rfc,3158016,3,,,55,,,,,Brands Hatch GP,1.22,Installed\locations\brandshatch\1.22,Brands_Hatch_GP,United Kingdom,,,1,Permanent,
+Brands_Hatch_INDY,,,,,,Brands_Hatch_INDY,,Europe,5,,spidey,,http://www.premiersimracing.com/tracks/rf2/BrandsHatch_v1.22.rfc,3158016,3,,,55,,,,,Brands Hatch Indy,1.22,Installed\locations\brandshatch\1.22,Brands_Hatch_INDY,United Kingdom,,,1,Permanent,
+BremgartenGP_54,,1950-,,,,BremgartenGP_54,,Europe,2,,"R07 conv Corti,DX11 and update prob",1954,,3149824,2,,,57,,,,,Bremgarten GP,1.1,Installed\locations\Bremgarten54\0.85,BremgartenGP_54,Switzerland,,,1,Temporary,
+Brianza_Blancpain,,,,,,Brianza_Blancpain,,Europe,2,,orig. by ISI converted by Turb,,,271593472,2,,,55,,,,,Brianza Blancpain,1.7,Installed\locations\Brianza\1.7,Brianza_Blancpain,Italy,,,1,Permanent,
+Brianza_GP,,,,,,Brianza_GP,,Europe,2,,orig. by ISI converted by Turb,,,271593472,2,,,55,,,,,Brianza GP,1.7,Installed\locations\Brianza\1.7,Brianza_GP,Italy,,,1,Permanent,
+Brianza_HistA,,,,,,Brianza_HistA,,Europe,2,,orig. by ISI converted by Turb,,,271593472,2,,,55,,,,,Brianza HistA,1.7,Installed\locations\Brianza\1.7,Brianza_HistA,Italy,,,1,Permanent,
+Brianza_HistB,,,,,,Brianza_HistB,,Europe,2,,orig. by ISI converted by Turb,,,271593472,2,,,55,,,,,Brianza HistB,1.7,Installed\locations\Brianza\1.7,Brianza_HistB,Italy,,,1,Permanent,
+Brianza_JR,,,,,,Brianza_JR,,Europe,2,,orig. by ISI converted by Turb,,,271593472,2,,,55,,,,,Brianza Jr,1.7,Installed\locations\Brianza\1.7,Brianza_JR,Italy,,,1,Permanent,
+Brianza10K,,2010-,,,,Brianza10K,,Europe,3,,,2010,,271593472,0,,,0,,,,,Brianza 10K,2.04,Installed\locations\Brianza_1966\2.04,Brianza10K,Italy,,,1,,AAA9999
+Brianza1966,,1960-,,,,Brianza1966,,Europe,3,,,1966,,271593472,0,,,0,,,,,Brianza,2.04,Installed\locations\Brianza_1966\2.04,Brianza1966,Italy,,,1,,AAA9999
+BrianzaJr,,,,,,BrianzaJr,,Europe,3,,,,,271593472,0,,,0,,,,,Brianza Jr,2.04,Installed\locations\Brianza_1966\2.04,BrianzaJr,Italy,,,1,,AAA9999
+Bridgehampton,,,,,,Bridgehampton,,North America,1,,LilSki / digga,,www.simracingteam.net,270536704,1,,,55,,,,,Bridgehampton,1.03,Installed\locations\Bridgehampton\1.03,Bridgehampton,United States,,,1,Permanent,
+Bridgehampton_a,,,,,,Bridgehampton_a,,North America,1,,LilSki / digga,,www.simracingteam.net,270536704,1,,,55,,,,,Bridgehampton A,1.03,Installed\locations\Bridgehampton\1.03,Bridgehampton_a,United States,,,1,Permanent,
+BUENOS_AIRES_HISTORIC,,,,,,BUENOS_AIRES_HISTORIC,,South America,2,,conversion from rf1 Rik and Mauro,,,271593472,2,,,55,,,,,Buenos Aires Historic,1.02,Installed\locations\Buenos_Aires_Historic\1.02,BUENOS_AIRES_HISTORIC,Argentina,,,1,Permanent,1412
+CadwellParkSRW,,,,,,CadwellParkSRW,,Europe,2,,,,,3158016,2,,,55,,,,,Cadwell Park,1.55,Installed\locations\cadwell_park_circuit\1.55,CadwellParkSRW,United Kingdom,,,1,Permanent,
+Castlecombe_classic,,,,,,Castlecombe_classic,,Europe,4,,,,,271593472,0,,,55,,,,,Castle Combe Classic,1.05,Installed\locations\castle_combe_circuit\1.05,Castlecombe_classic,United Kingdom,,,1,Permanent,
+castlecombe_modern,,,,,,castlecombe_modern,,Europe,4,,,,,271593472,0,,,55,,,,,Castle Combe Modern,1.05,Installed\locations\castle_combe_circuit\1.05,castlecombe_modern,United Kingdom,,,1,Permanent,
+PaulRicard_HTTT_GT,,,,,,PaulRicard_HTTT_GT,,Europe,2,,,,,271593472,2,,,55,,,,,Paul Ricard HTTT GT,1.05,Installed\locations\Circuit_Paul_Ricard\1.05,PaulRicard_HTTT_GT,France,,,1,Permanent,
+PaulRicard_HTTT_GTC,,,,,,PaulRicard_HTTT_GTC,,Europe,2,,,,,271593472,2,,,55,,,,,Paul Ricard HTTT GTC,1.05,Installed\locations\Circuit_Paul_Ricard\1.05,PaulRicard_HTTT_GTC,France,,,1,Permanent,
+PaulRicard_HTTT_GTP,,,,,,PaulRicard_HTTT_GTP,,Europe,2,,,,,271593472,2,,,55,,,,,Paul Ricard HTTT GTP,1.05,Installed\locations\Circuit_Paul_Ricard\1.05,PaulRicard_HTTT_GTP,France,,,1,Permanent,
+PaulRicard_HTTT_PR,,,,,,PaulRicard_HTTT_PR,,Europe,2,,,,,271593472,2,,,55,,,,,Paul Ricard HTTT PR,1.05,Installed\locations\Circuit_Paul_Ricard\1.05,PaulRicard_HTTT_PR,France,,,1,Permanent,
+PaulRicard_HTTT_PR_DRS,,,,,,PaulRicard_HTTT_PR_DRS,,Europe,2,,,,,271593472,2,,,55,,,,,Paul Ricard HTTT PR DRS,1.05,Installed\locations\Circuit_Paul_Ricard\1.05,PaulRicard_HTTT_PR_DRS,France,,,1,Permanent,
+PaulRicard_HTTT_SH,,,,,,PaulRicard_HTTT_SH,,Europe,2,,,,,271593472,2,,,55,,,,,Paul Ricard HTTT SH,1.05,Installed\locations\Circuit_Paul_Ricard\1.05,PaulRicard_HTTT_SH,France,,,1,Permanent,
+CROFT_ROAD_COURSE,,,,,,CROFT_ROAD_COURSE,,Europe,2,,feels3,,,271593472,1,,,55,,,,,Croft Road Course,1.01sm,Installed\locations\croft circuit\1.01sm,CROFT_ROAD_COURSE,United Kingdom,,,1,Permanent,
+CroixenTernois2017,,2010-,,,,CroixenTernois2017,,Europe,2,,ƒab,2017,,271593472,1,,,55,,,,,Croix en Ternois,1.12,Installed\locations\CROIXENTERNOIS2017\1.12,CroixenTernois2017,France,,,1,Permanent,
+Crystal,,,,,,Crystal,,Europe,2,,ƒab,,,271593472,3,,,55,,,,,Crystal Palace,1.1,Installed\locations\CRYSTAL PALACE 1969\1.1,Crystal,United Kingdom,,,1,Permanent,
+Dijon79,,1970-,,,,Dijon79,,Europe,2,,MotorFX converted by Arnao,1979,,3158016,2,,,55,,,,,Dijon,0.51,Installed\locations\Dijon79\0.51,Dijon79,France,,,1,Permanent,
+DIJON_PRENOIS_GC,,,,,,DIJON_PRENOIS_GC,,Europe,1,,,,,270536704,0,,,55,,,,,Dijon Prenois Gc,1.07,Installed\locations\Dijon_Prenois_Circuit\1.07,DIJON_PRENOIS_GC,France,,,1,Permanent,
+DIJON_PRENOIS_PC,,,,,,DIJON_PRENOIS_PC,,Europe,1,,,,,270536704,0,,,55,,,,,Dijon Prenois Pc,1.07,Installed\locations\Dijon_Prenois_Circuit\1.07,DIJON_PRENOIS_PC,France,,,1,Permanent,
+Dix-Racing Baku,,,,,,Dix-Racing Baku,,Asia,2,,,,,3158016,0,,,0,,,,,Baku,2017,Installed\locations\Dix-Racing Baku\2017,,Azerbaijan,,,1,,
+DONINGTON 2013,,2010-,,,,DONINGTON 2013,,Europe,2,,,2013,,3158016,0,,,0,,,,,Donington,2,Installed\locations\donington 2013\2.0,,United Kingdom,,,1,,
+DUNDROD_1950,,1950-,,,,DUNDROD_1950,,Europe,2,,,1950,,3158080,0,,,0,,,,,Dundrod,0.1,Installed\locations\Dundrod_1950\0.1,DUNDROD_1950,Northern Ireland,,,1,,
+BugattiCircuit_N,,,,,,BugattiCircuit_N,,Europe,2,,ECAR_TRACKS,,https://twitter.com/ECAR_Tracks,271593472,1,,,55,,,,,Bugatti Circuit N,1,Installed\locations\ECAR_LeMans_Bugatti\1.0,BugattiCircuit_N,France,,,1,Permanent,
+betons_60,,1960-,,,,betons_60,,Europe,1,,Sergio Loro,1960,www.f3classictracks.com,3145728,1,,,55,,,,,Betonschleife,1.14,Installed\locations\Eifel Betonschleife\1.14,betons_60,Germany,,,1,Permanent,
+ETT_1,,,,,,ETT_1,,Europe,2,,,,,3158016,0,,,0,,,,,Ett 1,1.04,Installed\locations\EuskoTestTrack\1.04,ETT_1,Spain,,,1,,
+ACSpa,,,,,,ACSpa,,Europe,2,,"R07 conv Corti,DX11 and update prob",,,3149824,2,,,57,,,,,Spa,1.1,Installed\locations\exm_spa\1.1,ACSpa,Belgium,,,1,Temporary,
+Hocke_F3,,,,,,Hocke_F3,,Africa,1,,Sergio Loro,,,3145728,1,,,55,,,,,Hocke F3,0.7,Installed\locations\Forestheim\0.70,Hocke_F3,Libya,,,1,Permanent,
+QUICK,,,,,,QUICK,,Africa,1,,Sergio Loro,,,3145728,1,,,55,,,,,Quick,0.7,Installed\locations\Forestheim\0.70,QUICK,Libya,,,1,Permanent,
+FUJI2012GP,,2010-,,,,FUJI2012GP,,Asia,2,,RF2WEC,2012,www.rf2wec.eu,271593472,2,,,55,,,,,Fuji GP,2,Installed\locations\Fuji_rf2wec\2.0,FUJI2012GP,Japan,,,1,Permanent,rf2wec0004
+FUJI2012GT,,2010-,,,,FUJI2012GT,,Asia,2,,RF2WEC,2012,www.rf2wec.eu,271593472,2,,,55,,,,,Fuji GT,2,Installed\locations\Fuji_rf2wec\2.0,FUJI2012GT,Japan,,,1,Permanent,rf2wec0004
+GENK_KARTING_ALONSO,,,,,,GENK_KARTING_ALONSO,,Europe,2,,GVE,,http://getmod.srrs-racing.net/getmod.php/RD,271593472,1,,,52,,,,,Genk Karting Alonso,0.91,Installed\locations\Genk Karting\0.91,GENK_KARTING_ALONSO,Netherlands,,,1,,
+GENK_KARTING_CIK,,,,,,GENK_KARTING_CIK,,Europe,2,,GVE,,http://getmod.srrs-racing.net/getmod.php/RD,271593472,1,,,52,,,,,Genk Karting Cik,0.91,Installed\locations\Genk Karting\0.91,GENK_KARTING_CIK,Netherlands,,,1,,
+Indianapolis2007GP,,2000-,,,,Indianapolis2007GP,,North America,1,,,2007,,270536704,0,,,0,,,,,Indianapolis GP,2.05,Installed\locations\Indianapolis_2013\2.05,Indianapolis2007GP,United States,,,1,,AAA9999
+Indianapolis2013GP,,2010-,,,,Indianapolis2013GP,,North America,1,,,2013,,270536704,0,,,0,,,,,Indianapolis GP,2.05,Installed\locations\Indianapolis_2013\2.05,Indianapolis2013GP,United States,,,1,,AAA9999
+Indianapolis2014GP,,2010-,,,,Indianapolis2014GP,,North America,1,,,2014,,270536704,0,,,0,,,,,Indianapolis GP,2.05,Installed\locations\Indianapolis_2013\2.05,Indianapolis2014GP,United States,,,1,,AAA9999
+Indianapolis400,,,,,,Indianapolis400,,North America,1,,,,,270536704,0,,,0,,,,,Indianapolis 400,2.05,Installed\locations\Indianapolis_2013\2.05,Indianapolis400,United States,,,1,,AAA9999
+Indianapolis500,,,,,,Indianapolis500,,North America,1,,,,,270536704,0,,,0,,,,,Indianapolis 500,2.05,Installed\locations\Indianapolis_2013\2.05,Indianapolis500,United States,,,1,,AAA9999
+INTERLAGOS,,,,,,INTERLAGOS,,South America,2,,,,,3149824,0,,,55,,,,,Interlagos,1.3,Installed\locations\Interlagos_GP\1.3,INTERLAGOS,Brazil,,,1,Permanent,
+BelgianGP_1966,,1960-,,,,BelgianGP_1966,,Europe,2,,Image Space Incorporated,1966,http://rfactor.net/downloads/getmod.php,271593472,1,,,55,,,,,Belgian GP,2.01,Installed\locations\ISI_Belgium_1966\2.01,BelgianGP_1966,Belgium,,,1,Permanent,
+LOCHDRUMMOND_LONG,300,,,,,LOCHDRUMMOND_LONG,,Europe,2,,ISI,,http://rfactor.net/downloads/getmod.php,271593536,1,,,55,,,,,Loch Drummond Long,1.1,Installed\locations\ISI_LochDrummond_2013\1.1,LOCHDRUMMOND_LONG,United Kingdom,,,1,Permanent,
+LOCHDRUMMOND_SHORT,300,,,,,LOCHDRUMMOND_SHORT,,Europe,2,,ISI,,http://rfactor.net/downloads/getmod.php,271593536,1,,,55,,,,,Loch Drummond Short,1.1,Installed\locations\ISI_LochDrummond_2013\1.1,LOCHDRUMMOND_SHORT,United Kingdom,,,1,Permanent,
+Montreal_2006,880,2000-,,,,Montreal_2006,,North America,2,,gJED,2006,http://rfactor.net/downloads/getmod.php,271593536,2,,,55,,,,,Montreal,1.01,Installed\locations\ISI_Montreal_2000\1.01,Montreal_2006,Canada,,,1,Permanent,
+InfieldRoadCourse,982,,,,,InfieldRoadCourse,,North America,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,54,,,,,Infieldroadcourse,1.2,Installed\locations\ISI_MountainPeakSW_2014\1.20,InfieldRoadCourse,United States,,,1,,
+KartOval,982,,,,,KartOval,,North America,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,54,,,,,Kartoval,1.2,Installed\locations\ISI_MountainPeakSW_2014\1.20,KartOval,United States,,,1,,
+KartRC1,982,,,,,KartRC1,,North America,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,54,,,,,Kartrc1,1.2,Installed\locations\ISI_MountainPeakSW_2014\1.20,KartRC1,United States,,,1,,
+KartRC2,982,,,,,KartRC2,,North America,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,54,,,,,Kartrc2,1.2,Installed\locations\ISI_MountainPeakSW_2014\1.20,KartRC2,United States,,,1,,
+KartRC3,982,,,,,KartRC3,,North America,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,54,,,,,Kartrc3,1.2,Installed\locations\ISI_MountainPeakSW_2014\1.20,KartRC3,United States,,,1,,
+LegendsOval,982,,,,,LegendsOval,,North America,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,54,,,,,Legendsoval,1.2,Installed\locations\ISI_MountainPeakSW_2014\1.20,LegendsOval,United States,,,1,,
+Synergy300,982,,,,,Synergy300,,North America,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,54,,,,,Synergy300,1.2,Installed\locations\ISI_MountainPeakSW_2014\1.20,Synergy300,United States,,,1,,
+Sardian_Long,946,,,,,Sardian_Long,,,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,2,,,57,,,,,Sardian Long,1,Installed\locations\ISI_SardianHeights_2004\1.00,Sardian_Long,,,,1,Temporary,
+Sardian_Short,946,,,,,Sardian_Short,,,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,2,,,57,,,,,Sardian Short,1,Installed\locations\ISI_SardianHeights_2004\1.00,Sardian_Short,,,,1,Temporary,
+TigerMoth_R1,860,,,,,TigerMoth_R1,,Europe,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,55,,,,,Tigermoth R1,1.02,Installed\locations\isi_tigermoth_2014\1.02,TigerMoth_R1,United Kingdom,,,1,Permanent,
+TigerMoth_R2,860,,,,,TigerMoth_R2,,Europe,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,55,,,,,Tigermoth R2,1.02,Installed\locations\isi_tigermoth_2014\1.02,TigerMoth_R2,United Kingdom,,,1,Permanent,
+TigerMoth_R3,860,,,,,TigerMoth_R3,,Europe,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,55,,,,,Tigermoth R3,1.02,Installed\locations\isi_tigermoth_2014\1.02,TigerMoth_R3,United Kingdom,,,1,Permanent,
+TigerMoth_TestTrack,860,,,,,TigerMoth_TestTrack,,Europe,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,55,,,,,Tigermoth Testtrack,1.02,Installed\locations\isi_tigermoth_2014\1.02,TigerMoth_TestTrack,United Kingdom,,,1,Permanent,
+TigerMoth_TT_Training,860,,,,,TigerMoth_TT_Training,,Europe,2,,Image Space Incorporated,,http://rfactor.net/downloads/getmod.php,271593536,1,,,55,,,,,Tigermoth Tt Training,1.02,Installed\locations\isi_tigermoth_2014\1.02,TigerMoth_TT_Training,United Kingdom,,,1,Permanent,
+JARAMA79,,1970-,,,,JARAMA79,,Europe,1,,,1979,16/10/2012,3145728,3,,,55,,,,,Jarama,0.8,Installed\locations\Jarama79\0.8,JARAMA79,Spain,,,1,Permanent,16/10/2012
+Knockhill,,,,,,Knockhill,,Europe,2,,,,http://getmod.srrs-racing.net/getmod.php/~IsR~Barabba,3158016,0,,,0,,,,,Knockhill,1.3,Installed\locations\knockhill\1.3,,Scotland,,,1,,
+ksRing,,,,,,ksRing,,Europe,2,,Kunos Simulazioni,,,1716224,2,,,55,,,,,Ksring,0.6,Installed\locations\ksRing\0.60,ksRing,Germany,,,1,Permanent,
+Kyalami_Legends_[1976],,1970-,,,,Kyalami_Legends_[1976],,Africa,2,,,1976,,3149824,2,,,55,,,,,Kyalami Legends [],1.01LE_dx11,Installed\locations\Kyalami_Legends_[1976]\1.01LE_dx11,KYALAMI_LEGENDS_GP,South Africa,,,1,Permanent,56e5833eb5cdfbca91b81a41f54f95cea69dcc2c1f7d7ad27172c712077c4546
+smc_LAGUNASECA_GP,,,,,,smc_LAGUNASECA_GP,,North America,1,,,,,3145728,1,,,55,,,,,Smc Lagunaseca GP,1.07b,Installed\locations\Laguna Seca\1.07b,smc_LAGUNASECA_GP,United States,,,1,Permanent,
+Lausitzring_GPL,,,,,,Lausitzring_GPL,,Europe,2,,,,,271593472,0,,,55,,,,,Lausitzring GPl,1.061,Installed\locations\Lausitzring_2016\1.061,Lausitzring_GPL,Germany,,,1,Permanent,
+Lausitzring_GPS,,,,,,Lausitzring_GPS,,Europe,2,,,,,271593472,0,,,55,,,,,Lausitzring GPs,1.061,Installed\locations\Lausitzring_2016\1.061,Lausitzring_GPS,Germany,,,1,Permanent,
+Lausitzring_SWAY,,,,,,Lausitzring_SWAY,,Europe,2,,,,,271593472,0,,,55,,,,,Lausitzring Sway,1.061,Installed\locations\Lausitzring_2016\1.061,Lausitzring_SWAY,Germany,,,1,Permanent,
+LeMans91,,1990-,,,,LeMans91,,Europe,3,,Virtua_LM Modding Team,1991,http://getmod.srrs-racing.net/getmod.php/RD,271593472,1,,,57,,,,,Lemans,1.11,Installed\locations\Le Mans 91-96 Virtua_LM\1.11,LeMans91,France,,,1,Temporary,
+lester,,,,,,lester,,,1,,,,,270536704,0,,,0,,,,,Lester,2.01,Installed\locations\Lester 2.0\2.01,lester,,,,1,,
+lesterSprint,,,,,,lesterSprint,,,1,,,,,270536704,0,,,0,,,,,Lestersprint,2.01,Installed\locations\Lester 2.0\2.01,lesterSprint,,,,1,,
+lester_FE,,,,,,lester_FE,,,1,,,,,270536704,0,,,0,,,,,Lester Fe,2.02,Installed\locations\Lester_FE_2019\2.02,lester_FE,,,,1,,AAA9999
+Le_Grand_Circuit_1967,,1960-,,,,Le_Grand_Circuit_1967,,Europe,2,,"woochoo, in assoc. w/ Virtua_LM",1967,,3158016,3,,,57,,,,,Le Grand Circuit,0.5,Installed\locations\Le_Grand_Circuit_1967\0.5,Le_Grand_Circuit_1967,France,,,1,Temporary,
+Le_Mans_2017,,2010-,,,,Le_Mans_2017,,Europe,1,,SRT,2017,,3145728,0,,,57,,,,,Le Mans,0.91,Installed\locations\Le_Mans_2017\0.91,Le_Mans_2017,France,,,1,Temporary,
+LIENZ_GP,,,,,,LIENZ_GP,,Europe,2,,Mario Morais,,http://www.mj-multimedia.net,3158016,2,,,53,,,,,Lienz GP,0.92,Installed\locations\LIENZ\0.92,LIENZ_GP,Austria,,,1,Novel,MM_LIENZCOV
+LimeRockPark_AllChicanes,,,,,,LimeRockPark_AllChicanes,,North America,2,,,,,271593472,0,,,0,,,,,Limerockpark Allchicanes,2.02,Installed\locations\LimeRockPark_2012\2.02,LimeRockPark_AllChicanes,United States,,,1,,AAA9999
+LimeRockPark_NoChicanes,,,,,,LimeRockPark_NoChicanes,,North America,2,,,,,271593472,0,,,0,,,,,Limerockpark Nochicanes,2.02,Installed\locations\LimeRockPark_2012\2.02,LimeRockPark_NoChicanes,United States,,,1,,AAA9999
+LimeRockPark_RC,,,,,,LimeRockPark_RC,,North America,2,,,,,271593472,0,,,0,,,,,Limerockpark Rc,2.02,Installed\locations\LimeRockPark_2012\2.02,LimeRockPark_RC,United States,,,1,,AAA9999
+LimeRockPark_UphillChicane,,,,,,LimeRockPark_UphillChicane,,North America,2,,,,,271593472,0,,,0,,,,,Limerockpark Uphillchicane,2.02,Installed\locations\LimeRockPark_2012\2.02,LimeRockPark_UphillChicane,United States,,,1,,AAA9999
+LimeRockPark_WestBendChicane,,,,,,LimeRockPark_WestBendChicane,,North America,2,,,,,271593472,0,,,0,,,,,Limerockpark Westbendchicane,2.02,Installed\locations\LimeRockPark_2012\2.02,LimeRockPark_WestBendChicane,United States,,,1,,AAA9999
+LONGFORD_1967,,1960-,,,,LONGFORD_1967,,Oceania,2,,,1967,,271593472,0,,,0,,,,,Longford,1,Installed\locations\Longford_1967\1.00,LONGFORD_1967,Australia,,,1,,AAA9999
+Enduro,,,,,,Enduro,,Europe,2,,Harry Seb,,,3158016,2,,,55,,,,,Enduro,0.98,Installed\locations\Magnificent_Park_v098\0.98,Enduro,France,,,1,Permanent,
+International,,,,,,International,,Europe,2,,Harry Seb,,,3158016,2,,,55,,,,,International,0.98,Installed\locations\Magnificent_Park_v098\0.98,International,France,,,1,Permanent,
+National,,,,,,National,,Europe,2,,Harry Seb,,,3158016,2,,,55,,,,,National,0.98,Installed\locations\Magnificent_Park_v098\0.98,National,France,,,1,Permanent,
+MagnyCours,,,,,,MagnyCours,,Europe,1,,,,,3145728,0,,,55,,,,,Magnycours,1.52,Installed\locations\MagnyCours_GP\1.52,MagnyCours,France,,,1,Permanent,
+Malaysian_GP,,,,,,Malaysian_GP,,Asia,2,,Frenky,,,271593472,0,,,0,,,,,Malaysian GP,1.82,Installed\locations\Malaysia_2007\1.82,Malaysian_GP,Malaysia,,,1,Permanent,AAA9999
+Malaysia_NLoop,,,,,,Malaysia_NLoop,,Asia,2,,Frenky,,,271593472,0,,,0,,,,,Malaysia Nloop,1.82,Installed\locations\Malaysia_2007\1.82,Malaysia_NLoop,Malaysia,,,1,Permanent,AAA9999
+Malaysia_SLoop,,,,,,Malaysia_SLoop,,Asia,2,,Frenky,,,271593472,0,,,0,,,,,Malaysia Sloop,1.82,Installed\locations\Malaysia_2007\1.82,Malaysia_SLoop,Malaysia,,,1,Permanent,AAA9999
+MidOhio_Chicane,,,,,,MidOhio_Chicane,,North America,2,,Virtua_LM,,,271593472,1,,,55,,,,,Midohio Chicane,2.02,Installed\locations\MidOhio_Virtua_LM\2.02,MidOhio_Chicane,United States,,,1,Permanent,
+MidOhio_Mi200,,,,,,MidOhio_Mi200,,North America,2,,Virtua_LM,,,271593472,1,,,55,,,,,Midohio Mi200,2.02,Installed\locations\MidOhio_Virtua_LM\2.02,MidOhio_Mi200,United States,,,1,Permanent,
+MidOhio_NoChicane,,,,,,MidOhio_NoChicane,,North America,2,,Virtua_LM,,,271593472,1,,,55,,,,,Midohio Nochicane,2.02,Installed\locations\MidOhio_Virtua_LM\2.02,MidOhio_NoChicane,United States,,,1,Permanent,
+Mills_InnerLoopA,,,,,,Mills_InnerLoopA,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,271593472,1,,,55,,,,,Mills Innerloopa,2.1,Installed\locations\MillsMetro_2011\2.1,Mills_InnerLoopA,United States,,,1,Permanent,
+Mills_InnerLoopB,,,,,,Mills_InnerLoopB,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,271593472,1,,,55,,,,,Mills Innerloopb,2.1,Installed\locations\MillsMetro_2011\2.1,Mills_InnerLoopB,United States,,,1,Permanent,
+Mills_InnerLoopC,,,,,,Mills_InnerLoopC,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,271593472,1,,,55,,,,,Mills Innerloopc,2.1,Installed\locations\MillsMetro_2011\2.1,Mills_InnerLoopC,United States,,,1,Permanent,
+Mills_OuterLoopA,,,,,,Mills_OuterLoopA,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,271593472,1,,,55,,,,,Mills Outerloopa,2.1,Installed\locations\MillsMetro_2011\2.1,Mills_OuterLoopA,United States,,,1,Permanent,
+Mills_OuterLoopB,,,,,,Mills_OuterLoopB,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,271593472,1,,,55,,,,,Mills Outerloopb,2.1,Installed\locations\MillsMetro_2011\2.1,Mills_OuterLoopB,United States,,,1,Permanent,
+Mills_OuterLoopC,,,,,,Mills_OuterLoopC,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,271593472,1,,,55,,,,,Mills Outerloopc,2.1,Installed\locations\MillsMetro_2011\2.1,Mills_OuterLoopC,United States,,,1,Permanent,
+Miseluk_kart,,,,,,Miseluk_kart,,Europe,2,,lemax,,lemaxsimracing.com,2101248,1,,,52,,,,,Miseluk Kart,1.01,Installed\locations\miseluk_kart\1.01,Miseluk_kart,Serbia,,,1,,
+MonteCarlo_1966,,1960-,,,,MonteCarlo_1966,,Europe,2,,S397,1966,,271593472,1,,,57,,,,,Montecarlo,2.1,Installed\locations\MonteCarlo_1966\2.1,MonteCarlo_1966,Monaco,,,1,Temporary,
+Mores_Short,,,,,,Mores_Short,,Europe,2,,,,,271593472,0,,,0,,,,,Mores Short,1.82,Installed\locations\Mores_2013\1.82,Mores_Short,Italy,,,1,,AAA9999
+mosportpost2013,,2010-,,,,mosportpost2013,,North America,2,,,2013,,3149824,0,,,0,,,,,Mosportpost,0.901,Installed\locations\Mosport (CTMP)\0.901,mosportpost2013,Canada,,,1,,
+mosportpre2013,,2010-,,,,mosportpre2013,,North America,2,,,2013,,3149824,0,,,0,,,,,Mosportpre,0.901,Installed\locations\Mosport (CTMP)\0.901,mosportpre2013,Canada,,,1,,
+Mugello_Circuit,,,,,,Mugello_Circuit,,Europe,1,,,,,3145728,2,,,55,,,,,Mugello Circuit,1,Installed\locations\Mugello Circuit\1.0,Mugello_Circuit,Italy,,,1,Permanent,
+NJMP_LIGHTNING,,,,,,NJMP_LIGHTNING,,North America,1,,LilSki / DIGGA,,,270536704,2,,,55,,,,,Njmp Lightning,1,Installed\locations\NJMP_Lightning\1.0,NJMP_LIGHTNING,United States,,,1,Permanent,
+NolaMP_KT_A,,,,,,NolaMP_KT_A,,North America,3,,,,,271593472,0,,,0,,,,,Nolamp Kt A,1.3,Installed\locations\NolaMP_2016\1.30,NolaMP_KT_A,United States,,,1,,AAA9999
+NolaMP_KT_B,,,,,,NolaMP_KT_B,,North America,3,,,,,271593472,0,,,0,,,,,Nolamp Kt B,1.3,Installed\locations\NolaMP_2016\1.30,NolaMP_KT_B,United States,,,1,,AAA9999
+NolaMP_KT_C,,,,,,NolaMP_KT_C,,North America,3,,,,,271593472,0,,,0,,,,,Nolamp Kt C,1.3,Installed\locations\NolaMP_2016\1.30,NolaMP_KT_C,United States,,,1,,AAA9999
+NolaMP_KT_D,,,,,,NolaMP_KT_D,,North America,3,,,,,271593472,0,,,0,,,,,Nolamp Kt D,1.3,Installed\locations\NolaMP_2016\1.30,NolaMP_KT_D,United States,,,1,,AAA9999
+NolaMP_KT_E,,,,,,NolaMP_KT_E,,North America,3,,,,,271593472,0,,,0,,,,,Nolamp Kt E,1.3,Installed\locations\NolaMP_2016\1.30,NolaMP_KT_E,United States,,,1,,AAA9999
+NolaMP_RT_A,,,,,,NolaMP_RT_A,,North America,3,,,,,271593472,0,,,0,,,,,Nolamp Rt A,1.3,Installed\locations\NolaMP_2016\1.30,NolaMP_RT_A,United States,,,1,,AAA9999
+NolaMP_RT_B,,,,,,NolaMP_RT_B,,North America,3,,,,,271593472,0,,,0,,,,,Nolamp Rt B,1.3,Installed\locations\NolaMP_2016\1.30,NolaMP_RT_B,United States,,,1,,AAA9999
+NolaMP_RT_C,,,,,,NolaMP_RT_C,,North America,3,,,,,271593472,0,,,0,,,,,Nolamp Rt C,1.3,Installed\locations\NolaMP_2016\1.30,NolaMP_RT_C,United States,,,1,,AAA9999
+NolaMP_RT_D,,,,,,NolaMP_RT_D,,North America,3,,,,,271593472,0,,,0,,,,,Nolamp Rt D,1.3,Installed\locations\NolaMP_2016\1.30,NolaMP_RT_D,United States,,,1,,AAA9999
+NolaMP_RT_INDYCAR,,,,,,NolaMP_RT_INDYCAR,,North America,3,,,,,271593472,0,,,0,,,,,Nolamp Rt Indycar,1.3,Installed\locations\NolaMP_2016\1.30,NolaMP_RT_INDYCAR,United States,,,1,,AAA9999
+NORDSCHLEIFE2_24HOUR,,1920-,,,,NORDSCHLEIFE2_24HOUR,,Europe,2,,,1924,http://getmod.srrs-racing.net/getmod.php/DJC,3158016,2,,,55,,,,,Nordschleife2 Hour,2.3,Installed\locations\Nordschleife2\2.30,NORDSCHLEIFE2_24HOUR,Germany,,,1,Permanent,
+Nordschleife2_Tourist_Autumn,,,,,,Nordschleife2_Tourist_Autumn,,Europe,2,,,,http://getmod.srrs-racing.net/getmod.php/DJC,3158016,2,,,55,,,,,Nordschleife2 Tourist Autumn,2.3,Installed\locations\Nordschleife2\2.30,Nordschleife2_Tourist_Autumn,Germany,,,1,Permanent,
+Nordschleife2_Tourist_Summer,,,,,,Nordschleife2_Tourist_Summer,,Europe,2,,,,http://getmod.srrs-racing.net/getmod.php/DJC,3158016,2,,,55,,,,,Nordschleife2 Tourist Summer,2.3,Installed\locations\Nordschleife2\2.30,Nordschleife2_Tourist_Summer,Germany,,,1,Permanent,
+NORDSCHLEIFE2_VLN,,,,,,NORDSCHLEIFE2_VLN,,Europe,2,,,,http://getmod.srrs-racing.net/getmod.php/DJC,3158016,2,,,55,,,,,Nordschleife2 Vln,2.3,Installed\locations\Nordschleife2\2.30,NORDSCHLEIFE2_VLN,Germany,,,1,Permanent,
+NORISRING,,,,,,NORISRING,,Europe,1,,,,,270536704,0,,,57,,,,,Norisring,1.15,Installed\locations\Norisring\1.15,NORISRING,Germany,,,1,Temporary,
+Nuer_EuropeanGP,,,,,,Nuer_EuropeanGP,,Europe,2,,ISI,,,3149824,2,,,55,,,,,Nuer Europeangp,0.98,Installed\locations\NuerburgRing\0.98,Nuer_EuropeanGP,Germany,,,1,Permanent,
+Nuer_Sprint,,,,,,Nuer_Sprint,,Europe,2,,ISI,,,3149824,2,,,55,,,,,Nuer Sprint,0.98,Installed\locations\NuerburgRing\0.98,Nuer_Sprint,Germany,,,1,Permanent,
+OULTONPARK_FOS,,,,,,OULTONPARK_FOS,,Europe,4,,,,,271593472,0,,,55,,,,,Oultonpark Fos,1.25,Installed\locations\oulton_park_circuit_2015\1.25,OULTONPARK_FOS,United Kingdom,,,1,Permanent,
+OULTONPARK_INT,,,,,,OULTONPARK_INT,,Europe,4,,,,,271593472,0,,,55,,,,,Oultonpark Int,1.25,Installed\locations\oulton_park_circuit_2015\1.25,OULTONPARK_INT,United Kingdom,,,1,Permanent,
+OULTONPARK_INTNC,,,,,,OULTONPARK_INTNC,,Europe,4,,,,,271593472,0,,,55,,,,,Oultonpark Intnc,1.25,Installed\locations\oulton_park_circuit_2015\1.25,OULTONPARK_INTNC,United Kingdom,,,1,Permanent,
+OULTONPARK_INTNC_DRS,,,,,,OULTONPARK_INTNC_DRS,,Europe,4,,,,,271593472,0,,,55,,,,,Oultonpark Intnc Drs,1.25,Installed\locations\oulton_park_circuit_2015\1.25,OULTONPARK_INTNC_DRS,United Kingdom,,,1,Permanent,
+OULTONPARK_ISL,,,,,,OULTONPARK_ISL,,Europe,4,,,,,271593472,0,,,55,,,,,Oultonpark Isl,1.25,Installed\locations\oulton_park_circuit_2015\1.25,OULTONPARK_ISL,United Kingdom,,,1,Permanent,
+PalmBeachKart,,,,,,PalmBeachKart,,North America,2,,,,,271593472,0,,,0,,,,,Palmbeachkart,2.2,Installed\locations\PalmBeach_2012\2.20,PalmBeachKart,United States,,,1,,AAA9999
+PalmBeachRC,,,,,,PalmBeachRC,,North America,2,,,,,271593472,0,,,0,,,,,Palmbeachrc,2.2,Installed\locations\PalmBeach_2012\2.20,PalmBeachRC,United States,,,1,,AAA9999
+PHILLIPISLAND_2013,,2010-,,,,PHILLIPISLAND_2013,,Oceania,2,,,2013,,271593472,2,,,55,,,,,Phillipisland,0.65,Installed\locations\phillip island\0.65,PHILLIPISLAND_2013,Australia,,,1,Permanent,
+Portimao_C1,,,,,,Portimao_C1,,Europe,2,,,,,271593472,0,,,55,,,,,Portimao C1,1.13,Installed\locations\Portimao\1.13,Portimao_C1,Portugal,,,1,Permanent,
+Portimao_C6,,,,,,Portimao_C6,,Europe,2,,,,,271593472,0,,,55,,,,,Portimao C6,1.13,Installed\locations\Portimao\1.13,Portimao_C6,Portugal,,,1,Permanent,
+PIR_CHICANE,,,,,,PIR_CHICANE,,North America,1,,Alex Coutie,,,270536704,1,,,55,,,,,Pir Chicane,0.18,Installed\locations\Portland_International_Raceway\0.18,PIR_CHICANE,United States,,,1,Permanent,
+PIR_NOCHICANE,,,,,,PIR_NOCHICANE,,North America,1,,Alex Coutie,,,270536704,1,,,55,,,,,Pir Nochicane,0.18,Installed\locations\Portland_International_Raceway\0.18,PIR_NOCHICANE,United States,,,1,Permanent,
+Portugal_GP,,,,,,Portugal_GP,,Europe,3,,,,,271593472,0,,,0,,,,,Portugal GP,2.28,Installed\locations\Portugal_2009\2.28,Portugal_GP,Portugal,,,1,,AAA9999
+Portugal_GT,,,,,,Portugal_GT,,Europe,3,,,,,271593472,0,,,0,,,,,Portugal Gt,2.28,Installed\locations\Portugal_2009\2.28,Portugal_GT,Portugal,,,1,,AAA9999
+QuebecKart_RT1,,,,,,QuebecKart_RT1,,North America,3,,S397,,http://rfactor.net/downloads/getmod.php,271593472,1,,,55,,,,,Quebeckart Rt1,1.11,Installed\locations\QuebecSuperKart_2011\1.11,QuebecKart_RT1,Canada,,,1,Permanent,
+QuebecKart_RT2,,,,,,QuebecKart_RT2,,North America,3,,S397,,http://rfactor.net/downloads/getmod.php,271593472,1,,,55,,,,,Quebeckart Rt2,1.11,Installed\locations\QuebecSuperKart_2011\1.11,QuebecKart_RT2,Canada,,,1,Permanent,
+QuebecKart_RT3,,,,,,QuebecKart_RT3,,North America,3,,S397,,http://rfactor.net/downloads/getmod.php,271593472,1,,,55,,,,,Quebeckart Rt3,1.11,Installed\locations\QuebecSuperKart_2011\1.11,QuebecKart_RT3,Canada,,,1,Permanent,
+QuebecKart_RT4,,,,,,QuebecKart_RT4,,North America,3,,S397,,http://rfactor.net/downloads/getmod.php,271593472,1,,,55,,,,,Quebeckart Rt4,1.11,Installed\locations\QuebecSuperKart_2011\1.11,QuebecKart_RT4,Canada,,,1,Permanent,
+HUNGARORING,,,,,,HUNGARORING,,Europe,2,,RaceRfactor,,http://racerfactor.com/es/,3158016,2,,,55,,,,,Hungaroring,1.56,Installed\locations\RaceRfactor_Hungaroring_2013\1.56,HUNGARORING,Serbia,,,1,Permanent,
+Monza_ACCD,,,,,,Monza_ACCD,,Europe,3,,"ISI, McNolo & lagg",,http://www.racerfactor.com,271593472,2,,,55,,,,,Monza Accd,1.96,Installed\locations\RaceRfactor_Monza_2014\1.96,Monza_ACCD,Ireland,,,1,Permanent,
+Monza_SRE,,,,,,Monza_SRE,,Europe,1,,Frenky,,http://www.racerfactor.com,3145728,1,,,55,,,,,Monza Sre,1,Installed\locations\RaceRfactor_Monza_2014\1.96,Monza_SRE,Ireland,,,1,Permanent,
+SPA,,,,,,SPA,,Europe,3,,RaceRfactor,,http://www.racerfactor.com,3158016,2,,,55,,,,,Spa,1.48,Installed\locations\RaceRfactor_Spa_2013\1.48,SPA,Belgium,,,1,Permanent,
+Long,,,,,,Long,,North America,1,,LilSki,,,270536704,0,,,55,,,,,Long,1.02,Installed\locations\Riverside International Raceway\1.02,Long,United States,,,1,Permanent,
+Nascar,,,,,,Nascar,,North America,1,,LilSki,,,270536704,0,,,55,,,,,Nascar,1.02,Installed\locations\Riverside International Raceway\1.02,Nascar,United States,,,1,Permanent,
+Short,,,,,,Short,,North America,1,,LilSki,,,270536704,0,,,55,,,,,Short,1.02,Installed\locations\Riverside International Raceway\1.02,Short,United States,,,1,Permanent,
+ra2016bend,,2010-,,,,ra2016bend,,North America,2,,Bela Valko,2016,,271593472,1,,,55,,,,,Rabend,1.4,Installed\locations\Road America 2016\1.4,ra2016bend,United States,,,1,Permanent,
+ra2016,,2010-,,,,ra2016,,North America,2,,Bela Valko,2016,,271593472,1,,,55,,,,,Ra,1.4,Installed\locations\Road America 2016\1.4,ra2016,United States,,,1,Permanent,
+RoadAtlanta2017,,2010-,,,,RoadAtlanta2017,,North America,2,,,2017,,271593472,0,,,0,,,,,Roadatlanta,1.1,Installed\locations\RoadAtlanta2017\1.10,RoadAtlanta2017,United States,,,1,,
+Sachsenring_GP,,,,,,Sachsenring_GP,,Europe,2,,,,,271593472,0,,,55,,,,,Sachsenring GP,1.13,Installed\locations\Sachsenring_GP\1.13,Sachsenring_GP,Germany,,,1,Permanent,
+SALZBURGRING,,,,,,SALZBURGRING,,Europe,2,,DiGGa,,,271593472,2,,,55,,,,,Salzburgring,1.01,Installed\locations\Salzburgring_2016\1.01,SALZBURGRING,Austria,,,1,Permanent,
+SaoPauloGP,,,,,,SaoPauloGP,,South America,2,,S397,,,3158016,1,,,55,,,,,Saopaulogp,1.07,Installed\locations\SaoPaulo_2013\1.07,SaoPauloGP,Brazil,,,1,Permanent,
+Sao_Paulo_Streets,,,,,,Sao_Paulo_Streets,,North America,1,,,,,3145728,2,,,57,,,,,Sao Paulo Streets,1.1,Installed\locations\Sao_Paulo_Streets\1.1,Sao_Paulo_Streets,United States,,,1,Temporary,
+Sebring_12h,,2010-,,,,Sebring_12h,,North America,2,,Virtua_LM,2012,www.virtua-lm.com,3149824,1,,,55,,,,,Sebring H,2.02,Installed\locations\Sebring_Virtua_LM\2.02,Sebring_12h,United States,,,1,Permanent,
+Sebring_12h_le,,2010-,,,,Sebring_12h_le,,North America,2,,Virtua_LM,2012,www.virtua-lm.com,3149824,1,,,55,,,,,Sebring H Le,2.02,Installed\locations\Sebring_Virtua_LM\2.02,Sebring_12h_le,United States,,,1,Permanent,
+Sebring_Club,,,,,,Sebring_Club,,North America,2,,Virtua_LM,,www.virtua-lm.com,3149824,1,,,55,,,,,Sebring Club,2.02,Installed\locations\Sebring_Virtua_LM\2.02,Sebring_Club,United States,,,1,Permanent,
+Sebring_Modified,,,,,,Sebring_Modified,,North America,2,,Virtua_LM,,www.virtua-lm.com,3149824,1,,,55,,,,,Sebring Modified,2.02,Installed\locations\Sebring_Virtua_LM\2.02,Sebring_Modified,United States,,,1,Permanent,
+Silverstone90s,,1990-,,,,Silverstone90s,,Europe,2,,philrob Rf1 to rf2 convert dx11,1990,,3158016,2,,,55,,,,,Silverstones,0.36,Installed\locations\Silverstone90s\0.36,Silverstone90s,United Kingdom,,,1,Permanent,1412
+RoadAmerica_Full,,,,,,RoadAmerica_Full,,North America,2,,VLM/SimHQM,,,271593472,1,,,55,,,,,Roadamerica Full,1.42,Installed\locations\SMVLM_RoadAmerica\1.42,RoadAmerica_Full,United States,,,1,Permanent,
+Bush_Creek_Sprint,,,,,,Bush_Creek_Sprint,,North America,2,,senormen,,,3158016,2,,,56,,,,,Bush Creek Sprint,0.1,Installed\locations\sm_Aspen_v0.1\0.1,Bush_Creek_Sprint,United States,,,1,Rally,
+Autodromo_di_Imola_DRS,,,,,,Autodromo_di_Imola_DRS,,Europe,3,,senormen,,,3158016,2,,,55,,,,,Autodromo Di Imola Drs,1.2,Installed\locations\sm_Autodromo_di_Imola_v1.2\1.2,Autodromo_di_Imola_DRS,Italy,,,1,Permanent,
+Autodromo_di_Imola_Endurance,,,,,,Autodromo_di_Imola_Endurance,,Europe,3,,senormen,,,3158016,2,,,55,,,,,Autodromo Di Imola Endurance,1.2,Installed\locations\sm_Autodromo_di_Imola_v1.2\1.2,Autodromo_di_Imola_Endurance,Italy,,,1,Permanent,
+Autodromo_di_Imola_GP,,,,,,Autodromo_di_Imola_GP,,Europe,3,,senormen,,,3158016,2,,,55,,,,,Autodromo Di Imola GP,1.2,Installed\locations\sm_Autodromo_di_Imola_v1.2\1.2,Autodromo_di_Imola_GP,Italy,,,1,Permanent,
+Circuito_de_Jerez_Chicane,,,,,,Circuito_de_Jerez_Chicane,,Europe,2,,,,,271593472,0,,,55,,,,,Circuito De Jerez Chicane,1.26,Installed\locations\sm_Circuito_de_Jerez_dd\1.26,Circuito_de_Jerez_Chicane,Spain,,,1,Permanent,
+Circuito_de_Jerez_GP,,,,,,Circuito_de_Jerez_GP,,Europe,2,,,,,271593472,0,,,55,,,,,Circuito De Jerez GP,1.26,Installed\locations\sm_Circuito_de_Jerez_dd\1.26,Circuito_de_Jerez_GP,Spain,,,1,Permanent,
+DPARK_GP,,,,,,DPARK_GP,,Europe,2,,senormen,,,271593472,2,,,0,,,,,Dpark GP,1.53,Installed\locations\sm_donington_park_v1.53\1.53,DPARK_GP,United Kingdom,,,1,,
+DPARK_NATIONAL,,,,,,DPARK_NATIONAL,,Europe,2,,senormen,,,271593472,2,,,0,,,,,Dpark National,1.53,Installed\locations\sm_donington_park_v1.53\1.53,DPARK_NATIONAL,United Kingdom,,,1,,
+Kyalami_Legends,,,,,,Kyalami_Legends,,Africa,2,,senormen,,,3158016,2,,,55,,,,,Kyalami Legends,1.01LE,Installed\locations\sm_Kyalami_Legends_v1.01LE\1.01LE,Kyalami_Legends,Egypt,,,1,Permanent,
+Misano_World_Circuit,,,,,,Misano_World_Circuit,,Europe,1,,senormen,,,270536704,0,,,55,,,,,Misano World Circuit,1.21,Installed\locations\sm_Misano_World_Circuit_v1.21\1.21,Misano_World_Circuit,United Kingdom,,,1,Permanent,
+Red_Bull_Ring_GP,,,,,,Red_Bull_Ring_GP,,Europe,2,,senormen,,,3158016,2,,,55,,,,,Red Bull Ring GP,1.3,Installed\locations\sm_Red_Bull_Ring_v1.3\1.3,Red_Bull_Ring_GP,United Kingdom,,,1,Permanent,
+Red_Bull_Ring_National,,,,,,Red_Bull_Ring_National,,Europe,2,,senormen,,,3158016,2,,,55,,,,,Red Bull Ring National,1.3,Installed\locations\sm_Red_Bull_Ring_v1.3\1.3,Red_Bull_Ring_National,United Kingdom,,,1,Permanent,
+Ring_Knutstorp,,,,,,Ring_Knutstorp,,Europe,2,,senormen,,,271593472,2,,,55,,,,,Ring Knutstorp,1,Installed\locations\sm_Ring_Knutstorp_v1.0\1.0,Ring_Knutstorp,Sweden,,,1,Permanent,
+Silverstone_Legends,,,,,,Silverstone_Legends,,Europe,2,,senormen,,,271593472,2,,,55,,,,,Silverstone Legends,1.4,Installed\locations\sm_Silverstone_Legends_v1.4\1.4,Silverstone_Legends,United Kingdom,,,1,Permanent,
+Singapore_GP,,,,,,Singapore_GP,,Asia,2,,senormen,,,3158016,2,,,57,,,,,Singapore GP,0.11,Installed\locations\sm_Singapore_v0.11\0.11,Singapore_GP,Singapore,,,1,Temporary,
+Snett_100,,,,,,Snett_100,,Europe,3,,senormen,,,3158016,2,,,55,,,,,Snett 100,1.02,Installed\locations\sm_snetterton_v1.02\1.02,Snett_100,United Kingdom,,,1,Permanent,
+Snett_200,,,,,,Snett_200,,Europe,3,,senormen,,,3158016,2,,,55,,,,,Snett 200,1.02,Installed\locations\sm_snetterton_v1.02\1.02,Snett_200,United Kingdom,,,1,Permanent,
+Snett_300,,,,,,Snett_300,,Europe,3,,senormen,,,3158016,2,,,55,,,,,Snett 300,1.02,Installed\locations\sm_snetterton_v1.02\1.02,Snett_300,United Kingdom,,,1,Permanent,
+Spielberg_Historic,,,,,,Spielberg_Historic,,Europe,1,,,,,3145728,2,,,55,,,,,Spielberg Historic,1,Installed\locations\Spielberg_Historic\1.0,Spielberg_Historic,Austria,,,1,Permanent,a18d6ed8e9215c89dc002015e995a7ce0303390a6a861b40509ecccae0effacb
+Sportsland_SUGO,,,,,,Sportsland_SUGO,,Asia,1,,,,,3145728,2,,,55,,,,,Sportsland Sugo,1.05,Installed\locations\Sportsland_Sugo\1.05,Sportsland_SUGO,Japan,,,1,Permanent,
+Sportsland_SUGO_NC,,,,,,Sportsland_SUGO_NC,,Asia,2,,"R07 conv Corti,DX11 and update prob",,,3149824,2,,,57,,,,,Sportsland Sugo Nc,1.1,Installed\locations\Sportsland_Sugo\1.05,Sportsland_SUGO_NC,Japan,,,1,Temporary,
+EasternCreek_Druitt,,,,,,EasternCreek_Druitt,,Oceania,1,,,,,270536704,0,,,0,,,,,Easterncreek Druitt,1,Installed\locations\Sydney Motorsport Park\1.00,EasternCreek_Druitt,Australia,,,1,,
+EasternCreek_Gardner,,,,,,EasternCreek_Gardner,,Oceania,1,,,,,270536704,0,,,0,,,,,Easterncreek Gardner,1,Installed\locations\Sydney Motorsport Park\1.00,EasternCreek_Gardner,Australia,,,1,,
+THRUXTON,,,,,,THRUXTON,,Europe,2,,,,,271593472,1,,,55,,,,,Thruxton,0.99,Installed\locations\thruxton\0.99,THRUXTON,United Kingdom,,,1,Permanent,
+Toban_Long,,,,,,Toban_Long,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,3158016,1,,,55,,,,,Toban Long,1.1,Installed\locations\TobanRP_2016\1.1,Toban_Long,United States,,,1,Permanent,
+Toban_Long_24,,1920-,,,,Toban_Long_24,,North America,2,,S397,1924,http://rfactor.net/downloads/getmod.php,3158016,1,,,55,,,,,Toban Long,1.1,Installed\locations\TobanRP_2016\1.1,Toban_Long_24,United States,,,1,Permanent,
+TOBAN_LONG_REV,,,,,,TOBAN_LONG_REV,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,3158016,1,,,55,,,,,Toban Long Rev,1.1,Installed\locations\TobanRP_2016\1.1,TOBAN_LONG_REV,United States,,,1,Permanent,
+TOBAN_Medium,,,,,,TOBAN_Medium,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,3158016,1,,,55,,,,,Toban Medium,1.1,Installed\locations\TobanRP_2016\1.1,TOBAN_Medium,United States,,,1,Permanent,
+TOBAN_Medium_REV,,,,,,TOBAN_Medium_REV,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,3158016,1,,,55,,,,,Toban Medium Rev,1.1,Installed\locations\TobanRP_2016\1.1,TOBAN_Medium_REV,United States,,,1,Permanent,
+TOBAN_Short,,,,,,TOBAN_Short,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,3158016,1,,,55,,,,,Toban Short,1.1,Installed\locations\TobanRP_2016\1.1,TOBAN_Short,United States,,,1,Permanent,
+TOBAN_Short_REV,,,,,,TOBAN_Short_REV,,North America,2,,S397,,http://rfactor.net/downloads/getmod.php,3158016,1,,,55,,,,,Toban Short Rev,1.1,Installed\locations\TobanRP_2016\1.1,TOBAN_Short_REV,United States,,,1,Permanent,
+Vancouver,,,,,,Vancouver,,North America,1,,,,,3145728,2,,,57,,,,,Vancouver,1.1,Installed\locations\Vancouver\1.1,Vancouver,United States,,,1,Temporary,
+Full,,,,,,Full,,North America,2,,Nibiru,,,271593472,2,,,55,,,,,Full,0.85,Installed\locations\VIR_v085\0.85,Full,United States,,,1,Permanent,
+Full_Oak,,,,,,Full_Oak,,North America,2,,Nibiru,,,271593472,2,,,55,,,,,Full Oak,0.85,Installed\locations\VIR_v085\0.85,Full_Oak,United States,,,1,Permanent,
+GRAND,,,,,,GRAND,,North America,2,,Nibiru,,,271593472,2,,,55,,,,,Grand,0.85,Installed\locations\VIR_v085\0.85,GRAND,United States,,,1,Permanent,
+NORTH,,,,,,NORTH,,North America,2,,Nibiru,,,271593472,2,,,55,,,,,North,0.85,Installed\locations\VIR_v085\0.85,NORTH,United States,,,1,Permanent,
+PATRIOT,,,,,,PATRIOT,,North America,2,,Nibiru,,,271593472,2,,,55,,,,,Patriot,0.85,Installed\locations\VIR_v085\0.85,PATRIOT,United States,,,1,Permanent,
+PATRIOT_Reverse,,,,,,PATRIOT_Reverse,,North America,2,,Nibiru,,,271593472,2,,,55,,,,,Patriot Reverse,0.85,Installed\locations\VIR_v085\0.85,PATRIOT_Reverse,United States,,,1,Permanent,
+South,,,,,,South,,North America,2,,Nibiru,,,271593472,2,,,55,,,,,South,0.85,Installed\locations\VIR_v085\0.85,South,United States,,,1,Permanent,
+Rouen 1955-70,,1950-,,,,Rouen 1955-70,,Europe,2,,,1955,,271593472,0,,,57,,,,,Rouen -70,0.97,Installed\locations\VLM_Rouen-Les-Essarts_sj.dd\0.97,Rouen 1955-70,France,,,1,Temporary,
+Rouen 1974-94,,1970-,,,,Rouen 1974-94,,Europe,2,,,1974,,271593472,0,,,57,,,,,Rouen -94,0.97,Installed\locations\VLM_Rouen-Les-Essarts_sj.dd\0.97,Rouen 1974-94,France,,,1,Temporary,
+WatkinsGlen_Chicane,,,,,,WatkinsGlen_Chicane,,North America,2,,Garry Cross,,,271593472,3,,,55,,,,,Watkinsglen Chicane,0.85,Installed\locations\Watkins_Glen_2016\0.85,WatkinsGlen_Chicane,United States,,,1,Permanent,
+WatkinsGlen_Full,,,,,,WatkinsGlen_Full,,North America,2,,Garry Cross,,,271593472,3,,,55,,,,,Watkinsglen Full,0.85,Installed\locations\Watkins_Glen_2016\0.85,WatkinsGlen_Full,United States,,,1,Permanent,
+WatkinsGlen_Nascar,,,,,,WatkinsGlen_Nascar,,North America,2,,Garry Cross,,,271593472,3,,,55,,,,,Watkinsglen Nascar,0.85,Installed\locations\Watkins_Glen_2016\0.85,WatkinsGlen_Nascar,United States,,,1,Permanent,
+Watkins_Glen_Boot,,,,,,Watkins_Glen_Boot,,North America,2,,,,,271593472,1,,,55,,,,,Watkins Glen Boot,1.02,Installed\locations\Watkins_Glen_International\1.02,Watkins_Glen_Boot,United States,,,1,Permanent,
+Watkins_Glen_Boot_END,,,,,,Watkins_Glen_Boot_END,,North America,2,,,,,271593472,1,,,55,,,,,Watkins Glen Boot End,1.02,Installed\locations\Watkins_Glen_International\1.02,Watkins_Glen_Boot_END,United States,,,1,Permanent,
+Watkins_Glen_Boot_NC,,,,,,Watkins_Glen_Boot_NC,,North America,2,,,,,271593472,1,,,55,,,,,Watkins Glen Boot Nc,1.02,Installed\locations\Watkins_Glen_International\1.02,Watkins_Glen_Boot_NC,United States,,,1,Permanent,
+Watkins_Glen_Boot_NC_END,,,,,,Watkins_Glen_Boot_NC_END,,North America,2,,,,,271593472,1,,,55,,,,,Watkins Glen Boot Nc End,1.02,Installed\locations\Watkins_Glen_International\1.02,Watkins_Glen_Boot_NC_END,United States,,,1,Permanent,
+Watkins_Glen_Short,,,,,,Watkins_Glen_Short,,North America,2,,,,,271593472,1,,,55,,,,,Watkins Glen Short,1.02,Installed\locations\Watkins_Glen_International\1.02,Watkins_Glen_Short,United States,,,1,Permanent,
+Watkins_Glen_Short_END,,,,,,Watkins_Glen_Short_END,,North America,2,,,,,271593472,1,,,55,,,,,Watkins Glen Short End,1.02,Installed\locations\Watkins_Glen_International\1.02,Watkins_Glen_Short_END,United States,,,1,Permanent,
+Watkins_Glen_Short_NC,,,,,,Watkins_Glen_Short_NC,,North America,2,,,,,271593472,1,,,55,,,,,Watkins Glen Short Nc,1.02,Installed\locations\Watkins_Glen_International\1.02,Watkins_Glen_Short_NC,United States,,,1,Permanent,
+Watkins_Glen_Short_NC_END,,,,,,Watkins_Glen_Short_NC_END,,North America,2,,,,,271593472,1,,,55,,,,,Watkins Glen Short Nc End,1.02,Installed\locations\Watkins_Glen_International\1.02,Watkins_Glen_Short_NC_END,United States,,,1,Permanent,
+ZandvoortClub,,,,,,ZandvoortClub,,Europe,1,,,,,270536704,0,,,0,,,,,Zandvoortclub,1.05,Installed\locations\Zandvoort_2017\1.05,ZandvoortClub,Netherlands,,,1,,AAA9999
+ZandvoortEast,,,,,,ZandvoortEast,,Europe,1,,,,,270536704,0,,,0,,,,,Zandvoorteast,1.05,Installed\locations\Zandvoort_2017\1.05,ZandvoortEast,Netherlands,,,1,,AAA9999
+ZandvoortGP,,,,,,ZandvoortGP,,Europe,1,,,,,270536704,0,,,0,,,,,Zandvoortgp,1.05,Installed\locations\Zandvoort_2017\1.05,ZandvoortGP,Netherlands,,,1,,AAA9999
+ZandvoortGPchicane,,,,,,ZandvoortGPchicane,,Europe,1,,,,,270536704,0,,,0,,,,,Zandvoortgpchicane,1.05,Installed\locations\Zandvoort_2017\1.05,ZandvoortGPchicane,Netherlands,,,1,,AAA9999
+ZandvoortNational,,,,,,ZandvoortNational,,Europe,1,,,,,270536704,0,,,0,,,,,Zandvoortnational,1.05,Installed\locations\Zandvoort_2017\1.05,ZandvoortNational,Netherlands,,,1,,AAA9999
+Zolder2016,,2010-,,,,Zolder2016,,Europe,2,,Paulmarc,2016,,271593472,1,,,55,,,,,Zolder,1.1,Installed\locations\Zolder2016\1.1,Zolder2016,Belgium,,,1,Permanent,
+ZOLDER79,,1970-,,,,ZOLDER79,,Europe,1,,"mfx rf1, rf2 convert Arnao, DX11 philrob",1979,,3145728,2,,,55,,,,,Zolder,0.82,Installed\locations\Zolder79\0.82,ZOLDER79,Belgium,,,1,Permanent,1412
+F1_1988_Adelaide,,1980-,,,,F1_1988_Adelaide,,Oceania,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Adelaide,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Adelaide,Australia,,,1,Permanent,
+F1_1988_Detroit,,1980-,,,,F1_1988_Detroit,,North America,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Detroit,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Detroit,Canada,,,1,Permanent,
+F1_1988_Estoril,,1980-,,,,F1_1988_Estoril,,Europe,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Estoril,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Estoril,Portugal,,,1,Permanent,
+F1_1988_Hermanos,,1980-,,,,F1_1988_Hermanos,,North America,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Hermanos,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Hermanos,Canada,,,1,Permanent,
+F1_1988_Hockenheim,,1980-,,,,F1_1988_Hockenheim,,Europe,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Hockenheim,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Hockenheim,Germany,,,1,Permanent,
+F1_1988_Hungaroring,,1980-,,,,F1_1988_Hungaroring,,Europe,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Hungaroring,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Hungaroring,Hungary,,,1,Permanent,
+F1_1988_Imola,,1980-,,,,F1_1988_Imola,,Europe,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Imola,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Imola,Italy,,,1,Permanent,
+F1_1988_Jacarepagua,,1980-,,,,F1_1988_Jacarepagua,,South America,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Jacarepagua,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Jacarepagua,Brazil,,,1,Permanent,
+F1_1988_Jerez,,1980-,,,,F1_1988_Jerez,,Europe,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Jerez,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Jerez,Spain,,,1,Permanent,
+F1_1988_MonteCarlo,,1980-,,,,F1_1988_MonteCarlo,,Europe,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Montecarlo,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_MonteCarlo,France,,,1,Permanent,
+F1_1988_Montreal,,1980-,,,,F1_1988_Montreal,,North America,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Montreal,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Montreal,Canada,,,1,Permanent,
+F1_1988_Monza,,1980-,,,,F1_1988_Monza,,Europe,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Monza,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Monza,Italy,,,1,Permanent,
+F1_1988_PaulRicard,,1980-,,,,F1_1988_PaulRicard,,Europe,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Paulricard,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_PaulRicard,France,,,1,Permanent,
+F1_1988_Silverstone,,1980-,,,,F1_1988_Silverstone,,Europe,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Silverstone,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Silverstone,United Kingdom,,,1,Permanent,
+F1_1988_Spa,,1980-,,,,F1_1988_Spa,,Europe,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Spa,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Spa,Belgium,,,1,Permanent,
+F1_1988_Suzuka,,1980-,,,,F1_1988_Suzuka,,Asia,2,,carrera.4,1988,,3158016,1,,,55,,,,,F1  Suzuka,0.941,Installed\locations\F1_1988_Tracks\0.941,F1_1988_Suzuka,Japan,,,1,Permanent,
+2013_BAHRAIN,,2010-,,,,2013_BAHRAIN,,Asia,1,,Frenky,2013,,3145728,1,,,55,,,,,Bahrain,1.0,Installed\locations\2013_BAHRAIN\1.0,2013_BAHRAIN,Kazakhstan,,,1,Permanent,
+China_GP,,,,,,China_GP,,Asia,1,,Frenky,,,3145728,1,,,55,,,,,China Gp,1.0,Installed\locations\2013_CHINA\1.0,China_GP,China,,,1,Permanent,
+HockenheimringGP,,,,,,HockenheimringGP,,Europe,1,,Frenky,,,3145728,1,,,55,,,,,Hockenheimringgp,1.0,Installed\locations\2013_GERMANY\1.0,HockenheimringGP,Germany,,,1,Permanent,
+2013_INDIA,,2010-,,,,2013_INDIA,,No Long,1,,Frenky,2013,,3145728,1,,,55,,,,,India,1.0,Installed\locations\2013_INDIA\1.0,2013_INDIA,No Lat,,,1,Permanent,
+2013_KOREA,,2010-,,,,2013_KOREA,,No Long,1,,Frenky,2013,,3145728,1,,,55,,,,,Korea,1.0,Installed\locations\2013_KOREA\1.0,2013_KOREA,No Lat,,,1,Permanent,
+ASR_OWC_1987_99T,,1980-,,,,ASR_OWC_1987_99T,Asr,,1,,ASR Formula,1987,www.asrformula.com,270536704,1,,Owc 99T,6,1,620,,REAR,,1.11,Installed\vehicles\ASR_OWC_1987_99T\1.11,,,H6,0,2,Open,
+ASR_OWC_1990_641-2,,1990-,,,,ASR_OWC_1990_641-2,Asr,,1,,ASR Formula,1990,www.asrformula.com,270536704,1,,Owc 641-2,6,1,600,641_01.VEH,REAR,,1.7,Installed\vehicles\ASR_OWC_1990_641-2\1.7,,,H6,0,2,Open,
+ASR_OWC_1992_M191B,,1990-,,,,ASR_OWC_1992_M191B,Asr,,1,,ASR Formula,1992,www.asrformula.com,270536704,1,,Owc M191B,6,1,580,M191B_23.VEH,REAR,,1.01,Installed\vehicles\ASR_OWC_1992_M191B\1.01,,,Paddles,0,2,Open,
+ASR_OWC_1993_F93A,,1990-,,,,ASR_OWC_1993_F93A,Asr,,1,,ASR Formula,1993,www.asrformula.com,270536704,1,,Owc F93A,6,1,580,F93A_27.VEH,REAR,,1.12,Installed\vehicles\ASR_OWC_1993_F93A\1.12,,,Paddles,0,2,Open,
+ASR_OWC_1995_412T2,,1990-,,,,ASR_OWC_1995_412T2,Asr,,1,,ASR Formula,1995,www.asrformula.com,270536704,1,,Owc 412T2,6,1,595,412T2_27.VEH,REAR,,2.3,Installed\vehicles\ASR_OWC_1995_412T2\2.3,,,Paddles,0,2,Open,
+ASR_OWC_1996_F310,,1990-,,F3,,ASR_OWC_1996_F310,Asr,,1,,ASR Formula,1996,www.asrformula.com,270536704,1,,Owc 10,6,1,595,,REAR,,2.11,Installed\vehicles\ASR_OWC_1996_F310\2.11,,,Paddles,0,2,Open,
+ASR_OWC_2004_FW26,,2000-,,,,ASR_OWC_2004_FW26,Asr,,1,,ASR Formula,2004,www.asrformula.com,270536704,1,,Owc Fw26,6,1,643,,REAR,,1.01,Installed\vehicles\ASR_OWC_2004_FW26\1.01,,,Paddles,0,2,Open,

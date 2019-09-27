@@ -9,12 +9,13 @@ from tkinter import ttk
 from lib.tkToolTip import Tooltip
 wraplength = 100
 
+# But we don't want an actual tab...
 class Tab:
   settings = list()
   def __init__(self, parentFrame):
+    """ Dummy tab to get/set settings """
     """ Put this into the parent frame """
     pass
-    """ Dummy tab to get/set settings """
   def getSettings(self):
         """ Return the settings for this tab """
         return self.settings # filters too?  Probably not
