@@ -9,10 +9,25 @@ from tkinter import ttk
 from lib.tkToolTip import Tooltip
 wraplength = 100
 
+class Tab:
+  settings = list()
+  def __init__(self, parentFrame):
+    """ Put this into the parent frame """
+    pass
+    """ Dummy tab to get/set settings """
+  def getSettings(self):
+        """ Return the settings for this tab """
+        return self.settings # filters too?  Probably not
+
+  def setSettings(self, settings):
+        """ Set the settings for this tab """
+        carID = settings[-1]
+
+
 #########################
 # The tab's public class:
 #########################
-class Tab:
+class _Tab:
   def __init__(self, parentFrame):
     """ Put this into the parent frame """
     pass

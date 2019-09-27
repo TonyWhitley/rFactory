@@ -19,6 +19,7 @@ class Cached_data:
     cache_tags_set = set(carTags + trackTags) # dedupe union of all tags
     cache_tags_set.discard('DB file ID') # Remove to move to col 1
     cache_tags_set.discard('Desc')      # Remove because it's verbose
+    cache_tags_set.discard('Date')      # Remove because it get's turned into a float
     cache_tags = ['DB file ID']+list(cache_tags_set)
 
     def __init__(self, cache_filename=CacheDataFile):
@@ -30,6 +31,7 @@ class Cached_data:
         if os.path.isfile(self.cache_filename):
             with open(self.cache_filename, mode='r') as csv_file:
                 for row in csv.DictReader(csv_file):
+                    row.pop('Date', None) # Remove Date
                     self.cache.append(row)
                 pass
         else:
@@ -65,7 +67,5 @@ class Cached_data:
         with open(self.cache_filename, mode='w') as csv_file:
             writer = csv.DictWriter(csv_file, fieldnames=self.cache_tags)
             writer.writeheader()
-            for row in self.cache:
-                row.pop('Desc', None) # Remove Desc if present
-                writer.writerow(row)
+            writer.writerows(self.cache)
 

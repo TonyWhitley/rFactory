@@ -164,6 +164,8 @@
     <Content Include="AllClasses.txt" />
     <Content Include="dataFiles\rFactoryCache.csv" />
     <Content Include="Documentation\rFactoryCars.JPG" />
+    <Content Include="Documentation\rFactoryModMakerCars.JPG" />
+    <Content Include="Documentation\rFactoryModMakerTracks.JPG" />
     <Content Include="Documentation\rFactoryOptions.JPG" />
     <Content Include="Documentation\rFactoryServers.JPG" />
     <Content Include="Documentation\rFactoryTracks.JPG" />
@@ -205,7 +207,9 @@
     <Content Include="gearshift\__pycache__\scheduler.cpython-36.pyc" />
     <Content Include="gearshift\__pycache__\tabGearshift.cpython-36.pyc" />
     <Content Include="makeexe.bat" />
+    <Content Include="makerFactoryModManager.bat" />
     <Content Include="makezip.bat" />
+    <Content Include="ModMaker.bat" />
     <Content Include="requirements.txt" />
     <Content Include="rF2headlights\.git" />
     <Content Include="rF2headlights\.gitattributes" />

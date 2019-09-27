@@ -89,22 +89,25 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
   _filepath = os.path.join(datafilesPath, filename+dataFilesExtension)
   _newFile = False
   if overwrite or not os.path.exists(_filepath):
-    try:
       os.makedirs(datafilesPath, exist_ok=True)
       with open(_filepath, "w") as f:
         for tag in tagsToBeWritten:
           if tag in dict:
             val = dict[tag]
             if tag == 'Date':
-              if len(val) == 18: # Windows filetime.
-                # http://support.microsoft.com/kb/167296
-                # How To Convert a UNIX time_t to a Win32 FILETIME or SYSTEMTIME
-                EPOCH_AS_FILETIME = 116444736000000000  # January 1, 1970 as MS file time
-                HUNDREDS_OF_NANOSECONDS = 10000000
-                ts = datetime.datetime.fromtimestamp((int(val) - EPOCH_AS_FILETIME) //
-                                                    HUNDREDS_OF_NANOSECONDS)
-              else: # Unix
-                ts = datetime.datetime.fromtimestamp(int(val))
+              try:
+                if len(val) == 18: # Windows filetime.
+                  # http://support.microsoft.com/kb/167296
+                  # How To Convert a UNIX time_t to a Win32 FILETIME or SYSTEMTIME
+                  EPOCH_AS_FILETIME = 116444736000000000  # January 1, 1970 as MS file time
+                  HUNDREDS_OF_NANOSECONDS = 10000000
+                  ts = datetime.datetime.fromtimestamp((int(float(val)) - \
+                      EPOCH_AS_FILETIME) // HUNDREDS_OF_NANOSECONDS)
+                else: # Unix
+                  ts = datetime.datetime.fromtimestamp(int(float(val)))
+              except Exception as e:
+                  print(e)
+                  ts = datetime.datetime.today()
               val = ts.strftime("%Y-%m-%d")
           elif tag == 'DB file ID':
             val = filename # The unique identifier for the car/track. I think.
@@ -114,14 +117,12 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
             val = 'Paddles' # a reasonable default
           else: # value not available
             val = ''
-          f.write('%s=%s\n' % (tag, val))
+          try:
+            f.write('%s=%s\n' % (tag, val))
+          except OSError:
+            print('Failed to write %s' % _filepath)
+            quit()
       _newFile = True
-    except OSError:
-      print('Failed to write %s' % _filepath)
-      quit()
-    except Exception as e:
-      print(e)
-      quit()
   return _newFile
 
 def cleanTrackName(name):
@@ -432,12 +433,11 @@ def processTrack(track, tags, mas_tags=None):
         tags['Country'] = 'No Lat'
         tags['Continent'] = 'No Long'
 
-  for tag in tags:
-    if cached_tags and tag in cached_tags:
-      if cached_tags[tag] != '':
+  for tag in cached_tags:
+    if cached_tags[tag] != '':
         # We have a cached tag for this one
         tags[tag] = cached_tags[tag]
-    else:
+    elif tag in tags:
         cache_o.set_value(tags['Name'], tag, tags[tag])
         cache_write = True
 
@@ -482,37 +482,6 @@ def listDeletedDataFiles():
         if not os.path.isdir(os.path.join(rF2root, _f)):
           filesToDelete.append(track[0])
   return filesToDelete
-
-def getScnFilenames(folder):
-  # Could also use this to get .veh filenames for cars.
-  ModMgr = os.path.join(rF2root, r'Bin32\ModMgr.exe')
-  masFiles = getListOfFiles(folder, '*mas')
-  all = []
-  for mas in masFiles:
-    """ Return nothing
-    ls = subprocess.run([ModMgr, '-h'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    print(ls.stderr.decode('utf-8'))
-    #_op = subprocess.run([ModMgr, '-l%s' % mas[1]], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    #So pipe to a file and read it
-    """
-    _pop = os.getcwd()  # save current directory
-    os.chdir(os.path.dirname(mas[0]))
-    #cmd = '"'+ModMgr + '" -l%s > temporaryFile 2>>errors' % mas[1]
-    cmd = '"'+ModMgr + '" -q -l%s temporaryFile > nul 2>&1' % mas[1]
-    os.system(cmd)
-    lines = readFile('temporaryFile')
-    for line in lines:
-      if '.scn' in line.lower():
-        all.append(line.strip()[:-4]) # Strip whitespace and .scn
-      if 'unable to open package file' in line.lower():
-        print(mas[1])
-    try:
-      os.remove('temporaryFile')
-    except:
-      pass # No SCN files in MAS files
-    os.chdir(_pop)
-  return all
-
 
 def getMasInfo(folder, masFile=None):
   """
@@ -643,7 +612,7 @@ if __name__ == '__main__':
   tabCar = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   tabCar.grid()
 
-  scns = getScnFilenames(r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Locations\BATHURST_2016_V3\3.0" )
+  scns, mas_tags = getMasInfo(r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Locations\BATHURST_2016_V3\3.0" )
 
   #createDefaultDataFiles(overwrite=True)
   newFiles = trawl_for_new_rF2_datafiles(root)
