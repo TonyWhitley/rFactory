@@ -9,18 +9,21 @@ import tkinter.font as font
 # Tabs
 import tabCar
 import tabTrack
-import tabOpponents
-import tabFavouriteServers
-import tabGraphics
-import tabSessions
-import tabOptions
-import tabServers
-import tabScenarios
-import tabJsonEditor
-import rF2headlights.gui
-import tabGearshift
+try:
+  import tabOpponents
+  import tabFavouriteServers
+  import tabGraphics
+  import tabSessions
+  import tabOptions
+  import tabServers
+  import tabScenarios
+  import tabJsonEditor
+  import rF2headlights.gui
+  import tabGearshift
 
-from executeRF2 import runRF2
+  from executeRF2 import runRF2
+except:
+  pass # Those are not present in rFactoryModManager.exe version
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.utils import readTextFile, bundleFolder
 
@@ -40,32 +43,6 @@ def faq():
             _faq
         )
 
-tabNames = [ \
-      ['Car', tabCar],
-      ['Track', tabTrack],
-      ['Opponents', tabOpponents],
-      ['Graphics', tabGraphics],
-      ['Sessions', tabSessions],
-      ['Options', tabOptions],
-      ['Servers', tabServers],
-      ['Favourite Servers', tabFavouriteServers],
-      #['Scenarios', tabScenarios],
-      ['JSON editor', tabJsonEditor],
-      ['Headlights control', rF2headlights.gui],
-      #['Gearshift', tabGearshift]
-      ]
-menuNames = [ \
-      #['Car', tabCar],
-      #['Track', tabTrack],
-      #['Opponents', tabOpponents],
-      #['Graphics', tabGraphics],
-      #['Sessions', tabSessions],
-      #['Options', tabOptions],
-      #['Server', tabServers],
-      ['Scenarios', tabScenarios],
-      ['JSON editor', tabJsonEditor]
-      ]
-
 class Menu:
   def __init__(self,
                menubar,
@@ -78,12 +55,12 @@ class Menu:
 class MainWindow:
   """ The main app window innit """
   handle = None
-  def __init__(self):
+  def __init__(self, title):
     self.handle = tk.Tk()
     #self.handle.geometry('500x300')
     self.width_of_window = 500
     self.height_of_window = 300
-    self.handle.title('rFactory')
+    self.handle.title(title)
     _icon = bundleFolder('resources/rFactory.ico')
     self.handle.iconbitmap(_icon)
     self.handle.columnconfigure(0, weight=1, pad=50)
@@ -336,7 +313,33 @@ class GoButtons:
 
 
 if __name__ == "__main__":
-  mainWindow = MainWindow()
+  tabNames = [ \
+      ['Car', tabCar],
+      ['Track', tabTrack],
+      ['Opponents', tabOpponents],
+      ['Graphics', tabGraphics],
+      ['Sessions', tabSessions],
+      ['Options', tabOptions],
+      ['Servers', tabServers],
+      ['Favourite Servers', tabFavouriteServers],
+      #['Scenarios', tabScenarios],
+      ['JSON editor', tabJsonEditor],
+      ['Headlights control', rF2headlights.gui],
+      #['Gearshift', tabGearshift]
+      ]
+  menuNames = [ \
+      #['Car', tabCar],
+      #['Track', tabTrack],
+      #['Opponents', tabOpponents],
+      #['Graphics', tabGraphics],
+      #['Sessions', tabSessions],
+      #['Options', tabOptions],
+      #['Server', tabServers],
+      ['Scenarios', tabScenarios],
+      ['JSON editor', tabJsonEditor]
+      ]
+
+  mainWindow = MainWindow('rFactory')
   mainWindow.setSize(width=1200, height=800)
   mainWindow.centreWindow()
 

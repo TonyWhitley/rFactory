@@ -7,14 +7,17 @@ from tkinter import ttk, filedialog
 # Tabs
 import tabCar
 import tabTrack
-import tabOpponents
-import tabFavouriteServers
-import tabGraphics
-import tabSessions
-import tabOptions
-import tabServers
-import tabJsonEditor
-import rF2headlights.gui
+try:
+  import tabOpponents
+  import tabFavouriteServers
+  import tabGraphics
+  import tabSessions
+  import tabOptions
+  import tabServers
+  import tabJsonEditor
+  import rF2headlights.gui
+except:
+  pass # Those are not present in rFactoryModManager.exe version
 
 from data.rFactoryConfig import scenarioFilesFolder,scenarioFilesExtension
 from data.utils import readFile, writeFile
@@ -24,7 +27,8 @@ tabs = None
 o_tabs = None
 
 settings = {}
-filename =  os.path.join(scenarioFilesFolder, 'lastScenario'+scenarioFilesExtension)
+filename =  os.path.join(scenarioFilesFolder,
+                         'lastScenario'+scenarioFilesExtension)
 
 class TabSettings:
   def __init__(self):
@@ -58,7 +62,9 @@ def setMenubar(menubar):
     #filemenu = tk.Menu(menubar, tearoff=0)
     menubar.add_command(label="Open scenario ", command=openScenario)
     menubar.add_separator()
-    menubar.add_command(label="Save scenario", command=saveScenario, accelerator='Ctrl+S')
+    menubar.add_command(label="Save scenario",
+                        command=saveScenario,
+                        accelerator='Ctrl+S')
     menubar.master.bind_all("<Control-s>", saveScenario)
     menubar.add_command(label="Save scenario as...", command=saveScenarioAs)
     menubar.add_separator()
@@ -68,9 +74,14 @@ def setMenubar(menubar):
 def openScenario():
   global filename
   print('openScenario')
- 
+
   #root = tk.Tk()
-  filename =  filedialog.askopenfilename(initialdir = scenarioFilesFolder,title = "Select file",filetypes = (("rFactory Scenario files","*%s" % scenarioFilesExtension),("all files","*.*")))
+  filename =  filedialog.askopenfilename(
+      initialdir = scenarioFilesFolder,
+      title = "Select file",
+      filetypes = (("rFactory Scenario files","*%s" % scenarioFilesExtension),
+                   ("all files","*.*"))
+      )
   _text = readFile(filename)
   settings = json.loads(''.join(_text))
   print(settings)
@@ -80,7 +91,8 @@ def openScenario():
 def openDefaultScenario():
   global filename
 
-  filename =  os.path.join(scenarioFilesFolder, 'lastScenario'+scenarioFilesExtension)
+  filename =  os.path.join(scenarioFilesFolder,
+                           'lastScenario'+scenarioFilesExtension)
   _text = readFile(filename)
   if os.path.exists(filename):
     settings = json.loads(''.join(_text))
@@ -94,7 +106,12 @@ def openDefaultScenario():
 def saveScenarioAs():
   global filename
 
-  filename =  filedialog.asksaveasfilename(initialdir = scenarioFilesFolder,title = "Select file",filetypes = (("rFactory Scenario files","*%s" % scenarioFilesExtension),("all files","*.*")))
+  filename =  filedialog.asksaveasfilename(
+      initialdir = scenarioFilesFolder,
+      title = "Select file",
+      filetypes = (("rFactory Scenario files","*%s" % scenarioFilesExtension),
+                   ("all files","*.*"))
+      )
   if not filename.endswith(scenarioFilesExtension):
     filename += scenarioFilesExtension
   print('saveScenarioAs "%s%s"' % (filename, scenarioFilesExtension))
@@ -112,7 +129,8 @@ def saveScenario():
 def saveDefaultScenario():
   global filename
 
-  filename =  os.path.join(scenarioFilesFolder, 'lastScenario'+scenarioFilesExtension)
+  filename =  os.path.join(scenarioFilesFolder,
+                           'lastScenario'+scenarioFilesExtension)
   _tso = TabSettings()
   _ = _tso.getAllSettings()
   _text = json.dumps(settings, sort_keys=True, indent=4)
@@ -133,7 +151,11 @@ def setTabs(_tabs, _o_tabs):
 if __name__ == '__main__':
   # To run this tab by itself for development
   root = tk.Tk()
-  tabScenarios = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
+  tabScenarios = ttk.Frame(root,
+                           width=1200,
+                           height=1200,
+                           relief='sunken',
+                           borderwidth=5)
   tabScenarios.grid()
 
   menubar = tk.Menu(tabScenarios)
@@ -146,7 +168,7 @@ if __name__ == '__main__':
 
   # display the menu
   #???? menubar.config(menu=menubar)
-    
+
   setMenubar(menubar)
 
   ##Menu(menubar)

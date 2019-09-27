@@ -6,21 +6,56 @@ from tkinter import messagebox
 from tkinter import filedialog
 import tkinter.font as font
 
-from rFactory import MainWindow, Menus, Tabs
+from rFactory import MainWindow, Tabs
+import tabScenarios
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.rFactoryData import getSingleCarData, getSingleTrackData
 from data.rFactoryConfig import modMakerFilesFolder, modMakerFilesExtension
-from data.utils import readFile, writeFile
+from data.utils import readFile, readTextFile, writeFile, bundleFolder
 # Tabs
 import tabCar
 import tabTrack
 import tabMMOptions
 
-tabNames = [ \
-      ['Car', tabCar],
-      ['Track', tabTrack],
-      #['Options', tabMMOptions]
-      ]
+BUILD_REVISION = 113 # The git commit count
+versionStr = 'rFactoryModManager V0.1.%d' % BUILD_REVISION
+versionDate = '2019-09-27'
+def about():
+  messagebox.askokcancel(
+            'About rFactoryModManager',
+            '%s  %s\nby Tony Whitley' % (versionStr, versionDate)
+        )
+
+def faq():
+  _faq = readTextFile(bundleFolder('rFactoryModManagerFaq.txt'))
+  messagebox.askokcancel(
+            'rFactoryModManager FAQ',
+            _faq
+        )
+
+class Menu:
+  def __init__(self,
+               menubar,
+               menu2tab=None):
+    helpmenu = tk.Menu(menubar, tearoff=0)
+    helpmenu.add_command(label="FAQ", command=faq)
+    helpmenu.add_command(label="About", command=about)
+    menubar.add_cascade(label="Help", menu=helpmenu)
+
+class Menus:
+  """ The sub-menus for tabs in the main window """
+  menus = {}  # the Menu objects
+  def __init__(self, parentFrame, menuNames=[]):
+    self.menuNames = menuNames
+    menubar = tk.Menu(parentFrame)
+
+    for menuLabel, o_menu in self.menuNames:
+      _menu = tk.Menu(menubar, tearoff=0)
+      menubar.add_cascade(label=menuLabel, menu=_menu)
+      o_menu.setMenubar(_menu)
+    Menu(menubar)
+    # display the menu
+    parentFrame.config(menu=menubar)
 
 # The GO buttons
 class GoButtons:
@@ -104,6 +139,7 @@ class GoButtons:
     if _filepath:
         self.modmaker_file = _filepath
         self.tkStrVarModMakerFile.set(os.path.basename(_filepath))
+        tabScenarios.saveDefaultScenario()
 
   def createFile(self):
     """ The Create File button pressed """
@@ -112,6 +148,7 @@ class GoButtons:
     for _car in _cars:
         data = getSingleCarData(id=_car[-1], tags=['originalFolder'])
         car_list.append('Vehicle='+data['originalFolder'].split('\\')[2]+'\n')
+    car_list=list(set(car_list))    # dedupe the list (in case)
     print(car_list)
 
     _tracks = tabs.o_tabs['Track'].get_selection()
@@ -119,6 +156,7 @@ class GoButtons:
     for _track in _tracks:
         data = getSingleTrackData(id=_track[-1], tags=['originalFolder'])
         track_list.append('Location='+data['originalFolder'].split('\\')[2]+'\n')
+    track_list=list(set(track_list))    # dedupe the list (e.g. F1_1988_Tracks)
     print(track_list)
 
     _filepath = filedialog.asksaveasfilename(
@@ -152,8 +190,8 @@ class GoButtons:
     self.tkStrVarModMakerFile.get()
 
     mainWindow.iconify()
-    _cmd = 'ModMaker.bat ' + self.modmaker_file
-    call(_cmd) # that doesn't come back
+    _cmd = bundleFolder('ModMaker.bat') + ' ' + self.modmaker_file
+    call(_cmd)
     """
     this doesn't work
     try:
@@ -166,13 +204,20 @@ class GoButtons:
     """
 
     mainWindow.deiconify()
+    pass
 
   def _quit(self):
     mainWindow.handle.destroy()
 
-
 if __name__ == "__main__":
-  mainWindow = MainWindow()
+
+  tabNames = [ \
+      ['Car', tabCar],
+      ['Track', tabTrack],
+      ['Options', tabMMOptions]
+      ]
+
+  mainWindow = MainWindow('rFactoryModManager')
   mainWindow.setSize(width=1200, height=800)
   mainWindow.centreWindow()
 
@@ -186,8 +231,8 @@ if __name__ == "__main__":
   Menus(mainWindow.handle)
 
   tabs = Tabs(mainWindow.handle, tabNames)
-  #tabScenarios.setTabs(tabs.tabNames, tabs.o_tabs)
-  #tabScenarios.openDefaultScenario()
+  tabScenarios.setTabs(tabs.tabNames, tabs.o_tabs)
+  tabScenarios.openDefaultScenario()
   #tabs._testSetSettings()
 
   goButtons = GoButtons(mainWindow.handle)
