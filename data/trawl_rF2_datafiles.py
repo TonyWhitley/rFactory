@@ -36,6 +36,8 @@ class DataFiles:
     data_files_and_timestamps = None
     newer_mfts = None
     newFiles = list()
+    tags = list()
+    ModMgr = os.path.join(rF2root, r'Bin32\ModMgr.exe')
 
     def make_datafile_name(self, folder):
         r"""
@@ -106,9 +108,9 @@ class DataFiles:
         if not self.newer_mfts:
             self.newer_mfts()
         if _mft in self.newer_mfts:
-            tags = self.new_data(_mft)
+            self.tags = self.new_data(_mft)
             # a new file was written
-            self.newFiles.append(tags['Name'])
+            self.newFiles.append(self.tags['Name'])
         else: # We already have a data file, load it.
             pass    # TBD
 
@@ -118,115 +120,110 @@ class DataFiles:
         """
         cache_o = Cached_data()
         cache_o.load()
-        tags = self.get_tags(_mft)
-        cached_tags = cache_o.get_values(tags['Name'])
         cache_write = False
+        _tags = self.get_initial_tags(_mft)
+        cached_tags = cache_o.get_values(_tags['Name'])
         if not cached_tags:
-            # We don't already have data scanned from MAS files
-            scn, mas_tags = getMasInfo(os.path.dirname(_mft))
-            if 'SemiAutomatic' in mas_tags:
-              if mas_tags['SemiAutomatic'] == '0':
-                tags['Gearshift'] = 'H' + mas_tags['ForwardGears']
-              else: # Paddles or sequential
-                tags['Gearshift'] = 'Paddles'
-            if 'WheelDrive' in mas_tags:
-                tags['F/R/4WD'] = mas_tags['WheelDrive']
-            tags['Aero'] = 1
-            if 'FWSetting' in mas_tags and 'RWSetting' in mas_tags:
-                if mas_tags['FWSetting'] == '0' and mas_tags['RWSetting'] == '0':
-                    tags['Aero'] = 0
-            if 'DumpValve' in mas_tags:
-                tags['Turbo'] = '1'
-            else:
-                tags['Turbo'] = '0'
-            if 'Mass' in mas_tags:
-                tags['Mass'] = int(mas_tags['Mass'].split('.')[0]) # May be float
-            else: # that probably indicates that mas was encrypted => S397
-                tags['Mass'] = ''
-                if tags['Author'] == '':
-                    tags['Author'] = 'Studio 397?'
-                if not 'Gearshift' in tags or tags['Gearshift'] == '':
-                    tags['Gearshift'] = 'Paddles'
-                if not 'F/R/4WD' in tags or tags['F/R/4WD'] == '':
-                    tags['F/R/4WD'] = 'REAR'
-            for tag in ['Gearshift','F/R/4WD','Aero','Turbo','Mass','Author']:
-                if tag in tags:
-                    cache_o.set_value(tags['Name'], tag, tags[tag])
-                    cache_write = True
-
-
-        for tag in carTags:
-            if cached_tags and tag in cached_tags:
-                if cached_tags[tag] != '':
-                # We have a cached tag for this one
-                tags[tag] = cached_tags[tag]
-            else:
-                cache_o.set_value(tags['Name'], tag, tags[tag])
-                cache_write = True
-
+            cache_write = self.read_mas_files(_tags, os.path.dirname(_mft))
         if createDataFile(datafilesPath=CarDatafilesFolder,
-                          filename=tags['Name'],
-                          dict=tags,
+                          filename=_tags['Name'],
+                          dict=_tags,
                           tagsToBeWritten=carTags,
                           overwrite=True):
+            # a new file was written
+            pass    # TBD
+
         if cache_write:
             cache_o.write()
-        return tags
+        return _tags
 
+    def dir_files_in_mas_files(self, folder):
+        """
+        Dict of mas files and the files they contain
+        """
+        masFiles = getListOfFiles(folder, '*.mas')
+        _pop = os.getcwd()  # save current directory
+        os.chdir(os.path.dirname(masFiles[0][0]))
+        files = dict()
+        for mas in masFiles:
+            cmd = '"'+self.ModMgr + '" -q -l%s 2>&1 temporaryFile > nul 2>&1' % mas[1]
+            os.system(cmd)
+            # No, we need to record mass file name as well
+            files[mas[1]] = readFile('temporaryFile')
+        return files
+
+    def mas_file(self, mas, _filename, tags, keywords):
+        """
+        Extract file from mas file and add any keywords to tags
+        """
+        cmd = '"'+self.ModMgr + '" -q -x%s %s > nul 2>&1' \
+            % (mas, _filename)
+        os.system(cmd)
+        lines = readFile(_filename)
+        for line in lines:
+            line = line.strip()
+            for kw in keywords:
+                if line.startswith(f'{kw}'):
+                    tags[kw]=re.split('[= /\t]+', line)[1].strip()
+        try:
+            os.remove(_filename)   # delete extracted file
+        except:
+            print('Failed to extract %s from %s' % (_filename, mas))
+        return tags
 
 class CarDataFiles(DataFiles):
     def __init__(self):
         self.installed_folder = 'vehicles'
         self.datafiles_folder = os.path.normpath(CarDatafilesFolder)
 
-    def get_tags(self, mft):
+    def get_initial_tags(self, mft):
         """
         Get the tags from the MFT file
         """
         vehNames = vehFiles()
         text = readFile(mft)
-        tags = getTags(text)
+        _tags = getTags(text)
         for requiredTag in ['Name','Version','Type','Author','Origin',
                             'Category','ID','URL','Desc','Date','Flags',
                             'RefCount','#Signature','#MASFile','MinVersion',
                             '#BaseSignature']:
             # MASFile, Signature and BaseSignature filtered out - NO THEY AREN'T,
-            # tags[] still contains them.  tagsToBeWritten filters them out.
+            # _tags[] still contains them.  tagsToBeWritten filters them out.
             # Not sure what this for loop is, er, for.
-            if requiredTag in tags:
+            if requiredTag in _tags:
               """filter out boilerplate
               Author=Mod Team
               URL=www.YourModSite.com
               Desc=Your new mod.
               """
-              if tags[requiredTag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
-                tags[requiredTag] = ''
-              if tags[requiredTag] in ['Slow Motion', 'Slow Motion Modding Group']: # make up your minds boys!
-                tags[requiredTag] = 'Slow Motion Group'
-              if tags[requiredTag] in ['Virtua_LM Modding Team']: # make up your minds boys!
-                tags[requiredTag] = 'Virtua_LM'
+              if _tags[requiredTag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
+                _tags[requiredTag] = ''
+              if _tags[requiredTag] in ['Slow Motion', 'Slow Motion Modding Group']: # make up your minds boys!
+                _tags[requiredTag] = 'Slow Motion Group'
+              if _tags[requiredTag] in ['Virtua_LM Modding Team']: # make up your minds boys!
+                _tags[requiredTag] = 'Virtua_LM'
 
               if requiredTag == 'Name':
-                tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['Name'])
+                _tags['Year'], _tags['Decade'], _tags['strippedName'] = extractYear(_tags['Name'])
                 # extract class from name if it's there
                 for __class in ['F1','F3','GT3','GTE','BTCC',
                                 'LMP1','LMP2','LMP3']: # 'F2' filters rF2...
-                  if __class in tags['Name']:
-                    tags['Class'] = __class
-                    tags['strippedName'] = tags['strippedName'].replace(__class, '')
-                tags['strippedName'] = tags['strippedName'].title() # Title Case The Name
-        if tags['Category'] in carCategories:
-            tags['tType'] = carCategories[tags['Category']]
+                  if __class in _tags['Name']:
+                    _tags['Class'] = __class
+                    _tags['strippedName'] = _tags['strippedName'].replace(__class, '')
+                _tags['strippedName'] = _tags['strippedName'].title() # Title Case The Name
+        if _tags['Category'] in carCategories:
+            _tags['tType'] = carCategories[_tags['Category']]
         # We need the original data folder to assemble the .VEH file path to put in
         # "All Tracks & Cars.cch" to force rF2 to switch cars.  We also need the .VEH
         # file names and that's a bit more difficult.
         # Not difficult, they're in all_vehicles.ini
-        tags['originalFolder'], _ = os.path.split(mft[len(rF2root)+1:]) # strip the root
+        _tags['originalFolder'], _ = os.path.split(mft[len(rF2root)+1:]) # strip the root
         # if veh file name is available in vehNames.txt use it
-        tags['vehFile'] = vehNames.veh(tags['Name'])
+        _tags['vehFile'] = vehNames.veh(_tags['Name'])
 
         for tag in ['Manufacturer', 'Model']:
-            val = tags['strippedName'].replace('_', ' ').strip()  # default
+            val = _tags['strippedName'].replace('_', ' ').strip()  # default
             if val.startswith('Isi'):
                 val = val[4:]
             if val.startswith('Ngtc'):
@@ -241,13 +238,164 @@ class CarDataFiles(DataFiles):
                       val = _mfrs[val]
                 if tag == 'Model' and len(val.split()) > 1:
                     val = ' '.join(val.split()[1:])
-            tags[tag] = val
+            _tags[tag] = val
+        return _tags
+
+    def read_mas_files(self, tags, mas_dir):
+        """
+        Open the mas files and look for
+        *.hdv
+            ForwardGears=6
+            WheelDrive=REAR // which wheels are driven: REAR, FOUR, or FRONT
+            SemiAutomatic=0 // whether throttle and clutch are operated automatically (like an F1 car)
+
+            maybe:
+            TCSetting=0 ????
+            TractionControlGrip=(1.4, 0.2)    // average driven wheel grip multiplied by 1st number, then added to 2nd
+            TractionControlLevel=(0.33, 1.0)  // effect of grip on throttle for low TC and high TC
+            ABS4Wheel=0                       // 0 = old-style single brake pulse, 1 = more effective 4-wheel ABS
+            ABSGrip=(1.7, 0.0)                // grip multiplied by 1st number and added to 2nd
+            ABSLevel=(0.31, 0.92)             // effect of grip on brakes for low ABS and high ABS
+            Mass=828.0      Weight threshold
+            FWRange=(0, 1, 1)             // front wing range
+            FWSetting=0                   // front wing setting
+            RWRange=(0, 1, 1)             // rear wing range
+            RWSetting=0                   // rear wing setting
+
+        (engine)*.ini
+            BoostPower=0 no turbo?
+            DumpValve=
+            Turbo*
+
+
+        """
+
+        hdv_keywords = [
+              'ForwardGears',
+              'WheelDrive',
+              'SemiAutomatic',
+              'Mass',
+              'FWSetting',
+              'RWSetting'
+              ]
+
+        ini_keywords = [
+              'DumpValve',
+              'Turbo'
+              ]
+
+        _dir = self.dir_files_in_mas_files(mas_dir)
+        # defaults
+        tags['Gearshift'] = 'Paddles' # Paddles or sequential
+        tags['F/R/4WD'] = 'REAR'
+        tags['Aero'] = '1'
+        tags['Turbo'] = '0'
+
+        for mas, files in _dir.items():
+            for _filename in files:
+                _filename = _filename.lower().strip()
+                if '.hdv' in _filename:
+                    mas_tags = self.mas_file(mas, _filename, {}, hdv_keywords)
+                    if 'SemiAutomatic' in mas_tags:
+                        if mas_tags['SemiAutomatic'] == '0':
+                            tags['Gearshift'] = 'H' + mas_tags['ForwardGears']
+                    if 'WheelDrive' in mas_tags:
+                        tags['F/R/4WD'] = mas_tags['WheelDrive']
+                    if 'FWSetting' in mas_tags and 'RWSetting' in mas_tags:
+                        if mas_tags['FWSetting'] == '0' and mas_tags['RWSetting'] == '0':
+                            tags['Aero'] = '0'
+                    if 'Mass' in mas_tags:
+                        tags['Mass'] = str(
+                            int(mas_tags['Mass'].split('.')[0])) # May be float
+                if '.ini' in _filename:
+                    mas_tags = self.mas_file(mas, _filename, {}, ini_keywords)
+                    if 'DumpValve' in mas_tags:
+                        tags['Turbo'] = '1'
+
+        if not 'Mass' in tags:
+            # that PROBABLY indicates that mas was encrypted
+            # which PROBABLY => S397
+            tags['Mass'] = ''
+            if tags['Author'] == '':
+                tags['Author'] = 'Studio 397?'
         return tags
 
 class TrackDataFiles(DataFiles):
     def __init__(self):
         self.installed_folder = 'locations'
         self.datafiles_folder = os.path.normpath(TrackDatafilesFolder)
+    def get_initial_tags(self, mft):
+        """
+        Get the tags from the MFT file
+        """
+        text = readFile(mft)
+        _tags = getTags(text)
+        for requiredTag in ['Name','Version','Type','Author','Origin',
+                            'Category','ID','URL','Desc','Date','Flags',
+                            'RefCount','#Signature','#MASFile','MinVersion',
+                            '#BaseSignature']:
+            # MASFile, Signature and BaseSignature filtered out
+            if requiredTag in _tags:
+              """filter out boilerplate
+              Author=Mod Team
+              URL=www.YourModSite.com
+              Desc=Your new mod.
+              """
+              if _tags[requiredTag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
+                _tags[requiredTag] = ''
+              #print('%s=%s' % (requiredTag, _tags[requiredTag]))
+              if requiredTag == 'Name':
+                _tags['strippedName'] = cleanTrackName(_tags['Name'])
+                _tags['Year'], _tags['Decade'], _tags['strippedName'] = extractYear(_tags['strippedName'])
+                _tags['strippedName'] = _tags['strippedName'].title() # Title Case The Name
+            # We need the original data folder to assemble the .SCN file path to put in
+            # "Player.JSON" to force rF2 to switch tracks.  We also need the .SCN
+            # file names and that's a bit more difficult.
+            # To select the track we also need the "Scene Description"
+            _tags['originalFolder'], _ = os.path.split(mft[len(rF2root)+1:]) # strip the root
+            if not 'Scene Description' in _tags or _tags['Scene Description'] == '':
+                # if scn file name is available in scnNames.txt use it
+                scnNames = getVehScnNames('scnNames.txt')
+                if _tags['Name'] in scnNames:
+                  _tags['Scene Description'] = scnNames[_tags['Name']]
+
+            if _tags['Category'] in trackCategories:
+                _tags['tType'] = trackCategories[_tags['Category']]
+
+            tag = 'Track Name'
+            val = _tags['strippedName'].replace('_', ' ').strip()  # default
+            _tags[tag] = val
+        return _tags
+
+    def read_mas_files(self, tags, mas_dir):
+        """
+        Scan MAS files for:
+        .scns:      use the name
+        .gdb files: add tags found in them
+        """
+        gdb_keywords = [
+            'Latitude',
+            'Longitude'
+            ]
+        _dir = self.dir_files_in_mas_files(mas_dir)
+        for mas, files in _dir.items():
+            for _filename in files:
+                _filename = _filename.lower().strip()
+                if '.scn' in _filename:
+                    scn = os.path.splitext(_filename)[0] # Strip .scn
+                    tags['Scene Description'] = scn
+                    tags['Name'] = scn
+                if '.gdb' in _filename:
+                    tags = self.mas_file(mas, _filename, tags, gdb_keywords)
+
+        return tags
+
+        scns, __ = getMasInfo(mas_dir)
+        if len(scns):
+            for scn in scns:
+                tags['Scene Description'] = scn
+                tags['Name'] = scn
+        return tags, False
 
 def trawl_for_new_rF2_datafiles(parentFrame):
   filesToDelete = listDeletedDataFiles()
@@ -550,7 +698,7 @@ def createDefaultDataFiles(overwrite=False):
           if cached_tags[tag] != '':
             # We have a cached tag for this one
             tags[tag] = cached_tags[tag]
-          else:
+          elif tag in tags:
             cache_o.set_value(tags['Name'], tag, tags[tag])
             cache_write = True
 
@@ -763,10 +911,11 @@ def getMasInfo(folder, masFile=None):
   if masFile:
       masFiles = [(masFile, os.path.basename(masFile))]
   else:
-      masFiles = getListOfFiles(folder, '*mas')
+      masFiles = getListOfFiles(folder, '*.mas')
   all = []
   mas_dict = {}
-  circuit_dict = {}
+  _pop = os.getcwd()  # save current directory
+  os.chdir(os.path.dirname(masFiles[0][0]))
   for mas in masFiles:
     """ Return nothing
     ls = subprocess.run([ModMgr, '-h'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -774,8 +923,6 @@ def getMasInfo(folder, masFile=None):
     #_op = subprocess.run([ModMgr, '-l%s' % mas[1]], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     #So pipe to a file and read it
     """
-    _pop = os.getcwd()  # save current directory
-    os.chdir(os.path.dirname(mas[0]))
     #cmd = '"'+ModMgr + '" -l%s > temporaryFile 2>>errors' % mas[1]
     cmd = '"'+ModMgr + '" -q -l%s 2>&1 temporaryFile > nul 2>&1' % mas[1]
     os.system(cmd)
@@ -783,7 +930,7 @@ def getMasInfo(folder, masFile=None):
     for _filename in lines:
       _filename = _filename.lower().strip()
       if '.scn' in _filename:
-        all.append(os.path.splitext(_filename[0])) # Strip .scn
+        all.append(os.path.splitext(_filename)[0]) # Strip .scn
       if 'unable to open package file' in _filename:
         print(mas[1])
       if '.hdv' in _filename:
@@ -830,7 +977,7 @@ def getMasInfo(folder, masFile=None):
       os.remove('temporaryFile')
     except:
       pass # No SCN files in MAS files
-    os.chdir(_pop)
+  os.chdir(_pop)
   return all, mas_dict
 
 if __name__ == '__main__':
