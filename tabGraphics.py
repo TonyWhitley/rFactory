@@ -2,117 +2,234 @@
 import tkinter as tk
 from tkinter import font, ttk
 
+from lib.tkToolTip import Tooltip
+
 #########################
 # The tab's public class:
 #########################
 class Tab:
-  def __init__(self, parentFrame):
+  def __init__(self, parentFrame, graphicsDemands=False):
     """ Put this into the parent frame """
-    pass
-    tkLabelConditions = tk.Label(parentFrame, 
-                                text='Here a set of options including overall '
-                                'settings like wet, dark.\nIf it is not going '
-                                'to be wet then no need for raindrops...',
-                                width=35,
-                                wraplength=230,
-                                justify=tk.LEFT)
-    tkLabelConditions.grid(column=1, row=1, sticky='nw')
-
+    # graphicsDemands could be handled with a sub class
     self.graphicsSetup = {}
     self.vars = {}
     _tkCheckbuttons = {}
     _tkRadiobuttons = {}
 
-    fontBold = font.Font(family='Helvetica', size=8, weight='bold', slant='italic')
+    fontBoldItalic = font.Font(family='Helvetica', size=8, weight='bold', slant='italic')
+    fontBold = font.Font(family='Helvetica', size=8, weight='bold')
 
     xPadding = 10
     ####################################################
-    tkFrame_Conditions = tk.LabelFrame(parentFrame, text='rFactory control of graphics settings')
-    tkFrame_Conditions.grid(column=1, row=2, sticky='nw', padx=xPadding)
-
     self._createVar('rFactoryControl', 'Full control')
 
-    _tkRadiobuttons['Off'] = tk.Radiobutton(tkFrame_Conditions, 
-                                           text='Off', 
-                                           variable=self.vars['rFactoryControl'], 
-                                           value='Off')
-    _tkRadiobuttons['Off'].grid(sticky='w')
+    tkFrame_Controls = tk.LabelFrame(parentFrame,
+                                        text='Graphics settings')
+    tkFrame_Controls.grid(column=1, row=1, sticky='nw', padx=xPadding)
+    if not graphicsDemands:
 
-    _tkRadiobuttons['ReplayOnly'] = tk.Radiobutton(tkFrame_Conditions, 
-                                           text='Racing vs. replay only', 
-                                           variable=self.vars['rFactoryControl'], 
-                                           state=tk.DISABLED,
-                                           value='Replay only')
-    _tkRadiobuttons['ReplayOnly'].grid(sticky='w')
+        _tkRadiobuttons['Off'] = tk.Radiobutton(tkFrame_Controls,
+                                               text='Off',
+                                               variable=self.vars['rFactoryControl'],
+                                               value='Off')
+        _tkRadiobuttons['Off'].grid(sticky='w')
 
-    _tkRadiobuttons['FullControl'] = tk.Radiobutton(tkFrame_Conditions, 
-                                           text='Full control', 
-                                           variable=self.vars['rFactoryControl'], 
-                                           value='Full control')
-    _tkRadiobuttons['FullControl'].grid(sticky='w')
+        _tkRadiobuttons['FullControl'] = tk.Radiobutton(tkFrame_Controls,
+                                               text='Full control',
+                                               variable=self.vars['rFactoryControl'],
+                                               value='Full control')
+        _tkRadiobuttons['FullControl'].grid(sticky='w')
+    else:
+        self._createVar('VR', '0')
+        _tkCheckbuttons['VR'] = tk.Checkbutton(tkFrame_Controls,
+          text='VR',
+          variable=self.vars['VR'])
+        _tkCheckbuttons['VR'].grid(sticky='w')
+
+    self._createVar('ReplayOnly', '0')
+    _tkCheckbuttons['ReplayOnly'] = tk.Checkbutton(tkFrame_Controls,
+                                            text='Replay only',
+                                            variable=self.vars['ReplayOnly'])
+    _tkCheckbuttons['ReplayOnly'].grid(sticky='w')
 
     ####################################################
     tkFrame_Conditions = tk.LabelFrame(parentFrame, text='Conditions')
-    tkFrame_Conditions.grid(column=1, row=3, sticky='nw', padx=xPadding)
+    tkFrame_Conditions.grid(column=1, sticky='nw', padx=xPadding)
+
+    self._createVar('NumberOfCars', 15)
+    if graphicsDemands:
+        _NumberOfCarsCol = 0
+        tkLabel_NumberOfCars = tk.Label(tkFrame_Conditions,
+                                              text='Approx number of cars',
+                                              font=fontBold,
+                                              justify=tk.LEFT)
+        tkLabel_NumberOfCars.grid(column=_NumberOfCarsCol,
+                                          row=0,
+                                          sticky='sw')
+
+        tkScale_NumberOfCars = tk.Scale(tkFrame_Conditions,
+                                      from_=5,
+                                      to=50,
+                                      resolution=5,
+                                      orient=tk.HORIZONTAL,
+                                      variable=self.vars['NumberOfCars'])
+        tkScale_NumberOfCars.grid(column=_NumberOfCarsCol+1,
+                                          row=0,
+                                          sticky='ew')
 
     self._createVar('MaybeRain', False)
-    _tkCheckbuttons['MaybeRain'] = tk.Checkbutton(tkFrame_Conditions, 
+    _tkCheckbuttons['MaybeRain'] = tk.Checkbutton(tkFrame_Conditions,
       text='Rain is possible',
       variable=self.vars['MaybeRain'])
-
+    Tooltip(_tkCheckbuttons['MaybeRain'], text='No rain, '\
+        'no need for raindrops\nRain impacts graphics performance')
     self._createVar('NightRacing', False)
-    _tkCheckbuttons['NightRacing'] = tk.Checkbutton(tkFrame_Conditions, 
+    _tkCheckbuttons['NightRacing'] = tk.Checkbutton(tkFrame_Conditions,
       text='There will be racing in the dark',
       variable=self.vars['NightRacing'])
+    Tooltip(_tkCheckbuttons['NightRacing'], text='No night racing, '\
+        'no need for headlights\nNight racing impacts graphics performance')
 
     _tkCheckbuttons['MaybeRain'].grid(sticky='w')
-    _tkCheckbuttons['NightRacing'].grid(sticky='w')
+    _tkCheckbuttons['NightRacing'].grid(sticky='w', columnspan=2)
 
     ####################################################
     tkFrame_GraphicsSetup = tk.LabelFrame(parentFrame, text='Graphics setup')
-    tkFrame_GraphicsSetup.grid(column=2, row=1, rowspan=3, sticky='ew', padx=xPadding)
+    tkFrame_GraphicsSetup.grid(column=2, row=0, rowspan=3, sticky='new', padx=xPadding)
 
     _GraphicsCapabilityCol = 1
     self._createVar('GraphicsCapability', 5)
-    
-    tkLabel_GraphicsCapability = tk.Label(tkFrame_GraphicsSetup, 
+
+    tkLabel_GraphicsCapability = tk.Label(tkFrame_GraphicsSetup,
                                           text='Overall\ngraphics\ncapability',
-                                          font=fontBold,
+                                          font=fontBoldItalic,
                                           justify=tk.LEFT)
     tkLabel_GraphicsCapability.grid(column=_GraphicsCapabilityCol, row=1, sticky='nw')
 
-    tkScale_GraphicsCapability = tk.Scale(tkFrame_GraphicsSetup, 
-                                  from_=0, 
-                                  to=10, 
-                                  orient=tk.VERTICAL, 
+    tkScale_GraphicsCapability = tk.Scale(tkFrame_GraphicsSetup,
+                                  from_=0,
+                                  to=10,
+                                  orient=tk.VERTICAL,
                                   variable=self.vars['GraphicsCapability'])
     tkScale_GraphicsCapability.grid(column=_GraphicsCapabilityCol, row=2, rowspan=3, sticky='ew')
+    Tooltip(tkScale_GraphicsCapability, text='How powerful is your graphics card and PC?')
 
     tkLabel_Graphics_0 = tk.Label(tkFrame_GraphicsSetup, text='Potato')
     tkLabel_Graphics_0.grid(column=_GraphicsCapabilityCol, row=2, sticky='nw')
     tkLabel_Graphics_10 = tk.Label(tkFrame_GraphicsSetup, text='Ninja!')
     tkLabel_Graphics_10.grid(column=_GraphicsCapabilityCol, row=4, sticky='nw')
 
-    _GraphicsPreferenceCol = 2
+    _VRAMcol = 2
+    self._createVar('VRAM', 8)
+
+    tkLabel_VRAM = tk.Label(tkFrame_GraphicsSetup,
+                                          text='Video\nRAM\nsize',
+                                          font=fontBoldItalic,
+                                          justify=tk.CENTER)
+    tkLabel_VRAM.grid(column=_VRAMcol, row=1, sticky='new')
+
+    tkScale_VRAM = tk.Scale(tkFrame_GraphicsSetup,
+                                  from_=1,
+                                  to=16,
+                                  orient=tk.VERTICAL,
+                                  variable=self.vars['VRAM'])
+    tkScale_VRAM.grid(column=_VRAMcol, row=2, rowspan=3, sticky='w')
+    Tooltip(tkScale_VRAM, text='How much RAM does your graphics have?')
+
+    tkLabel_Graphics_0 = tk.Label(tkFrame_GraphicsSetup, text='GB')
+    tkLabel_Graphics_0.grid(column=_VRAMcol, row=2, sticky='new')
+
+    _GraphicsPreferenceCol = 3
     self._createVar('GraphicsPreference', 5)
-    
-    tkLabel_GraphicsPreference = tk.Label(tkFrame_GraphicsSetup, 
+
+    tkLabel_GraphicsPreference = tk.Label(tkFrame_GraphicsSetup,
                                           text='Graphics\npreference',
-                                          font=fontBold,
+                                          font=fontBoldItalic,
                                           justify=tk.LEFT)
-    tkLabel_GraphicsPreference.grid(column=_GraphicsPreferenceCol, row=1, sticky='n')
-    tkScale_GraphicsPreference = tk.Scale(tkFrame_GraphicsSetup, 
-                                  from_=0, 
-                                  to=10, 
-                                  orient=tk.VERTICAL, 
+    tkLabel_GraphicsPreference.grid(column=_GraphicsPreferenceCol,
+                                    row=1,
+                                    sticky='n')
+    tkScale_GraphicsPreference = tk.Scale(tkFrame_GraphicsSetup,
+                                  from_=0,
+                                  to=10,
+                                  orient=tk.VERTICAL,
                                   variable=self.vars['GraphicsPreference'])
-    tkScale_GraphicsPreference.grid(column=_GraphicsPreferenceCol, row=3, sticky='ewns')
+    tkScale_GraphicsPreference.grid(column=_GraphicsPreferenceCol,
+                                    row=3,
+                                    sticky='ewns')
+    Tooltip(tkScale_GraphicsPreference, text='Do you prefer performance or eye candy?')
 
     tkLabel_Graphics_10 = tk.Label(tkFrame_GraphicsSetup, text='Frame rate')
     tkLabel_Graphics_10.grid(column=_GraphicsPreferenceCol, row=2, sticky='nw')
     tkLabel_Graphics_0 = tk.Label(tkFrame_GraphicsSetup, text='Eye candy')
     tkLabel_Graphics_0.grid(column=_GraphicsPreferenceCol, row=4, sticky='nw')
 
+    ####################################################
+    if not graphicsDemands:
+        return  # This frame is not required, graphics demands are set by rFactory
+
+    tkFrame_GraphicsDemands = tk.LabelFrame(parentFrame, text='Graphics demands')
+    tkFrame_GraphicsDemands.grid(column=3,
+                                 row=0,
+                                 rowspan=3,
+                                 sticky='nsew',
+                                 padx=xPadding)
+
+    _CarGraphicsDemandsCol = 1
+    self._createVar('CarGraphicsDemands', 0)
+
+    tkLabel_CarGraphicsDemands = tk.Label(tkFrame_GraphicsDemands,
+                                          text='CAR\ndemands',
+                                          font=fontBoldItalic,
+                                          justify=tk.CENTER)
+    tkLabel_CarGraphicsDemands.grid(column=_CarGraphicsDemandsCol,
+                                    row=1,
+                                    sticky='nw')
+
+    tkScale_CarGraphicsDemands = tk.Scale(tkFrame_GraphicsDemands,
+                                  from_=-5,
+                                  to=5,
+                                  orient=tk.VERTICAL,
+                                  variable=self.vars['CarGraphicsDemands'])
+    tkScale_CarGraphicsDemands.grid(column=_CarGraphicsDemandsCol,
+                                    row=3,
+                                    rowspan=3,
+                                    sticky='ew')
+    Tooltip(tkScale_CarGraphicsDemands, text="Is the car you're using well\n"\
+        "optimised or an FPS killer?")
+
+    tkLabel_Graphics_0 = tk.Label(tkFrame_GraphicsDemands, text='Optimised')
+    tkLabel_Graphics_0.grid(column=_CarGraphicsDemandsCol, row=2, sticky='nw')
+    tkLabel_Graphics_10 = tk.Label(tkFrame_GraphicsDemands, text='Heavy')
+    tkLabel_Graphics_10.grid(column=_CarGraphicsDemandsCol, row=6, sticky='nw')
+
+    _TrackGraphicsDemandsCol = 2
+    self._createVar('TrackGraphicsDemands', 0)
+
+    tkLabel_TrackGraphicsDemands = tk.Label(tkFrame_GraphicsDemands,
+                                          text='TRACK\ndemands',
+                                          font=fontBoldItalic,
+                                          justify=tk.CENTER)
+    tkLabel_TrackGraphicsDemands.grid(column=_TrackGraphicsDemandsCol,
+                                      row=1,
+                                      sticky='nw')
+
+    tkScale_TrackGraphicsDemands = tk.Scale(tkFrame_GraphicsDemands,
+                                  from_=-5,
+                                  to=5,
+                                  orient=tk.VERTICAL,
+                                  variable=self.vars['TrackGraphicsDemands'])
+    tkScale_TrackGraphicsDemands.grid(column=_TrackGraphicsDemandsCol,
+                                      row=3,
+                                      rowspan=3,
+                                      sticky='ew')
+    Tooltip(tkScale_TrackGraphicsDemands, text="Is the track you're using well\n"\
+        "optimised or an FPS killer?")
+
+    tkLabel_Graphics_0 = tk.Label(tkFrame_GraphicsDemands, text='Optimised')
+    tkLabel_Graphics_0.grid(column=_TrackGraphicsDemandsCol, row=2, sticky='nw')
+    tkLabel_Graphics_10 = tk.Label(tkFrame_GraphicsDemands, text='Heavy')
+    tkLabel_Graphics_10.grid(column=_TrackGraphicsDemandsCol, row=6, sticky='nw')
 
 
   def _createVar(self, name, value):
@@ -150,8 +267,8 @@ REPLAY_FACTOR = 1.5     # Number representing the extra load we're willing
 
 def setGraphics(graphicsSetup,
                 VR,
-                carGraphicDetailsFactor, 
-                trackGraphicDetailsFactor, 
+                carGraphicDetailsFactor,
+                trackGraphicDetailsFactor,
                 onlineOfflineReplay,
                 NumberOfCars):
   """
@@ -162,9 +279,10 @@ def setGraphics(graphicsSetup,
       Full control              Set up a new user called Replay and call rF2 using that profile.
     MaybeRain
     NightRacing
-    GraphicsCapability 
+    GraphicsCapability
       0:  Running on a potato ;)
       10: Dual 2080 tis and watercooling!
+    VRAM (GB)
     GraphicsPreference
       0:  Maximum frame rate
       10: Eye candy
@@ -174,7 +292,7 @@ def setGraphics(graphicsSetup,
   trackGraphicDetailsFactor
     + / - percentage
   onlineOfflineReplay
-    Racing: racing online/offline 
+    Racing: racing online/offline
     Replay: just viewing a replay
   """
   """
@@ -202,6 +320,19 @@ def setGraphics(graphicsSetup,
     # Don't alter graphics settings
     return ScriptedJsonEditorJobs
 
+  # if graphicsDemands then user defines these values
+  if 'VR' in graphicsSetup:
+      VR = graphicsSetup['VR'] == '1'
+  if 'ReplayOnly' in graphicsSetup:
+      if graphicsSetup['ReplayOnly'] == '1':
+          onlineOfflineReplay = 'Replay'
+  if 'NumberOfCars' in graphicsSetup:
+      NumberOfCars = int(graphicsSetup['NumberOfCars'])
+  if 'CarGraphicsDemands' in graphicsSetup:
+      carGraphicDetailsFactor = int(graphicsSetup['CarGraphicsDemands'])*2
+  if 'TrackGraphicsDemands' in graphicsSetup:
+      trackGraphicDetailsFactor = int(graphicsSetup['TrackGraphicsDemands'])*2
+
   graphicsLoad = 1
   if VR:
     graphicsLoad *= VR_FACTOR
@@ -209,9 +340,10 @@ def setGraphics(graphicsSetup,
     graphicsLoad *= RAIN_FACTOR
   if graphicsSetup['NightRacing'] != '0':
     graphicsLoad *= DARK_FACTOR
+
   graphicsLoad *= (1 + (NumberOfCars/CARS_FACTOR))
-  graphicsLoad *= carGraphicDetailsFactor
-  graphicsLoad *= trackGraphicDetailsFactor
+  graphicsLoad *= (1 + carGraphicDetailsFactor)
+  graphicsLoad *= (1 + trackGraphicDetailsFactor)
 
   if graphicsSetup['rFactoryControl'] == 'Replay only':
     if onlineOfflineReplay == 'Replay':
@@ -239,17 +371,26 @@ def setGraphics(graphicsSetup,
       # Extra settings specific to darkness
       ScriptedJsonEditorJobs.append('graphicsNight_%d' % int(graphicsLevel/2))
       # Only half the number of jobs to set night levels
-      # (actually there are probably fewer than that, not many 
+      # (actually there are probably fewer than that, not many
       # things specific to running in darkness to tweak)
+    if int(graphicsSetup['VRAM']) < 5:
+      # Extra settings to reduce VRAM usage
+      ScriptedJsonEditorJobs.append('graphicsVRAMlow')
+    elif int(graphicsSetup['VRAM']) < 9:
+      # Extra settings to reduce VRAM usage
+      ScriptedJsonEditorJobs.append('graphicsVRAMmedium')
+    else:
+      ScriptedJsonEditorJobs.append('graphicsVRAMmax')
   return ScriptedJsonEditorJobs
-  
+
 if __name__ == '__main__':
   # To run this tab by itself for development
   root = tk.Tk()
+  root.title('rFactor 2 Graphics Manager')
   tabGraphics = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   tabGraphics.grid()
-    
-  o_tab = Tab(tabGraphics)
+
+  o_tab = Tab(tabGraphics, graphicsDemands=True)
   root.mainloop()
 
   graphicsSetup = o_tab.getSettings()
@@ -259,10 +400,10 @@ if __name__ == '__main__':
   onlineOfflineReplay = 'Replay'
   player = 'Replay'
   NumberOfCars = 20
-  ScriptedJsonEditorJobs = setGraphics(graphicsSetup, 
+  ScriptedJsonEditorJobs = setGraphics(graphicsSetup,
                 VR,
-                carGraphicDetailsFactor, 
-                trackGraphicDetailsFactor, 
+                carGraphicDetailsFactor,
+                trackGraphicDetailsFactor,
                 onlineOfflineReplay,
                 NumberOfCars)
   # not defined yet  runScriptedJsonEditor(player, ScriptedJsonEditorJobs)
