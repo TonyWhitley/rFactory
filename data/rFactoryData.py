@@ -4,11 +4,11 @@ Accessing the data for rFactory.
 This reads rFactory's data files - one for each car, one for each track.
 File naming matches the name used by rFactor.  Data in the files is derived
 from rFactor but then enhanced - e.g. S397 __cars and __tracks do not specify that
-S397 is the author.  Additional data such as 
+S397 is the author.  Additional data such as
 __cars:
 * type (open-wheeler, sports, GT, Indy, endurance, etc)
 * class (F1, GT3, GTE, etc)
-* type of gearshift (H, dogleg, paddles, sequential, auto, preselector!) 
+* type of gearshift (H, dogleg, paddles, sequential, auto, preselector!)
 * what driving aids the car has (TC, ABS, etc)  [a list?]
 * year and decade of manufacture
 * star rating
@@ -24,7 +24,7 @@ It also handles writing the files if they've been edited.
 """
 import sys
 
-sys.path.append('..') # 
+sys.path.append('..') #
 from data.rFactoryConfig import carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
 from data.utils import getListOfFiles, readFile, getTags
@@ -32,29 +32,29 @@ from data.utils import getListOfFiles, readFile, getTags
 __cars = {
   'dummyData' : {
     '134_JUDD' :
-    {'Manufacturer': '134 JUDD', 'Model': '134 JUDD', 'Class': '', 'tType': 'Prototype', 
+    {'Manufacturer': '134 JUDD', 'Model': '134 JUDD', 'Class': '', 'tType': 'Prototype',
      'F/R/4WD': 'RWD', 'Year': '', 'Decade': '', 'Rating': '***', 'DB file ID': '134_JUDD',
      'Gearshift': 'Paddles', 'Aids': '', 'AIstrengthFactor': '', 'GraphicDetailsFactor': '',
-     'originalFolder': 'Installed\\vehicles\\134_JUDD\\0.7', 'vehFile': '134_JUDD', 
+     'originalFolder': 'Installed\\vehicles\\134_JUDD\\0.7', 'vehFile': '134_JUDD',
      'Name': '134_JUDD', 'Version': '0.7', 'Type': '2', 'Author': 'PortoAlto and rstRmods',
-     'Origin': '2', 'Category': '7', 'ID': '', 'URL': '', 'Desc': '', 
+     'Origin': '2', 'Category': '7', 'ID': '', 'URL': '', 'Desc': '',
      'Date': '131465248676360000', 'Flags': '270536704', 'RefCount': '1', 'MinVersion': ''},
     '1975BRABHAM':
-    {'Manufacturer': 'BRABHAM', 'Model': 'BRABHAM', 'Class': '', 'tType': '', 
-     'F/R/4WD': 'RWD', 'Year': '1975', 'Decade': '1970-', 'Rating': '***', 
-     'DB file ID': '1975BRABHAM', 'Gearshift': 'Paddles', 'Aids': '', 
-     'AIstrengthFactor': '', 'GraphicDetailsFactor': '', 
+    {'Manufacturer': 'BRABHAM', 'Model': 'BRABHAM', 'Class': '', 'tType': '',
+     'F/R/4WD': 'RWD', 'Year': '1975', 'Decade': '1970-', 'Rating': '***',
+     'DB file ID': '1975BRABHAM', 'Gearshift': 'Paddles', 'Aids': '',
+     'AIstrengthFactor': '', 'GraphicDetailsFactor': '',
      'originalFolder': 'Installed\\vehicles\\1975BRABHAM\\1.0', 'vehFile': 'Reutemann_07',
-     'Name': '1975BRABHAM', 'Version': '1.0', 'Type': '2', 'Author': '', 'Origin': '0', 
-     'Category': '0', 'ID': '', 'URL': '', 'Desc': '', 'Date': '1493632923', 
+     'Name': '1975BRABHAM', 'Version': '1.0', 'Type': '2', 'Author': '', 'Origin': '0',
+     'Category': '0', 'ID': '', 'URL': '', 'Desc': '', 'Date': '1493632923',
      'Flags': '3149824', 'RefCount': '1', 'MinVersion': ''},
      '1975BRM':
-    {'Manufacturer': 'BRM', 'Model': 'BRM', 'Class': '', 'tType': '', 'F/R/4WD': 'RWD', 
-     'Year': '1975', 'Decade': '1970-', 'Rating': '***', 'DB file ID': '1975BRM', 
-     'Gearshift': 'Paddles', 'Aids': '', 'AIstrengthFactor': '', 'GraphicDetailsFactor': '', 
-     'originalFolder': 'Installed\\vehicles\\1975BRM\\1.0', 'vehFile': 'Evans_14', 
+    {'Manufacturer': 'BRM', 'Model': 'BRM', 'Class': '', 'tType': '', 'F/R/4WD': 'RWD',
+     'Year': '1975', 'Decade': '1970-', 'Rating': '***', 'DB file ID': '1975BRM',
+     'Gearshift': 'Paddles', 'Aids': '', 'AIstrengthFactor': '', 'GraphicDetailsFactor': '',
+     'originalFolder': 'Installed\\vehicles\\1975BRM\\1.0', 'vehFile': 'Evans_14',
      'Name': '1975BRM', 'Version': '1.0', 'Type': '2', 'Author': '', 'Origin': '0',
-     'Category': '0', 'ID': '', 'URL': '', 'Desc': '', 'Date': '1493632924', 
+     'Category': '0', 'ID': '', 'URL': '', 'Desc': '', 'Date': '1493632924',
      'Flags': '3149824', 'RefCount': '1', 'MinVersion': ''},
         },
   'tags' : {}
@@ -73,12 +73,13 @@ __tracks = {
   }
 
 def reloadAllData():
+  """ Reset all tags and read them again """
   __cars['tags'] = {}
   __tracks['tags'] = {}
   __readDatafiles()
 
 def __readDatafiles():
-  # Run this once to get the data
+  """ Run this once to get the data """
   if len(__cars['tags']) == 0:
     carFiles = getListOfFiles(path=CarDatafilesFolder, pattern='*'+dataFilesExtension)
     trackFiles = getListOfFiles(path=TrackDatafilesFolder, pattern='*'+dataFilesExtension)

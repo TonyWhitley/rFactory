@@ -24,7 +24,7 @@ pyinstaller ^
   --distpath .\ ^
   --log-level=WARN ^
   --workpath build\rFactoryModManager ^
-  --add-data ModMaker.bat;ModMaker.bat  ^
+  --add-data ModMaker.bat;.  ^
   --exclude-module dummyRF2 ^
   --exclude-module tabFavouriteServers ^
   --exclude-module tabGearshift ^
