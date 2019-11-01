@@ -7,6 +7,41 @@ Trawl rF2 data files for raw data as a baseline for rFactory data files
 5) extract data into data file
 
 6) check if rF2 data file has been deleted
+
+There are different sources for data (tags)
+1) "cached_tags" are read from a sparsely-populated Excel file that is
+   curated manually with tags that are known will be wrong if read by
+   the subsequent automatic methods
+   If a new mod is discovered then a row is added to the spreadsheet
+   with the automatically-generated tags.  That means the spreadsheet is
+   initialised with tags that need to be edited.
+2) MFT files give some data and are quick to read
+3) MAS files are slower to read
+  a) Car MAS files contain hdv and ini files that provide some tags
+  b) Track MAS files contain scns file (use the name) and gdb files which
+     may have lat and longitude tags
+
+Many tags need to be "massaged" to get the data in the required format, e.g.
+converting car and track categories from numbers to names.
+More tricky is extracting year information from the names of cars and tracks
+simple example: USF2000_2016 is the car USF2000 from 2016
+
+A tag is only written with a non-blank value once, if more data comes along
+it is discarded, so the cached_tags have priority over ones from the MFT files
+and they over those from MAS files (hmm... they are equally good sources)
+
+Once the data has been extracted it is stored in rFactory's own data files
+Marker files mark that a track folder has been processed
+"""
+"""
+Process is
+* Read spreadsheet of cached tags
+* Search for cars and tracks
+* If a car or track is not cached then extract tags and write a new row in
+  the spreadsheet
+* If a car or mod is updated then PERHAPS extract tags and overwrite the row in
+  the spreadsheet
+!!! There is no need for the "rFactory data files"
 """
 
 import datetime
@@ -29,6 +64,28 @@ from data.cached_data import Cached_data
 
 import edit.carNtrackEditor as carNtrackEditor
 
+######################################################################
+def translate_date(val):
+    """
+    Convert Windows or Unix datetime to YYYY-MM-DD
+    """
+    try:
+        if len(val) == 18: # Windows filetime.
+            # http://support.microsoft.com/kb/167296
+            # How To Convert a UNIX time_t to a Win32 FILETIME or SYSTEMTIME
+            EPOCH_AS_FILETIME = 116444736000000000  # January 1, 1970 as MS file time
+            HUNDREDS_OF_NANOSECONDS = 10000000
+            ts = datetime.datetime.fromtimestamp((int(float(val)) - \
+                EPOCH_AS_FILETIME) // HUNDREDS_OF_NANOSECONDS)
+        else: # Unix
+            ts = datetime.datetime.fromtimestamp(int(float(val)))
+    except Exception as e:
+        print(e)
+        ts = datetime.datetime.today()
+    return ts.strftime("%Y-%m-%d")
+
+######################################################################
+# Car/Track subclass
 class DataFiles:
     installed_folder = None
     datafiles_folder = None
@@ -36,8 +93,21 @@ class DataFiles:
     data_files_and_timestamps = None
     newer_mfts = None
     newFiles = list()
-    tags = list()
+    _tags = dict()
+    encrypted_files = list()
     ModMgr = os.path.join(rF2root, r'Bin32\ModMgr.exe')
+
+    def __getitem__(self, key):
+        return self._tags[key]
+
+    def __setitem__(self, key, value):
+        """
+        Only set tag if it does not already have a value
+        """
+        if type(value) != str:
+            raise TypeError("tag must be string")
+        if not key in self._tags or self._tags[key] == '':
+            self._tags[key] = value
 
     def make_datafile_name(self, folder):
         r"""
@@ -55,7 +125,7 @@ class DataFiles:
 
     def get_mfts_and_timestamps(self):
         """
-        installed_folder: 'vehicles' or 'locations'
+        rF2 installed_folder: 'vehicles' or 'locations'
         """
         rF2_dir = os.path.join(rF2root, 'Installed')
         _mft_files = getListOfFiles(os.path.join(rF2_dir, self.installed_folder),
@@ -70,7 +140,7 @@ class DataFiles:
 
     def get_data_files_and_timestamps(self):
         """
-        datafiles_folder: 'CarDatafilesFolder' or 'TrackDatafilesFolder'
+        rFactory datafiles_folder: 'CarDatafilesFolder' or 'TrackDatafilesFolder'
         """
         _mft_files = getListOfFiles(self.datafiles_folder,
                                             pattern='*.txt',
@@ -108,34 +178,11 @@ class DataFiles:
         if not self.newer_mfts:
             self.newer_mfts()
         if _mft in self.newer_mfts:
-            self.tags = self.new_data(_mft)
+            self._tags = self.new_data(_mft)
             # a new file was written
-            self.newFiles.append(self.tags['Name'])
+            self.newFiles.append(self._tags['Name'])
         else: # We already have a data file, load it.
             pass    # TBD
-
-    def new_data(self, _mft):
-        """
-        Create new data file
-        """
-        cache_o = Cached_data()
-        cache_o.load()
-        cache_write = False
-        _tags = self.get_initial_tags(_mft)
-        cached_tags = cache_o.get_values(_tags['Name'])
-        if not cached_tags:
-            cache_write = self.read_mas_files(_tags, os.path.dirname(_mft))
-        if createDataFile(datafilesPath=CarDatafilesFolder,
-                          filename=_tags['Name'],
-                          dict=_tags,
-                          tagsToBeWritten=carTags,
-                          overwrite=True):
-            # a new file was written
-            pass    # TBD
-
-        if cache_write:
-            cache_o.write()
-        return _tags
 
     def dir_files_in_mas_files(self, folder):
         """
@@ -146,30 +193,49 @@ class DataFiles:
         os.chdir(os.path.dirname(masFiles[0][0]))
         files = dict()
         for mas in masFiles:
-            cmd = '"'+self.ModMgr + '" -q -l%s 2>&1 temporaryFile > nul 2>&1' % mas[1]
-            os.system(cmd)
-            # No, we need to record mass file name as well
-            files[mas[1]] = readFile('temporaryFile')
+            # We need to record mas file name as well
+            files[mas[1]] = self.dir_files_in_single_mas_file(mas[1])
         return files
+
+    def dir_files_in_single_mas_file(self, mas):
+        cmd = '"'+self.ModMgr + '" -q -l%s 2>&1 temporaryFile > nul 2>&1' % mas
+        os.system(cmd)
+        return readFile('temporaryFile')
 
     def mas_file(self, mas, _filename, tags, keywords):
         """
         Extract file from mas file and add any keywords to tags
         """
-        cmd = '"'+self.ModMgr + '" -q -x%s %s > nul 2>&1' \
-            % (mas, _filename)
-        os.system(cmd)
-        lines = readFile(_filename)
-        for line in lines:
-            line = line.strip()
-            for kw in keywords:
-                if line.startswith(f'{kw}'):
-                    tags[kw]=re.split('[= /\t]+', line)[1].strip()
-        try:
-            os.remove(_filename)   # delete extracted file
-        except:
-            print('Failed to extract %s from %s' % (_filename, mas))
+        if not mas in self.encrypted_files:
+            cmd = '"'+self.ModMgr + '" -q -x%s %s > nul 2>&1' \
+                % (mas, _filename)
+            os.system(cmd)
+            lines = readFile(_filename)
+            for line in lines:
+                line = line.strip()
+                for kw in keywords:
+                    if line.startswith(f'{kw}'):
+                        tags[kw]=re.split('[= /\t]+', line)[1].strip()
+            try:
+                os.remove(_filename)   # delete extracted file
+            except:
+                self.encrypted_files.append(mas)
+                print('Failed to extract %s from %s' % (_filename, mas))
+        else:
+            pass    # Already identified as encrypted
+            print()
         return tags
+
+######################################################################
+
+carCategories = {
+  '3' : 'GT',
+  '5' : 'Novel',
+  '6' : 'Open',
+  '7' : 'Prototype',
+  '9' : 'Street',
+  '10' : 'Touring'
+  }
 
 class CarDataFiles(DataFiles):
     def __init__(self):
@@ -320,6 +386,40 @@ class CarDataFiles(DataFiles):
                 tags['Author'] = 'Studio 397?'
         return tags
 
+    def new_data(self, _mft):
+        """
+        Create new rFactory car data file
+        """
+        cache_o = Cached_data()
+        cache_o.load()
+        cache_write = None
+        _tags = self.get_initial_tags(_mft)
+        _tags['Date'] = translate_date(_tags['Date'])
+        _tags['Rating'] = '***' # Default
+        cached_tags = cache_o.get_values(_tags['Name'])
+        if not cached_tags:
+            cache_write = self.read_mas_files(_tags, os.path.dirname(_mft))
+        if createDataFile(datafilesPath=CarDatafilesFolder,
+                          filename=_tags['Name'],
+                          dict=_tags,
+                          tagsToBeWritten=carTags,
+                          overwrite=True):
+            # a new file was written
+            pass    # TBD
+
+        if cache_write:
+            cache_o.write()
+        return _tags
+
+######################################################################
+
+trackCategories = {
+  '53' : 'Novel',
+  '55' : 'Permanent',
+  '56' : 'Rally',
+  '57' : 'Temporary'
+  }
+
 class TrackDataFiles(DataFiles):
     def __init__(self):
         self.installed_folder = 'locations'
@@ -387,18 +487,76 @@ class TrackDataFiles(DataFiles):
                     tags['Name'] = scn
                 if '.gdb' in _filename:
                     tags = self.mas_file(mas, _filename, tags, gdb_keywords)
+                    # Only if cached_tags don't have it already?
+                    # (Only called if cached_tags is empty)
+                    if 'Latitude' in tags and 'Longitude' in tags:
+                        lat = float(tags['Latitude'])
+                        long = float(tags['Longitude'])
+                        address_o = google_address(lat, long)
 
+                        tags['Country'] = address_o.get_country()
+                        tags['Continent'] = country_to_continent(tags['Country'])
+                    else:
+                        tags['Country'] = 'No Lat'
+                        tags['Continent'] = 'No Long'
         return tags
 
-        scns, __ = getMasInfo(mas_dir)
-        if len(scns):
-            for scn in scns:
-                tags['Scene Description'] = scn
-                tags['Name'] = scn
-        return tags, False
+    def new_data(self, _mft):
+        """
+        Create new rFactory track data file
+        """
+        cache_o = Cached_data()
+        cache_o.load()
+        cache_write = None
+        _tags = self.get_initial_tags(_mft)
+        _tags['Date'] = translate_date(_tags['Date'])
+        _tags['Rating'] = '***' # Default
+        cached_tags = cache_o.get_values(_tags['Name'])
+        if not cached_tags:
+            cache_write = self.read_mas_files(_tags, os.path.dirname(_mft))
+        if createDataFile(datafilesPath=TrackDatafilesFolder,
+                          filename=_tags['Name'],
+                          dict=_tags,
+                          tagsToBeWritten=trackTags,
+                          overwrite=True):
+            # a new file was written
+            pass    # TBD
+
+        if cache_write:
+            cache_o.write()
+        return _tags
+
+######################################################################
+# Using the classes
+
+def example_list_gearboxes():
+    """ Example using the above classes """
+    cdf = CarDataFiles()
+    tags = dict()
+    gearboxes = list()
+    mfts_and_timestamps = cdf.get_mfts_and_timestamps()
+    for mfts_and_timestamp in mfts_and_timestamps:
+        mft = os.path.dirname(mfts_and_timestamp)
+        tags = cdf.read_mas_files(tags,mft)
+        _car = os.path.basename(mfts_and_timestamp)
+        if 'Gearshift' in tags:
+            _shift = tags['Gearshift']
+        else:
+            _shift = '[Unknown]'
+        gearboxes.append(f'{_car}\t{_shift}'.format())
+        print()
+        for _g in gearboxes:
+            print(_g)
+
+
+
+######################################################################
+# Legacy:
 
 def trawl_for_new_rF2_datafiles(parentFrame):
+  """ The "do everything" access function """
   filesToDelete = listDeletedDataFiles()
+  # THIS SHOULD BE IN THE GUI!
   if len(filesToDelete):
     delete = messagebox.askyesno(
               'Scanned rFactory data files',
@@ -408,8 +566,10 @@ def trawl_for_new_rF2_datafiles(parentFrame):
       for file in filesToDelete:
         os.remove(file)
 
-  newFiles = createDefaultDataFiles(overwrite=False)
+  newFiles = createDefaultDataFiles(overwrite=False) # Create new rFactory data files
+
   reloadAllData()
+
   if len(newFiles):
     if len(newFiles) < 10:    # if there are too many forget it
       edit = messagebox.askyesno(
@@ -435,23 +595,8 @@ def trawl_for_new_rF2_datafiles(parentFrame):
         tk.mainloop()
   return newFiles
 
+######################################################################
 
-
-carCategories = {
-  '3' : 'GT',
-  '5' : 'Novel',
-  '6' : 'Open',
-  '7' : 'Prototype',
-  '9' : 'Street',
-  '10' : 'Touring'
-  }
-
-trackCategories = {
-  '53' : 'Novel',
-  '55' : 'Permanent',
-  '56' : 'Rally',
-  '57' : 'Temporary'
-  }
 
 def dataFileExists(datafilesPath, filename):
   _filepath = os.path.join(datafilesPath, filename+dataFilesExtension)
@@ -466,27 +611,8 @@ def createDataFile(datafilesPath, filename, dict, tagsToBeWritten, overwrite=Fal
         for tag in tagsToBeWritten:
           if tag in dict:
             val = dict[tag]
-            if tag == 'Date':
-              try:
-                if len(val) == 18: # Windows filetime.
-                  # http://support.microsoft.com/kb/167296
-                  # How To Convert a UNIX time_t to a Win32 FILETIME or SYSTEMTIME
-                  EPOCH_AS_FILETIME = 116444736000000000  # January 1, 1970 as MS file time
-                  HUNDREDS_OF_NANOSECONDS = 10000000
-                  ts = datetime.datetime.fromtimestamp((int(float(val)) - \
-                      EPOCH_AS_FILETIME) // HUNDREDS_OF_NANOSECONDS)
-                else: # Unix
-                  ts = datetime.datetime.fromtimestamp(int(float(val)))
-              except Exception as e:
-                  print(e)
-                  ts = datetime.datetime.today()
-              val = ts.strftime("%Y-%m-%d")
           elif tag == 'DB file ID':
             val = filename # The unique identifier for the car/track. I think.
-          elif tag == 'Rating':
-            val = '***'
-          elif tag == 'Gearshift':
-            val = 'Paddles' # a reasonable default
           else: # value not available
             val = ''
           try:
@@ -557,6 +683,7 @@ class vehFiles:
       print('%s not in %s' % (carName, self.all_vehicles_ini))
     return ''
 
+######################################################################
 
 def getVehScnNames(dataFilepath):
   """
@@ -581,6 +708,8 @@ def createDefaultDataFiles(overwrite=False):
   vehicleFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles'), pattern='*.mft', recurse=True)
   trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations'), pattern='*.mft', recurse=True)
   F1_1988_trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations', 'F1_1988_Tracks'), pattern='*.mas', recurse=True)
+  cdf = CarDataFiles()
+  tdf = TrackDataFiles()
   cache_o = Cached_data()
   cache_o.load()
 
@@ -589,12 +718,14 @@ def createDefaultDataFiles(overwrite=False):
 
   tags = {}
   if getAllTags:
+    cache_write = True
     for veh in vehicleFiles:
       text = readFile(veh[0])
       for tag in readTags(text):
         tags[tag] = 0
     #print(tags)
   else: # create data file
+    cache_write = False
     for veh in vehicleFiles:
       text = readFile(veh[0])
       tags = getTags(text)
@@ -660,7 +791,12 @@ def createDefaultDataFiles(overwrite=False):
       if not cached_tags:
           # We don't already have data scanned from MAS files
 
+          """
+          Legacy
           __scn, mas_tags = getMasInfo(
+                os.path.join(rF2root, tags['originalFolder']))
+          """
+          mas_tags = cdf.read_mas_files(tags,
                 os.path.join(rF2root, tags['originalFolder']))
           if 'SemiAutomatic' in mas_tags:
               if mas_tags['SemiAutomatic'] == '0':
@@ -731,7 +867,13 @@ def createDefaultDataFiles(overwrite=False):
           # Create a marker file with the overall name
           # otherwise this scans for SCN files every time
           createMarkerFile(_markerfilepath)
+          """
+          Legacy
           scns, mas_tags = getMasInfo(os.path.dirname(track[0]))
+          """
+          mas_tags = tdf.read_mas_files(tags,
+                os.path.dirname(track[0]))
+          scns = tags['Name']
           if len(scns):
             for scn in scns:
               tags['Scene Description'] = scn
@@ -750,8 +892,13 @@ def createDefaultDataFiles(overwrite=False):
           tags['Name'] = track[1][:-4]
           _filepath = os.path.join(TrackDatafilesFolder, tags['Name']+dataFilesExtension)
           if overwrite or not os.path.exists(_filepath):
+            """
+            Legacy
             scns, mas_tags = getMasInfo(None, track[0])
+            scns = tags['Name']
             tags['Scene Description'] = tags['Name']
+            """
+            mas_tags = tdf.read_mas_file(tags, track[0])
             newTrack = processTrack(track, tags, mas_tags)
             if newTrack:
               newFiles.append(newTrack)
@@ -762,58 +909,17 @@ def processTrack(track, tags, mas_tags=None):
   cache_o = Cached_data()
   cache_o.load()
 
-  for requiredTag in ['Name','Version','Type','Author','Origin','Category','ID','URL','Desc','Date','Flags','RefCount','#Signature','#MASFile','MinVersion','#BaseSignature']:
-    # MASFile, Signature and BaseSignature filtered out
-    if requiredTag in tags:
-      """filter out boilerplate
-      Author=Mod Team
-      URL=www.YourModSite.com
-      Desc=Your new mod.
-      """
-      if tags[requiredTag] in ['Mod Team', 'www.YourModSite.com', 'Your new mod.']:
-        tags[requiredTag] = ''
-      #print('%s=%s' % (requiredTag, tags[requiredTag]))
-      if requiredTag == 'Name':
-        tags['strippedName'] = cleanTrackName(tags['Name'])
-        tags['Year'], tags['Decade'], tags['strippedName'] = extractYear(tags['strippedName'])
-        tags['strippedName'] = tags['strippedName'].title() # Title Case The Name
-  # We need the original data folder to assemble the .SCN file path to put in
-  # "Player.JSON" to force rF2 to switch tracks.  We also need the .SCN
-  # file names and that's a bit more difficult.
-  # To select the track we also need the "Scene Description"
-  tags['originalFolder'], _ = os.path.split(track[0][len(rF2root)+1:]) # strip the root
-  if not 'Scene Description' in tags or tags['Scene Description'] == '':
-    # if scn file name is available in scnNames.txt use it
-    scnNames = getVehScnNames('scnNames.txt')
-    if tags['Name'] in scnNames:
-      tags['Scene Description'] = scnNames[tags['Name']]
-
-  if tags['Category'] in trackCategories:
-    tags['tType'] = trackCategories[tags['Category']]
-
-  tag = 'Track Name'
-  val = tags['strippedName'].replace('_', ' ').strip()  # default
-  tags[tag] = val
+  # SNIPPED
   cached_tags = cache_o.get_values(tags['Name'])
   cache_write = False
 
-  if not cached_tags or cached_tags['Country'] == '':
-    if 'Latitude' in mas_tags and 'Longitude' in mas_tags:
-        lat = float(mas_tags['Latitude'])
-        long = float(mas_tags['Longitude'])
-        address_o = google_address(lat, long)
 
-        tags['Country'] = address_o.get_country()
-        tags['Continent'] = country_to_continent(tags['Country'])
-    else:
-        tags['Country'] = 'No Lat'
-        tags['Continent'] = 'No Long'
-
-  for tag in cached_tags:
-    if cached_tags[tag] != '':
+  if cached_tags:
+    for tag in cached_tags:
+      if cached_tags[tag] != '':
         # We have a cached tag for this one
         tags[tag] = cached_tags[tag]
-    elif tag in tags:
+      elif tag in tags:
         cache_o.set_value(tags['Name'], tag, tags[tag])
         cache_write = True
 
@@ -835,6 +941,10 @@ def createMarkerFile(filepath):
             'No need to scan for SCN files again.')
 
 def listDeletedDataFiles():
+  """
+  Get a list of rFactory data files that no longer have a corresponding
+  rF2 Installed.... folder
+  """
   newFiles = []
   rF2_dir = os.path.join(rF2root, 'Installed')
   rFactoryVehicleFiles = getListOfFiles('CarDatafiles',
@@ -859,133 +969,15 @@ def listDeletedDataFiles():
           filesToDelete.append(track[0])
   return filesToDelete
 
-def getMasInfo(folder, masFile=None):
-  """
-  Open the mas files and look for
-  *.hdv
-    ForwardGears=6
-    WheelDrive=REAR // which wheels are driven: REAR, FOUR, or FRONT
-    SemiAutomatic=0 // whether throttle and clutch are operated automatically (like an F1 car)
-
-    maybe:
-    TCSetting=0 ????
-    TractionControlGrip=(1.4, 0.2)    // average driven wheel grip multiplied by 1st number, then added to 2nd
-    TractionControlLevel=(0.33, 1.0)  // effect of grip on throttle for low TC and high TC
-    ABS4Wheel=0                       // 0 = old-style single brake pulse, 1 = more effective 4-wheel ABS
-    ABSGrip=(1.7, 0.0)                // grip multiplied by 1st number and added to 2nd
-    ABSLevel=(0.31, 0.92)             // effect of grip on brakes for low ABS and high ABS
-    Mass=828.0      Weight threshold
-    FWRange=(0, 1, 1)             // front wing range
-    FWSetting=0                   // front wing setting
-    RWRange=(0, 1, 1)             // rear wing range
-    RWSetting=0                   // rear wing setting
-
-  (engine)*.ini
-    BoostPower=0 no turbo?
-    DumpValve=
-    Turbo*
-
-
-  """
-
-  hdv_keywords = [
-      'ForwardGears',
-      'WheelDrive',
-      'SemiAutomatic',
-      'Mass',
-      'FWSetting',
-      'RWSetting'
-      ]
-
-  ini_keywords = [
-      'DumpValve',
-      'Turbo'
-      ]
-
-  gdb_keywords = [
-      'Latitude',
-      'Longitude'
-      ]
-
-  ModMgr = os.path.join(rF2root, r'Bin32\ModMgr.exe')
-  if masFile:
-      masFiles = [(masFile, os.path.basename(masFile))]
-  else:
-      masFiles = getListOfFiles(folder, '*.mas')
-  all = []
-  mas_dict = {}
-  _pop = os.getcwd()  # save current directory
-  os.chdir(os.path.dirname(masFiles[0][0]))
-  for mas in masFiles:
-    """ Return nothing
-    ls = subprocess.run([ModMgr, '-h'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    print(ls.stderr.decode('utf-8'))
-    #_op = subprocess.run([ModMgr, '-l%s' % mas[1]], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    #So pipe to a file and read it
-    """
-    #cmd = '"'+ModMgr + '" -l%s > temporaryFile 2>>errors' % mas[1]
-    cmd = '"'+ModMgr + '" -q -l%s 2>&1 temporaryFile > nul 2>&1' % mas[1]
-    os.system(cmd)
-    lines = readFile('temporaryFile')
-    for _filename in lines:
-      _filename = _filename.lower().strip()
-      if '.scn' in _filename:
-        all.append(os.path.splitext(_filename)[0]) # Strip .scn
-      if 'unable to open package file' in _filename:
-        print(mas[1])
-      if '.hdv' in _filename:
-          cmd = '"'+ModMgr + '" -q -x%s %s > nul 2>&1' % (mas[1], _filename)
-          os.system(cmd)
-          hdv_lines = readFile(_filename)
-          for hdv_line in hdv_lines:
-              hdv_line = hdv_line.strip()
-              for kw in hdv_keywords:
-                  if hdv_line.startswith(f'{kw}='):
-                      mas_dict[kw]=re.split('[= /\t]+', hdv_line)[1].strip()
-          try:
-            os.remove(_filename)   # delete extracted file
-          except:
-            print('Failed to extract %s from %s' % (_filename, mas[1]))
-      if '.ini' in _filename:
-          cmd = '"'+ModMgr + '" -q -x%s %s > nul 2>&1' % (mas[1], _filename)
-          os.system(cmd)
-          ini_lines = readFile(_filename)
-          for ini_line in ini_lines:
-              ini_line = ini_line.strip()
-              for kw in ini_keywords:
-                  if ini_line.startswith(f'{kw}'):
-                      mas_dict[kw]=re.split('[= /\t]+', ini_line)[1].strip()
-          try:
-            os.remove(_filename)   # delete extracted file
-          except:
-            print('Failed to extract %s from %s' % (_filename, mas[1]))
-            pass # ini file name has spaces?
-      if '.gdb' in _filename:
-          cmd = '"'+ModMgr + '" -q -x%s %s > nul 2>&1' % (mas[1], _filename)
-          os.system(cmd)
-          gdb_lines = readFile(_filename)
-          for gdb_line in gdb_lines:
-              gdb_line = gdb_line.strip()
-              for kw in gdb_keywords:
-                  if gdb_line.startswith(f'{kw}'):
-                      mas_dict[kw]=re.split('[= /\t]+', gdb_line)[1].strip()
-          try:
-            os.remove(_filename)   # delete extracted file
-          except:
-            print('Failed to extract %s from %s' % (_filename, mas[1]))
-    try:
-      os.remove('temporaryFile')
-    except:
-      pass # No SCN files in MAS files
-  os.chdir(_pop)
-  return all, mas_dict
 
 if __name__ == '__main__':
   root = tk.Tk()
   tabCar = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   tabCar.grid()
 
+  """ Legacy
   scns, mas_tags = getMasInfo(r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Locations\BATHURST_2016_V3\3.0" )
+  """
 
   #createDefaultDataFiles(overwrite=True)
   newFiles = trawl_for_new_rF2_datafiles(root)
@@ -998,7 +990,18 @@ if __name__ == '__main__':
   car_scn, mas_dict = getMasInfo(r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Vehicles\ferrari_312_67\1.2")
   print(mas_dict)
 
+  cdf = CarDataFiles()
+  tags = dict()
+  mft = r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\Vehicles\ASR_OWC_1990_641-2\1.73"
+  tags = cdf.read_mas_files(tags,mft)
+
+  example_list_gearboxes()
+  """
+
+  mas_list = list()
   for vehicleFile in vehicleFiles:
       folder = getListOfFiles(vehicleFile[0], pattern='*')[0][0]
       car_scn, mas_dict = getMasInfo(folder)
-      print(mas_dict)
+      mas_list.append(mas_dict)
+  """
+  pass

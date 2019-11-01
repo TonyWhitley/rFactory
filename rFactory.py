@@ -142,6 +142,12 @@ class Tabs:
 
     self.notebook.grid()
 
+  def dummyTabs(self, parentFrame, tabNames):
+    """ Tabs that are not shown but do have settings """
+    for name, tab in tabNames:
+      self.o_tabs[name] = tab(parentFrame)
+      self.tabNames += tabNames
+
   def disableTab(self, tabName):
     for tabId, name in enumerate(self.tabNames):
       if name[0] == tabName:

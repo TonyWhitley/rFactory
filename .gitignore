@@ -361,3 +361,5 @@ ASALocalRun/
 /build/rFactoryModManager/rFactoryModManager
 /build/rFactoryModManager
 /rFactoryModManager.spec
+/.vscode
+/Documentation/RF2 Audio overhaul.txt

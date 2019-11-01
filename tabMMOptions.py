@@ -7,6 +7,8 @@ import tkinter as tk
 from tkinter import ttk
 
 from lib.tkToolTip import Tooltip
+from rFactoryModManager import modmaker_file
+
 wraplength = 100
 
 # But we don't want an actual tab...
@@ -18,11 +20,11 @@ class Tab:
     pass
   def getSettings(self):
         """ Return the settings for this tab """
-        return self.settings # filters too?  Probably not
+        return [modmaker_file]
 
   def setSettings(self, settings):
         """ Set the settings for this tab """
-        carID = settings[-1]
+        modmaker_file = settings[-1]
 
 
 #########################

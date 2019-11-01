@@ -12,14 +12,32 @@ from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.rFactoryData import getSingleCarData, getSingleTrackData
 from data.rFactoryConfig import modMakerFilesFolder, modMakerFilesExtension
 from data.utils import readFile, readTextFile, writeFile, bundleFolder
+from lib.tkToolTip import Tooltip as Tooltip
 # Tabs
 import tabCar
 import tabTrack
-import tabMMOptions
 
-BUILD_REVISION = 113 # The git commit count
+BUILD_REVISION = 114 # The git commit count
 versionStr = 'rFactoryModManager V0.1.%d' % BUILD_REVISION
-versionDate = '2019-09-27'
+versionDate = '2019-09-30'
+
+class Tab:
+  settings = list()
+  def __init__(self, parentFrame):
+    """ Dummy tab to get/set settings """
+    """ Put this into the parent frame """
+    self.goButtons = GoButtons(parentFrame.handle)
+
+  def getSettings(self):
+        """ Return the settings for this tab """
+        return [self.goButtons.tkStrVarModMakerFile.get()]
+
+  def setSettings(self, settings):
+        """ Set the settings for this tab """
+        self.goButtons.modmaker_file = os.path.join(os.getcwd(),
+                               modMakerFilesFolder,settings[-1])
+        self.goButtons.tkStrVarModMakerFile.set(os.path.basename(settings[-1]))
+
 def about():
   messagebox.askokcancel(
             'About rFactoryModManager',
@@ -68,7 +86,6 @@ class GoButtons:
   modmaker_file = os.path.join(os.getcwd(),
                                modMakerFilesFolder,
                                'sample.modfile.txt')
-
   def __init__(self, parentFrame):
     self.tkStrVarModMakerFile = tk.StringVar()
     self.tkStrVarModMakerFile.set(os.path.basename(self.modmaker_file))
@@ -110,6 +127,8 @@ class GoButtons:
         font=buttonFont,
         command=self.createFile)
     self.tkButtoncreateFile.grid(column=__gbc, row=3, pady=5)
+    Tooltip(self.tkButtoncreateFile,
+            text='Select multiple cars and tracks first')
 
     self.tkButtonRun = tk.Button(
         _goFrame,
@@ -181,13 +200,12 @@ class GoButtons:
 
     writeFile(_filepath, text)
     messagebox.askokcancel(
-            'File written',
-            '%s' % (_filepath))
+            'File %s written' % _filepath,
+            '%s' % text)
 
   def run(self):
     """ The Run rFactor 2 button has been pressed """
     self.tkButtonRun.flash() # Flash it
-    self.tkStrVarModMakerFile.get()
 
     mainWindow.iconify()
     _cmd = bundleFolder('ModMaker.bat') + ' ' + self.modmaker_file
@@ -214,7 +232,6 @@ if __name__ == "__main__":
   tabNames = [ \
       ['Car', tabCar],
       ['Track', tabTrack],
-      ['Options', tabMMOptions]
       ]
 
   mainWindow = MainWindow('rFactoryModManager')
@@ -231,11 +248,13 @@ if __name__ == "__main__":
   Menus(mainWindow.handle)
 
   tabs = Tabs(mainWindow.handle, tabNames)
+  tabs.dummyTabs(mainWindow, [['ModManagerOptions', Tab]])
+
   tabScenarios.setTabs(tabs.tabNames, tabs.o_tabs)
   tabScenarios.openDefaultScenario()
   #tabs._testSetSettings()
 
-  goButtons = GoButtons(mainWindow.handle)
+  #goButtons = GoButtons(mainWindow.handle)
 
   # Set initial tab state
   tabs.selectTab('Cars')
