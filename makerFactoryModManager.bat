@@ -40,6 +40,8 @@ pyinstaller ^
 :USESPEC
 pyinstaller --debug all rFactoryModManager.spec 
 
+if exist rFactoryModManagerVersion.txt pyi-set_version rFactoryModManagerversion.txt rFactoryModManager.exe
+
 pause
 REM fails to get pypiwin32 on AppVeyor ####  if not exist env\scripts 	pip install -r requirements.txt
 

@@ -39,24 +39,35 @@ class Tab:
                            width=len(w)-2,
                            height=min(20,len(vehicles))
                            )
-    self.tkVehicleListbox.grid()
+    self.tkVehicleListbox.grid(rowspan=2)
     #
     tkVehicleScrollbar = tk.Scrollbar(tkFrame_vehicles, orient="vertical")
     tkVehicleScrollbar.config(command=self.tkVehicleListbox.yview)
-    tkVehicleScrollbar.grid(column=1, row=0, sticky='ns')
+    tkVehicleScrollbar.grid(column=1, row=0, sticky='ns', rowspan=2)
 
     for __, _v in vehicles:
         self.tkVehicleListbox.insert(tk.END, _v)
 
     self.tkVehicleListbox.activate(1)
     if _main:
-      self.tkVehicleListbox.bind("<Double-Button-1>", self.ok) # Double click selects the server
+      self.tkVehicleListbox.bind("<Double-Button-1>", self.copy_vehicles) # Double click selects the server
+
+    ############################################
+    tk.Button(tkFrame_vehicles, text="=>", command=self.copy_vehicles).\
+        grid(column=2,row=0,pady=20, padx=xPadding)
+    tk.Button(tkFrame_vehicles, text="<=", command=self.uncopy_vehicles).\
+        grid(column=2,row=1,pady=20, padx=xPadding)
 
     #############################################
-    tkFrame_vehicles_button = tk.LabelFrame(parentFrame, text='Copy', padx=xPadding)
-    tkFrame_vehicles_button.grid(column=1, row=0, sticky='nsew')
-    tk.Button(tkFrame_vehicles_button, text="=>", command=self.copy_vehicle).grid(pady=50)
+    self.tkSelectedVehicleListbox = tk.Listbox(tkFrame_vehicles,
+                           selectmode=tk.EXTENDED,
+                           width=20,
+                           height=min(20,len(vehicles))
+                           )
+    self.tkSelectedVehicleListbox.grid(column=3, row=0, rowspan=2)
 
+
+    #############################################
     #############################################
     locations_path =  os.path.join(rF2root, 'Installed', 'Locations')
     locations = getListOfFiles(locations_path, pattern='*')
@@ -72,57 +83,72 @@ class Tab:
                            width=len(w)-2,
                            height=min(20,len(locations))
                            )
-    self.tkLocationListbox.grid()
+    self.tkLocationListbox.grid(rowspan=2)
     #
     tkLocationScrollbar = tk.Scrollbar(tkFrame_locations, orient="vertical")
     tkLocationScrollbar.config(command=self.tkLocationListbox.yview)
-    tkLocationScrollbar.grid(column=1, row=0, sticky='ns')
+    tkLocationScrollbar.grid(column=1, row=0, sticky='ns', rowspan=2)
 
     for __, _v in locations:
         self.tkLocationListbox.insert(tk.END, _v)
 
     self.tkLocationListbox.activate(1)
     if _main:
-      self.tkLocationListbox.bind("<Double-Button-1>", self.ok) # Double click selects the server
+      self.tkLocationListbox.bind("<Double-Button-1>", self.copy_locations) # Double click selects the server
+
+    ############################################
+    tk.Button(tkFrame_locations, text="=>", command=self.copy_locations).\
+        grid(column=2,row=0,pady=20, padx=xPadding)
+    tk.Button(tkFrame_locations, text="<=", command=self.uncopy_locations).\
+        grid(column=2,row=1,pady=20, padx=xPadding)
 
     #############################################
-    tkFrame_Locations_button = tk.LabelFrame(parentFrame, text='Copy', padx=xPadding)
-    tkFrame_Locations_button.grid(column=3, row=0, sticky='nsew')
-    tk.Button(tkFrame_Locations_button, text="=>", command=self.copy_location).grid(pady=50)
+    self.tkSelectedLocationListbox = tk.Listbox(tkFrame_locations,
+                           selectmode=tk.EXTENDED,
+                           width=20,
+                           height=min(20,len(locations))
+                           )
+    self.tkSelectedLocationListbox.grid(column=3, row=0, rowspan=2)
 
-  def ok(self, __):
-    now = self.tkVehicleListbox.get(tk.ACTIVE)
-    self.getSettings()
-    self.current = now
-
-  def copy_vehicle(self):
+  def copy_vehicles(self, __=None):
       """ Copy selected to selection window """
       vehicles = [self.tkVehicleListbox.get(i) for i in self.tkVehicleListbox.curselection()]
-      pass
+      for _v in vehicles:
+          self.tkSelectedVehicleListbox.insert(tk.END, _v)
 
-  def copy_location(self):
+  def uncopy_vehicles(self, __=None):
+      """ Remove selected from selection window """
+      [self.tkSelectedVehicleListbox.delete(i) for i in reversed(
+          self.tkSelectedVehicleListbox.curselection())]
+
+  def copy_locations(self, __=None):
       """ Copy selected to selection window """
       locations = [self.tkLocationListbox.get(i) for i in self.tkLocationListbox.curselection()]
-      pass
+      for _v in locations:
+          self.tkSelectedLocationListbox.insert(tk.END, _v)
+
+  def uncopy_locations(self, __=None):
+      """ Remove selected from selection window """
+      [self.tkSelectedLocationListbox.delete(i) for i in reversed(
+          self.tkSelectedLocationListbox.curselection())]
 
   def getSettings(self):
     """ Return the settings for this tab """
-    _descriptiveName = self.tkVehicleListbox.get(tk.ACTIVE)
-    # Just the descriptive name for the server, get the password from favourites file
-    return _descriptiveName
+    modSelection = dict()
+    modSelection['cars'] = self.tkSelectedVehicleListbox.get(0,tk.END)
+    modSelection['tracks'] = self.tkSelectedLocationListbox.get(0,tk.END)
+    return modSelection
 
-  def setSettings(self, settings):
+  def setSettings(self, modSelection):
     """ Set the settings for this tab """
-    # Need to ID the server in the listbox and activate it.
-    _listbox = self.tkVehicleListbox.get(0, tk.END)
-    _item = _listbox.index(settings)
-    try:
-      self.tkVehicleListbox.activate(_item)
-      self.tkVehicleListbox.see(_item) # Makes sure the given list index is visible.
-      self.tkVehicleListbox.selection_set(_item) # Highlights it
-    except:
-      pass # value error
-    pass
+    # Clear the list boxes
+    self.tkSelectedVehicleListbox.delete(0,tk.END)
+    self.tkSelectedLocationListbox.delete(0,tk.END)
+    # Then load them
+    for car in modSelection['cars']:
+        self.tkSelectedVehicleListbox.insert(tk.END, car)
+    for track in modSelection['tracks']:
+        self.tkSelectedLocationListbox.insert(tk.END, track)
 
 
 if __name__ == '__main__':
