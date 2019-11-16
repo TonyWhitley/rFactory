@@ -8,8 +8,6 @@ import tkinter.font as font
 
 from rFactory import MainWindow, Tabs
 import tabScenarios
-from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
-from data.rFactoryData import getSingleCarData, getSingleTrackData
 from data.rFactoryConfig import modMakerFilesFolder, modMakerFilesExtension
 from data.utils import readFile, readTextFile, writeFile, bundleFolder
 from lib.tkToolTip import Tooltip as Tooltip
@@ -18,7 +16,7 @@ import tabCar
 import tabTrack
 import tabModSelection
 
-BUILD_REVISION = 122 # The git commit count
+BUILD_REVISION = 123 # The git commit count
 versionStr = 'rFactoryModManager V0.1.%d' % BUILD_REVISION
 versionDate = '2019-11-16'
 
@@ -66,6 +64,8 @@ class Tab:
         self.goButtons.modmaker_file = os.path.join(os.getcwd(),
                                modMakerFilesFolder,settings[-1])
         self.goButtons.tkStrVarModMakerFile.set(os.path.basename(settings[-1]))
+        modSelection = parse(self.goButtons.modmaker_file)
+        tabs.o_tabs['Mod Selection'].setSettings(modSelection)
 
 def about():
   messagebox.askokcancel(
@@ -278,9 +278,6 @@ if __name__ == "__main__":
   mainWindow = MainWindow('rFactoryModManager')
   mainWindow.setSize(width=1200, height=800)
   mainWindow.centreWindow()
-
-  # Check if there are any new car/track files
-  trawl_for_new_rF2_datafiles(mainWindow)
 
   os.makedirs(modMakerFilesFolder, exist_ok=True)
 

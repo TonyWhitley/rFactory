@@ -31,6 +31,8 @@ pyinstaller ^
 :USESPEC
 pyinstaller --debug all rFactory.spec 
 
+if exist rFactoryVersion.txt pyi-set_version rFactoryVersion.txt rFactory.exe
+
 pause
 REM fails to get pypiwin32 on AppVeyor ####  if not exist env\scripts 	pip install -r requirements.txt
 
