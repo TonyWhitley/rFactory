@@ -16,10 +16,39 @@ from lib.tkToolTip import Tooltip as Tooltip
 # Tabs
 import tabCar
 import tabTrack
+import tabModSelection
 
-BUILD_REVISION = 114 # The git commit count
+BUILD_REVISION = 122 # The git commit count
 versionStr = 'rFactoryModManager V0.1.%d' % BUILD_REVISION
-versionDate = '2019-09-30'
+versionDate = '2019-11-16'
+
+def parse(mod_file):
+    """
+    # Created by rFactoryModManager
+
+    Name=text
+
+    Vehicle=1975EMBASSY
+    Vehicle=1975LOTUS
+    Vehicle=1975MAKI
+    Vehicle=1975FERRARI
+    Vehicle=1975HESKETH
+
+    Location=2013_INDIA
+    Location=2013_Interlagos
+    Location=2013_HUNGARORING
+    Location=2013_KOREA
+    """
+    modSelection = dict()
+    modSelection['cars'] = list()
+    modSelection['tracks'] = list()
+    text = readFile(mod_file)
+    for line in text:
+        if line.startswith('Vehicle'):
+            modSelection['cars'].append(line.split('=')[1].strip())
+        if line.startswith('Location'):
+            modSelection['tracks'].append(line.split('=')[1].strip())
+    return modSelection
 
 class Tab:
   settings = list()
@@ -159,25 +188,33 @@ class GoButtons:
         self.modmaker_file = _filepath
         self.tkStrVarModMakerFile.set(os.path.basename(_filepath))
         tabScenarios.saveDefaultScenario()
-
+        modSelection = parse(self.modmaker_file)
+        tabs.o_tabs['Mod Selection'].setSettings(modSelection)
   def createFile(self):
     """ The Create File button pressed """
-    _cars = tabs.o_tabs['Car'].get_selection()
+    modSelection = tabs.o_tabs['Mod Selection'].getSettings()
     car_list = []
-    for _car in _cars:
-        data = getSingleCarData(id=_car[-1], tags=['originalFolder'])
-        car_list.append('Vehicle='+data['originalFolder'].split('\\')[2]+'\n')
+    for _car in modSelection['cars']:
+        car_list.append('Vehicle='+_car+'\n')
     car_list=list(set(car_list))    # dedupe the list (in case)
     print(car_list)
 
-    _tracks = tabs.o_tabs['Track'].get_selection()
     track_list = []
-    for _track in _tracks:
-        data = getSingleTrackData(id=_track[-1], tags=['originalFolder'])
-        track_list.append('Location='+data['originalFolder'].split('\\')[2]+'\n')
+    for _track in modSelection['tracks']:
+        track_list.append('Location='+_track+'\n')
     track_list=list(set(track_list))    # dedupe the list (e.g. F1_1988_Tracks)
     print(track_list)
 
+    if car_list==[]:
+        messagebox.askokcancel(
+                'Error',
+                'No vehicles selected')
+        return
+    if track_list==[]:
+        messagebox.askokcancel(
+                'Error',
+                'No tracks selected')
+        return
     _filepath = filedialog.asksaveasfilename(
                                  title='Save ModMaker file as...',
                                  initialdir=modMakerFilesFolder,
@@ -232,6 +269,10 @@ if __name__ == "__main__":
   tabNames = [ \
       ['Car', tabCar],
       ['Track', tabTrack],
+      ]
+
+  tabNames = [ \
+      ['Mod Selection', tabModSelection]
       ]
 
   mainWindow = MainWindow('rFactoryModManager')
