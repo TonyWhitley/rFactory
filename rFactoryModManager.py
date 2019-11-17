@@ -1,5 +1,5 @@
 import os
-from subprocess import call, Popen
+from subprocess import run, Popen
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
@@ -8,7 +8,7 @@ import tkinter.font as font
 
 from rFactory import MainWindow, Tabs
 import tabScenarios
-from data.rFactoryConfig import modMakerFilesFolder, modMakerFilesExtension
+from data.rFactoryConfig import modMakerFilesFolder,modMakerFilesExtension,rF2root,SteamExe
 from data.utils import readFile, readTextFile, writeFile, bundleFolder
 from lib.tkToolTip import Tooltip as Tooltip
 # Tabs
@@ -16,7 +16,7 @@ import tabCar
 import tabTrack
 import tabModSelection
 
-BUILD_REVISION = 123 # The git commit count
+BUILD_REVISION = 124 # The git commit count
 versionStr = 'rFactoryModManager V0.1.%d' % BUILD_REVISION
 versionDate = '2019-11-16'
 
@@ -231,6 +231,8 @@ class GoButtons:
     name = 'Name=%s\n\n' % os.path.basename(_filepath).split('.')[0]
     text = ['# Created by rFactoryModManager\n\n']
     text.append(name)
+    text.append(F'rf2dir={rF2root}\n'.format())
+    text.append(F'SteamCmd={SteamExe}\n\n'.format())
     text += car_list
     text.append('\n')
     text += track_list
@@ -246,7 +248,7 @@ class GoButtons:
 
     mainWindow.iconify()
     _cmd = bundleFolder('ModMaker.bat') + ' ' + self.modmaker_file
-    call(_cmd)
+    run(_cmd)
     """
     this doesn't work
     try:

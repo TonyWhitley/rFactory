@@ -139,15 +139,15 @@ class Tab:
     modSelection['tracks'] = self.tkSelectedLocationListbox.get(0,tk.END)
     return modSelection
 
-  def setSettings(self, modSelection):
+  def setSettings(self, settings):
     """ Set the settings for this tab """
     # Clear the list boxes
     self.tkSelectedVehicleListbox.delete(0,tk.END)
     self.tkSelectedLocationListbox.delete(0,tk.END)
     # Then load them
-    for car in modSelection['cars']:
+    for car in settings['cars']:
         self.tkSelectedVehicleListbox.insert(tk.END, car)
-    for track in modSelection['tracks']:
+    for track in settings['tracks']:
         self.tkSelectedLocationListbox.insert(tk.END, track)
 
 
