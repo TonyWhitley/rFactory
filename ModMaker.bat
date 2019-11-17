@@ -1,6 +1,6 @@
 @echo off
 cls
-echo rFactor 2 ModMaker V1.5
+echo rFactor 2 ModMaker V1.7
 
 setlocal
 
@@ -8,11 +8,11 @@ rem Default path, can be overridden in mod file
 rem rf2dir=[path to rF2 install]
 set rf2dir=c:\Program Files (x86)\Steam\steamapps\common\rFactor 2
 set SteamCmd=%ProgramFiles(x86)%/Steam/steam.exe
-set modfile=%1
+set modfile=%~dpnx1
 if '%modfile%' == '' goto helpNoModfile
 if not exist %modfile% goto helpNoModfile
 echo Using %modfile%
-REM set modfile=%cd%\%modfile%
+REM set modfile=%modfile%
 set temporary_copy=%rf2dir%\UserData\temporary_copy
 set verbose=0
 set dryrun=0
@@ -51,7 +51,7 @@ rem start it if not
 echo Starting "%MyProcess%"
 start "" /min "%SteamCmd%"
 Set "MySubProcess=SteamService.exe"
-:loop 
+:loop
   timeout 1 > nul
   tasklist /NH /FI "imagename eq %MySubProcess%" 2>nul |find /i "%MySubProcess%">nul
   if errorlevel 1 goto loop
@@ -111,31 +111,39 @@ UIData ) do if %verbose%==0 (
   ) else (
   mklink /j "%%d" "%rf2dir%\Installed\%%d"
   )
-  
+
 :::::::::::::::::::::::::::::::::::::::::::::::::
 rem Symlinks to selected Locations & Vehicles
-md Locations		
-cd Locations		
+md Locations
+cd Locations
 
 rem Parse the modfile for Locations
-for /f "eol=# tokens=1,2* delims==" %%i in (%modfile%) do if %verbose% GTR 1 (
-  if /i '%%i' == 'Location' mklink /j "%%j" "%rf2dir%\Installed\Locations\%%j"
-  ) else (
-  if /i '%%i' == 'Location' mklink /j "%%j" "%rf2dir%\Installed\Locations\%%j" > nul
-  if /i '%%i' == 'Location' echo Added Location %%j
+for /f "eol=# tokens=1,2* delims==" %%i in (%modfile%) do if /i '%%i' == 'Location' (
+  if exist "%rf2dir%\Installed\Locations\%%j" (
+    if %verbose% GTR 1 (
+      mklink /j "%%j" "%rf2dir%\Installed\Locations\%%j"
+      ) else (
+      mklink /j "%%j" "%rf2dir%\Installed\Locations\%%j" > nul
+      echo Added Location %%j
+      )
+    ) else echo "Locations\%%j" not found
   )
 cd..
 
 :::::::::::::::::::::::::::::::::::::::::::::::::
-md Vehicles		
-cd Vehicles		
+md Vehicles
+cd Vehicles
 
 rem Parse the modfile for Vehicles
-for /f "eol=# tokens=1,2* delims==" %%i in (%modfile%) do if %verbose% GTR 1 (
-  if /i '%%i' == 'Vehicle' mklink /j "%%j" "%rf2dir%\Installed\Vehicles\%%j"
-  ) else (
-  if /i '%%i' == 'Vehicle' mklink /j "%%j" "%rf2dir%\Installed\Vehicles\%%j" > nul
-  if /i '%%i' == 'Vehicle' echo Added Vehicle %%j
+for /f "eol=# tokens=1,2* delims==" %%i in (%modfile%) do if /i '%%i' == 'Vehicle' (
+  if exist "%rf2dir%\Installed\Vehicles\%%j" (
+    if %verbose% GTR 1 (
+      mklink /j "%%j" "%rf2dir%\Installed\Vehicles\%%j"
+      ) else (
+      mklink /j "%%j" "%rf2dir%\Installed\Vehicles\%%j" > nul
+      echo Added Vehicle %%j
+      )
+    ) else echo "Vehicles\%%j" not found
   )
 
 :::::::::::::::::::::::::::::::::::::::::::::::::
@@ -152,7 +160,7 @@ if %dryrun%==0 (
 
 echo.
 if %verbose% == 0 goto deleteCopy
-  set /p _delete=Enter K if you want to KEEP the temporary rFactor copy "%modset%": 
+  set /p _delete=Enter K if you want to KEEP the temporary rFactor copy "%modset%":
   if /I '%_delete%' == 'k' goto :pauseExit
 
 :deleteCopy
@@ -161,6 +169,9 @@ rem Delete the temporary_copy folder if there was nothing else in it.
 rmdir %temporary_copy% > nul 2>&1
 echo %_modfolder% deleted.
 
+exit
+exit
+echo EXITED!!!
 goto :eof
 REM goto :pauseExit
 
