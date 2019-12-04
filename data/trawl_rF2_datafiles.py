@@ -514,9 +514,15 @@ class TrackDataFiles(DataFiles):
 
     def read_mas_files(self, tags, mas_dir):
         """
+        Open the track mas files and look for
+        *.scn - use the name
+        *.gdb
+            Latitude
+            Longitude
         """
         _dir = self.dir_files_in_mas_files(mas_dir)
         for mas, files in _dir.items():
+            mas = os.path.join(mas_dir, mas)
             tags = self.read_mas_file(tags, mas, files)
         return tags
     def read_mas_file(self, tags, mas, files):

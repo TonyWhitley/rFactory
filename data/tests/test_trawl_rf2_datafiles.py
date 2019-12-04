@@ -146,8 +146,19 @@ class Test_trawl_rF2_datafiles(unittest.TestCase):
         for t in _expected_tags:
             assert _tags[t] == _expected_tags[t], _tags[t]
 
+    """
+    def test_new_data_car_GPL(self):
+        _expected_tags = {'Name': 'USF2000_2016',
+                          }
+        cdf = CarDataFiles()
+        _from = r"c:\Program Files (x86)\Steam\steamapps\common\rFactor 2\Installed\vehicles\F1_Legends_Racing_2_Season_1967\1.00\F1_Legends_Racing_2_Season_1967.mft"
+        _tags = cdf.new_data(_from)
+        for t in _expected_tags:
+            assert _tags[t] == _expected_tags[t], _tags[t]
+    """
+
     def test_new_data_track(self):
-        _expected_tags = {'Name': 'BATHURST_2016_V3',
+        _expected_tags = {'Name': 'bathurst2016', #'BATHURST_2016_V3',
                          'Version': '3.0',
                          'Type': '1',
                          'Author': '',
@@ -163,7 +174,7 @@ class Test_trawl_rF2_datafiles(unittest.TestCase):
                          'Year': '2016',
                          'Decade': '2010-',
                          'originalFolder': 'Installed\\Locations\\BATHURST_2016_V3\\3.0',
-                         'Scene Description': 'BATHURST2016_12H',
+                         'Scene Description': 'bathurst2016', #'BATHURST2016_12H',
                          'tType': 'Temporary',
                          'Track Name': 'Bathurst  V3',
                          'Rating': '***'}
@@ -174,7 +185,7 @@ class Test_trawl_rF2_datafiles(unittest.TestCase):
         _tags = tdf.new_data(_from)
         print(_tags)
         for t in _expected_tags:
-            assert _tags[t] == _expected_tags[t], _tags[t]
+            assert _tags[t] == _expected_tags[t], F'{t}: {_tags[t]} expected {_expected_tags[t]}'.format()
 
     def test_translate_date(self):
         # Windows
