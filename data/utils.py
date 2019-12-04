@@ -3,6 +3,7 @@ import fnmatch
 import glob
 import os
 import re
+import subprocess
 import sys
 
 def readFile(filename):
@@ -37,20 +38,36 @@ def writeFile(_filepath, text):
     status = ['Exception writing  "%s": %s"' % (filename, e)]
   return status
 
-def readTags(text):
-  """ Grep the tags in text and return them as a list """
-  # Name=134_JUDD
-  tags = []
-  for line in text:
-    m = re.match(r'(.*) *= *(.*)', line)
-    if m:
-      tags.append(m.group(1))
-      #print(m.group(1), m.group(2))
-  return tags
+def executeCmd(cmd):
+    retcode = 0
+    try:
+        completed_process = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=True)
+        retcode = completed_process.returncode
+        rpt = completed_process.stdout
+        #if !None rpt += completed_process.stderr
+    except subprocess.CalledProcessError as e:
+        retcode = e.returncode
+        rpt = e.output
+    except FileNotFoundError as e:
+        retcode = 2
+        rpt = 'The system cannot find the file specified'
+
+    return retcode, rpt
+
+def executeCmdInBatchFile(cmd):
+    """
+    Put command in a temp batch file and execute that
+    Executing the command directly doesn't work for ModMaker now (it used to)
+    """
+    bat = os.path.join(os.getcwd(), '__temp__.bat')
+    writeFile(bat, cmd)
+    retcode, rpt = executeCmd(bat)
+    os.remove(bat)  # tidy up
+    return retcode, rpt
 
 def getTags(text):
   """ Grep the tags in text and return them as a dict """
-  # 'Name' 'Version' 'Type' 'Author' 'Origin' 'Category' 'ID' 
+  # 'Name' 'Version' 'Type' 'Author' 'Origin' 'Category' 'ID'
   # 'URL' 'Desc' 'Date' 'Flags' 'RefCount' 'Signature' 'MASFile'
   # 'BaseSignature' 'MinVersion'
   # Name=134_JUDD
@@ -86,11 +103,11 @@ def getListOfFiles(path, pattern='*.c', recurse=False):
 
 def bundleFolder(filepath):
     """
-    If running in a PyInstaller bundle the program is extracted into a 
+    If running in a PyInstaller bundle the program is extracted into a
     temporary folder.  If a file in that bundle is required calculate
     its path.
     A file is added to the bundle with a command line option like this:
-      --add-data resources\rfactory.ico;resources 
+      --add-data resources\rfactory.ico;resources
     or in the .spec file like this:
       datas=[('resources\\rfactory.ico', 'resources')],
 
