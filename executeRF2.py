@@ -8,8 +8,8 @@ import sys
 
 from data.rFactoryData import getAllCarData, getAllTrackData, getSingleCarData, getSingleTrackData
 from edit.editRF2files import changeCar, changeTrack, changeOpponents
-from data.rFactoryConfig import SteamExe, SteamDelayS, rF2root, DiscordExe
-from data.rFactoryConfig import CrewChiefExe, VolumeControlExe, TeamSpeakExe
+from data.rFactoryConfig import SteamExe, SteamDelayS, rF2root, DiscordCmd
+from data.rFactoryConfig import CrewChiefCmd, VolumeControlExe, TeamSpeakExe
 from data.rFactoryConfig import MyPreCommand, MyPostCommand
 
 if getattr( sys, 'frozen', False ) :
@@ -61,9 +61,9 @@ def runRF2(online='Offline', settings=None, _password=None):
     pass # DummyRF2 is not in Options
 
   if not _dummy or settings['Options']['RunCoPrograms'] != '0':
-    _status = runCoProgram(settings, 'CrewChief', CrewChiefExe)
+    _status = runCoProgram(settings, 'CrewChief', CrewChiefCmd)
     if _status == 'OK':
-      _status = runCoProgram(settings, 'Discord', DiscordExe)
+      _status = runCoProgram(settings, 'Discord', DiscordCmd)
     if _status == 'OK':
       _status = runCoProgram(settings, 'MyPreCommand', MyPreCommand)
     if _status == 'OK':
