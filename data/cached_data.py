@@ -19,7 +19,7 @@ class Cached_data:
     cache_tags_set = set(carTags + trackTags) # dedupe union of all tags
     cache_tags_set.discard('DB file ID') # Remove to move to col 1
     cache_tags_set.discard('Desc')      # Remove because it's verbose
-    cache_tags_set.discard('Date')      # Remove because it get's turned into a float
+    cache_tags_set.discard('Date')      # Remove because it gets turned into a float
     cache_tags = ['DB file ID']+list(cache_tags_set)
 
     def __init__(self, cache_filename=CacheDataFile):
@@ -57,6 +57,9 @@ class Cached_data:
         self.cache.append(row)
 
     def get_values(self, id):
+        """
+        Return the row for id if it is present
+        """
         for row in self.cache:
             if row['DB file ID'] == id:
                 return row
@@ -64,6 +67,9 @@ class Cached_data:
         return None
 
     def write(self):
+        """
+        Write the spreadsheet
+        """
         with open(self.cache_filename, mode='w') as csv_file:
             writer = csv.DictWriter(csv_file, fieldnames=self.cache_tags)
             writer.writeheader()

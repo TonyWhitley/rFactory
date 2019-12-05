@@ -32,6 +32,9 @@
     <Compile Include="data\tests\test_cached_data.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\tests\test_rFactoryConfig.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\tests\test_trawl_rf2_datafiles.py">
       <SubType>Code</SubType>
     </Compile>

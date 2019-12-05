@@ -8,12 +8,12 @@ import os
 
 from data.utils import readFile, writeFile
 
-def getKey(filename, keyname):
+def getKey(config_filename, keyname):
     """ Error trap when reading config file keys """
     try:
         return config[keyname]
     except Exception as e:
-        print('Config file "%s" has no entry for "%s"' % (filename, e.args[0]))
+        print('Config file "%s" has no entry for "%s"' % (config_filename, e.args[0]))
         return '"No such key %s"' % e.args[0]
 
 # General items
@@ -75,12 +75,59 @@ rFactoryConfigFileFolder = 'Datafiles/favourites'
 rFactoryConfigFileExtension = '.JSON'
 
 # Editable items in config file
-filename =  os.path.join(rFactoryConfigFileFolder, 'rFactoryConfig'+rFactoryConfigFileExtension)
+config_filename =  os.path.join(rFactoryConfigFileFolder, 'rFactoryConfig'+rFactoryConfigFileExtension)
 
-_text = readFile(filename)
+_text = readFile(config_filename)
 try:
   config = json.loads(''.join(_text))
 except: # No rFactoryConfig file, create one
+  config = new_config_file()
+
+# rF2 items
+rF2root = os.path.normpath(os.path.expandvars(getKey(config_filename, 'rF2root')))
+SteamExe = os.path.normpath(os.path.expandvars(getKey(config_filename, 'SteamExe')))
+DiscordExe = os.path.normpath(os.path.expandvars(getKey(config_filename, 'DiscordExe')))
+DiscordCmd = DiscordExe + ' ' + getKey(config_filename, 'DiscordArgs')
+CrewChiefExe = os.path.normpath(os.path.expandvars(getKey(config_filename, 'CrewChiefExe')))
+CrewChiefCmd = CrewChiefExe + ' ' + getKey(config_filename, 'CrewChiefArgs')
+VolumeControlExe = os.path.normpath(os.path.expandvars(getKey(config_filename, 'VolumeControlExe')))
+TeamSpeakExe = os.path.normpath(os.path.expandvars(getKey(config_filename, 'TeamSpeakExe')))
+if len(getKey(config_filename, 'MyPreCommand')):
+    MyPreCommand = os.path.normpath(os.path.expandvars(getKey(config_filename, 'MyPreCommand'))) + ' ' + getKey(config_filename, 'MyPreCommandArgs')
+else:
+    MyPreCommand = ''
+if len(getKey(config_filename, 'MyPostCommand')):
+    MyPostCommand = os.path.normpath(os.path.expandvars(getKey(config_filename, 'MyPostCommand'))) + ' ' + getKey(config_filename, 'MyPostCommandArgs')
+else:
+    MyPostCommand = ''
+
+SteamDelayS = getKey(config_filename, 'SteamDelaySeconds')  # How long it takes Steam to start up
+
+player = getKey(config_filename, 'UserData player')
+playerPath = os.path.join(rF2root, 'UserData', player)
+
+def validate():
+    """
+    Check that the paths have the expected files. Some are optional
+    """
+    paths = dict()
+    paths['rF2root'] = os.path.isdir(rF2root)
+    paths['SteamExe'] = os.path.isfile(SteamExe)
+    paths['DiscordExe'] = os.path.isfile(DiscordExe)
+    paths['CrewChiefExe'] = os.path.isfile(CrewChiefExe)
+    paths['VolumeControlExe'] = os.path.isfile(VolumeControlExe)
+    paths['TeamSpeakExe'] = os.path.isfile(TeamSpeakExe)
+
+    paths['playerPath'] = os.path.isdir(playerPath)
+    # Check rF2 install a little further
+    _vehicles = os.path.join(rF2root, 'Installed', 'Vehicles')
+    paths['vehicles'] = os.path.isdir(_vehicles)
+
+    return paths
+
+def new_config_file():
+  """ Make sure we have a fresh config by deleting any existing one """
+  os.remove(config_filename)
   config = {
     # rF2 items
     '# %ProgramFiles(x86)% will be expanded to your Windows setting but you can write it explicitly if you want' : "",
@@ -94,10 +141,10 @@ except: # No rFactoryConfig file, create one
     #'#DiscordExe: had to use short cut as the command wouldn\'t work' : '',
     'DiscordExe' : '%LOCALAPPDATA%/Discord/Update.exe',
     'DiscordArgs' : '--processStart Discord.exe',
-    'CrewChiefExe' : '"%ProgramFiles(x86)%/Britton IT Ltd/CrewChiefV4/CrewChiefV4.exe"',
+    'CrewChiefExe' : "%ProgramFiles(x86)%/Britton IT Ltd/CrewChiefV4/CrewChiefV4.exe",
     'CrewChiefArgs' : 'RF2_64BIT',
-    'VolumeControlExe' : '"%ProgramFiles(x86)%/VolumeControl/VolumeControl.exe"',
-    'TeamSpeakExe' : '"%ProgramFiles(x86)%/TeamSpeak 3 Client/ts3client_win64.exe"',
+    'VolumeControlExe' : "%ProgramFiles(x86)%/VolumeControl/VolumeControl.exe",
+    'TeamSpeakExe' : "%ProgramFiles(x86)%/TeamSpeak 3 Client/ts3client_win64.exe",
     '#MyPreCommand: use this call a program or batch file before rF2 runs' : "",
     'MyPreCommand' : '',
     'MyPreCommandArgs' : '',
@@ -107,24 +154,5 @@ except: # No rFactoryConfig file, create one
     'UserData player' : 'player'
     }
   _text = json.dumps(config, sort_keys=True, indent=4)
-  writeFile(filename, _text)
-# rF2 items
-rF2root = os.path.normpath(os.path.expandvars(getKey(filename, 'rF2root')))
-SteamExe = os.path.normpath(os.path.expandvars(getKey(filename, 'SteamExe')))
-DiscordExe = os.path.normpath(os.path.expandvars(getKey(filename, 'DiscordExe'))) + ' ' + getKey(filename, 'DiscordArgs')
-CrewChiefExe = os.path.normpath(os.path.expandvars(getKey(filename, 'CrewChiefExe'))) + ' ' + getKey(filename, 'CrewChiefArgs')
-VolumeControlExe = os.path.normpath(os.path.expandvars(getKey(filename, 'VolumeControlExe')))
-TeamSpeakExe = os.path.normpath(os.path.expandvars(getKey(filename, 'TeamSpeakExe')))
-if len(getKey(filename, 'MyPreCommand')):
-    MyPreCommand = os.path.normpath(os.path.expandvars(getKey(filename, 'MyPreCommand'))) + ' ' + getKey(filename, 'MyPreCommandArgs')
-else:
-    MyPreCommand = ''
-if len(getKey(filename, 'MyPostCommand')):
-    MyPostCommand = os.path.normpath(os.path.expandvars(getKey(filename, 'MyPostCommand'))) + ' ' + getKey(filename, 'MyPostCommandArgs')
-else:
-    MyPostCommand = ''
-
-SteamDelayS = getKey(filename, 'SteamDelaySeconds')  # How long it takes Steam to start up
-
-player = getKey(filename, 'UserData player')
-playerPath = os.path.join(rF2root, 'UserData', player)
+  writeFile(config_filename, _text)
+  return config

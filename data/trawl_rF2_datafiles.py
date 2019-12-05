@@ -189,7 +189,7 @@ class DataFiles:
             self.data_files_and_timestamps[folder[0].lower()] = _timestamp
         return self.data_files_and_timestamps
 
-    def newer_mfts(self):
+    def get_newer_mfts(self):
         if not self.mfts_and_timestamps:
             self.get_mfts_and_timestamps()
         if not self.data_files_and_timestamps:
@@ -214,13 +214,13 @@ class DataFiles:
         _mft = _mft.lower()
 
         if not self.newer_mfts:
-            self.newer_mfts()
-        if _mft in self.newer_mfts:
-            self._tags = self.new_data(_mft)
-            # a new file was written
-            self.newFiles.append(self._tags['Name'])
-        else: # We already have a data file, load it.
-            pass    # TBD
+            self.get_newer_mfts()
+        if 1: #_mft in self.newer_mfts:
+            self._tags, cache_write = self.new_data(_mft)
+            if cache_write:
+                # a new entry was written
+                self.newFiles.append(self._tags['Name'])
+        return self._tags
 
     def dir_files_in_mas_files(self, folder):
         """
@@ -268,6 +268,45 @@ class DataFiles:
             pass    # Already identified as encrypted
             print()
         return tags
+
+    def new_data(self, _mft, new_cache=False):
+        """
+        Create new rFactory data entry in the spreadsheet
+        new_cache=False:
+            First check if there is cached data in the spreadsheet
+        Read the tags in the .MFT file
+        Read the tags in a set of files in .mas files
+
+        Return
+            The tags
+            If it was a new entry
+        """
+        cache_write = False
+        _tags = self.get_initial_tags(_mft) # Get the name
+        cache_o = Cached_data()
+        cache_o.load()
+        if new_cache:
+            cached_tags = dict()
+        else:
+            cached_tags = cache_o.get_values(_tags['Name'])
+        if not cached_tags:
+            # Newly-installed mod
+            cache_write = True
+            for _tag, _val in _tags.items():
+                cached_tags[_tag] = _val
+            cached_tags['Rating'] = '***' # Default
+            cached_tags = self.read_mas_files(cached_tags, os.path.dirname(_mft))
+            for tag, val in cached_tags.items():
+                cache_o.set_value(_tags['Name'], tag, val)
+            cache_o.write()
+
+        # These aren't kept in the spreadsheet so get the .MFT tags
+        cached_tags['Date'] = translate_date(_tags['Date'])
+        cached_tags['Desc'] = _tags['Desc']
+        cached_tags['Name'] = _tags['Name']
+        cached_tags['strippedName'] = _tags['strippedName']
+
+        return cached_tags, cache_write
 
 ######################################################################
 
@@ -430,31 +469,6 @@ class CarDataFiles(DataFiles):
                 tags['Author'] = 'Studio 397?'
         return tags
 
-    def new_data(self, _mft):
-        """
-        Create new rFactory car data file
-        """
-        cache_o = Cached_data()
-        cache_o.load()
-        cache_write = None
-        _tags = self.get_initial_tags(_mft)
-        _tags['Date'] = translate_date(_tags['Date'])
-        _tags['Rating'] = '***' # Default
-        cached_tags = cache_o.get_values(_tags['Name'])
-        if not cached_tags:
-            cache_write = self.read_mas_files(_tags, os.path.dirname(_mft))
-        # Split here
-        if createDataFile(datafilesPath=CarDatafilesFolder,
-                          filename=_tags['Name'],
-                          dict=_tags,
-                          tagsToBeWritten=carTags,
-                          overwrite=True):
-            # a new file was written
-            pass    # TBD
-
-        if cache_write:
-            cache_o.write()
-        return _tags
 
 ######################################################################
 
@@ -556,31 +570,6 @@ class TrackDataFiles(DataFiles):
                     tags['Country'] = 'No Lat'
                     tags['Continent'] = 'No Long'
         return tags
-
-    def new_data(self, _mft):
-        """
-        Create new rFactory track data file
-        """
-        cache_o = Cached_data()
-        cache_o.load()
-        cache_write = None
-        _tags = self.get_initial_tags(_mft)
-        _tags['Date'] = translate_date(_tags['Date'])
-        _tags['Rating'] = '***' # Default
-        cached_tags = cache_o.get_values(_tags['Name'])
-        if not cached_tags:
-            cache_write = self.read_mas_files(_tags, os.path.dirname(_mft))
-        if createDataFile(datafilesPath=TrackDatafilesFolder,
-                          filename=_tags['Name'],
-                          dict=_tags,
-                          tagsToBeWritten=trackTags,
-                          overwrite=True):
-            # a new file was written
-            pass    # TBD
-
-        if cache_write:
-            cache_o.write()
-        return _tags
 
 ######################################################################
 # Using the classes
