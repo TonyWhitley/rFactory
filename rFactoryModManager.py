@@ -28,7 +28,7 @@ try:
 except ModuleNotFoundError:
     pass    # Those modules are not packed in the exe yet
 
-BUILD_REVISION = 129 # The git commit count
+BUILD_REVISION = 130 # The git commit count
 versionStr = 'rFactoryModManager V0.1.%d' % BUILD_REVISION
 versionDate = '2019-12-12'
 
