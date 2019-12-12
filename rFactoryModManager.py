@@ -16,18 +16,21 @@ from lib.tkToolTip import Tooltip as Tooltip
 import tabCar
 import tabTrack
 import tabModSelection
-import tabGraphics
-#import tabSessions
-import tabOptions
-#import tabServers
-import tabScenarios
-#import tabJsonEditor
-import rF2headlights.gui
-import tabGearshift
+try:
+    import tabGraphics
+    #import tabSessions
+    import tabOptions
+    #import tabServers
+    import tabScenarios
+    #import tabJsonEditor
+    import rF2headlights.gui
+    import tabGearshift
+except ModuleNotFoundError:
+    pass    # Those modules are not packed in the exe yet
 
-BUILD_REVISION = 124 # The git commit count
+BUILD_REVISION = 129 # The git commit count
 versionStr = 'rFactoryModManager V0.1.%d' % BUILD_REVISION
-versionDate = '2019-11-17'
+versionDate = '2019-12-12'
 
 def parse(mod_file):
     """

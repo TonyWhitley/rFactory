@@ -35,6 +35,7 @@ pyinstaller ^
   --exclude-module tabSessions ^
   --exclude-module executeRF2 ^
   --paths env\Lib\site-packages ^
+  --add-data resources\rfactory.ico;resources ^
   "%~dp0\rFactoryModManager.py"
 
 :USESPEC
