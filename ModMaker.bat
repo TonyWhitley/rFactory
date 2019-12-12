@@ -1,19 +1,17 @@
 @echo off
 cls
-echo rFactor 2 ModMaker V1.7
+echo rFactor 2 ModMaker V1.9
 
 setlocal
 
 rem Default path, can be overridden in mod file
 rem rf2dir=[path to rF2 install]
-set rf2dir=c:\Program Files (x86)\Steam\steamapps\common\rFactor 2
+set rf2dir=%ProgramFiles(x86)%\Steam\steamapps\common\rFactor 2
 set SteamCmd=%ProgramFiles(x86)%/Steam/steam.exe
 set modfile=%~dpnx1
 if '%modfile%' == '' goto helpNoModfile
 if not exist %modfile% goto helpNoModfile
 echo Using %modfile%
-REM set modfile=%modfile%
-set temporary_copy=%rf2dir%\UserData\temporary_copy
 set verbose=0
 set dryrun=0
 rem Parse the modfile
@@ -25,6 +23,7 @@ for /f "eol=# tokens=1,2* delims==" %%i in (%modfile%) do (
  if /i '%%i' == 'verbose' set verbose=%%j
  if /i '%%i' == 'dryrun' set dryrun=%%j
  )
+set temporary_copy=%rf2dir%\UserData\temporary_copy
 if %verbose% GTR 0 echo Full path: %modfile%
 
 if '%modset%' == '' goto helpNoName
@@ -65,9 +64,17 @@ echo "%MyProcess%" running
 rem Create a folder for the mod
 
 pushd "%rf2dir%"
+if errorlevel 1 goto no_rf2dir
 md "%temporary_copy%\%modset%"
+if not exist "%temporary_copy%\%modset%" goto temporary_copy_error
 pushd "%temporary_copy%\%modset%"
+if errorlevel 1 goto temporary_copy_error
 set _modfolder=%cd%
+if %verbose% GTR 1 ( 
+  echo temporary_copy: "%temporary_copy%"
+  echo modset: "%modset%"
+  echo _modfolder: "%_modfolder%"
+  )
 echo Creating rFactor copy in %_modfolder%
 echo.
 
@@ -169,17 +176,16 @@ rem Delete the temporary_copy folder if there was nothing else in it.
 rmdir %temporary_copy% > nul 2>&1
 echo %_modfolder% deleted.
 
-exit
-exit
-echo EXITED!!!
-goto :eof
-REM goto :pauseExit
+if '%2' == 'ModManager.exe' Exit
+goto :pauseExit
 
 :::::::::::::::::::::::::::::::::::::::::::::::::
 
 :helpNoModfile
 @echo off
 echo Usage: %0 ^<Modfile^>
+echo (or you can drop ^<Modfile^> on %0)
+echo.
 
 :helpNoName
 @echo off
@@ -203,13 +209,41 @@ echo.
 echo Anything on a line after # is a comment
 echo.
 echo If your rFactor is installed somewhere other than
-echo c:\Program Files (x86)\Steam\steamapps\common\rFactor 2
+echo %ProgramFiles(x86)%\Steam\steamapps\common\rFactor 2
 echo then you can add a line like this
-echo rf2dir=c:\Program Files (x86)\Steam\steamapps\common\rFactor 2
+echo rf2dir=d:\games\Steam\steamapps\common\rFactor 2
 echo.
 echo Similarly for the command to start Steam
-echo SteamCmd=c:\Program Files (x86)\Steam\Steam
+echo SteamCmd=%ProgramFiles(x86)%\Steam\Steam
+echo.
+echo Advanced options
+echo temporary_copy=^<path^>  to put the shadow copy somewhere other than
+echo        %rf2dir%\UserData\temporary_copy
+echo verbose=0,1 or 2       for extra progress messages
+echo dryrun=1               run %0 but don't start rFactor
+echo.
+goto pauseExit
+
+:temporary_copy_error
+echo.
+echo ERROR
+echo.
+echo Could not create temp folder "%temporary_copy%\%modset%"
+echo in %rf2dir%
+echo.
+echo One answer is to add this to %1
+echo temporary_copy=^<path^>  
+echo to put the shadow copy somewhere else
+goto pauseExit
+
+:no_rf2dir
+echo.
+echo ERROR
+echo.
+echo Could not find rFactor 2 folder "%rf2dir%"
+
 :pauseExit
+echo.
 pause
 
 

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ec571240-c2a5-42c2-8112-a5036becb6f3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>rFactory.py</StartupFile>
+    <StartupFile>rFactoryModManager.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -41,6 +41,7 @@
     <Compile Include="data\tests\test_utils.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\tests\__init__.py" />
     <Compile Include="dummyRF2.py">
       <SubType>Code</SubType>
     </Compile>
