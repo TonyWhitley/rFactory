@@ -9,16 +9,25 @@ import tkinter.font as font
 from rFactory import MainWindow, Tabs
 import tabScenarios
 from data.rFactoryConfig import modMakerFilesFolder,modMakerFilesExtension,rF2root,SteamExe
-from data.utils import readFile, readTextFile, writeFile, bundleFolder
+from data.utils import readFile, readTextFile, writeFile, bundleFolder, \
+    executeCmdInBatchFile
 from lib.tkToolTip import Tooltip as Tooltip
 # Tabs
 import tabCar
 import tabTrack
 import tabModSelection
+import tabGraphics
+#import tabSessions
+import tabOptions
+#import tabServers
+import tabScenarios
+#import tabJsonEditor
+import rF2headlights.gui
+import tabGearshift
 
 BUILD_REVISION = 124 # The git commit count
 versionStr = 'rFactoryModManager V0.1.%d' % BUILD_REVISION
-versionDate = '2019-11-16'
+versionDate = '2019-11-17'
 
 def parse(mod_file):
     """
@@ -169,6 +178,18 @@ class GoButtons:
         command=self.run)
     self.tkButtonRun.grid(column=__gbc, row=4, pady=25)
 
+    """
+    self.tkButtonDave = tk.Button(
+        _goFrame,
+        text="Dave^ button!",
+        width=20,
+        height=2,
+        background='green',
+        font=buttonFont,
+        command=self.Dave)
+    self.tkButtonDave.grid(column=__gbc, row=5, pady=25)
+    """
+
     self.tkButtonQuit = tk.Button(
         _goFrame,
         text="Quit",
@@ -247,21 +268,17 @@ class GoButtons:
     self.tkButtonRun.flash() # Flash it
 
     mainWindow.iconify()
-    _cmd = bundleFolder('ModMaker.bat') + ' ' + self.modmaker_file
-    run(_cmd)
-    """
-    this doesn't work
-    try:
-        subprocess.Popen(_cmd)
-    except:
-        try:  # again as a shell command
-            subprocess.Popen(_cmd, shell=True)
-        except:
-            print("Couldn't execute '%s'" % _cmd)
-    """
+    _cmd = bundleFolder('ModMaker.bat') + ' ' + self.modmaker_file \
+        + ' ModManager.exe'
+    executeCmdInBatchFile(_cmd)
 
     mainWindow.deiconify()
     pass
+
+  def Dave(self):
+    """ The Run rFactor 2 button has been pressed """
+    self.tkButtonDave.flash() # Flash it
+    self.run()
 
   def _quit(self):
     mainWindow.handle.destroy()
@@ -276,6 +293,21 @@ if __name__ == "__main__":
   tabNames = [ \
       ['Mod Selection', tabModSelection]
       ]
+
+  """
+  tabNames = [ \
+      ['Mod Selection', tabModSelection],
+      ['Graphics', tabGraphics],
+      #['Sessions', tabSessions],
+      ['Options', tabOptions],
+      #['Servers', tabServers],
+      #['Favourite Servers', tabFavouriteServers],
+      #['Scenarios', tabScenarios],
+      #['JSON editor', tabJsonEditor],
+      ['Headlights control', rF2headlights.gui],
+      ['Gearshift', tabGearshift]
+      ]
+  """
 
   mainWindow = MainWindow('rFactoryModManager')
   mainWindow.setSize(width=1200, height=800)
