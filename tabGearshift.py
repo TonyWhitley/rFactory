@@ -1,12 +1,13 @@
 
 import sys
+import os
 # Python 3
 import tkinter as tk
 from tkinter import ttk
 
 from lib.tkToolTip import Tooltip
 
-sys.path.append('gearshift')
+sys.path.append(os.path.abspath('gearshift'))
 import mockMemoryMap
 from Gearshift import main as gearshiftMain
 
@@ -19,18 +20,20 @@ class Tab:
   def __init__(self, parentFrame):
     """ Put this into the parent frame """
     pass
-    tkLabel_Options = tk.Label(parentFrame,
-                                text='Realistic Gearshift')
-    tkLabel_Options.grid(column=1, row=1, columnspan=3)
+    #tkLabel_Options = tk.Label(parentFrame,
+    #                            text='Realistic Gearshift')
+    #tkLabel_Options.grid(column=1, row=1, columnspan=3)
     self.settings = {}
     self.vars = {}
     _tkCheckbuttons = {}
     _tkRadiobuttons = {}
 
-    controls_o, graunch_o = gearshiftMain()
+    controls_o, graunch_o, neutralButtonKeycode = gearshiftMain()
     maxRevs=10000
     maxFwdGears=6
-    instructions = 'blah blah'
+    instructions = 'If gear selection fails this program will send %s ' \
+    'to the active window until you reselect a gear.\n\n' \
+    % neutralButtonKeycode
     o_gui = mockMemoryMap.live(parentFrame,
                  graunch_o,                 # to read Graunch status
                  controls_o,                # to read whether state machine is active

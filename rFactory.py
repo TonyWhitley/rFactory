@@ -18,7 +18,7 @@ try:
   import tabServers
   import tabScenarios
   import tabJsonEditor
-  import rF2headlights.gui
+  #import rF2headlights.gui
   import tabGearshift
 
   from executeRF2 import runRF2
@@ -27,9 +27,9 @@ except:
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.utils import readTextFile, bundleFolder
 
-BUILD_REVISION = 111 # The git commit count
-versionStr = 'rFactory V0.6.%d' % BUILD_REVISION
-versionDate = '2019-09-20'
+BUILD_REVISION = 131 # The git commit count
+versionStr = 'rFactory V0.7.%d' % BUILD_REVISION
+versionDate = '2019-12-31'
 def about():
   messagebox.askokcancel(
             'About rFactory',
@@ -330,7 +330,7 @@ if __name__ == "__main__":
       ['Favourite Servers', tabFavouriteServers],
       #['Scenarios', tabScenarios],
       ['JSON editor', tabJsonEditor],
-      ['Headlights control', rF2headlights.gui],
+      #['Headlights control', rF2headlights.gui],
       #['Gearshift', tabGearshift]
       ]
   menuNames = [ \

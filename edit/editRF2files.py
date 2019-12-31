@@ -29,7 +29,7 @@ def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):
   _vehFile = os.path.join(_vehPath, vehName).replace('\\', '\\\\\\\\')  # +'.veh' no longer required
 
   allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
-  _text3 = readFile(allTracks)
+  _text3, error = readFile(allTracks)
   _edit3 = [r'( *SinglePlayerVehicle *=).*',   r'\1"' + _vehFile+'"']
   _edit5 = [r'( *SinglePlayerFilter *=).*',   r'\1""']  #blank it
   _edited = __edit(_text3, [_edit3,_edit5], doubleSlash=False)
@@ -39,7 +39,7 @@ def changeCar(vehPath = r'Norma_M30-LMP3_2017\1.51', vehName='NORMAM30_08'):
 def readCar():
   allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
   _strip = 'SinglePlayerVehicle=%s' % os.path.normpath(os.path.join(rF2root, r'Installed\Vehicles'))
-  _lines = readFile(allTracks)
+  _lines, error = readFile(allTracks)
   for line in _lines:
     if 'SinglePlayerVehicle' in line:
       car = line[len(_strip)+2:-2]
@@ -53,7 +53,7 @@ def changeTrack(scnPath = r'F1_1988_Tracks\0.941', scnName='HOCKENHEIM_1988_C4',
   _scnFile = os.path.join(rF2root, scnPath, scnName+'.scn').replace('\\', '\\\\\\\\')
 
   PlayerJSON = os.path.join(rF2root, r'UserData\player\Player.JSON')
-  _text4 = readFile(PlayerJSON)
+  _text4, error = readFile(PlayerJSON)
   _edit4 = [r'( *"Scene File" *:).*',   '\\1"' + _scnFile+'",']
   _edit5 = [r'( *"AI Database File" *:).*',   r'\1"",']  #blank it
   _edit6 = [r'( *"Scene Description" *:).*',   r'\1"%s",' % SceneDescription]
@@ -73,7 +73,7 @@ def readTrack():
 
 def changeOpponents(opponents="|1971|AC_427_1954_Endurance|DPi"):
   allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
-  _text3 = readFile(allTracks)
+  _text3, error = readFile(allTracks)
   _edit3 = [r'( *SinglePlayerFilter *=).*',   r'\1"' + opponents+'"']
   _edited = __edit(_text3, [_edit3], doubleSlash=False)
   writeFile(allTracks, _edited)
@@ -82,7 +82,7 @@ def changeOpponents(opponents="|1971|AC_427_1954_Endurance|DPi"):
 def readOpponents():
   allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
   _strip = 'SinglePlayerFilter=%s' % os.path.normpath(os.path.join(rF2root, r'Installed\Vehicles'))
-  _lines = readFile(allTracks)
+  _lines, error = readFile(allTracks)
   for line in _lines:
     if 'SinglePlayerFilter' in line:
       opponents = line[len(_strip)+2:-2]
@@ -132,7 +132,7 @@ if __name__ == '__main__':
   assert _edited[1] == 'SinglePlayerVehicle="\\rF2\\CHARLIE"\n'
 
   allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
-  _text3 = readFile(allTracks)
+  _text3, error = readFile(allTracks)
   # NOTE THE \\ BEFORE rFactor
   _edit3 = [r'( *SinglePlayerVehicle *=).*',   r'\1"' + 
             os.path.join(rF2root, r'Installed\Vehicles\Oreca_07_LMP2_2017\1.41\ORECA07PREE6ED8B36.VEH"').replace('\\', '\\\\')]
@@ -144,7 +144,7 @@ if __name__ == '__main__':
   writeFile(allTracks, _edited)
 
   PlayerJSON = os.path.join(rF2root, r'UserData\player\Player.JSON')
-  _text4 = readFile(PlayerJSON)
+  _text4, error = readFile(PlayerJSON)
   # NOTE THE \\ BEFORE rFactor
   doubleSlashed_rF2root = r'C:\\Program Files (x86)\\Steam\\steamapps\\common\\rFactor 2'
   _edit4 = [r'( *"Scene File" *:).*',   '\\1"' + 

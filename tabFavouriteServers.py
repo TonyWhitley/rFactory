@@ -29,7 +29,7 @@ class Tab:
 
     filename =  os.path.join(favouriteServersFilesFolder, 'favouriteServers'+favouriteServersFilesExtension)
 
-    _text = readFile(filename)
+    _text, error = readFile(filename)
     try:
       self.settings = json.loads(''.join(_text))
     except: # No favourites file, create one

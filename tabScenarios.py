@@ -15,7 +15,7 @@ try:
   import tabOptions
   import tabServers
   import tabJsonEditor
-  import rF2headlights.gui
+  #import rF2headlights.gui
 except:
   pass # Those are not present in rFactoryModManager.exe version
 
@@ -82,7 +82,7 @@ def openScenario():
       filetypes = (("rFactory Scenario files","*%s" % scenarioFilesExtension),
                    ("all files","*.*"))
       )
-  _text = readFile(filename)
+  _text, error = readFile(filename)
   settings = json.loads(''.join(_text))
   print(settings)
   _tso = TabSettings()
@@ -93,7 +93,7 @@ def openDefaultScenario():
 
   filename =  os.path.join(scenarioFilesFolder,
                            'lastScenario'+scenarioFilesExtension)
-  _text = readFile(filename)
+  _text, error = readFile(filename)
   if os.path.exists(filename):
     settings = json.loads(''.join(_text))
     print(settings)

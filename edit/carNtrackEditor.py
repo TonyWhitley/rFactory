@@ -10,7 +10,6 @@ import webbrowser
 
 from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
-from data.rFactoryData import getSingleCarData, getSingleTrackData, reloadAllData
 from data.utils import writeFile
 
 
@@ -94,6 +93,8 @@ class Editor:
 
 if __name__ == '__main__':
   # To run this tab by itself for development
+  from data.rFactoryData import getSingleCarData, getSingleTrackData, reloadAllData
+
   root = tk.Tk()
   tabTrack = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   root.title('Editor')

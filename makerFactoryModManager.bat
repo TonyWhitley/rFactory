@@ -37,6 +37,7 @@ pyinstaller ^
   --paths env\Lib\site-packages ^
   --add-data resources\rfactory.ico;resources ^
   --add-data rFactoryModManagerFaq.txt;. ^
+  --icon resources\rfactory.ico ^
   "%~dp0\rFactoryModManager.py"
 
 :USESPEC
