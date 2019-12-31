@@ -10,15 +10,17 @@ def readFile(filename):
   try:
     with open(filename) as f:
       originalText = f.readlines()
+      error = False
   except Exception as e:
     originalText = ['Exception reading "%s": %s"' % (filename, e)]
-  return originalText
+    error = True
+  return originalText, error
 
 def readTextFile(filename):
   """
   Read a wall of text, concatenate the lines, replace \n with newlines
   """
-  _lines = readFile(filename)
+  _lines, error = readFile(filename)
   _txt = ''
   for line in _lines:
     _txt += ' '+line.strip()
@@ -97,7 +99,12 @@ def getListOfFiles(path, pattern='*.c', recurse=False):
     if recurse:
         files = walk(path, pattern)
     else:
-        files = getFiles(os.path.join(path, pattern))
+        """
+        glob.escape(pathname)
+        Escape all special characters ('?', '*' and '[').
+        Needed for case of folder Kyalami_Legends_[1976]
+        """
+        files = getFiles(os.path.join(glob.escape(path), pattern))
 
     return files
 

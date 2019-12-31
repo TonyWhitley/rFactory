@@ -28,6 +28,7 @@ sys.path.append('..') #
 from data.rFactoryConfig import carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
 from data.utils import getListOfFiles, readFile, getTags
+from data.trawl_rF2_datafiles import CarDataFiles, TrackDataFiles
 
 __cars = {
   'dummyData' : {
@@ -79,14 +80,22 @@ def reloadAllData():
   __readDatafiles()
 
 def __readDatafiles():
-  """ Run this once to get the data """
+  cdf = CarDataFiles()
+  for car in cdf.cache_o.cache:
+    __cars['tags'][car['DB file ID']] = car
+  tdf = TrackDataFiles()
+  for track in tdf.cache_o.cache:
+    __tracks['tags'][track['DB file ID']] = track
+
+  """ LEGACY
+  Run this once to get the data
   if len(__cars['tags']) == 0:
     carFiles = getListOfFiles(path=CarDatafilesFolder, pattern='*'+dataFilesExtension)
     trackFiles = getListOfFiles(path=TrackDatafilesFolder, pattern='*'+dataFilesExtension)
 
     if len(carFiles) > 0:
       for car in carFiles:
-        text = readFile(car[0])
+        text, error = readFile(car[0])
         tags = getTags(text)
         __carID = tags['DB file ID']
         __cars['tags'][__carID] = tags
@@ -95,7 +104,7 @@ def __readDatafiles():
 
     if len(trackFiles) > 0:
       for track in trackFiles:
-        text = readFile(track[0])
+        text, error = readFile(track[0])
         tags = getTags(text)
         __trackID = tags['DB file ID']
         __tracks['tags'][__trackID] = tags
@@ -105,6 +114,7 @@ def __readDatafiles():
       print('Using dummy data')
       __tracks['tags'] = __tracks['dummyData']
   # else it's already loaded
+  """
 
 def getAllData(__carsTracks, tags, maxWidth):
   """ Get a list for all cars or tracks of dicts of the requested tags """
@@ -116,7 +126,10 @@ def getAllData(__carsTracks, tags, maxWidth):
       if tag == 'DB file ID':  # Do not shorten that
         _row[tag] = __carsTracks['tags'][_carsTrack][tag]
       else:
-        _row[tag] = __carsTracks['tags'][_carsTrack][tag][:maxWidth]
+        try:
+          _row[tag] = __carsTracks['tags'][_carsTrack][tag][:maxWidth]
+        except KeyError:
+          print(F'Missing tag {tag}')
     _result[_carsTrack] =_row
   return _result
 

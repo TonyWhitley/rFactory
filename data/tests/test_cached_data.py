@@ -9,7 +9,7 @@ class Test_test_cached_data(unittest.TestCase):
         self.cache_o.load()
     def test_get_values_empty(self):
         row = self.cache_o.get_values('New ID')
-        assert row == None
+        assert row == dict()
     def test_set_value(self):
         self.cache_o.set_value('New ID', 'Type', '1')
         row = self.cache_o.get_values('New ID')

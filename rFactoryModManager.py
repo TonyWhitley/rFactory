@@ -52,7 +52,7 @@ def parse(mod_file):
     modSelection = dict()
     modSelection['cars'] = list()
     modSelection['tracks'] = list()
-    text = readFile(mod_file)
+    text, error = readFile(mod_file)
     for line in text:
         if line.startswith('Vehicle'):
             modSelection['cars'].append(line.split('=')[1].strip())

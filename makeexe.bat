@@ -26,6 +26,8 @@ pyinstaller ^
   --paths ..\rF2_serverNotify ^
   --paths env\Lib\site-packages ^
   --hiddenimport rF2_joinServer ^
+  --add-data resources\rfactory.ico;resources ^
+  --add-data Faq.txt;. ^
   "%~dp0\rFactory.py"
 
 :USESPEC

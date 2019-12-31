@@ -42,7 +42,8 @@ CarDatafilesFolder = 'Datafiles/Cars'
 TrackDatafilesFolder = 'Datafiles/Tracks'
 dataFilesExtension = '.rFactory.txt'
 markerfileExtension = '.folder.SCNs.scanned'
-CacheDataFile = 'Datafiles/rFactoryCache.csv'
+carCacheDataFile = 'Datafiles/rFactoryCarCache.csv'
+trackCacheDataFile = 'Datafiles/rFactoryTrackCache.csv'
 modMakerFilesFolder = 'Datafiles/ModMaker'
 modMakerFilesExtension = 'ModMaker.txt'
 
@@ -77,7 +78,7 @@ rFactoryConfigFileExtension = '.JSON'
 # Editable items in config file
 config_filename =  os.path.join(rFactoryConfigFileFolder, 'rFactoryConfig'+rFactoryConfigFileExtension)
 
-_text = readFile(config_filename)
+_text, error = readFile(config_filename)
 try:
   config = json.loads(''.join(_text))
 except: # No rFactoryConfig file, create one
