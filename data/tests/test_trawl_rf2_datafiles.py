@@ -13,16 +13,29 @@ class Test_trawl_rF2_datafiles_folders(unittest.TestCase):
     """
     Tests on the folder processing
     """
-    def test_find_multi_mas_folders(self):
+    def test_find_single_mod_folders(self):
         cdf = CarDataFiles()
-        mm = cdf.find_multi_mas_folders()
-        print(mm)
-        assert len(mm)
+        sm = cdf.find_single_mod_folders()
+        print(sm)
+        assert len(sm)
 
         tdf = TrackDataFiles()
-        mm = tdf.find_multi_mas_folders()
+        sm = tdf.find_single_mod_folders()
+        print(sm)
+        assert len(sm)
+
+    def test_find_multi_mas_folders(self):
+        cdf = CarDataFiles()
+        mm, multi_mfts = cdf.find_multi_mod_folders()
         print(mm)
         assert len(mm)
+        assert(len(multi_mfts))
+
+        tdf = TrackDataFiles()
+        mm, multi_mfts = tdf.find_multi_mod_folders()
+        print(mm)
+        assert len(mm)
+        assert(len(multi_mfts))
 
     def test_getListOfFiles(self):
         folder = location(r"Brianza_1966\2.04")
@@ -182,7 +195,7 @@ class Test_trawl_rF2_datafiles(unittest.TestCase):
     def test_get_initial_car_tags(self):
         cdf = CarDataFiles()
         _from = vehicle(r"BTCC_NGTC_Ford_Focus_RS\0.95\BTCC_NGTC_Ford_Focus_RS.mft")
-        _tags = cdf._get_initial_tags(_from)
+        _tags = cdf._get_mft_tags(_from)
         assert len(_tags['Date'])
         _tags, cache_write = cdf.new_data(_from, new_cache=True)
         assert len(_tags['Date'])
@@ -225,6 +238,18 @@ class Test_trawl_rF2_datafiles(unittest.TestCase):
             assert _tags[t].lower() == self._example_expected_track_mft_tags[t].lower(), \
                 F'{t}: "{_tags[t]}", expected "{self._example_expected_track_mft_tags[t]}"'.format()
     """
+
+    def test_car_multi_mod(self):
+        cdf = CarDataFiles()
+        for tags in cdf.multi_mod("F1 1998"):
+            print(tags)
+            pass
+
+    def test_track_multi_mod(self):
+        tdf = TrackDataFiles()
+        for tags in tdf.multi_mod("F1_1988_Tracks"):
+            print(tags)
+            pass
 
     def test_createDefaultDataFiles(self):
         #newFiles = NEWcreateDefaultDataFiles()

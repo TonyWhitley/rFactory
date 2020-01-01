@@ -23,12 +23,12 @@ class Tab:
     self.trackData = o_trackData.fetchData()
 
 
-    self.mc = Multicolumn_Listbox(parentFrame, 
-                             config_tabTrack['trackColumns'], 
-                             striped_rows=("white","#f2f2f2"), 
-                             command=self.__on_select, 
+    self.mc = Multicolumn_Listbox(parentFrame,
+                             config_tabTrack['trackColumns'],
+                             striped_rows=("white","#f2f2f2"),
+                             command=self.__on_select,
                              right_click_command=self.__on_right_click,
-                             adjust_heading_to_content=False, 
+                             adjust_heading_to_content=False,
                              height=30,
                              cell_anchor="center")
 
@@ -53,7 +53,7 @@ class Tab:
     self.o_filter = self.__Filter(parentFrame, config_tabTrack['trackColumns'], colWidths, o_trackData, self.mc)
     for _filter in config_tabTrack['trackFilters']:
       self.o_filter.makeFilter(_filter, self.trackData)
-   
+
     self.o_filter.filterUpdate(None) # Initial dummy filter to load data into table
 
     self.mc.select_row(0)
@@ -69,12 +69,12 @@ class Tab:
     trackID = settings[-1]
     for row, track in enumerate(self.trackData):
       if trackID == self.trackData[track]['DB file ID']:
-        # the row for trackID 
+        # the row for trackID
         self.mc.select_row(row-1)
         return
     # Settings not in data
     self.mc.select_row(0)
-  
+
   def __on_select(self, data):
     self.settings = data
     print('DEBUG')
@@ -92,7 +92,9 @@ class Tab:
     top = tk.Toplevel(self.parentFrame)
     top.title("Track editor")
 
-    fields = trackTags
+    fields = trackTags + ['Longitude', 'Latitude']
+    # Put lat/long in editor then can browse Google maps with
+    # https://www.google.com/maps/place/<lat>,<long>
     data = getSingleTrackData(id=data[-1], tags=fields)
     o_tab = carNtrackEditor.Editor(top, fields, data, DatafilesFolder=TrackDatafilesFolder)
     # Need to init the Tab again to get fresh data.
@@ -114,7 +116,7 @@ class Tab:
       self.data = getAllTrackData(tags=config_tabTrack['trackColumns'], maxWidth=20)
       return self.data
     def filterData(self, filters):
-      """ 
+      """
       Filter items of the data dict that match all of the filter combobox selections.
       filters is a list of column name, comboBox text() function pairs """
       _data = []
@@ -170,7 +172,7 @@ class Tab:
       tkComboFilter.current(0)
       tkComboFilter.bind("<<ComboboxSelected>>", self.filterUpdate)
       self.filters.append([filterName, tkComboFilter.get])
-    
+
     def filterUpdate(self, event):
       """ Callback function when combobox changes """
       trackData = self.o_trackData.filterData(self.filters)
@@ -193,7 +195,7 @@ if __name__ == '__main__':
   root = tk.Tk()
   tabTrack = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   tabTrack.grid()
-    
+
   o_tab = Tab(tabTrack)
 
   root.mainloop()

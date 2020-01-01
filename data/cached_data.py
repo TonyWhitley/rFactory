@@ -38,10 +38,13 @@ class Cached_data:
 
     def set_value(self, id, key, value):
         """ Set a value in one row of the dict """
+        if value == '':
+            return
         if key in self.cache_tags:
             for row in self.cache:
                 if row['DB file ID'] == id:
-                    row[key] = value
+                    if row[key] == '':
+                        row[key] = value
                     return
             # New entry
             self.__new_entry(id)

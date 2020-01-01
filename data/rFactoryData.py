@@ -28,7 +28,7 @@ sys.path.append('..') #
 from data.rFactoryConfig import carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
 from data.utils import getListOfFiles, readFile, getTags
-from data.trawl_rF2_datafiles import CarDataFiles, TrackDataFiles
+from data.trawl_rF2_datafiles import CarDataFiles, TrackDataFiles, translate_date
 
 __cars = {
   'dummyData' : {
@@ -125,6 +125,12 @@ def getAllData(__carsTracks, tags, maxWidth):
     for tag in tags:
       if tag == 'DB file ID':  # Do not shorten that
         _row[tag] = __carsTracks['tags'][_carsTrack][tag]
+      elif tag == 'Date':
+          if len(__carsTracks['tags'][_carsTrack][tag]) > 10:
+              # Date not translated
+              _row[tag] = translate_date(__carsTracks['tags'][_carsTrack][tag])
+          else:
+              _row[tag] = __carsTracks['tags'][_carsTrack][tag]
       else:
         try:
           _row[tag] = __carsTracks['tags'][_carsTrack][tag][:maxWidth]
