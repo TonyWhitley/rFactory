@@ -43,7 +43,10 @@ def writeFile(_filepath, text):
 def executeCmd(cmd):
     retcode = 0
     try:
-        completed_process = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=True)
+        completed_process = subprocess.run(cmd,
+                                           stdout=subprocess.PIPE,
+                                           stderr=subprocess.PIPE,
+                                           check=True)
         retcode = completed_process.returncode
         rpt = completed_process.stdout
         #if !None rpt += completed_process.stderr

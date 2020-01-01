@@ -132,6 +132,26 @@ def extractYear(name):
   #print(name, year)
   return year, decade, name
 
+def parse_mfr_model(_tags):
+    for tag in ['Manufacturer', 'Model']:
+        val = _tags['strippedName'].replace('_', ' ').strip()  # default
+        if val.startswith('Isi'):
+            val = val[4:]
+        if val.startswith('Ngtc'):
+            val = val[5:]
+        if not val == '':
+            if tag == 'Manufacturer':
+                val = val.split()[0]
+                # Fix case issues:
+                _mfrs = {'Ac':'AC', 'Ats':'ATS', 'Alfaromeo': 'Alfa Romeo',
+                            'Brm':'BRM', 'Bmw':'BMW', 'Mclaren':'McLaren'}
+                if val in _mfrs:
+                    val = _mfrs[val]
+            if tag == 'Model' and len(val.split()) > 1:
+                val = ' '.join(val.split()[1:])
+        _tags[tag] = val
+    return _tags
+
 ######################################################################
 # Common Car/Track subclass:
 class DataFiles:
@@ -142,7 +162,7 @@ class DataFiles:
     newer_mfts = None
     newFiles = list()
     _tags = dict()
-    encrypted_files = list()
+    unusable_mas_files = list()  # tbd Write resulting list to a data file and read
     ModMgr = os.path.join(rF2root, r'Bin32\ModMgr.exe')
 
     def __getitem__(self, key):
@@ -171,7 +191,30 @@ class DataFiles:
             _res = f'datafiles\\tracks\\{_mft}.rfactory.txt'.format()
         return _res
 
-    def find_multi_mas_folders(self):
+    def find_single_mod_folders(self):
+        """
+        Find ALL folders with .MFT files then subtract multi-mod folders
+
+        Looks like none of the multifold
+
+        rF2 installed_folder: 'vehicles' or 'locations'
+        """
+        rF2_dir = os.path.join(rF2root, 'Installed')
+        all_mfts = getListOfFiles(os.path.join(rF2_dir,
+                                               self.installed_folder),
+                                  pattern='*.mft',
+                                  recurse=True)
+        self.multis, multi_mfts = self.find_multi_mod_folders()
+        # all_mfts, list of folder, mft tuples
+        # self.multis, list of folders
+        # multi_mfts, list of folder, mft tuples
+        for mmft in multi_mfts:
+            for i, mft in enumerate(all_mfts):
+                if mft[1] == mmft[1]:
+                    del all_mfts[i]
+        return all_mfts
+
+    def find_multi_mod_folders(self):
         """
         Some mods contain many mas files in a folder, e.g. F1_1988_Tracks
         Try to spot them by checking the number of mas files in a revision
@@ -188,6 +231,7 @@ class DataFiles:
                                     pattern='*',
                                     recurse=False)
         multi_mas = list()
+        multi_mfts = list()
         for _mod_folder, _mod in _mods:
             _revs = getListOfFiles(_mod_folder,
                                   pattern='*',
@@ -198,8 +242,12 @@ class DataFiles:
                                             recurse=True)
                 if len(_mas_files) > 10:
                     multi_mas.append(_mod)
+                    _mft_files = getListOfFiles(_rev[0],
+                                                pattern='*.mft',
+                                                recurse=True)
+                    multi_mfts += _mft_files
         pass
-        return multi_mas
+        return multi_mas, multi_mfts
 
     def get_mfts_and_timestamps(self):
         """
@@ -277,8 +325,8 @@ class DataFiles:
         """
         Extract file from mas file and add any keywords to tags
         """
-        if not mas in self.encrypted_files:
-            cmd = '"'+self.ModMgr + '" -q -x"%s" %s > nul 2>&1' \
+        if not mas in self.unusable_mas_files:
+            cmd = '"'+self.ModMgr + '" -q -x"%s" "%s" > nul 2>&1' \
                 % (mas, _filename)
             retcode,rsp = executeCmdInBatchFile(cmd)
             lines, error = readFile(_filename)
@@ -290,7 +338,7 @@ class DataFiles:
             try:
                 os.remove(_filename)   # delete extracted file
             except:
-                self.encrypted_files.append(mas)
+                self.unusable_mas_files.append(mas)
                 print('Failed to extract %s from %s' % (_filename, mas))
         else:
             pass    # Already identified as encrypted
@@ -310,7 +358,12 @@ class DataFiles:
             If it was a new entry
         """
         cache_write = False
-        _mft_tags = self._get_initial_tags(_mft) # Get the name
+        _mft_tags = self._get_mft_tags(_mft) # Get the name
+        if 'Date' in _mft_tags:
+            _mft_tags['Date'] = translate_date(_mft_tags['Date'])
+        else:
+            _mft_tags['Date'] = ''
+
         if new_cache:
             cached_tags = dict()
         else:
@@ -319,18 +372,12 @@ class DataFiles:
             # Newly-installed mod
             cache_write = True
             for _tag, _val in _mft_tags.items():
-                if not  _tag in ['Date', 'Desc', 'Name', 'strippedName']:
-                    cached_tags[_tag] = _val
+                cached_tags[_tag] = _val
             cached_tags['Rating'] = '***' # Default
             cached_tags = self.read_mas_files(cached_tags, os.path.dirname(_mft))
             for tag, val in cached_tags.items():
                 self.cache_o.set_value(_mft_tags['Name'], tag, val)
 
-        # These aren't kept in the spreadsheet so get the .MFT tags
-        if 'Date' in _mft_tags:
-            cached_tags['Date'] = translate_date(_mft_tags['Date'])
-        else:
-            cached_tags['Date'] = ''
         for tag, val in _mft_tags.items():
             self.cache_o.set_value(_mft_tags['Name'], tag, val)
 
@@ -341,6 +388,59 @@ class DataFiles:
                 cached_tags[_tag] = ''
 
         return cached_tags, cache_write
+
+    def multi_mod(self, folder):
+        """
+        Multiple mods in one folder with a single MFT file
+
+        Generator function, returns one mod each time
+        """
+
+        rF2_dir = os.path.join(rF2root, 'Installed')
+        mft_files = getListOfFiles(os.path.join(rF2_dir, self.installed_folder, folder),
+                                   pattern='*.mft',
+                                   recurse=True)
+        mas_files = getListOfFiles(os.path.join(rF2_dir, self.installed_folder, folder),
+                                   pattern='*.mas',
+                                   recurse=True)
+
+        for _mod in mas_files:
+            cache_write = False
+            _mft_tags = self._get_mft_tags(mft_files[0][0]) # Get the name
+            if 'Date' in _mft_tags:
+                _mft_tags['Date'] = translate_date(_mft_tags['Date'])
+            else:
+                _mft_tags['Date'] = ''
+
+
+            _mft_tags['Name'] = _mod[1][:-4]
+            cached_tags = self.cache_o.get_values(_mft_tags['Name'])
+            if not cached_tags:
+                # Newly-installed mod
+                files = self.dir_files_in_single_mas_file(_mod[0])
+                for _tag, _val in _mft_tags.items():
+                    cached_tags[_tag] = _val
+                cached_tags['Rating'] = '***' # Default
+                cached_tags, cache_write = self._read_mas_file(cached_tags, _mod[0], files)
+                if cache_write:
+                    cached_tags['strippedName'] = cached_tags['Name']
+                    cached_tags = parse_mfr_model(cached_tags)
+                    for tag, val in cached_tags.items():
+                        self.cache_o.set_value(_mft_tags['Name'], tag, val)
+                else:
+                    self.unusable_mas_files.append(_mod[0])
+
+            if cache_write:
+                for tag, val in _mft_tags.items():
+                    self.cache_o.set_value(_mft_tags['Name'], tag, val)
+
+            for _tag in ['Desc', 'Name', 'strippedName']:
+                if _tag in _mft_tags:
+                    cached_tags[_tag] = _mft_tags[_tag]
+                else:
+                    cached_tags[_tag] = ''
+            yield cached_tags, cache_write
+
 
     def cache_write(self):
         """
@@ -391,7 +491,7 @@ class CarDataFiles(DataFiles):
         self.cache_o.load()
 
 
-    def _get_initial_tags(self, mft):
+    def _get_mft_tags(self, mft):
         """
         Get the tags from the MFT file
         """
@@ -438,26 +538,10 @@ class CarDataFiles(DataFiles):
         # if veh file name is available in vehNames.txt use it
         _tags['vehFile'] = self.vehNames.veh(_tags['Name'])
 
-        for tag in ['Manufacturer', 'Model']:
-            val = _tags['strippedName'].replace('_', ' ').strip()  # default
-            if val.startswith('Isi'):
-                val = val[4:]
-            if val.startswith('Ngtc'):
-                val = val[5:]
-            if not val == '':
-                if tag == 'Manufacturer':
-                    val = val.split()[0]
-                    # Fix case issues:
-                    _mfrs = {'Ac':'AC', 'Ats':'ATS', 'Alfaromeo': 'Alfa Romeo',
-                             'Brm':'BRM', 'Bmw':'BMW', 'Mclaren':'McLaren'}
-                    if val in _mfrs:
-                      val = _mfrs[val]
-                if tag == 'Model' and len(val.split()) > 1:
-                    val = ' '.join(val.split()[1:])
-            _tags[tag] = val
+        _tags = parse_mfr_model(_tags)
         return _tags
 
-    def read_mas_files(self, tags, mas_dir):
+    def _read_mas_file(self, tags, mas, files):
         """
         Open the car mas files and look for
         *.hdv
@@ -500,34 +584,31 @@ class CarDataFiles(DataFiles):
               'Turbo'
               ]
 
-        _dir = self.dir_files_in_mas_files(mas_dir)
-        # defaults
-        tags['Gearshift'] = 'Paddles' # Paddles or sequential
-        tags['F/R/4WD'] = 'REAR'
-        tags['Aero'] = '1'
-        tags['Turbo'] = '0'
-
-        for mas, files in _dir.items():
-            mas = os.path.join(mas_dir, mas)
-            for _filename in files:
-                _filename = _filename.lower().strip()
-                if '.hdv' in _filename:
-                    mas_tags = self.mas_file(mas, _filename, {}, hdv_keywords)
-                    if 'SemiAutomatic' in mas_tags:
-                        if mas_tags['SemiAutomatic'] == '0':
-                            tags['Gearshift'] = 'H' + mas_tags['ForwardGears']
-                    if 'WheelDrive' in mas_tags:
-                        tags['F/R/4WD'] = mas_tags['WheelDrive']
-                    if 'FWSetting' in mas_tags and 'RWSetting' in mas_tags:
-                        if mas_tags['FWSetting'] == '0' and mas_tags['RWSetting'] == '0':
-                            tags['Aero'] = '0'
-                    if 'Mass' in mas_tags:
-                        tags['Mass'] = str(
-                            int(mas_tags['Mass'].split('.')[0])) # May be float
-                if '.ini' in _filename:
-                    mas_tags = self.mas_file(mas, _filename, {}, ini_keywords)
-                    if 'DumpValve' in mas_tags:
-                        tags['Turbo'] = '1'
+        found = False
+        for _filename in files:
+            _filename = _filename.lower().strip()
+            if '.hdv' in _filename:
+                mas_tags = self.mas_file(mas, _filename, {}, hdv_keywords)
+                if 'SemiAutomatic' in mas_tags:
+                    if mas_tags['SemiAutomatic'] == '0':
+                        tags['Gearshift'] = 'H' + mas_tags['ForwardGears']
+                        found = True
+                if 'WheelDrive' in mas_tags:
+                    tags['F/R/4WD'] = mas_tags['WheelDrive']
+                    found = True
+                if 'FWSetting' in mas_tags and 'RWSetting' in mas_tags:
+                    if mas_tags['FWSetting'] == '0' and mas_tags['RWSetting'] == '0':
+                        tags['Aero'] = '0'
+                        found = True
+                if 'Mass' in mas_tags:
+                    tags['Mass'] = str(
+                        int(mas_tags['Mass'].split('.')[0])) # May be float
+                    found = True
+            if '.ini' in _filename:
+                mas_tags = self.mas_file(mas, _filename, {}, ini_keywords)
+                if 'DumpValve' in mas_tags:
+                    tags['Turbo'] = '1'
+                    found = True
 
         if not 'Mass' in tags:
             # that PROBABLY indicates that mas was encrypted
@@ -535,6 +616,24 @@ class CarDataFiles(DataFiles):
             tags['Mass'] = ''
             if not 'Author' in tags or tags['Author'] == '':
                 tags['Author'] = 'Studio 397?'
+        return tags, found
+
+    def read_mas_files(self, tags, mas_dir):
+        """
+        Scan car MAS files for:
+        .hdv files: add tags found in them
+        (engine)*.ini DumpValve tag
+        """
+        # defaults
+        tags['Gearshift'] = 'Paddles' # Paddles or sequential
+        tags['F/R/4WD'] = 'REAR'
+        tags['Aero'] = '1'
+        tags['Turbo'] = '0'
+
+        _dir = self.dir_files_in_mas_files(mas_dir)
+        for mas, files in _dir.items():
+            mas = os.path.join(mas_dir, mas)
+            tags, found = self._read_mas_file(tags, mas, files)
         return tags
 
 
@@ -557,7 +656,7 @@ class TrackDataFiles(DataFiles):
         self.cache_o = Cached_data(trackCacheDataFile)
         self.cache_o.load()
 
-    def _get_initial_tags(self, mft):
+    def _get_mft_tags(self, mft):
         """
         Get the tags from the MFT file
         """
@@ -609,9 +708,9 @@ class TrackDataFiles(DataFiles):
         _dir = self.dir_files_in_mas_files(mas_dir)
         for mas, files in _dir.items():
             mas = os.path.join(mas_dir, mas)
-            tags = self.__read_mas_file(tags, mas, files)
+            tags, found = self._read_mas_file(tags, mas, files)
         return tags
-    def __read_mas_file(self, tags, mas, files):
+    def _read_mas_file(self, tags, mas, files):
         """
         Open the track MAS files and look for
         *.scn - use the name
@@ -623,12 +722,15 @@ class TrackDataFiles(DataFiles):
             'Latitude',
             'Longitude'
             ]
+
+        found = False
         for _filename in files:
             _filename = _filename.lower().strip()
             if '.scn' in _filename:
                 scn = os.path.splitext(_filename)[0] # Strip .scn
                 tags['Scene Description'] = scn
                 tags['Name'] = scn
+                found = True
             if '.gdb' in _filename:
                 tags = self.mas_file(mas, _filename, tags, gdb_keywords)
                 # Only if cached_tags don't have it already?
@@ -639,11 +741,22 @@ class TrackDataFiles(DataFiles):
                     address_o = google_address(lat, long)
 
                     tags['Country'] = address_o.get_country()
-                    tags['Continent'] = country_to_continent(tags['Country'])
+                    found = True
+                    if tags['Country'] == '':
+                        tags['Country'] = 'Lat ' + tags['Latitude']
+                        tags['Continent'] = 'Long ' + tags['Longitude']
+                    else:
+                        tags['Continent'] = country_to_continent(tags['Country'])
                 else:
-                    tags['Country'] = 'No Lat'
-                    tags['Continent'] = 'No Long'
-        return tags
+                    if 'Latitude' in tags:
+                        tags['Country'] = 'Lat ' + tags['Latitude']
+                        tags['Continent'] = '--No Long--'
+                        found = True
+                    if 'Longitude' in tags:
+                        tags['Country'] = '--No Lat--'
+                        tags['Continent'] = 'Long ' + tags['Longitude']
+                        found = True
+        return tags, found
 
 ######################################################################
 #
@@ -703,50 +816,40 @@ def createDefaultDataFiles(overwrite=False):
     """
     newFiles = list()
     rF2_dir = os.path.join(rF2root, 'Installed')
-    vehicleFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles'), pattern='*.mft', recurse=True)
-    F1_1996_carFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles', 'F1 1996 - SL1DE'), pattern='*.mas', recurse=True)
-    F1_1998_carFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles', 'F1 1998'), pattern='*.mas', recurse=True)
-    F1_2013_carFiles = getListOfFiles(os.path.join(rF2_dir, 'vehicles', 'F1RFT_2013_FB_1.4'), pattern='*.mas', recurse=True)
 
     cdf = CarDataFiles()
+    vehicleFiles = cdf.find_single_mod_folders()
+    multifolders, multimfts = cdf.find_multi_mod_folders()
 
     for _veh in vehicleFiles: #[:2]:
         _tags, cache_write = cdf.new_data(_veh[0])
         if cache_write:
             newFiles.append(_veh[1])
             cdf.cache_write()
-    """ There is an MFT file but the list is of the mas files
-    which also need to be processed
-    for _veh in F1_1996_carFiles:
-        _tags, cache_write = cdf.new_data(_veh[0])
-        if cache_write:
-            newFiles.append(_veh[1])
-    if newFiles:
-        cdf.cache_write()
-        newFiles = list()
 
-    for _veh in F1_2013_carFiles:
-        _tags, cache_write = cdf.new_data(_veh[0])
-        if cache_write:
-            newFiles.append(_veh[1])
-    if newFiles:
-        cdf.cache_write()
-        newFiles = list()
-    """
+    for folder in multifolders:
+        for _tags, cache_write in cdf.multi_mod(folder):
+            if cache_write:
+                cdf.cache_write()
 
     if newFiles:
         cdf.cache_write()
         newFiles = list()
-
-    trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations'), pattern='*.mft', recurse=True)
-    F1_1988_trackFiles = getListOfFiles(os.path.join(rF2_dir, 'locations', 'F1_1988_Tracks'), pattern='*.mas', recurse=True)
 
     tdf = TrackDataFiles()
+    trackFiles = tdf.find_single_mod_folders()
+    multifolders, multimfts  = tdf.find_multi_mod_folders()
 
     for _track in trackFiles: #[:2]:
         _tags, cache_write = tdf.new_data(_track[0])
         if cache_write:
             newFiles.append(_track[1])
+
+    for folder in multifolders:
+        for _tags, cache_write in tdf.multi_mod(folder):
+            if cache_write:
+                tdf.cache_write()
+
     if newFiles:
         tdf.cache_write()
         newFiles = list()
