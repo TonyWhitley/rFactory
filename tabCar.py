@@ -39,9 +39,6 @@ class Tab:
       for col, column in enumerate(row):
         if len(row[column]) > colWidths[col]:
           colWidths[col] = len(row[column])
-      #Bodge mfr and model widths down
-      colWidths[0] -= 1
-      colWidths[1] -= 1
       for col, column in enumerate(row):
         self.mc.configure_column(col, width=colWidths[col]*7+6)
     # Hide the final column (contains DB file ID):

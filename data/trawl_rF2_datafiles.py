@@ -381,6 +381,7 @@ class DataFiles:
         """
         cache_write = False
         _mft_tags = self._get_mft_tags(_mft) # Get the name
+        cached_tag_name = _mft_tags['Name']
         if 'Date' in _mft_tags:
             _mft_tags['Date'] = translate_date(_mft_tags['Date'])
         else:
@@ -389,7 +390,7 @@ class DataFiles:
         if new_cache:
             cached_tags = dict()
         else:
-            cached_tags = self.cache_o.get_values(_mft_tags['Name'])
+            cached_tags = self.cache_o.get_values(cached_tag_name)
         if not cached_tags:
             # Newly-installed mod
             cache_write = True
@@ -398,10 +399,10 @@ class DataFiles:
             cached_tags['Rating'] = '***' # Default
             cached_tags = self.read_mas_files(cached_tags, os.path.dirname(_mft))
             for tag, val in cached_tags.items():
-                self.cache_o.set_value(_mft_tags['Name'], tag, val)
+                self.cache_o.set_value(cached_tag_name, tag, val)
 
         for tag, val in _mft_tags.items():
-            self.cache_o.set_value(_mft_tags['Name'], tag, val)
+            self.cache_o.set_value(cached_tag_name, tag, val)
 
         for _tag in ['Desc', 'Name', 'strippedName']:
             if _tag in _mft_tags:
@@ -439,7 +440,8 @@ class DataFiles:
 
 
             _mft_tags['Name'] = _mod[1][:-4]
-            cached_tags = self.cache_o.get_values(_mft_tags['Name'])
+            cached_tag_name = _mft_tags['Name']
+            cached_tags = self.cache_o.get_values(cached_tag_name)
             if not cached_tags:
                 # Newly-installed mod
                 files = self.dir_files_in_single_mas_file(_mod[0])
@@ -454,20 +456,20 @@ class DataFiles:
                     cached_tags = parse_name(cached_tags)
                     cached_tags = parse_mfr_model(cached_tags)
                     for tag, val in cached_tags.items():
-                        self.cache_o.set_value(cached_tags['strippedName'], tag, val)
+                        self.cache_o.set_value(cached_tag_name, tag, val)
                     if 'Latitude' in cached_tags:
                         # It's a track
                         tag = 'Track Name'
                         val = cached_tags['strippedName'].replace('_', ' ').strip()
                         cached_tags[tag] = val
-                        self.cache_o.set_value(cached_tags['strippedName'], tag, val)
+                        self.cache_o.set_value(cached_tag_name, tag, val)
                 else:
                     self.unusable_mas_files.append(_mod[0] + '\n')
                     writeFile(unusableMasFilesFile, self.unusable_mas_files)
 
             if cache_write:
                 for tag, val in _mft_tags.items():
-                    self.cache_o.set_value(cached_tags['strippedName'], tag, val)
+                    self.cache_o.set_value(cached_tag_name, tag, val)
 
             for _tag in []: #['Desc', 'Name', 'strippedName']:
                 if _tag in _mft_tags:

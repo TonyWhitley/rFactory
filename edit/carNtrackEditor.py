@@ -5,13 +5,14 @@ Also have 'Save as...' for creating variants.
 # Python 3
 import os
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import webbrowser
 
 from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
-  TrackDatafilesFolder,dataFilesExtension
+  TrackDatafilesFolder,dataFilesExtension, carCacheDataFile, trackCacheDataFile
 from data.utils import writeFile
 from data.rFactoryData import reloadAllData
+from data.cached_data import Cached_data
 
 
 ############################
@@ -49,7 +50,7 @@ class Editor:
     blank.grid(column=0, row=self.numFields, sticky='e')
     # Then the action buttons
     saveButton = tk.Button(self.tkEditor, text='Save', command=self.savePressed)
-    saveAsButton = tk.Button(self.tkEditor, text='Save as...', command=self.saveAsPressed)
+    #saveAsButton = tk.Button(self.tkEditor, text='Save as...', command=self.saveAsPressed)
     browseButton = tk.Button(self.tkEditor, text='Browse', command=self.browsePressed)
     if lat_long:
         mapButton = tk.Button(self.tkEditor, text='Find on map', command=self.mapPressed)
@@ -58,8 +59,8 @@ class Editor:
     _col = 0
     saveButton.grid(column=_col, row=self.numFields+1)
     _col += 1
-    saveAsButton.grid(column=_col, row=self.numFields+1)
-    _col += 1
+    #saveAsButton.grid(column=_col, row=self.numFields+1)
+    #_col += 1
     if lat_long:
         mapButton.grid(column=_col, row=self.numFields+1)
         _col += 1
@@ -70,17 +71,28 @@ class Editor:
 
   def savePressed(self):
     # Write the data to a file named by the unique ID field
-    text=[]
+
+    messagebox.askokcancel(
+            'Sorry',
+            'Save not yet implemented'
+        )
+    return
+    if 'Track Name' in self.fields:
+        _cd_o = Cached_data(trackCacheDataFile, trackTags)
+    else:
+        _cd_o = Cached_data(carCacheDataFile, carTags)
+    _cd_o.load()
     for i, tag in enumerate(self.fields):
       if self.label[i]['text'] == 'DB file ID':
-        _filename = self.entry[i].get()
-      text.append('%s=%s\n' % (self.label[i]['text'], self.entry[i].get()))
+        _id = self.entry[i].get()
+        _cd_o.delete_entry(_id)
+        break
 
-    _filepath = os.path.join(self.DatafilesFolder, _filename+dataFilesExtension)
+    for i, tag in enumerate(self.fields):
+      _cd_o.set_value(_id, self.label[i]['text'], self.entry[i].get())
+    _cd_o.write()
 
-    writeFile(_filepath, text)
     reloadAllData()
-    #self.parentFrame.destroy()
 
   def saveAsPressed(self):
     # open dialog to name file
