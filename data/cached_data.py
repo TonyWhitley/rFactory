@@ -58,6 +58,13 @@ class Cached_data:
         row['DB file ID'] = id
         self.cache.append(row)
 
+    def delete_entry(self, id):
+        """ Delete one row of the dict """
+        for i, row in enumerate(self.cache):
+            if row['DB file ID'] == id:
+                del self.cache[i]
+                break
+
     def get_values(self, id):
         """
         Return the row for id if it is present
@@ -72,9 +79,6 @@ class Cached_data:
         """
         Write the spreadsheet
         """
-        for r in self.cache:
-            if 'xDate' in r:
-                print(r)
         with open(self.cache_filename, mode='w') as csv_file:
             writer = csv.DictWriter(csv_file, fieldnames=self.cache_tags)
             writer.writeheader()
