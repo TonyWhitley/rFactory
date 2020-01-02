@@ -192,7 +192,7 @@ class Test_trawl_rF2_datafiles(unittest.TestCase):
         print(scns, mas_tags)
         print('Hello')
     """
-    def test_get_initial_car_tags(self):
+    def test_get_mft_car_tags(self):
         cdf = CarDataFiles()
         _from = vehicle(r"BTCC_NGTC_Ford_Focus_RS\0.95\BTCC_NGTC_Ford_Focus_RS.mft")
         _tags = cdf._get_mft_tags(_from)
@@ -204,7 +204,7 @@ class Test_trawl_rF2_datafiles(unittest.TestCase):
     def test_get_initial_track_tags(self):
         tdf = TrackDataFiles()
         _from = location(r"Dijon79\0.51\Dijon79.mft")
-        _tags = tdf._get_initial_tags(_from)
+        _tags = tdf._get_mft_tags(_from)
         assert len(_tags['Date'])
         _tags, cache_write = tdf.new_data(_from, new_cache=True)
         assert len(_tags['Date'])

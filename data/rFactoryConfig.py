@@ -44,6 +44,7 @@ dataFilesExtension = '.rFactory.txt'
 markerfileExtension = '.folder.SCNs.scanned'
 carCacheDataFile = 'Datafiles/rFactoryCarCache.csv'
 trackCacheDataFile = 'Datafiles/rFactoryTrackCache.csv'
+unusableMasFilesFile = 'Datafiles/unusableMasFiles.txt'
 modMakerFilesFolder = 'Datafiles/ModMaker'
 modMakerFilesExtension = 'ModMaker.txt'
 

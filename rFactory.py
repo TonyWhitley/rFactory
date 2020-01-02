@@ -27,9 +27,9 @@ except:
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.utils import readTextFile, bundleFolder
 
-BUILD_REVISION = 132 # The git commit count
+BUILD_REVISION = 133 # The git commit count
 versionStr = 'rFactory V0.7.%d' % BUILD_REVISION
-versionDate = '2029-01-01'
+versionDate = '2029-01-02'
 def about():
   messagebox.askokcancel(
             'About rFactory',
@@ -198,10 +198,10 @@ class GoButtons:
   """
   def __init__(self, parentFrame):
     _goFrame = ttk.Frame(parentFrame)
-    _goFrame.grid(column=13, row=0, sticky='w')
+    _goFrame.grid(column=1, row=0, sticky='w')
     # Draw the buttons
     buttonFont = font.Font(weight='bold', size=10)
-    __gbc = 2 # Go Buttons Column
+    __gbc = 1 # Go Buttons Column
 
     self.tkButtonOnline = tk.Button(
         _goFrame,
@@ -346,7 +346,7 @@ if __name__ == "__main__":
       ]
 
   mainWindow = MainWindow('rFactory')
-  mainWindow.setSize(width=1200, height=800)
+  mainWindow.setSize(width=1300, height=800)
   mainWindow.centreWindow()
 
   # Check if there are any new car/track files

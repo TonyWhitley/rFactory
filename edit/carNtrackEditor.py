@@ -11,6 +11,7 @@ import webbrowser
 from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension
 from data.utils import writeFile
+from data.rFactoryData import reloadAllData
 
 
 ############################
@@ -36,6 +37,13 @@ class Editor:
       self.entry[i].grid(column=1, row=i, ipadx=80, pady=5, ipady=2)
       self.entry[i].insert(0, data[field])
 
+    try:
+        self.lat = float(data['Latitude'])
+        self.long = float(data['Longitude'])
+        lat_long = True
+    except:
+        lat_long = False
+
     # Insert a blank line
     blank = tk.Label(self.tkEditor, text='')
     blank.grid(column=0, row=self.numFields, sticky='e')
@@ -43,12 +51,21 @@ class Editor:
     saveButton = tk.Button(self.tkEditor, text='Save', command=self.savePressed)
     saveAsButton = tk.Button(self.tkEditor, text='Save as...', command=self.saveAsPressed)
     browseButton = tk.Button(self.tkEditor, text='Browse', command=self.browsePressed)
+    if lat_long:
+        mapButton = tk.Button(self.tkEditor, text='Find on map', command=self.mapPressed)
     cancelButton = tk.Button(self.tkEditor, text='Cancel', command=self.cancelPressed)
 
-    saveButton.grid(column=0, row=self.numFields+1)
-    saveAsButton.grid(column=1, row=self.numFields+1)
-    browseButton.grid(column=2, row=self.numFields+1)
-    cancelButton.grid(column=3, row=self.numFields+1)
+    _col = 0
+    saveButton.grid(column=_col, row=self.numFields+1)
+    _col += 1
+    saveAsButton.grid(column=_col, row=self.numFields+1)
+    _col += 1
+    if lat_long:
+        mapButton.grid(column=_col, row=self.numFields+1)
+        _col += 1
+    browseButton.grid(column=_col, row=self.numFields+1)
+    _col += 1
+    cancelButton.grid(column=_col, row=self.numFields+1)
     self.tkEditor.grid(ipadx=10, ipady=10)
 
   def savePressed(self):
@@ -77,14 +94,18 @@ class Editor:
         break
     for i, tag in enumerate(self.fields):
       if self.label[i]['text'] == 'URL':
-        if len(self.entry[i].get()) > 5:  
+        if len(self.entry[i].get()) > 5:
           # It already has a URL
           url = self.entry[i].get()
         else:
-          url = "https://www.google.com/search?q=rfactor 2 {}".format(search_term)    
+          url = "https://www.google.com/search?q=rfactor 2 {}".format(search_term)
           # can't do that   self.entry[i].set(url)
     webbrowser.open(url)
 
+  def mapPressed(self):
+    # open a browser with a Google Maps lat/long
+    url = F"https://www.google.com/maps/place/{self.lat},{self.long}".format()
+    webbrowser.open(url)
 
 
   def cancelPressed(self):
@@ -99,7 +120,7 @@ if __name__ == '__main__':
   tabTrack = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
   root.title('Editor')
   tabTrack.grid()
-    
+
   edit = 'carData'
 
   if edit == 'sampleData':

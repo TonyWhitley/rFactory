@@ -65,14 +65,12 @@ from tkinter import messagebox
 
 from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension,playerPath,markerfileExtension, \
-  carCacheDataFile, trackCacheDataFile
+  carCacheDataFile, trackCacheDataFile, unusableMasFilesFile
 from data.utils import getListOfFiles, readFile, writeFile, getTags, \
     executeCmd, executeCmdInBatchFile
 
 from data.LatLong2Addr import google_address, country_to_continent
 from data.cached_data import Cached_data
-
-import edit.carNtrackEditor as carNtrackEditor
 
 ######################################################################
 #
@@ -152,6 +150,23 @@ def parse_mfr_model(_tags):
         _tags[tag] = val
     return _tags
 
+def parse_name(_tags):
+    _tags['Year'], _tags['Decade'], _tags['strippedName'] = extractYear(_tags['Name'])
+    # extract class from name if it's there
+    for __class in ['F1','F3','GT3','GTE','BTCC',
+                    'LMP1','LMP2','LMP3']: # 'F2' filters rF2...
+        if __class in _tags['Name']:
+            _tags['Class'] = __class
+            _tags['strippedName'] = _tags['strippedName'].replace(__class, '')
+    if _tags['strippedName'].startswith('STK'):
+        _tags['Author'] = 'Simtek Mods'
+    # extract certain words from name if they're there
+    for __word in ['FIA','OWC','HE','96','MAIN','88', 'C4']:
+        if __word in _tags['Name'] and not '488' in _tags['Name']:
+            _tags['strippedName'] = _tags['strippedName'].replace(__word, '')
+    _tags['strippedName'] = _tags['strippedName'].title() # Title Case The Name
+    return _tags
+
 ######################################################################
 # Common Car/Track subclass:
 class DataFiles:
@@ -162,7 +177,9 @@ class DataFiles:
     newer_mfts = None
     newFiles = list()
     _tags = dict()
-    unusable_mas_files = list()  # tbd Write resulting list to a data file and read
+    unusable_mas_files, error = readFile(unusableMasFilesFile)
+    if error:
+        unusable_mas_files = list()
     ModMgr = os.path.join(rF2root, r'Bin32\ModMgr.exe')
 
     def __getitem__(self, key):
@@ -313,19 +330,24 @@ class DataFiles:
         return files
 
     def dir_files_in_single_mas_file(self, mas):
-        temporaryFile = os.path.join(r'c:\temp', 'temporaryFile')
-        cmd = F'"{self.ModMgr}" -q -l"{mas}" 2>&1 {temporaryFile} > nul 2>&1'.format()
-        executeCmdInBatchFile(cmd)
+        files = list()
+        if not mas + '\n' in self.unusable_mas_files:
+            temporaryFile = os.path.join(r'c:\temp', 'temporaryFile')
+            cmd = F'"{self.ModMgr}" -q -l"{mas}" 2>&1 {temporaryFile} > nul 2>&1'.format()
+            executeCmdInBatchFile(cmd)
 
-        files, error = readFile(temporaryFile)
-        #os.remove(temporaryFile)
+            files, error = readFile(temporaryFile)
+            try:
+                os.remove(temporaryFile)
+            except:
+                pass    # temp file wasn't created
         return files
 
     def mas_file(self, mas, _filename, tags, keywords):
         """
         Extract file from mas file and add any keywords to tags
         """
-        if not mas in self.unusable_mas_files:
+        if not mas + '\n' in self.unusable_mas_files:
             cmd = '"'+self.ModMgr + '" -q -x"%s" "%s" > nul 2>&1' \
                 % (mas, _filename)
             retcode,rsp = executeCmdInBatchFile(cmd)
@@ -338,11 +360,11 @@ class DataFiles:
             try:
                 os.remove(_filename)   # delete extracted file
             except:
-                self.unusable_mas_files.append(mas)
+                self.unusable_mas_files.append(mas + '\n')
+                writeFile(unusableMasFilesFile, self.unusable_mas_files)
                 print('Failed to extract %s from %s' % (_filename, mas))
         else:
             pass    # Already identified as encrypted
-            print()
         return tags
 
     def new_data(self, _mft, new_cache=False):
@@ -394,6 +416,8 @@ class DataFiles:
         Multiple mods in one folder with a single MFT file
 
         Generator function, returns one mod each time
+        Generator version broke when run in VS debugger, OK when run as Python file or exe
+        for _tags, cache_write in tdf.multi_mod(folder):
         """
 
         rF2_dir = os.path.join(rF2root, 'Installed')
@@ -404,6 +428,7 @@ class DataFiles:
                                    pattern='*.mas',
                                    recurse=True)
 
+        results = list()
         for _mod in mas_files:
             cache_write = False
             _mft_tags = self._get_mft_tags(mft_files[0][0]) # Get the name
@@ -418,29 +443,37 @@ class DataFiles:
             if not cached_tags:
                 # Newly-installed mod
                 files = self.dir_files_in_single_mas_file(_mod[0])
+                if 'Track Name' in _mft_tags:
+                    del _mft_tags['Track Name']
                 for _tag, _val in _mft_tags.items():
                     cached_tags[_tag] = _val
                 cached_tags['Rating'] = '***' # Default
                 cached_tags, cache_write = self._read_mas_file(cached_tags, _mod[0], files)
                 if cache_write:
                     cached_tags['strippedName'] = cached_tags['Name']
+                    cached_tags = parse_name(cached_tags)
                     cached_tags = parse_mfr_model(cached_tags)
                     for tag, val in cached_tags.items():
-                        self.cache_o.set_value(_mft_tags['Name'], tag, val)
+                        self.cache_o.set_value(cached_tags['strippedName'], tag, val)
+                    if 'Latitude' in cached_tags:
+                        # It's a track
+                        tag = 'Track Name'
+                        val = cached_tags['strippedName'].replace('_', ' ').strip()
+                        cached_tags[tag] = val
+                        self.cache_o.set_value(cached_tags['strippedName'], tag, val)
                 else:
-                    self.unusable_mas_files.append(_mod[0])
+                    self.unusable_mas_files.append(_mod[0] + '\n')
+                    writeFile(unusableMasFilesFile, self.unusable_mas_files)
 
             if cache_write:
                 for tag, val in _mft_tags.items():
-                    self.cache_o.set_value(_mft_tags['Name'], tag, val)
+                    self.cache_o.set_value(cached_tags['strippedName'], tag, val)
 
-            for _tag in ['Desc', 'Name', 'strippedName']:
+            for _tag in []: #['Desc', 'Name', 'strippedName']:
                 if _tag in _mft_tags:
                     cached_tags[_tag] = _mft_tags[_tag]
-                else:
-                    cached_tags[_tag] = ''
-            yield cached_tags, cache_write
-
+            results.append([cached_tags, cache_write])
+        return results
 
     def cache_write(self):
         """
@@ -487,7 +520,7 @@ class CarDataFiles(DataFiles):
         self.installed_folder = 'vehicles'
         self.datafiles_folder = os.path.normpath(CarDatafilesFolder)
         self.vehNames = vehFiles()  # Repeatedly reading this slows things down A LOT
-        self.cache_o = Cached_data(carCacheDataFile)
+        self.cache_o = Cached_data(carCacheDataFile, carTags)
         self.cache_o.load()
 
 
@@ -519,15 +552,6 @@ class CarDataFiles(DataFiles):
               if _tags[requiredTag] in ['Virtua_LM Modding Team']: # make up your minds boys!
                 _tags[requiredTag] = 'Virtua_LM'
 
-              if requiredTag == 'Name':
-                _tags['Year'], _tags['Decade'], _tags['strippedName'] = extractYear(_tags['Name'])
-                # extract class from name if it's there
-                for __class in ['F1','F3','GT3','GTE','BTCC',
-                                'LMP1','LMP2','LMP3']: # 'F2' filters rF2...
-                  if __class in _tags['Name']:
-                    _tags['Class'] = __class
-                    _tags['strippedName'] = _tags['strippedName'].replace(__class, '')
-                _tags['strippedName'] = _tags['strippedName'].title() # Title Case The Name
         if _tags['Category'] in carCategories:
             _tags['tType'] = carCategories[_tags['Category']]
         # We need the original data folder to assemble the .VEH file path to put in
@@ -538,6 +562,7 @@ class CarDataFiles(DataFiles):
         # if veh file name is available in vehNames.txt use it
         _tags['vehFile'] = self.vehNames.veh(_tags['Name'])
 
+        _tags = parse_name(_tags)
         _tags = parse_mfr_model(_tags)
         return _tags
 
@@ -653,7 +678,7 @@ class TrackDataFiles(DataFiles):
         self.installed_folder = 'locations'
         self.datafiles_folder = os.path.normpath(TrackDatafilesFolder)
         self.vehNames = None # (only used for car files)
-        self.cache_o = Cached_data(trackCacheDataFile)
+        self.cache_o = Cached_data(trackCacheDataFile, trackTags+['Longitude', 'Latitude'])
         self.cache_o.load()
 
     def _get_mft_tags(self, mft):
@@ -828,13 +853,16 @@ def createDefaultDataFiles(overwrite=False):
             cdf.cache_write()
 
     for folder in multifolders:
+        results = cdf.multi_mod(folder)
+        for _tags, cache_write in results:
+            if cache_write:
+                cdf.cache_write()
+        """
+        Generator version broke when run in VS debugger, OK when run as Python file or exe
         for _tags, cache_write in cdf.multi_mod(folder):
             if cache_write:
                 cdf.cache_write()
-
-    if newFiles:
-        cdf.cache_write()
-        newFiles = list()
+        """
 
     tdf = TrackDataFiles()
     trackFiles = tdf.find_single_mod_folders()
@@ -846,23 +874,16 @@ def createDefaultDataFiles(overwrite=False):
             newFiles.append(_track[1])
 
     for folder in multifolders:
+        results = tdf.multi_mod(folder)
+        for _tags, cache_write in results:
+            if cache_write:
+                tdf.cache_write()
+        """
+        Generator version broke when run in VS debugger, OK when run as Python file or exe
         for _tags, cache_write in tdf.multi_mod(folder):
             if cache_write:
                 tdf.cache_write()
-
-    if newFiles:
-        tdf.cache_write()
-        newFiles = list()
-
-    """
-    for _track in F1_1988_trackFiles:
-        _tags, cache_write = tdf.new_data(_track[0])
-        if cache_write:
-            newFiles.append(_track[1])
-    """
-    if newFiles:
-        tdf.cache_write()
-
+        """
     return newFiles
 
 ######################################################################
