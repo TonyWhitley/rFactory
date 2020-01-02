@@ -4,7 +4,7 @@ setlocal
 
 python -V | find "3.7"
 if errorlevel 1 goto not37
-echo pyinstaller only works with versions up to 3.6
+echo pyinstaller only works with versions up to 3.7
 pause
 goto :eof
 
@@ -39,10 +39,11 @@ pyinstaller ^
   --add-data rFactoryModManagerFaq.txt;. ^
   --icon resources\rfactory.ico ^
   "%~dp0\rFactoryModManager.py"
+goto setVersion
 
 :USESPEC
 pyinstaller --debug all rFactoryModManager.spec 
-
+:setVersion
 if exist rFactoryModManagerVersion.txt pyi-set_version rFactoryModManagerversion.txt rFactoryModManager.exe
 
 pause

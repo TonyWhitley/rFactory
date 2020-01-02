@@ -7,7 +7,7 @@ End user program references this data when scanning user's car and track files.
 import csv
 import os
 
-from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
+from data.rFactoryConfig import rF2root,CarDatafilesFolder, \
   TrackDatafilesFolder,dataFilesExtension,markerfileExtension
 from data.utils import getListOfFiles, readFile, writeFile, getTags
 
@@ -15,14 +15,14 @@ from data.LatLong2Addr import google_address, country_to_continent
 
 class Cached_data:
     cache = []
-    cache_tags_set = set(carTags + trackTags) # dedupe union of all tags
-    cache_tags_set.discard('DB file ID') # Remove to move to col 1
-    cache_tags_set.discard('Desc')      # Move to the end because it's verbose
-    #cache_tags_set.discard('Date')      # Remove because it gets turned into a float
-    cache_tags = ['DB file ID']+list(cache_tags_set)+['Desc','strippedName']
 
-    def __init__(self, cache_filename):
+    def __init__(self, cache_filename, tags):
         self.cache_filename = cache_filename
+        self.cache_tags = tags
+        if 'DB file ID' in tags:
+            self.cache_tags.remove('DB file ID') # Remove to move to col 1
+            self.cache_tags.remove('Desc')      # Move to the end because it's verbose
+        self.cache_tags = ['DB file ID']+self.cache_tags+['strippedName', 'Desc']
 
     def load(self):
         """ Load the cached data CSV """

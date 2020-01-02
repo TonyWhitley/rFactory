@@ -4,7 +4,7 @@ setlocal
 
 python -V | find "3.7"
 if errorlevel 1 goto not37
-echo pyinstaller only works with versions up to 3.6
+echo pyinstaller only works with versions up to 3.7
 pause
 goto :eof
 
@@ -28,11 +28,15 @@ pyinstaller ^
   --hiddenimport rF2_joinServer ^
   --add-data resources\rfactory.ico;resources ^
   --add-data Faq.txt;. ^
+  --icon resources\rfactory.ico ^
   "%~dp0\rFactory.py"
+goto setVersion
 
 :USESPEC
 pyinstaller --debug all rFactory.spec 
+copy /y dist\rFactory.exe
 
+:setVersion
 if exist rFactoryVersion.txt pyi-set_version rFactoryVersion.txt rFactory.exe
 
 pause
