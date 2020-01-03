@@ -261,7 +261,7 @@ continent_countries = {
         'Svizra': 'Bern',
 
         'Ukraine': 'Kiev',
-        'Ukraine': 'Kyiv',
+        'Ukraine2': 'Kyiv',
 
         'United Kingdom': 'London',
         'Great Britain': 'London',

@@ -1,4 +1,3 @@
-import os
 import unittest
 
 import data.rFactoryConfig as rFactoryConfig
@@ -13,7 +12,7 @@ class Test_test_rFactoryConfig(unittest.TestCase):
         assert paths['DiscordExe'], rFactoryConfig.DiscordExe
         assert paths['CrewChiefExe'], rFactoryConfig.CrewChiefExe
         assert paths['playerPath'], rFactoryConfig.playerPath
-        assert paths['vehicles'], rFactoryConfig.vehicles
+        # Lint? assert paths['vehicles'], rFactoryConfig.vehicles
 
 
 if __name__ == '__main__':

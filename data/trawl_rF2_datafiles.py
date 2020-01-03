@@ -55,19 +55,14 @@ granularity of a mod folder.
 import datetime
 import os
 import re
-import subprocess
-import sys
 import time
 
 import tkinter as tk
 from tkinter import ttk
-from tkinter import messagebox
 
 from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
-  TrackDatafilesFolder,dataFilesExtension,playerPath,markerfileExtension, \
-  carCacheDataFile, trackCacheDataFile, unusableMasFilesFile
-from data.utils import getListOfFiles, readFile, writeFile, getTags, \
-    executeCmd, executeCmdInBatchFile
+  TrackDatafilesFolder,playerPath, carCacheDataFile, trackCacheDataFile, unusableMasFilesFile
+from data.utils import getListOfFiles, readFile, writeFile, getTags, executeCmdInBatchFile
 
 from data.LatLong2Addr import google_address, country_to_continent
 from data.cached_data import Cached_data
@@ -186,6 +181,7 @@ class DataFiles:
     newer_mfts = None
     newFiles = list()
     _tags = dict()
+    cache_o = None
     unusable_mas_files, error = readFile(unusableMasFilesFile)
     if error:
         unusable_mas_files = list()
@@ -508,6 +504,14 @@ class DataFiles:
 
     def get_tags(self):
         self.cache_o.l
+
+    def read_mas_files(self, tags, mas_dir):
+        return dict() # Pylint - it's defined in subclass
+    def _read_mas_file(self, tags, mas, files):
+        return dict() # Pylint - it's defined in subclass
+    def _get_mft_tags(self, mft):
+        return dict() # Pylint - it's defined in subclass
+
 
     '''
     def get_data(self, _mft):

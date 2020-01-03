@@ -52,19 +52,3 @@ Process is
 Note: rFactoryModManager does not need all the data, it only works down to the
 granularity of a mod folder.
 """
-import datetime
-import os
-import re
-import subprocess
-import sys
-import time
-
-import tkinter as tk
-from tkinter import ttk
-from tkinter import messagebox
-
-from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder \
-  TrackDatafilesFolder,dataFilesExtension,playerPath,markerfileExtension \
-  carCacheDataFile, trackCacheDataFile, unusableMasFilesFile
-
-

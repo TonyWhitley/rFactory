@@ -5,11 +5,9 @@ import tkinter as tk
 from tkinter import ttk, filedialog
 
 # Tabs
-import tabCar
 import tabTrack
 try:
     import tabOpponents
-    import tabFavouriteServers
     import tabGraphics
     import tabSessions
     import tabOptions
@@ -89,7 +87,7 @@ def openScenario():
     settings = json.loads(''.join(_text))
     print(settings)
     _tso = TabSettings()
-    _ = _tso.setAllSettings(settings)
+    _tso.setAllSettings(settings)
 
 
 def openDefaultScenario():
@@ -102,7 +100,7 @@ def openDefaultScenario():
         settings = json.loads(''.join(_text))
         print(settings)
         _tso = TabSettings()
-        _ = _tso.setAllSettings(settings)
+        _tso.setAllSettings(settings)
         return
 
     # else there is no default settings file???

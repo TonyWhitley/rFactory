@@ -3,8 +3,8 @@ import tkinter as tk
 from tkinter import ttk
 
 from lib.MC_table import Multicolumn_Listbox
-from data.rFactoryConfig import config_tabCar, CarDatafilesFolder, carTags
-from data.rFactoryData import getAllCarData, getSingleCarData
+from data.rFactoryConfig import config_tabCar
+from data.rFactoryData import getAllCarData
 
 NOFILTER = '---'  # String for not filtering
 

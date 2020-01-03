@@ -2,7 +2,7 @@ import os
 import unittest
 
 from data.cached_data import Cached_data
-from data.rFactoryConfig import carTags, trackTags
+from data.rFactoryConfig import carTags
 
 
 class Test_test_cached_data(unittest.TestCase):

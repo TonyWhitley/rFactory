@@ -4,9 +4,9 @@ Steam.exe utils: run it, minimise it, is it running?
 import os
 import subprocess
 import time
-import win32con
-import win32api
-import win32gui
+import win32con  # pylint: disable=import-error
+import win32api  # pylint: disable=import-error
+import win32gui  # pylint: disable=import-error
 
 SteamExe = os.path.expandvars("%ProgramFiles(x86)%/Steam/steam.exe")
 SteamDelayS = 10  # How long it takes Steam to start up

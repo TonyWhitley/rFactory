@@ -164,7 +164,7 @@ class Test_trawl_rF2_datafiles(unittest.TestCase):
         writeFile(bat, cmd)
         retcode, rsp = executeCmd(bat)
         assert retcode == 0, retcode
-        text, error = readFile(temporaryFile)
+        text, __error = readFile(temporaryFile)
         assert text != ''
         os.remove(bat)  # tidy up
         os.remove(temporaryFile)

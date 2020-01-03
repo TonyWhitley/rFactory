@@ -23,9 +23,7 @@ __tracks:
 It also handles writing the files if they've been edited.
 """
 from data.trawl_rF2_datafiles import CarDataFiles, TrackDataFiles, translate_date
-from data.utils import getListOfFiles, readFile, getTags
-from data.rFactoryConfig import carTags, trackTags, CarDatafilesFolder, \
-    TrackDatafilesFolder, dataFilesExtension
+from data.rFactoryConfig import carTags
 import sys
 
 sys.path.append('..')
@@ -214,8 +212,8 @@ def reloadAllData():
 
 def __readDatafiles():
     cdf = CarDataFiles()
-    for car in cdf.cache_o.cache:
-        __cars['tags'][car['DB file ID']] = car
+    for _car in cdf.cache_o.cache:
+        __cars['tags'][_car['DB file ID']] = _car
     tdf = TrackDataFiles()
     for track in tdf.cache_o.cache:
         __tracks['tags'][track['DB file ID']] = track
@@ -275,11 +273,11 @@ def getAllData(__carsTracks, tags, maxWidth):
     return _result
 
 
-def getSingleData(__carsTracks, id, tags):
+def getSingleData(__carsTracks, ident, tags):
     """ Get a dict of the requested tags for one car/track """
     __readDatafiles()
     _result = {}
-    _carsTrack = id
+    _carsTrack = ident
     _row = {}
     for tag in tags:
         if tag in __carsTracks['tags'][_carsTrack]:
@@ -294,23 +292,23 @@ def getAllCarData(tags, maxWidth=30):
 
 
 def getSingleCarData(
-    id='Howston_G4_1968',
+    ident='Howston_G4_1968',
     tags=[
         'originalFolder',
         'vehFile',
         'Name']):
     """ Get a dict of the requested tags for one car """
-    return getSingleData(__cars, id, tags)
+    return getSingleData(__cars, ident, tags)
 
 
 def getSingleTrackData(
-    id='Brianza_1966',
+    ident='Brianza_1966',
     tags=[
         'originalFolder',
         'Scene Description',
         'Name']):
     """ Get a dict of the requested tags for one track """
-    return getSingleData(__tracks, id, tags)
+    return getSingleData(__tracks, ident, tags)
 
 
 def getAllTrackData(tags, maxWidth=30):
@@ -323,7 +321,7 @@ if __name__ == '__main__':
     carData = getAllCarData(carTags)
 
     car = getSingleCarData(
-        id='Howston_G4_1968',
+        ident='Howston_G4_1968',
         tags=[
             'originalFolder',
             'vehFile',
@@ -334,7 +332,7 @@ if __name__ == '__main__':
         'vehFile': 'HG4_37.VEH'}
 
     track = getSingleTrackData(
-        id='Brianza_1966',
+        ident='Brianza_1966',
         tags=[
             'originalFolder',
             'Scene Description',

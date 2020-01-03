@@ -6,7 +6,6 @@ import json
 import os
 import re
 
-from data.trawl_rF2_datafiles import readFile
 from data.rFactoryConfig import rF2root
 from data.rFactoryData import getSingleCarData
 from data.utils import getListOfFiles, readFile, writeFile
@@ -154,8 +153,9 @@ if __name__ == '__main__':
     assert _edited[0] == '"AI Database File":"FRED"\n'
     assert _edited[1] == 'SinglePlayerVehicle="\\rF2\\CHARLIE"\n'
 
-    allTracks = os.path.join(rF2root, r'UserData\player\All Tracks & Cars.cch')
-    _text3, error = readFile(allTracks)
+    _allTracks = os.path.join(
+        rF2root, r'UserData\player\All Tracks & Cars.cch')
+    _text3, error = readFile(_allTracks)
     # NOTE THE \\ BEFORE rFactor
     _edit3 = [
         r'( *SinglePlayerVehicle *=).*',
@@ -176,7 +176,7 @@ if __name__ == '__main__':
 
     #_edit3 = [r'( *SinglePlayerVehicle *=).*',   r'\1' '"%ProgramFiles(x86)%\Steam\steamapps\common\\rFactor 2\Installed\Vehicles\Oreca_07_LMP2_2017\1.41\ORECA07PREE6ED8B36.VEH"']
     _edited = __edit(_text3, [_edit3], doubleSlash=False)
-    writeFile(allTracks, _edited)
+    writeFile(_allTracks, _edited)
 
     PlayerJSON = os.path.join(rF2root, r'UserData\player\Player.JSON')
     _text4, error = readFile(PlayerJSON)

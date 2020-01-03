@@ -109,7 +109,7 @@ class Tab:
         fields = trackTags + ['Longitude', 'Latitude']
         # Put lat/long in editor then can browse Google maps with
         # https://www.google.com/maps/place/<lat>,<long>
-        data = getSingleTrackData(id=data[-1], tags=fields)
+        data = getSingleTrackData(ident=data[-1], tags=fields)
         o_tab = carNtrackEditor.Editor(
             top, fields, data, DatafilesFolder=TrackDatafilesFolder)
         # Need to init the Tab again to get fresh data.

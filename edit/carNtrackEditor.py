@@ -3,14 +3,12 @@ Given the unique ID for a car or track, edit its file.
 Also have 'Save as...' for creating variants.
 """
 # Python 3
-import os
 import tkinter as tk
 from tkinter import ttk, messagebox
 import webbrowser
 
-from data.rFactoryConfig import rF2root, carTags, trackTags, CarDatafilesFolder, \
-    TrackDatafilesFolder, dataFilesExtension, carCacheDataFile, trackCacheDataFile
-from data.utils import writeFile
+from data.rFactoryConfig import carTags, trackTags, CarDatafilesFolder, \
+    carCacheDataFile, trackCacheDataFile
 from data.rFactoryData import reloadAllData
 from data.cached_data import Cached_data
 
@@ -96,12 +94,12 @@ class Editor:
         _cd_o.load()
         for i, tag in enumerate(self.fields):
             if self.label[i]['text'] == 'DB file ID':
-                _id = self.entry[i].get()
-                _cd_o.delete_entry(_id)
+                ident = self.entry[i].get()
+                _cd_o.delete_entry(ident)
                 break
 
         for i, tag in enumerate(self.fields):
-            _cd_o.set_value(_id, self.label[i]['text'], self.entry[i].get())
+            _cd_o.set_value(ident, self.label[i]['text'], self.entry[i].get())
         _cd_o.write()
 
         reloadAllData()
@@ -139,7 +137,7 @@ class Editor:
 
 if __name__ == '__main__':
     # To run this tab by itself for development
-    from data.rFactoryData import getSingleCarData, getSingleTrackData, reloadAllData
+    from data.rFactoryData import getSingleCarData
 
     root = tk.Tk()
     tabTrack = ttk.Frame(
@@ -166,7 +164,7 @@ if __name__ == '__main__':
             '1960-',
             '*****',
             'FLAT12_917k_1971']
-        o_tab = Editor(tabTrack, fields, sampleData, command=answer)
+        o_tab = Editor(tabTrack, fields, sampleData, CarDatafilesFolder)
 
     elif edit == 'carData':
         sampleData = [
