@@ -12,34 +12,38 @@ from data.rFactoryConfig import player, rF2root
 # * run Jobs
 # * backup and restore player.json  for 'Racing vs. replay only' option.
 
-if getattr( sys, 'frozen', False ) :
-  # running in a PyInstaller bundle (exe)
-  SJE_path = r'ScriptedJsonEditor'
-else :
-  # running live under rFactory
-  SJE_path = r'ScriptedJsonEditor\ScriptedJsonEditor'
+if getattr(sys, 'frozen', False):
+    # running in a PyInstaller bundle (exe)
+    SJE_path = r'ScriptedJsonEditor'
+else:
+    # running live under rFactory
+    SJE_path = r'ScriptedJsonEditor\ScriptedJsonEditor'
 try:
-  sys.path.append(SJE_path)
-  from GUI import Tab as GUI_Tab
-  from GUI import setMenu2tab
-  from GUImenu import Menu
+    sys.path.append(SJE_path)
+    from GUI import Tab as GUI_Tab
+    from GUI import setMenu2tab
+    from GUImenu import Menu
 
-  menubar = None
-  menu2tab = None
-  def setMenubar(_menubar):
-    global menubar
-    global menu2tab
-    menubar = _menubar
+    menubar = None
+    menu2tab = None
 
-    menu2tab = setMenu2tab(basedir=SJE_path, playerID=player, rF2root=rF2root)
-    Menu(menubar=menubar, menu2tab=menu2tab)
+    def setMenubar(_menubar):
+        global menubar
+        global menu2tab
+        menubar = _menubar
 
-  class Tab(GUI_Tab):
-    def __init__(self, parentFrame):
-      global menu2tab
-      x = GUI_Tab(parentFrame, menu2tab, goCommand=True)
+        menu2tab = setMenu2tab(
+            basedir=SJE_path,
+            playerID=player,
+            rF2root=rF2root)
+        Menu(menubar=menubar, menu2tab=menu2tab)
 
-      """
+    class Tab(GUI_Tab):
+        def __init__(self, parentFrame):
+            global menu2tab
+            x = GUI_Tab(parentFrame, menu2tab, goCommand=True)
+
+            """
       tkLabelframe_jobSettings = x.tkLabelframe_jobSettings
 
       o_tab = JobFrames(tkLabelframe_jobSettings)
@@ -49,46 +53,56 @@ try:
       """
 
 except ImportError as e:  # expected error if ScriptedJsonEditor is not present
-  try:
-    assert (e.name == 'GUI' or e.name == 'GUImenu') # but if that's not the error...
-    def setMenubar(_menubar):
-      pass
+    try:
+        # but if that's not the error...
+        assert (e.name == 'GUI' or e.name == 'GUImenu')
 
-    class Tab:
-      def __init__(self, parentFrame):
-        """ Put this into the parent frame """
-        tkLabelServer = tk.Label(parentFrame, 
-                                    text='ScriptedJsonEditor module not present')
-        tkLabelServer.grid(column=4, row=3)
-      def getSettings(self):
-        """ Return the settings for this tab """
-        return ['Server name', 'Password']
+        def setMenubar(_menubar):
+            pass
 
-      def setSettings(self, settings):
-        """ Set the settings for this tab """
-        pass
-  
-  except: # unexpected error (e.g ScriptedJsonEditor imports a lib not in rFactory's env)
-    raise e  # crash
+        class Tab:
+            def __init__(self, parentFrame):
+                """ Put this into the parent frame """
+                tkLabelServer = tk.Label(
+                    parentFrame, text='ScriptedJsonEditor module not present')
+                tkLabelServer.grid(column=4, row=3)
+
+            def getSettings(self):
+                """ Return the settings for this tab """
+                return ['Server name', 'Password']
+
+            def setSettings(self, settings):
+                """ Set the settings for this tab """
+                pass
+
+    # unexpected error (e.g ScriptedJsonEditor imports a lib not in rFactory's
+    # env)
+    except BaseException:
+        raise e  # crash
 
 if __name__ == '__main__':
-  # To run this tab by itself for development
-  root = tk.Tk()
-  tabJson = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
-  tabJson.grid()
-    
-  menubar = tk.Menu(root)
+    # To run this tab by itself for development
+    root = tk.Tk()
+    tabJson = ttk.Frame(
+        root,
+        width=1200,
+        height=1200,
+        relief='sunken',
+        borderwidth=5)
+    tabJson.grid()
 
-  menuLabel = 'JSON editor'
-  # This makes a second copy of the menus
-  #_menu = tk.Menu(menubar, tearoff=0)
-  #menubar.add_cascade(label=menuLabel, menu=_menu)
-  #setMenubar(_menu)
-  menu2tab = setMenu2tab(SJE_path)
-  Menu(menubar=menubar, menu2tab=menu2tab)
-  # display the menu
-  root.config(menu=menubar)
+    menubar = tk.Menu(root)
 
-  o_tab = Tab(tabJson)
+    menuLabel = 'JSON editor'
+    # This makes a second copy of the menus
+    #_menu = tk.Menu(menubar, tearoff=0)
+    #menubar.add_cascade(label=menuLabel, menu=_menu)
+    # setMenubar(_menu)
+    menu2tab = setMenu2tab(SJE_path)
+    Menu(menubar=menubar, menu2tab=menu2tab)
+    # display the menu
+    root.config(menu=menubar)
 
-  root.mainloop()
+    o_tab = Tab(tabJson)
+
+    root.mainloop()

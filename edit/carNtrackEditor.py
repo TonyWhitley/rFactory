@@ -8,8 +8,8 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import webbrowser
 
-from data.rFactoryConfig import rF2root,carTags,trackTags,CarDatafilesFolder, \
-  TrackDatafilesFolder,dataFilesExtension, carCacheDataFile, trackCacheDataFile
+from data.rFactoryConfig import rF2root, carTags, trackTags, CarDatafilesFolder, \
+    TrackDatafilesFolder, dataFilesExtension, carCacheDataFile, trackCacheDataFile
 from data.utils import writeFile
 from data.rFactoryData import reloadAllData
 from data.cached_data import Cached_data
@@ -19,136 +19,177 @@ from data.cached_data import Cached_data
 # The Editor's public class:
 ############################
 class Editor:
-  def __init__(self, parentFrame, fields, data, DatafilesFolder):
-    """ Put this into the parent frame """
-    self.tkEditor = tk.Message(parentFrame, aspect=500)
-    self.parentFrame = parentFrame
-    self.fields = list(fields)
-    self.DatafilesFolder = DatafilesFolder
+    def __init__(self, parentFrame, fields, data, DatafilesFolder):
+        """ Put this into the parent frame """
+        self.tkEditor = tk.Message(parentFrame, aspect=500)
+        self.parentFrame = parentFrame
+        self.fields = list(fields)
+        self.DatafilesFolder = DatafilesFolder
 
-    self.tkEditor.columnconfigure(1, weight=1)
+        self.tkEditor.columnconfigure(1, weight=1)
 
-    self.numFields = len(fields)
-    self.label = [0] * self.numFields
-    self.entry = [0] * self.numFields
-    for i, field in enumerate(fields):
-      self.label[i] = tk.Label(self.tkEditor, text=field)
-      self.label[i].grid(column=0, row=i, sticky='e')
-      self.entry[i] = tk.Entry(self.tkEditor)
-      self.entry[i].grid(column=1, row=i, ipadx=80, pady=5, ipady=2)
-      self.entry[i].insert(0, data[field])
+        self.numFields = len(fields)
+        self.label = [0] * self.numFields
+        self.entry = [0] * self.numFields
+        for i, field in enumerate(fields):
+            self.label[i] = tk.Label(self.tkEditor, text=field)
+            self.label[i].grid(column=0, row=i, sticky='e')
+            self.entry[i] = tk.Entry(self.tkEditor)
+            self.entry[i].grid(column=1, row=i, ipadx=80, pady=5, ipady=2)
+            self.entry[i].insert(0, data[field])
 
-    try:
-        self.lat = float(data['Latitude'])
-        self.long = float(data['Longitude'])
-        lat_long = True
-    except:
-        lat_long = False
+        try:
+            self.lat = float(data['Latitude'])
+            self.long = float(data['Longitude'])
+            lat_long = True
+        except BaseException:
+            lat_long = False
 
-    # Insert a blank line
-    blank = tk.Label(self.tkEditor, text='')
-    blank.grid(column=0, row=self.numFields, sticky='e')
-    # Then the action buttons
-    saveButton = tk.Button(self.tkEditor, text='Save', command=self.savePressed)
-    #saveAsButton = tk.Button(self.tkEditor, text='Save as...', command=self.saveAsPressed)
-    browseButton = tk.Button(self.tkEditor, text='Browse', command=self.browsePressed)
-    if lat_long:
-        mapButton = tk.Button(self.tkEditor, text='Find on map', command=self.mapPressed)
-    cancelButton = tk.Button(self.tkEditor, text='Cancel', command=self.cancelPressed)
+        # Insert a blank line
+        blank = tk.Label(self.tkEditor, text='')
+        blank.grid(column=0, row=self.numFields, sticky='e')
+        # Then the action buttons
+        saveButton = tk.Button(
+            self.tkEditor,
+            text='Save',
+            command=self.savePressed)
+        #saveAsButton = tk.Button(self.tkEditor, text='Save as...', command=self.saveAsPressed)
+        browseButton = tk.Button(
+            self.tkEditor,
+            text='Browse',
+            command=self.browsePressed)
+        if lat_long:
+            mapButton = tk.Button(
+                self.tkEditor,
+                text='Find on map',
+                command=self.mapPressed)
+        cancelButton = tk.Button(
+            self.tkEditor,
+            text='Cancel',
+            command=self.cancelPressed)
 
-    _col = 0
-    saveButton.grid(column=_col, row=self.numFields+1)
-    _col += 1
-    #saveAsButton.grid(column=_col, row=self.numFields+1)
-    #_col += 1
-    if lat_long:
-        mapButton.grid(column=_col, row=self.numFields+1)
+        _col = 0
+        saveButton.grid(column=_col, row=self.numFields + 1)
         _col += 1
-    browseButton.grid(column=_col, row=self.numFields+1)
-    _col += 1
-    cancelButton.grid(column=_col, row=self.numFields+1)
-    self.tkEditor.grid(ipadx=10, ipady=10)
+        #saveAsButton.grid(column=_col, row=self.numFields+1)
+        #_col += 1
+        if lat_long:
+            mapButton.grid(column=_col, row=self.numFields + 1)
+            _col += 1
+        browseButton.grid(column=_col, row=self.numFields + 1)
+        _col += 1
+        cancelButton.grid(column=_col, row=self.numFields + 1)
+        self.tkEditor.grid(ipadx=10, ipady=10)
 
-  def savePressed(self):
-    # Write the data to a file named by the unique ID field
+    def savePressed(self):
+        # Write the data to a file named by the unique ID field
 
-    messagebox.askokcancel(
+        messagebox.askokcancel(
             'Sorry',
             'Save not yet implemented'
         )
-    return
-    if 'Track Name' in self.fields:
-        _cd_o = Cached_data(trackCacheDataFile, trackTags)
-    else:
-        _cd_o = Cached_data(carCacheDataFile, carTags)
-    _cd_o.load()
-    for i, tag in enumerate(self.fields):
-      if self.label[i]['text'] == 'DB file ID':
-        _id = self.entry[i].get()
-        _cd_o.delete_entry(_id)
-        break
-
-    for i, tag in enumerate(self.fields):
-      _cd_o.set_value(_id, self.label[i]['text'], self.entry[i].get())
-    _cd_o.write()
-
-    reloadAllData()
-
-  def saveAsPressed(self):
-    # open dialog to name file
-    reloadAllData()
-
-  def browsePressed(self):
-    # open a browser with a search command
-    for i, tag in enumerate(self.fields):
-      if self.label[i]['text'] == 'Name':
-        search_term = self.entry[i].get()
-        break
-    for i, tag in enumerate(self.fields):
-      if self.label[i]['text'] == 'URL':
-        if len(self.entry[i].get()) > 5:
-          # It already has a URL
-          url = self.entry[i].get()
+        return
+        if 'Track Name' in self.fields:
+            _cd_o = Cached_data(trackCacheDataFile, trackTags)
         else:
-          url = "https://www.google.com/search?q=rfactor 2 {}".format(search_term)
-          # can't do that   self.entry[i].set(url)
-    webbrowser.open(url)
+            _cd_o = Cached_data(carCacheDataFile, carTags)
+        _cd_o.load()
+        for i, tag in enumerate(self.fields):
+            if self.label[i]['text'] == 'DB file ID':
+                _id = self.entry[i].get()
+                _cd_o.delete_entry(_id)
+                break
 
-  def mapPressed(self):
-    # open a browser with a Google Maps lat/long
-    url = F"https://www.google.com/maps/place/{self.lat},{self.long}".format()
-    webbrowser.open(url)
+        for i, tag in enumerate(self.fields):
+            _cd_o.set_value(_id, self.label[i]['text'], self.entry[i].get())
+        _cd_o.write()
 
+        reloadAllData()
 
-  def cancelPressed(self):
-    reloadAllData()
-    self.parentFrame.destroy()
+    def saveAsPressed(self):
+        # open dialog to name file
+        reloadAllData()
+
+    def browsePressed(self):
+        # open a browser with a search command
+        for i, tag in enumerate(self.fields):
+            if self.label[i]['text'] == 'Name':
+                search_term = self.entry[i].get()
+                break
+        for i, tag in enumerate(self.fields):
+            if self.label[i]['text'] == 'URL':
+                if len(self.entry[i].get()) > 5:
+                    # It already has a URL
+                    url = self.entry[i].get()
+                else:
+                    url = "https://www.google.com/search?q=rfactor 2 {}".format(
+                        search_term)
+                    # can't do that   self.entry[i].set(url)
+        webbrowser.open(url)
+
+    def mapPressed(self):
+        # open a browser with a Google Maps lat/long
+        url = F"https://www.google.com/maps/place/{self.lat},{self.long}".format()
+        webbrowser.open(url)
+
+    def cancelPressed(self):
+        reloadAllData()
+        self.parentFrame.destroy()
+
 
 if __name__ == '__main__':
-  # To run this tab by itself for development
-  from data.rFactoryData import getSingleCarData, getSingleTrackData, reloadAllData
+    # To run this tab by itself for development
+    from data.rFactoryData import getSingleCarData, getSingleTrackData, reloadAllData
 
-  root = tk.Tk()
-  tabTrack = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
-  root.title('Editor')
-  tabTrack.grid()
+    root = tk.Tk()
+    tabTrack = ttk.Frame(
+        root,
+        width=1200,
+        height=1200,
+        relief='sunken',
+        borderwidth=5)
+    root.title('Editor')
+    tabTrack.grid()
 
-  edit = 'carData'
+    edit = 'carData'
 
-  if edit == 'sampleData':
-    fields = 'Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'DB file ID'
-    sampleData = ['Porsche', '917K', 'Gp.C', 'Apex', 'GT', 'RWD', 1967, '1960-', '*****', 'FLAT12_917k_1971']
-    o_tab = Editor(tabTrack, fields, sampleData, command=answer)
+    if edit == 'sampleData':
+        fields = 'Manufacturer', 'Model', 'Class', 'Author', 'Type', 'F/R/4WD', 'Year', 'Decade', 'Rating', 'DB file ID'
+        sampleData = [
+            'Porsche',
+            '917K',
+            'Gp.C',
+            'Apex',
+            'GT',
+            'RWD',
+            1967,
+            '1960-',
+            '*****',
+            'FLAT12_917k_1971']
+        o_tab = Editor(tabTrack, fields, sampleData, command=answer)
 
-  elif edit == 'carData':
-    sampleData = ['Porsche', '917K', 'Gp.C', 'Apex', 'GT', 'RWD', 1967, '1960-', '*****', 'FLAT12_917k_1971']
-    data = getSingleCarData(sampleData[-1], carTags)
-    o_tab = Editor(tabTrack, carTags, data, CarDatafilesFolder)
+    elif edit == 'carData':
+        sampleData = [
+            'Porsche',
+            '917K',
+            'Gp.C',
+            'Apex',
+            'GT',
+            'RWD',
+            1967,
+            '1960-',
+            '*****',
+            'FLAT12_917k_1971']
+        data = getSingleCarData(sampleData[-1], carTags)
+        o_tab = Editor(tabTrack, carTags, data, CarDatafilesFolder)
 
-  elif edit == 'serverData': # doesn't really work, need a separate editor for favourite server handling
-    fields = ['Favourite', 'Password', 'DB file ID']
-    sampleData = {'Favourite':'N', 'Password':'', 'Server':'My favourite server', 'DB file ID':'favourite servers'}
-    o_tab = Editor(tabTrack, fields, sampleData, 'favourites')
+    elif edit == 'serverData':  # doesn't really work, need a separate editor for favourite server handling
+        fields = ['Favourite', 'Password', 'DB file ID']
+        sampleData = {
+            'Favourite': 'N',
+            'Password': '',
+            'Server': 'My favourite server',
+            'DB file ID': 'favourite servers'}
+        o_tab = Editor(tabTrack, fields, sampleData, 'favourites')
 
-  root.mainloop()
-
+    root.mainloop()
