@@ -9,7 +9,7 @@ from tkinter import ttk
 
 rF2_serverNotify_path = r'rF2_serverNotify\steps'
 sys.path.append(rF2_serverNotify_path)
-from rF2_serverNotify import Servers
+from rF2_serverNotify import Servers  # pylint: disable=import-error # NOQA: E402 don't move import
 
 
 _main = False  # True if this is running standalone
@@ -54,7 +54,7 @@ class Tab:
             self.tkListbox.bind("<Double-Button-1>", self.ok)
 
     def getPassword(self, serverName):
-        for k, v in self.settings.items():
+        for __k, v in self.settings.items():
             if v[0] == serverName:
                 return v[1]
         return ''

@@ -4,13 +4,13 @@ as required and then call rF2 with any command switches.
 """
 import steam
 import dummyRF2
-from rF2_joinServer import runRf2Online
+from rF2_joinServer import runRf2Online  # pylint: disable=import-error
 import os
 import subprocess
 import sys
 
-from data.rFactoryData import getAllCarData, getAllTrackData, getSingleCarData, getSingleTrackData
-from edit.editRF2files import changeCar, changeTrack, changeOpponents
+from data.rFactoryData import getSingleCarData, getSingleTrackData
+from edit.editRF2files import changeCar, changeTrack
 from data.rFactoryConfig import SteamExe, SteamDelayS, rF2root, DiscordCmd
 from data.rFactoryConfig import CrewChiefCmd, VolumeControlExe, TeamSpeakExe
 from data.rFactoryConfig import MyPreCommand, MyPostCommand
@@ -142,7 +142,6 @@ def runCoProgram(settings, coProgramName, coProgramCmd):
 
 
 def runOffline(settings):
-    cmd = SteamExe
     _cmd = '"%s" -applaunch 365960 +singleplayer +path=".."' % (SteamExe)
     # Alternative looks to be
     # "%ProgramFiles(x86)%\Steam\steamapps\common\rFactor 2\Bin64\rFactor2.exe"

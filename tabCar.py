@@ -112,7 +112,7 @@ class Tab:
         top.title("Car editor")
 
         fields = carTags
-        data = getSingleCarData(id=data[-1], tags=fields)
+        data = getSingleCarData(ident=data[-1], tags=fields)
         o_tab = carNtrackEditor.Editor(
             top, fields, data, DatafilesFolder=CarDatafilesFolder)
         # Need to init the Tab again to get fresh data.
@@ -209,7 +209,7 @@ class Tab:
             # tbd
             # self.mc.select_row(0)
 
-        def setFilters(self, settings):
+        def setFilters(self, settings):  # pylint: disable=unused-argument
             """ Set all the filters to settings """
             # tbd
             self.mc.select_row(0)

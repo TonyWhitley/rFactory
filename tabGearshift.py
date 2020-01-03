@@ -5,11 +5,9 @@ import os
 import tkinter as tk
 from tkinter import ttk
 
-from lib.tkToolTip import Tooltip
-
 sys.path.append(os.path.abspath('gearshift'))
-from Gearshift import main as gearshiftMain
-import mockMemoryMap
+import mockMemoryMap  # pylint: disable=import-error  # NOQA: E402 don't move import
+from Gearshift import main as gearshiftMain  # pylint: disable=import-error  # NOQA: E402 don't move import
 
 wraplength = 100
 

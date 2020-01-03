@@ -7,7 +7,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from lib.tkToolTip import Tooltip
-from rFactoryModManager import modmaker_file
+from rFactoryModManager import modmaker_file  # pylint: disable=no-name-in-module
 
 wraplength = 100
 
@@ -19,7 +19,6 @@ class Tab:
 
     def __init__(self, parentFrame):
         """ Dummy tab to get/set settings """
-        """ Put this into the parent frame """
         pass
 
     def getSettings(self):

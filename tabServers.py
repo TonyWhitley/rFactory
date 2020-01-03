@@ -1,7 +1,6 @@
 # Python 3
 
 from multiprocessing.dummy import Pool as ThreadPool
-import copy
 import os
 import sys
 import tkinter as tk
@@ -15,7 +14,7 @@ import edit.serverFavourites as serverFavourites
 rF2_serverNotify_path = r'..\rF2_serverNotify\steps'
 if os.path.exists(rF2_serverNotify_path):
     sys.path.append(rF2_serverNotify_path)
-    import rF2_serverNotify
+    import rF2_serverNotify  # pylint: disable=import-error  # NOQA: E402 don't move import
 
 NOFILTER = '---'  # String for not filtering
 
@@ -116,7 +115,7 @@ class ServerQuery:
         return self.serverData
 
 
-def getSingleServerData(id, tags):
+def getSingleServerData(ident, tags):
     pass
 
 #########################
@@ -241,7 +240,7 @@ class Tab:
         top.title("Server editor")
 
         fields = serverTags
-        ##data = getSingleServerData(id=data[-1], tags=fields)
+        ##data = getSingleServerData(ident=data[-1], tags=fields)
         o_tab = serverFavourites.Editor(top, 'Server 2', 1, 'password')
         # Need to init the Tab again to get fresh data.
 

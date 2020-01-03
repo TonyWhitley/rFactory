@@ -2,12 +2,8 @@
 Given the name of a server, mark (or unmark) it as favourite, store its password.
 """
 # Python 3
-import os
 import tkinter as tk
 from tkinter import ttk
-
-from data.rFactoryConfig import rF2root, carTags, dataFilesExtension
-from data.utils import writeFile
 
 ############################
 # The Editor's public class:

@@ -178,7 +178,9 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".pylintrc" />
     <Content Include="AllClasses.txt" />
+    <Content Include="autopep8tree.bat" />
     <Content Include="dataFiles\rFactoryCache.csv" />
     <Content Include="Documentation\rFactoryCars.JPG" />
     <Content Include="Documentation\rFactoryModMakerCars.JPG" />

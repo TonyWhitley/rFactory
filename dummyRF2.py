@@ -33,4 +33,4 @@ def dummyRF2(online, settings, _password=None):
 
 if __name__ == '__main__':
     settings = {'one': 'setting'}
-    dummyRF2(settings)
+    dummyRF2('Offline', settings)

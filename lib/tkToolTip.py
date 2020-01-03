@@ -1,3 +1,4 @@
+# pylint: skip-file
 """
   [1]: https://stackoverflow.com/a/41079350/3357935
 
@@ -54,12 +55,13 @@ class Tooltip:
         self.widget.bind("<ButtonPress>", self.onLeave)
         self.bg = bg
         self.pad = pad
-        self.id = None
+        self.ident = None
         self.tw = None
 
     def onEnter(self, event=None):
         try:
-            region = self.tree.identify("region", event.x, event.y)
+            region = self.tree.identify(
+                "region", event.x, event.y)  # pylint: disable=no-member
             if region == "heading":
                 pass  # TBD
         except BaseException:  # it's not a treeview
@@ -71,11 +73,11 @@ class Tooltip:
 
     def schedule(self):
         self.unschedule()
-        self.id = self.widget.after(self.waittime, self.show)
+        self.ident = self.widget.after(self.waittime, self.show)
 
     def unschedule(self):
-        id_ = self.id
-        self.id = None
+        id_ = self.ident
+        self.ident = None
         if id_:
             self.widget.after_cancel(id_)
 
@@ -194,7 +196,7 @@ if __name__ == '__main__':
                      'volutpat justo, quisque nisl eget sed blandit '
                      'egestas, libero nullam magna sem dui nam, auctor '
                      'vehicula nunc arcu vel sed dictum, tincidunt vitae '
-                     'id tristique aptent platea. Lacus eros nec proin '
+                     'ident tristique aptent platea. Lacus eros nec proin '
                      'morbi sollicitudin integer, montes suspendisse '
                      'augue lorem iaculis sed, viverra sed interdum eget '
                      'ut at pulvinar, turpis vivamus ac pharetra nulla '
@@ -206,10 +208,10 @@ if __name__ == '__main__':
                      'ipsum, nunc ridiculus platea wisi turpis praesent '
                      'vestibulum, suspendisse hendrerit amet quis vivamus '
                      'adipiscing elit, ut dolor nec nonummy mauris nec '
-                     'libero, ad rutrum id tristique facilisis sed '
+                     'libero, ad rutrum ident tristique facilisis sed '
                      'ultrices. Convallis velit posuere mauris lectus sit '
                      'turpis, lobortis volutpat et placerat leo '
-                     'malesuada, vulputate id maecenas at a volutpat '
+                     'malesuada, vulputate ident maecenas at a volutpat '
                      'vulputate, est augue nec proin ipsum pellentesque '
                      'fringilla. Mattis feugiat metus ultricies repellat '
                      'dictum, suspendisse erat rhoncus ultricies in ipsum, '

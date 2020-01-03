@@ -3,14 +3,12 @@ Tab that lists car and track folders. User selects and adds them to a list
 which is written to a data file for ModMaker.bat
 """
 # Python 3
-import json
 import os
-import sys
 import tkinter as tk
 from tkinter import ttk
 
 from data.rFactoryConfig import rF2root
-from data.utils import getListOfFiles, readFile, writeFile
+from data.utils import getListOfFiles
 
 _main = False  # True if this is running standalone
 

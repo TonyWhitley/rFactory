@@ -1,3 +1,4 @@
+# pylint: skip-file
 # Python 3
 import tkinter as tk
 from tkinter import ttk
@@ -6,53 +7,80 @@ from lib.tkToolTip import Tooltip
 #########################
 # The tab's public class:
 #########################
+
+
 class Tab:
-  def __init__(self, parentFrame):
-    """ Put this into the parent frame """
-    pass
-    tkLabelConditions = tk.Label(parentFrame, 
-                                text='This could be used to display the hierarchy of jobs and job definitions')
-    tkLabelConditions.grid(column=1, row=1)
-    
-    tree = ttk.Treeview(parentFrame, columns=('size', 'modified'))
-    tree['columns'] = ('size', 'modified', 'owner')
-    tree.grid(column=1, row=2)
+    def __init__(self, parentFrame):
+        """ Put this into the parent frame """
+        pass
+        tkLabelConditions = tk.Label(
+            parentFrame,
+            text='This could be used to display the hierarchy of jobs and job definitions')
+        tkLabelConditions.grid(column=1, row=1)
 
-    # Inserted at the root, program chooses id:
+        tree = ttk.Treeview(parentFrame, columns=('size', 'modified'))
+        tree['columns'] = ('size', 'modified', 'owner')
+        tree.grid(column=1, row=2)
 
-    wraplength = 100
-    tree.insert('', 'end', 'widgets', text='Widget Tour', values=('5KB Friday James'), open=True)
-    Tooltip(tree, text='Tooltip...', wraplength=wraplength)
- 
-    # Same thing, but inserted as first child:
-    tree.insert('', 0, 'gallery', text='Applications', values=('45KB Thursday Tony'))
+        # Inserted at the root, program chooses ident:
 
-    # Treeview chooses the id:
-    id = tree.insert('', 'end', text='Tutorial', values=('15KB Yesterday mark'), open=True)
+        wraplength = 100
+        tree.insert(
+            '',
+            'end',
+            'widgets',
+            text='Widget Tour',
+            values=('5KB Friday James'),
+            open=True)
+        Tooltip(tree, text='Tooltip...', wraplength=wraplength)
 
-    # Inserted underneath an existing node:
-    tree.insert('widgets', 'end', text='Canvas', values=('50KB Yesterday Leaf'))
-    tree.insert(id, 'end', text='Tree', values=('90KB Yesterday Leaf2'))
+        # Same thing, but inserted as first child:
+        tree.insert(
+            '',
+            0,
+            'gallery',
+            text='Applications',
+            values=('45KB Thursday Tony'))
 
-    tree.set('widgets', 'size', '12KB')
-    size = tree.set('widgets', 'size')
-    tree.insert('', 'end', text='Listbox', values=('15KB Yesterday mark'))
+        # Treeview chooses the ident:
+        ident = tree.insert(
+            '',
+            'end',
+            text='Tutorial',
+            values=('15KB Yesterday mark'),
+            open=True)
 
-  def getSettings(self):
-    """ Return the settings for this tab """
-    return ['Conditions']
+        # Inserted underneath an existing node:
+        tree.insert(
+            'widgets',
+            'end',
+            text='Canvas',
+            values=('50KB Yesterday Leaf'))
+        tree.insert(ident, 'end', text='Tree', values=('90KB Yesterday Leaf2'))
 
-  def setSettings(self, settings):
-    """ Set the settings for this tab """
-    pass
-  
+        tree.set('widgets', 'size', '12KB')
+        size = tree.set('widgets', 'size')
+        tree.insert('', 'end', text='Listbox', values=('15KB Yesterday mark'))
+
+    def getSettings(self):
+        """ Return the settings for this tab """
+        return ['Conditions']
+
+    def setSettings(self, settings):
+        """ Set the settings for this tab """
+        pass
+
+
 if __name__ == '__main__':
-  # To run this tab by itself for development
-  root = tk.Tk()
-  tabGraphics = ttk.Frame(root, width=1200, height=1200, relief='sunken', borderwidth=5)
-  tabGraphics.grid()
-    
-  o_tab = Tab(tabGraphics)
-  root.mainloop()
+    # To run this tab by itself for development
+    root = tk.Tk()
+    tabGraphics = ttk.Frame(
+        root,
+        width=1200,
+        height=1200,
+        relief='sunken',
+        borderwidth=5)
+    tabGraphics.grid()
 
-
+    o_tab = Tab(tabGraphics)
+    root.mainloop()

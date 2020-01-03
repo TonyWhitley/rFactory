@@ -1,3 +1,4 @@
+# pylint: skip-file
 """
 https://code.activestate.com/recipes/580794-simple-multicolumn-listbox-for-tkinter/ Superseded by
 https://github.com/ActiveState/code/tree/master/recipes/Python/580794_Simple_multicolumn_listbox/
@@ -240,13 +241,13 @@ class Multicolumn_Listbox(object):
                 if isinstance(cell_font, basestring):
                     cell_font = nametofont(cell_font)
                 else:
-                    if len(font) == 1:
+                    if len(cell_font) == 1:
                         cell_font = Font(family=cell_font[0])
-                    elif len(font) == 2:
+                    elif len(cell_font) == 2:
                         cell_font = Font(
                             family=cell_font[0], size=cell_font[1])
 
-                    elif len(font) == 3:
+                    elif len(cell_font) == 3:
                         cell_font = Font(
                             family=cell_font[0],
                             size=cell_font[1],
@@ -457,7 +458,7 @@ class Multicolumn_Listbox(object):
             self.interior.focus(item)
 
     def state(self, state=None):
-        if stateSpec is None:
+        if state is None:
             return self.interior.state()
         else:
             self.interior.state(state)
@@ -736,7 +737,7 @@ if __name__ == '__main__':
     mc.delete_row(1)
     show_info("mc.delete_row(1)")
 
-    row = mc.row[0].update([2, 4, 5])
+    mc.row[0].update([2, 4, 5])
     show_info("mc.row[0].update([2,4,5])")
 
     root.mainloop()

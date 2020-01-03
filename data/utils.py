@@ -40,7 +40,7 @@ def writeFile(_filepath, text):
             f.writelines(text)
             status = None
     except Exception as e:
-        status = ['Exception writing  "%s": %s"' % (filename, e)]
+        status = ['Exception writing  "%s": %s"' % (_filepath, e)]
     return status
 
 
@@ -100,7 +100,7 @@ def getListOfFiles(path, pattern='*.c', recurse=False):
 
     def walk(startPath, filepattern):
         filenames = []
-        for root, dirs, files in os.walk(startPath):
+        for root, __dirs, files in os.walk(startPath):
             for file in files:
                 if fnmatch.fnmatch(file, filepattern):
                     filenames.append([os.path.join(root, file), file])
@@ -132,7 +132,7 @@ def bundleFolder(filepath):
     """
     if getattr(sys, 'frozen', False):
             # running in a PyInstaller bundle (exe)
-        _p = os.path.join(sys._MEIPASS, filepath)
+        _p = os.path.join(sys._MEIPASS, filepath)  # pylint: disable=no-member
         # print(_p)
         if os.path.exists(_p):
             return _p

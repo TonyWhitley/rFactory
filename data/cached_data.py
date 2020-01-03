@@ -7,12 +7,6 @@ End user program references this data when scanning user's car and track files.
 import csv
 import os
 
-from data.rFactoryConfig import rF2root, CarDatafilesFolder, \
-    TrackDatafilesFolder, dataFilesExtension, markerfileExtension
-from data.utils import getListOfFiles, readFile, writeFile, getTags
-
-from data.LatLong2Addr import google_address, country_to_continent
-
 
 class Cached_data:
     cache = []
@@ -39,41 +33,41 @@ class Cached_data:
         else:
             self.cache = []
 
-    def set_value(self, id, key, value):
+    def set_value(self, ident, key, value):
         """ Set a value in one row of the dict """
         if value == '':
             return
         if key in self.cache_tags:
             for row in self.cache:
-                if row['DB file ID'] == id:
+                if row['DB file ID'] == ident:
                     if row[key] == '':
                         row[key] = value
                     return
             # New entry
-            self.__new_entry(id)
+            self.__new_entry(ident)
             # Newly appended so it will be the last
             self.cache[-1][key] = value
 
-    def __new_entry(self, id):
+    def __new_entry(self, ident):
         row = {}
         for tag in self.cache_tags:
             row[tag] = ''
-        row['DB file ID'] = id
+        row['DB file ID'] = ident
         self.cache.append(row)
 
-    def delete_entry(self, id):
+    def delete_entry(self, ident):
         """ Delete one row of the dict """
         for i, row in enumerate(self.cache):
-            if row['DB file ID'] == id:
+            if row['DB file ID'] == ident:
                 del self.cache[i]
                 break
 
-    def get_values(self, id):
+    def get_values(self, ident):
         """
-        Return the row for id if it is present
+        Return the row for ident if it is present
         """
         for row in self.cache:
-            if row['DB file ID'] == id:
+            if row['DB file ID'] == ident:
                 return row
         # No such entry
         return dict()

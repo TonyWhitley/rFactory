@@ -1,5 +1,4 @@
 import os
-from subprocess import run, Popen
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
@@ -8,7 +7,7 @@ import tkinter.font as font
 
 from rFactory import MainWindow, Tabs
 import tabScenarios
-from data.rFactoryConfig import modMakerFilesFolder, modMakerFilesExtension, rF2root, SteamExe
+from data.rFactoryConfig import modMakerFilesFolder, rF2root, SteamExe
 from data.utils import readFile, readTextFile, writeFile, bundleFolder, \
     executeCmdInBatchFile
 from lib.tkToolTip import Tooltip as Tooltip
@@ -23,7 +22,7 @@ try:
     #import tabServers
     import tabScenarios
     #import tabJsonEditor
-    import rF2headlights.gui
+    import rF2headlights.gui  # pylint: disable=import-error
     import tabGearshift
 except ModuleNotFoundError:
     pass    # Those modules are not packed in the exe yet
@@ -67,7 +66,6 @@ class Tab:
 
     def __init__(self, parentFrame):
         """ Dummy tab to get/set settings """
-        """ Put this into the parent frame """
         self.goButtons = GoButtons(parentFrame.handle)
 
     def getSettings(self):
@@ -293,7 +291,7 @@ class GoButtons:
 
     def Dave(self):
         """ The Run rFactor 2 button has been pressed """
-        self.tkButtonDave.flash()  # Flash it
+        # self.tkButtonDave.flash()  # Flash it
         self.run()
 
     def _quit(self):
