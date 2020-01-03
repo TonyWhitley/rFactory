@@ -29,9 +29,6 @@
     <Compile Include="data\cached_data.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\legacy_trawl_rf2_datafiles.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="data\tests\test_cached_data.py">
       <SubType>Code</SubType>
     </Compile>
@@ -236,7 +233,6 @@
     <Content Include="rF2headlights\.gitignore" />
     <Content Include="rF2headlights\.gitmodules" />
     <Content Include="rF2headlights\headlightControls.ini" />
-    <Content Include="rF2headlights\makeConfigurer.bat" />
     <Content Include="rF2headlights\makeexe.bat" />
     <Content Include="rF2headlights\pyInstallerSetup.bat" />
     <Content Include="rF2headlights\README.md" />

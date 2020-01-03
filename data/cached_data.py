@@ -7,11 +7,12 @@ End user program references this data when scanning user's car and track files.
 import csv
 import os
 
-from data.rFactoryConfig import rF2root,CarDatafilesFolder, \
-  TrackDatafilesFolder,dataFilesExtension,markerfileExtension
+from data.rFactoryConfig import rF2root, CarDatafilesFolder, \
+    TrackDatafilesFolder, dataFilesExtension, markerfileExtension
 from data.utils import getListOfFiles, readFile, writeFile, getTags
 
 from data.LatLong2Addr import google_address, country_to_continent
+
 
 class Cached_data:
     cache = []
@@ -20,9 +21,11 @@ class Cached_data:
         self.cache_filename = cache_filename
         self.cache_tags = tags
         if 'DB file ID' in tags:
-            self.cache_tags.remove('DB file ID') # Remove to move to col 1
-            self.cache_tags.remove('Desc')      # Move to the end because it's verbose
-        self.cache_tags = ['DB file ID']+self.cache_tags+['strippedName', 'Desc']
+            self.cache_tags.remove('DB file ID')  # Remove to move to col 1
+            # Move to the end because it's verbose
+            self.cache_tags.remove('Desc')
+        self.cache_tags = ['DB file ID'] + \
+            self.cache_tags + ['strippedName', 'Desc']
 
     def load(self):
         """ Load the cached data CSV """
@@ -30,7 +33,7 @@ class Cached_data:
         if os.path.isfile(self.cache_filename):
             with open(self.cache_filename, mode='r') as csv_file:
                 for row in csv.DictReader(csv_file):
-                    row.pop('xDate', None) # Remove Date
+                    row.pop('xDate', None)  # Remove Date
                     self.cache.append(row)
                 pass
         else:
@@ -83,4 +86,3 @@ class Cached_data:
             writer = csv.DictWriter(csv_file, fieldnames=self.cache_tags)
             writer.writeheader()
             writer.writerows(self.cache)
-

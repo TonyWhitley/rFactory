@@ -6,39 +6,43 @@ import re
 import subprocess
 import sys
 
+
 def readFile(filename):
-  try:
-    with open(filename) as f:
-      originalText = f.readlines()
-      error = False
-  except Exception as e:
-    originalText = ['Exception reading "%s": %s"' % (filename, e)]
-    error = True
-  return originalText, error
+    try:
+        with open(filename) as f:
+            originalText = f.readlines()
+            error = False
+    except Exception as e:
+        originalText = ['Exception reading "%s": %s"' % (filename, e)]
+        error = True
+    return originalText, error
+
 
 def readTextFile(filename):
-  """
-  Read a wall of text, concatenate the lines, replace \n with newlines
-  """
-  _lines, error = readFile(filename)
-  _txt = ''
-  for line in _lines:
-    _txt += ' '+line.strip()
-  _txt = _txt.replace(r'\n ', '\n') # That will have added spaces after \n
-  _txt = _txt.replace(r'\n', '\n')  # There may be other \n
-  _txt = _txt[1:] # throw away the first space
-  return _txt
+    """
+    Read a wall of text, concatenate the lines, replace \n with newlines
+    """
+    _lines, error = readFile(filename)
+    _txt = ''
+    for line in _lines:
+        _txt += ' ' + line.strip()
+    _txt = _txt.replace(r'\n ', '\n')  # That will have added spaces after \n
+    _txt = _txt.replace(r'\n', '\n')  # There may be other \n
+    _txt = _txt[1:]  # throw away the first space
+    return _txt
+
 
 def writeFile(_filepath, text):
-  _path = os.path.dirname(_filepath)   # Create the path if it doesn't exist
-  os.makedirs(_path, exist_ok=True)
-  try:
-    with open(_filepath, "w") as f:
-      f.writelines(text)
-      status = None
-  except Exception as e:
-    status = ['Exception writing  "%s": %s"' % (filename, e)]
-  return status
+    _path = os.path.dirname(_filepath)   # Create the path if it doesn't exist
+    os.makedirs(_path, exist_ok=True)
+    try:
+        with open(_filepath, "w") as f:
+            f.writelines(text)
+            status = None
+    except Exception as e:
+        status = ['Exception writing  "%s": %s"' % (filename, e)]
+    return status
+
 
 def executeCmd(cmd):
     retcode = 0
@@ -49,7 +53,7 @@ def executeCmd(cmd):
                                            check=True)
         retcode = completed_process.returncode
         rpt = completed_process.stdout
-        #if !None rpt += completed_process.stderr
+        # if !None rpt += completed_process.stderr
     except subprocess.CalledProcessError as e:
         retcode = e.returncode
         rpt = e.output
@@ -58,6 +62,7 @@ def executeCmd(cmd):
         rpt = 'The system cannot find the file specified'
 
     return retcode, rpt
+
 
 def executeCmdInBatchFile(cmd):
     """
@@ -70,19 +75,21 @@ def executeCmdInBatchFile(cmd):
     os.remove(bat)  # tidy up
     return retcode, rpt
 
+
 def getTags(text):
-  """ Grep the tags in text and return them as a dict """
-  # 'Name' 'Version' 'Type' 'Author' 'Origin' 'Category' 'ID'
-  # 'URL' 'Desc' 'Date' 'Flags' 'RefCount' 'Signature' 'MASFile'
-  # 'BaseSignature' 'MinVersion'
-  # Name=134_JUDD
-  tags = {}
-  for line in text:
-    m = re.match(r'(.*) *= *(.*)', line)
-    if m:
-      tags[m.group(1)] = m.group(2)
-      #print(m.group(1), m.group(2))
-  return tags
+    """ Grep the tags in text and return them as a dict """
+    # 'Name' 'Version' 'Type' 'Author' 'Origin' 'Category' 'ID'
+    # 'URL' 'Desc' 'Date' 'Flags' 'RefCount' 'Signature' 'MASFile'
+    # 'BaseSignature' 'MinVersion'
+    # Name=134_JUDD
+    tags = {}
+    for line in text:
+        m = re.match(r'(.*) *= *(.*)', line)
+        if m:
+            tags[m.group(1)] = m.group(2)
+            #print(m.group(1), m.group(2))
+    return tags
+
 
 def getListOfFiles(path, pattern='*.c', recurse=False):
     def getFiles(filepattern):
@@ -111,6 +118,7 @@ def getListOfFiles(path, pattern='*.c', recurse=False):
 
     return files
 
+
 def bundleFolder(filepath):
     """
     If running in a PyInstaller bundle the program is extracted into a
@@ -122,17 +130,17 @@ def bundleFolder(filepath):
       datas=[('resources\\rfactory.ico', 'resources')],
 
     """
-    if getattr( sys, 'frozen', False ) :
-      # running in a PyInstaller bundle (exe)
-      _p = os.path.join(sys._MEIPASS, filepath)
-      #print(_p)
-      if os.path.exists(_p):
-          return _p
-      #__, _filename = os.path.split(filepath)
-      #_p = os.path.join(sys._MEIPASS, _filename)
-      #print(_p)
-      #if os.path.exists(_p):
-      #    return _p
-    else :
-      # running live
-      return filepath
+    if getattr(sys, 'frozen', False):
+            # running in a PyInstaller bundle (exe)
+        _p = os.path.join(sys._MEIPASS, filepath)
+        # print(_p)
+        if os.path.exists(_p):
+            return _p
+        #__, _filename = os.path.split(filepath)
+        #_p = os.path.join(sys._MEIPASS, _filename)
+        # print(_p)
+        # if os.path.exists(_p):
+        #    return _p
+    else:
+        # running live
+        return filepath

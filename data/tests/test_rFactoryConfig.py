@@ -3,6 +3,7 @@ import unittest
 
 import data.rFactoryConfig as rFactoryConfig
 
+
 class Test_test_rFactoryConfig(unittest.TestCase):
     def test_validate(self):
         rFactoryConfig.new_config_file()
@@ -13,6 +14,7 @@ class Test_test_rFactoryConfig(unittest.TestCase):
         assert paths['CrewChiefExe'], rFactoryConfig.CrewChiefExe
         assert paths['playerPath'], rFactoryConfig.playerPath
         assert paths['vehicles'], rFactoryConfig.vehicles
+
 
 if __name__ == '__main__':
     unittest.main()
