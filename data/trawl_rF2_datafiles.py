@@ -483,8 +483,9 @@ class DataFiles:
                         cached_tags[tag] = val
                         self.cache_o.set_value(cached_tag_name, tag, val)
                 else:
-                    self.unusable_mas_files.append(_mod[0] + '\n')
-                    writeFile(unusableMasFilesFile, self.unusable_mas_files)
+                    if not _mod[0] + '\n' in self.unusable_mas_files:
+                      self.unusable_mas_files.append(_mod[0] + '\n')
+                      writeFile(unusableMasFilesFile, self.unusable_mas_files)
 
             if cache_write:
                 for tag, val in _mft_tags.items():

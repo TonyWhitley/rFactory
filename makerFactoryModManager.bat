@@ -1,22 +1,24 @@
-@echo off
+:@echo off
 setlocal
 @echo Freeze rFactoryModManager into a single .exe with pyInstaller
 
-python -V | find "3.7"
-if errorlevel 1 goto not37
-echo pyinstaller only works with versions up to 3.7
+python -V | find "3.8"
+if errorlevel 1 goto not38
+echo pyinstaller only works with versions up to 3.8
 pause
 goto :eof
 
-:not37
-set path=c:\Python36;c:\Python36\scripts;%path%
+:not38
+set path=c:\Python37;c:\Python37\scripts;%path%
 set path=%path%;"C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64"
 
 
 if exist env\scripts 	set path=%path%;env\Scripts
 if not exist env\scripts	python.exe -m venv env && env/Scripts/activate && python -m pip install -r requirements.txt 
 
-REM GOTO :USESPEC
+GOTO :USESPEC
+
+::  --hiddenimport pkg_resources.py2_warn   Fixes ModuleNotFoundError: No module named 'pkg_resources.py2_warn'
 
 REM Using the command line like this should also work but there were problems at some point.
 pyinstaller ^
@@ -38,13 +40,16 @@ pyinstaller ^
   --add-data resources\rfactory.ico;resources ^
   --add-data rFactoryModManagerFaq.txt;. ^
   --icon resources\rfactory.ico ^
+  --hiddenimport pkg_resources.py2_warn ^
+  --debug=all ^
   "%~dp0\rFactoryModManager.py"
 goto setVersion
 
 :USESPEC
 pyinstaller --debug all rFactoryModManager.spec 
+copy /y dist\rFactoryModManager.exe
 :setVersion
-if exist rFactoryModManagerVersion.txt pyi-set_version rFactoryModManagerversion.txt rFactoryModManager.exe
+REM if exist rFactoryModManagerVersion.txt pyi-set_version rFactoryModManagerversion.txt rFactoryModManager.exe
 
 pause
 REM fails to get pypiwin32 on AppVeyor ####  if not exist env\scripts 	pip install -r requirements.txt
