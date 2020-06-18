@@ -27,9 +27,9 @@ try:
 except ModuleNotFoundError:
     pass    # Those modules are not packed in the exe yet
 
-BUILD_REVISION = 130  # The git commit count
+BUILD_REVISION = 143  # The git commit count
 versionStr = 'rFactoryModManager V0.1.%d' % BUILD_REVISION
-versionDate = '2019-12-12'
+versionDate = '2020-01-17'
 
 
 def parse(mod_file):

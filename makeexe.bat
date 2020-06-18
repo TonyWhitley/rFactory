@@ -2,14 +2,14 @@
 setlocal
 @echo Freeze rFactory into a single .exe with pyInstaller
 
-python -V | find "3.7"
-if errorlevel 1 goto not37
-echo pyinstaller only works with versions up to 3.7
+python -V | find "3.8"
+if errorlevel 1 goto not38
+echo pyinstaller only works with versions up to 3.8
 pause
 goto :eof
 
-:not37
-set path=c:\Python36;c:\Python36\scripts;%path%
+:not38
+set path=c:\Python37;c:\Python37\scripts;%path%
 set path=%path%;"C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64"
 
 

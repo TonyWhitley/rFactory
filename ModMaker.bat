@@ -4,6 +4,11 @@ echo rFactor 2 ModMaker V1.9
 
 setlocal
 
+rem if '%2' == 'ModManager.exe' then this was called from that program and shouldn't pause
+echo %time% > c:\temp\debug
+echo %1 %2 >> c:\temp\debug
+echo debug1 >> c:\temp\debug
+
 rem Default path, can be overridden in mod file
 rem rf2dir=[path to rF2 install]
 set rf2dir=%ProgramFiles(x86)%\Steam\steamapps\common\rFactor 2
@@ -156,17 +161,22 @@ for /f "eol=# tokens=1,2* delims==" %%i in (%modfile%) do if /i '%%i' == 'Vehicl
 :::::::::::::::::::::::::::::::::::::::::::::::::
 popd
 echo.
+
+echo debug2 >> c:\temp\debug
+if %verbose% GTR 1 dir /b Bin64\plugins\*.dll > c:\temp\dlls
+echo debug3 >> c:\temp\debug
 @echo Starting rFactor 2 singleplayer...
 
 if %dryrun%==0 (
   Bin64\rFactor2.exe  +singleplayer +path="%temporary_copy%\%modset%"
   ) else (
   echo      DRY RUN.  rFactor has now exited
-  pause
+  if not '%2' == 'ModManager.exe' pause
   )
 
 echo.
 if %verbose% == 0 goto deleteCopy
+  if '%2' == 'ModManager.exe' goto deleteCopy
   set /p _delete=Enter K if you want to KEEP the temporary rFactor copy "%modset%":
   if /I '%_delete%' == 'k' goto :pauseExit
 
