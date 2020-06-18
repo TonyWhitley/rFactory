@@ -1,3 +1,4 @@
+![Python application](https://github.com/TonyWhitley/rFactory/workflows/Python%20application/badge.svg)
 # rFactory
 **An "External UI" for rFactor 2 like Assetto Corsa's "Content Manager"**
 
