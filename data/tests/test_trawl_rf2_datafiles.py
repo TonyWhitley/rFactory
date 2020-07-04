@@ -58,25 +58,19 @@ class Test_trawl_rF2_datafiles_folders(unittest.TestCase):
 
 class Test_trawl_rF2_datafiles(unittest.TestCase):
     _example_expected_car_mft_tags = {
-        'Name': 'USF2000_2016',
-        'Version': '2.00',
-        'Type': '2',
-        'Author': 'Studio 397?',
-        'Origin': '0',
-        'Category': '0',
-        'ID': 'AAA9999',
-        'URL': '',
-        'Desc': '',
-        'Date': '2019-12-17',
-        'Flags': '270536704',
-        'RefCount': '1',
-        'Year': '2016',
-        'Decade': '2010-',
-        'strippedName': 'Usf2000_',
-        'originalFolder': 'Installed\\Vehicles\\USF2000_2016\\2.00',
-        'vehFile': 'USF2000_4.VEH',
-        'Manufacturer': 'Usf2000',
-        'Model': 'Usf2000',
+         'Aero': '1',
+         'Author': 'Studio 397?',
+         'Category': '0',
+         'Date': '2019-11-28',
+         'Decade': '2010-',
+         'Desc': '',
+         'F/R/4WD': 'REAR',
+         'Flags': '270536704',
+         'Gearshift': 'Paddles',
+         'ID': 'AAA9999',
+         'Manufacturer': 'Tatuus',
+         'Mass': '',
+         'Model': 'Usf-17',
         'Rating': '***'}
     # 'Signature': '9743ca82a6b4177dcffc965538f8b3200d9f5b9bfcd2324885da9ca5079cbc5d', 'MASFile': 'car.mas 703499de4dbd8bd2dccf62347cba3e1b36b18d5df0a49971a30068dfa6bfebbf',
 
@@ -216,7 +210,7 @@ class Test_trawl_rF2_datafiles(unittest.TestCase):
     def test_get_mft_car_tags(self):
         cdf = CarDataFiles()
         _from = vehicle(
-            r"BTCC_NGTC_Ford_Focus_RS\0.95\BTCC_NGTC_Ford_Focus_RS.mft")
+            r"BTCC_NGTC_Ford_Focus_RS\0.99\BTCC_NGTC_Ford_Focus_RS.mft")
         _tags = cdf._get_mft_tags(_from)
         assert len(_tags['Date'])
         _tags, cache_write = cdf.new_data(_from, new_cache=True)
@@ -234,7 +228,7 @@ class Test_trawl_rF2_datafiles(unittest.TestCase):
 
     def test_new_data_car(self):
         cdf = CarDataFiles()
-        _from = vehicle(r"USF2000_2016\2.00\USF2000_2016.mft")
+        _from = vehicle(r"Tatuus_USF-17_2018\1.07\Tatuus_USF-17_2018.mft")
         _tags, cache_write = cdf.new_data(_from, new_cache=True)
         if cache_write:
             cdf.cache_o.write()

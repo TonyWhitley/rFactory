@@ -365,7 +365,11 @@ class DataFiles:
                 line = line.strip()
                 for kw in keywords:
                     if line.startswith(f'{kw}'):
-                        tags[kw] = re.split('[= /\t]+', line)[1].strip()
+                        _val = re.split('[= /\t]+', line)[1].strip()
+                        # tbd: Hacking to get an idea of tyre names: Not really tested
+                        if kw in tags:
+                            kw = kw + _val
+                        tags[kw] = _val
             try:
                 os.remove(_filename)   # delete extracted file
             except BaseException:
@@ -629,6 +633,14 @@ class CarDataFiles(DataFiles):
             DumpValve=
             Turbo*
 
+        *.tbc
+            [COMPOUND]
+            Name="Bias-Ply"
+            but not
+            [SLIPCURVE]
+            Name="Lat"
+
+
 
         """
 
@@ -671,6 +683,12 @@ class CarDataFiles(DataFiles):
                 if 'DumpValve' in mas_tags:
                     tags['Turbo'] = '1'
                     found = True
+            # Hacking to get an idea of tyre names:
+            if '.tbc' in _filename:
+                mas_tags = self.mas_file(mas, _filename, {}, ['Name'])
+                for _tag in mas_tags:
+                    if _tag.startswith('Name'):
+                        print('Tyre name: "%s"' % mas_tags[_tag])
 
         if 'Mass' not in tags:
             # that PROBABLY indicates that mas was encrypted

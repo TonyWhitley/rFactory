@@ -305,7 +305,7 @@ if __name__ == "__main__":
         ['Track', tabTrack],
     ]
 
-    tabNames = [
+    XtabNames = [
         ['Mod Selection', tabModSelection]
     ]
 
