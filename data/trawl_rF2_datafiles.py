@@ -366,9 +366,11 @@ class DataFiles:
                 for kw in keywords:
                     if line.startswith(f'{kw}'):
                         _val = re.split('[= /\t]+', line)[1].strip()
-                        # tbd: Hacking to get an idea of tyre names: Not really tested
-                        if kw in tags:
-                            kw = kw + _val
+                        # Hacking to write tyre names to a file
+                        if '.tbc' in _filename:
+                            _filepath = "c:/temp/rf2_tyres.txt"
+                            with open(_filepath, "a") as f:
+                                f.writelines(['MAS file: %s  Tyre name: %s\n' % (mas, line)])
                         tags[kw] = _val
             try:
                 os.remove(_filename)   # delete extracted file
@@ -686,9 +688,6 @@ class CarDataFiles(DataFiles):
             # Hacking to get an idea of tyre names:
             if '.tbc' in _filename:
                 mas_tags = self.mas_file(mas, _filename, {}, ['Name'])
-                for _tag in mas_tags:
-                    if _tag.startswith('Name'):
-                        print('Tyre name: "%s"' % mas_tags[_tag])
 
         if 'Mass' not in tags:
             # that PROBABLY indicates that mas was encrypted
