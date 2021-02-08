@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ec571240-c2a5-42c2-8112-a5036becb6f3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>rFactory.py</StartupFile>
+    <StartupFile>rFactoryModManager.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -213,7 +213,6 @@
     <Content Include="gearshift\pyRfactor2SharedMemory\pyRfactor2SharedMemory.pyproj" />
     <Content Include="gearshift\pyRfactor2SharedMemory\pyRfactor2SharedMemory.sln" />
     <Content Include="gearshift\pyRfactor2SharedMemory\requirements.txt" />
-    <Content Include="gearshift\pyRfactor2SharedMemory\__pycache__\rF2data.cpython-36.pyc" />
     <Content Include="gearshift\pyRfactor2SharedMemory\__pycache__\sharedMemoryAPI.cpython-36.pyc" />
     <Content Include="gearshift\pyRfactor2SharedMemory\__pycache__\__init__.cpython-36.pyc" />
     <Content Include="gearshift\README.md" />
