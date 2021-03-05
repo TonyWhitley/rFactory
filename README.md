@@ -1,4 +1,5 @@
 ![Python application](https://github.com/TonyWhitley/rFactory/workflows/Python%20application/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # rFactory
 **An "External UI" for rFactor 2 like Assetto Corsa's "Content Manager"**
 
