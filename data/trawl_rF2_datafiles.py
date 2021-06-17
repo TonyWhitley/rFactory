@@ -775,15 +775,21 @@ class TrackDataFiles(DataFiles):
             if 'Scene Description' not in _tags or _tags['Scene Description'] == '':
                     # if scn file name is available in scnNames.txt use it
                 scnNames = getVehScnNames('scnNames.txt')
-                if _tags['Name'] in scnNames:
+                if 'Name' in _tags and _tags['Name'] in scnNames:
                     _tags['Scene Description'] = scnNames[_tags['Name']]
+                else:
+                    _tags['Name'] = 'No track name'
 
-            if _tags['Category'] in trackCategories:
+
+            if 'Category' in _tags and _tags['Category'] in trackCategories:
                 _tags['tType'] = trackCategories[_tags['Category']]
 
             tag = 'Track Name'
-            val = _tags['strippedName'].replace('_', ' ').strip()  # default
-            _tags[tag] = val
+            if 'strippedName' in _tags:
+                val = _tags['strippedName'].replace('_', ' ').strip()  # default
+                _tags[tag] = val
+            else:
+                _tags[tag] = 'No track name'
         return _tags
 
     def read_mas_files(self, tags, mas_dir):
