@@ -7,7 +7,7 @@ from tkinter import ttk
 
 sys.path.append(os.path.abspath('gearshift'))
 import mockMemoryMap  # pylint: disable=import-error  # NOQA: E402 don't move import
-from Gearshift import main as gearshiftMain  # pylint: disable=import-error  # NOQA: E402 don't move import
+from gearshift.Gearshift import main as gearshiftMain  # pylint: disable=import-error  # NOQA: E402 don't move import
 
 wraplength = 100
 

@@ -7,9 +7,12 @@ import sys
 import tkinter as tk
 from tkinter import ttk
 
-rF2_serverNotify_path = r'rF2_serverNotify\steps'
-sys.path.append(rF2_serverNotify_path)
-from rF2_serverNotify import Servers  # pylint: disable=import-error # NOQA: E402 don't move import
+try:
+    from rF2_serverNotify.steps.rF2_serverNotify import Servers
+except:
+    print("Couldn't open rF2_serverNotify, cwd = ", os.getcwd())
+    print(sys.path)
+    input()
 
 
 _main = False  # True if this is running standalone
