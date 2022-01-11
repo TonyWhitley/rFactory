@@ -11,15 +11,22 @@ import tabCar
 import tabTrack
 try:
     import tabOpponents
+    #print('tabOpponents')
     import tabFavouriteServers
+    #print('tabFavouriteServers')
     import tabGraphics
+    #print('tabGraphics')
     import tabSessions
+    #print('tabSessions')
     import tabOptions
     import tabServers
     import tabScenarios
+    #print('tabScenarios')
     import tabJsonEditor
+    #print('tabJsonEditor')
     #import rF2headlights.gui
-    import tabGearshift
+    #import tabGearshift
+    #print('tabGearshift')
 
     from executeRF2 import runRF2
 except BaseException:
