@@ -330,12 +330,13 @@ class DataFiles:
         """
         masFiles = getListOfFiles(folder, '*.mas')
         _pop = os.getcwd()  # save current directory
-        os.chdir(os.path.dirname(masFiles[0][0]))
         files = dict()
-        for mas in masFiles:
-            # We need to record mas file name as well
-            files[mas[1]] = self.dir_files_in_single_mas_file(mas[1])
-        os.chdir(_pop)
+        if masFiles:
+            os.chdir(os.path.dirname(masFiles[0][0]))
+            for mas in masFiles:
+                # We need to record mas file name as well
+                files[mas[1]] = self.dir_files_in_single_mas_file(mas[1])
+            os.chdir(_pop)
         return files
 
     def dir_files_in_single_mas_file(self, mas):

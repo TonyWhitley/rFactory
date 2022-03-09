@@ -6,6 +6,8 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import tkinter.font as font
+import traceback
+import time
 # Tabs
 import tabCar
 import tabTrack
@@ -34,7 +36,7 @@ except BaseException:
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.utils import readTextFile, bundleFolder
 
-BUILD_REVISION = 168  # The git commit count
+BUILD_REVISION = 170  # The git commit count
 versionStr = 'rFactory V0.8.%d' % BUILD_REVISION
 versionDate = '2022-03-09'
 
@@ -348,52 +350,58 @@ class GoButtons:
 
 
 if __name__ == "__main__":
-    tabNames = [
-        ['Car', tabCar],
-        ['Track', tabTrack],
-        ['Opponents', tabOpponents],
-        ['Graphics', tabGraphics],
-        ['Sessions', tabSessions],
-        ['Options', tabOptions],
-        ['Servers', tabServers],
-        ['Favourite Servers', tabFavouriteServers],
-        #['Scenarios', tabScenarios],
-        ['JSON editor', tabJsonEditor],
-        #['Headlights control', rF2headlights.gui],
-        #['Gearshift', tabGearshift]
-    ]
-    menuNames = [ \
-        #['Car', tabCar],
-        #['Track', tabTrack],
-        #['Opponents', tabOpponents],
-        #['Graphics', tabGraphics],
-        #['Sessions', tabSessions],
-        #['Options', tabOptions],
-        #['Server', tabServers],
-        ['Scenarios', tabScenarios],
-        ['JSON editor', tabJsonEditor]
-    ]
+    try:
+        tabNames = [
+            ['Car', tabCar],
+            ['Track', tabTrack],
+            ['Opponents', tabOpponents],
+            ['Graphics', tabGraphics],
+            ['Sessions', tabSessions],
+            ['Options', tabOptions],
+            ['Servers', tabServers],
+            ['Favourite Servers', tabFavouriteServers],
+            #['Scenarios', tabScenarios],
+            ['JSON editor', tabJsonEditor],
+            #['Headlights control', rF2headlights.gui],
+            #['Gearshift', tabGearshift]
+        ]
+        menuNames = [ \
+            #['Car', tabCar],
+            #['Track', tabTrack],
+            #['Opponents', tabOpponents],
+            #['Graphics', tabGraphics],
+            #['Sessions', tabSessions],
+            #['Options', tabOptions],
+            #['Server', tabServers],
+            ['Scenarios', tabScenarios],
+            ['JSON editor', tabJsonEditor]
+        ]
 
-    mainWindow = MainWindow('rFactory')
-    mainWindow.setSize(width=1300, height=800)
-    mainWindow.centreWindow()
+        mainWindow = MainWindow('rFactory')
+        mainWindow.setSize(width=1300, height=800)
+        mainWindow.centreWindow()
 
-    # Check if there are any new car/track files
-    trawl_for_new_rF2_datafiles(mainWindow)
+        # Check if there are any new car/track files
+        trawl_for_new_rF2_datafiles(mainWindow)
 
-    menubar = tk.Menu(mainWindow.handle)
-    # display the menus
-    Menus(mainWindow.handle, menuNames)
+        menubar = tk.Menu(mainWindow.handle)
+        # display the menus
+        Menus(mainWindow.handle, menuNames)
 
-    tabs = Tabs(mainWindow.handle, tabNames)
-    tabScenarios.setTabs(tabs.tabNames, tabs.o_tabs)
-    tabScenarios.openDefaultScenario()
-    # tabs._testSetSettings()
+        tabs = Tabs(mainWindow.handle, tabNames)
+        tabScenarios.setTabs(tabs.tabNames, tabs.o_tabs)
+        tabScenarios.openDefaultScenario()
+        # tabs._testSetSettings()
 
-    goButtons = GoButtons(mainWindow.handle)
+        goButtons = GoButtons(mainWindow.handle)
 
-    # Set initial tab state
-    tabs.selectTab('Cars')
-    goButtons.offline()
+        # Set initial tab state
+        tabs.selectTab('Cars')
+        goButtons.offline()
 
-    mainWindow.handle.mainloop()
+        mainWindow.handle.mainloop()
+    except Exception as e:
+        traceback.print_exc()
+        time.sleep(40)
+        print("\nPress enter to continue")
+        input()
