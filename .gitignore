@@ -368,3 +368,4 @@ ASALocalRun/
 /debugging.txt
 /t.bat
 /rFactory.prof
+*.pyo
