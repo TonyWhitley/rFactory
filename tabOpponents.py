@@ -66,7 +66,8 @@ class Tab:
         # Initial dummy filter to load data into table
         self.o_filter.filterUpdate(None)
 
-        self.mc.select_row(0)
+        if self.mc.number_of_rows:
+            self.mc.select_row(0)
 
     def getSettings(self):
         """ Return the settings for this tab """
