@@ -34,9 +34,9 @@ except BaseException:
 from data.trawl_rF2_datafiles import trawl_for_new_rF2_datafiles
 from data.utils import readTextFile, bundleFolder
 
-BUILD_REVISION = 140  # The git commit count
-versionStr = 'rFactory V0.7.%d' % BUILD_REVISION
-versionDate = '2029-01-03'
+BUILD_REVISION = 166  # The git commit count
+versionStr = 'rFactory V0.8.%d' % BUILD_REVISION
+versionDate = '2022-03-09'
 
 
 def about():
