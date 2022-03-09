@@ -13,7 +13,7 @@ pygame==1.9.6
 pyperclip==1.7.0
 pypiwin32==223
 python-valve==0.2.1
-pywin32==227
+pywin32==301
 pywin32-ctypes==0.2.0
 requests==2.22.0
 setuptools==45.0.0
