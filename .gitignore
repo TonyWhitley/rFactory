@@ -369,3 +369,5 @@ ASALocalRun/
 /t.bat
 /rFactory.prof
 *.pyo
+/env1
+/env2

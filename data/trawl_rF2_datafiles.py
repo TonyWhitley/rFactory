@@ -132,41 +132,48 @@ def extractYear(name):
 
 def parse_mfr_model(_tags):
     for tag in ['Manufacturer', 'Model']:
-        val = _tags['strippedName'].replace('_', ' ').strip()  # default
-        if val.startswith('Isi'):
-            val = val[4:]
-        if val.startswith('Ngtc'):
-            val = val[5:]
-        if not val == '':
-            if tag == 'Manufacturer':
-                val = val.split()[0]
-                # Fix case issues:
-                _mfrs = {'Ac': 'AC', 'Ats': 'ATS', 'Alfaromeo': 'Alfa Romeo',
-                         'Brm': 'BRM', 'Bmw': 'BMW', 'Mclaren': 'McLaren'}
-                if val in _mfrs:
-                    val = _mfrs[val]
-            if tag == 'Model' and len(val.split()) > 1:
-                val = ' '.join(val.split()[1:])
-        _tags[tag] = val
+        if 'strippedName' in _tags:
+            val = _tags['strippedName'].replace('_', ' ').strip()  # default
+            if val.startswith('Isi'):
+                val = val[4:]
+            if val.startswith('Ngtc'):
+                val = val[5:]
+            if not val == '':
+                if tag == 'Manufacturer':
+                    val = val.split()[0]
+                    # Fix case issues:
+                    _mfrs = {'Ac': 'AC', 'Ats': 'ATS', 'Alfaromeo': 'Alfa Romeo',
+                             'Brm': 'BRM', 'Bmw': 'BMW', 'Mclaren': 'McLaren'}
+                    if val in _mfrs:
+                        val = _mfrs[val]
+                if tag == 'Model' and len(val.split()) > 1:
+                    val = ' '.join(val.split()[1:])
+            _tags[tag] = val
     return _tags
 
 
 def parse_name(_tags):
-    _tags['Year'], _tags['Decade'], _tags['strippedName'] = extractYear(
-        _tags['Name'])
+    if 'Name' in _tags:
+        _tags['Year'], _tags['Decade'], _tags['strippedName'] = extractYear(
+            _tags['Name'])
     # extract class from name if it's there
     for __class in ['F1', 'F3', 'GT3', 'GTE', 'BTCC',
                     'LMP1', 'LMP2', 'LMP3']:  # 'F2' filters rF2...
-        if __class in _tags['Name']:
-            _tags['Class'] = __class
-            _tags['strippedName'] = _tags['strippedName'].replace(__class, '')
-    if _tags['strippedName'].startswith('STK'):
-        _tags['Author'] = 'Simtek Mods'
+        if 'Name' in _tags:
+            if __class in _tags['Name']:
+                _tags['Class'] = __class
+                _tags['strippedName'] = _tags['strippedName'].replace(__class, '')
+    if 'strippedName' in _tags:
+        if _tags['strippedName'].startswith('STK'):
+            _tags['Author'] = 'Simtek Mods'
     # extract certain words from name if they're there
     for __word in ['FIA', 'OWC', 'HE', '96', 'MAIN', '88', 'C4']:
-        if __word in _tags['Name'] and '488' not in _tags['Name']:
-            _tags['strippedName'] = _tags['strippedName'].replace(__word, '')
-    _tags['strippedName'] = _tags['strippedName'].title()  # Title Case The Name
+        if 'Name' in _tags:
+            if __word in _tags['Name'] and '488' not in _tags['Name']:
+                if 'strippedName' in _tags:
+                    _tags['strippedName'] = _tags['strippedName'].replace(__word, '')
+    if 'strippedName' in _tags:
+        _tags['strippedName'] = _tags['strippedName'].title()  # Title Case The Name
     return _tags
 
 ######################################################################
@@ -595,8 +602,9 @@ class CarDataFiles(DataFiles):
                         'Virtua_LM Modding Team']:  # make up your minds boys!
                     _tags[requiredTag] = 'Virtua_LM'
 
-        if _tags['Category'] in carCategories:
-            _tags['tType'] = carCategories[_tags['Category']]
+        if 'Category' in _tags:
+           if _tags['Category'] in carCategories:
+             _tags['tType'] = carCategories[_tags['Category']]
         # We need the original data folder to assemble the .VEH file path to put in
         # "All Tracks & Cars.cch" to force rF2 to switch cars.  We also need the .VEH
         # file names and that's a bit more difficult.
@@ -604,7 +612,8 @@ class CarDataFiles(DataFiles):
         _tags['originalFolder'], _ = os.path.split(
             mft[len(rF2root) + 1:])  # strip the root
         # if veh file name is available in vehNames.txt use it
-        _tags['vehFile'] = self.vehNames.veh(_tags['Name'])
+        if 'Name' in _tags:
+            _tags['vehFile'] = self.vehNames.veh(_tags['Name'])
 
         _tags = parse_name(_tags)
         _tags = parse_mfr_model(_tags)
