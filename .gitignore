@@ -371,3 +371,4 @@ ASALocalRun/
 *.pyo
 /env1
 /env2
+data/google_api.py
